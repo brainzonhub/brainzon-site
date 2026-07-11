@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/navigation/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { sansFont, monoFont } from "./fonts";
 import { siteConfig } from "@/config/site";
 import "@/styles/globals.css";
 
@@ -34,7 +33,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${sansFont.variable} ${monoFont.variable}`} suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <body className="min-h-screen bg-background text-foreground font-sans antialiased flex flex-col" suppressHydrationWarning>
         <ThemeProvider>
           <Navbar />

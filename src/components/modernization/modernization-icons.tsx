@@ -1,0 +1,3 @@
+import { ArrowRightLeft, BadgeCheck, Blocks, Boxes, BriefcaseBusiness, Cable, ChartNoAxesCombined, CircleDollarSign, Cloud, CloudCog, Database, Gauge, Handshake, Layers3, Network, PanelsTopLeft, ScanSearch, ServerCog, ShieldAlert, ShieldCheck, Unplug, type LucideIcon } from "lucide-react";
+const icons: Readonly<Record<string, LucideIcon>> = { ArrowRightLeft, BadgeCheck, Blocks, Boxes, BriefcaseBusiness, Cable, ChartNoAxesCombined, CircleDollarSign, Cloud, CloudCog, Database, Gauge, Handshake, Layers3, Network, PanelsTopLeft, ScanSearch, ServerCog, ShieldAlert, ShieldCheck, Unplug };
+export function ModernizationIcon({ name, className }: { name: string; className?: string }) { const Icon = icons[name] ?? Blocks; return <Icon className={className} aria-hidden="true" />; }

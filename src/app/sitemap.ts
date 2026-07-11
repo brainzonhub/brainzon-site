@@ -54,6 +54,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.5,
   }));
 
+  const legalRoutes = ["privacy-policy", "terms-of-service", "security-policy"].map((route) => ({
+    url: `${baseUrl}/${route}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.3,
+  }));
+
   // Blog detail paths
   const blogDetailRoutes = blogPosts.map((post) => ({
     url: `${baseUrl}/resources/blog/${post.slug}`,
@@ -76,6 +83,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...solutionRoutes,
     ...serviceRoutes,
     ...companyRoutes,
+    ...legalRoutes,
     ...blogDetailRoutes,
     ...caseStudyDetailRoutes,
   ];

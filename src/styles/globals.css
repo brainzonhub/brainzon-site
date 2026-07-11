@@ -12,6 +12,10 @@ body {
   min-height: 100%;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   background: var(--background);
@@ -26,4 +30,34 @@ input,
 textarea,
 select {
   font: inherit;
+}
+
+@media print {
+  @page {
+    margin: 18mm;
+  }
+
+  html {
+    color-scheme: light;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    font-size: 10.5pt;
+  }
+
+  header:not(.legal-header),
+  footer {
+    display: none !important;
+  }
+
+  .legal-section {
+    break-inside: avoid;
+  }
+
+  .legal-document a {
+    color: inherit;
+    text-decoration: none;
+  }
 }

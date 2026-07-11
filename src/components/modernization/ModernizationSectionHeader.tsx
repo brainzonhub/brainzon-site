@@ -1,0 +1,2 @@
+import { cn } from "@/lib/utils";
+export function ModernizationSectionHeader({ eyebrow, title, description, align = "center" }: { eyebrow: string; title: string; description?: string; align?: "left" | "center" }) { return <div className={cn("max-w-3xl", align === "center" && "mx-auto text-center")}><p className="mb-4 text-xs font-bold uppercase tracking-[.24em] text-primary">{eyebrow}</p><h2 className="text-heading-2 font-bold text-foreground">{title}</h2>{description && <p className="mt-5 text-base leading-8 text-muted-foreground sm:text-lg">{description}</p>}</div>; }
