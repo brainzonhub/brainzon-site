@@ -18,6 +18,7 @@ export function Logo({ className, height = 36 }: LogoProps) {
         width={width}
         height={height}
         className="object-contain"
+        style={{ height: "100%", width: "auto" }}
         priority
       />
     </div>

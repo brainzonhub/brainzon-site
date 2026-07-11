@@ -35,7 +35,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${sansFont.variable} ${monoFont.variable}`} suppressHydrationWarning>
-      <body className="min-h-screen bg-background text-foreground font-sans antialiased flex flex-col">
+      <body className="min-h-screen bg-background text-foreground font-sans antialiased flex flex-col" suppressHydrationWarning>
         <ThemeProvider>
           <Navbar />
           <main className="flex-1">{children}</main>

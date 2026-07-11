@@ -40,9 +40,12 @@ export function Hero() {
               Enterprise Software, Reimagined
             </span>
 
-            <h1 className="text-display font-extrabold tracking-tight text-foreground leading-[1.05]">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold tracking-tight text-foreground leading-[1.1]">
               Architecting the <br className="hidden sm:inline" />
-              <span className="bg-brand-gradient bg-clip-text text-transparent">Next Era</span> of Enterprise Innovation
+              <span className="bg-gradient-to-r from-secondary via-accent to-primary bg-clip-text text-transparent">
+                Next Era
+              </span>{" "}
+              of Enterprise Innovation
             </h1>
 
             <p className="mt-6 text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl">
@@ -81,7 +84,7 @@ export function Hero() {
               <span>Built for ambitious teams modernizing what matters.</span>
             </div>
           </div>          {/* Right Column: Ecosystem Grid Connection Dashboard Graphic */}
-          <div className="lg:col-span-6 flex justify-center relative w-full h-[400px] sm:h-[480px] md:h-[520px] mt-6 lg:mt-0 lg:-translate-y-8">
+          <div className="lg:col-span-6 flex justify-center relative w-full h-[400px] sm:h-[480px] md:h-[520px] -mt-4 lg:mt-0 lg:translate-y-[20px]">
             {/* SVG Topology Connections Map */}
             <svg className="absolute inset-0 w-full h-full -z-10 pointer-events-none" viewBox="0 0 500 500" preserveAspectRatio="none">
               {/* Glow Filters */}
@@ -278,51 +281,55 @@ export function Hero() {
         </div>
 
         {/* Hero Footer Bar: One Intelligent Foundation */}
-        <div className="mt-20 pt-8 border-t border-border/40">
-          <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-            <div className="lg:w-1/4">
-              <h3 className="text-lg font-bold text-foreground tracking-tight">One intelligent foundation</h3>
-              <p className="text-xs text-muted-foreground mt-1">Transforming enterprise core workflows</p>
+        <div className="mt-6 md:mt-8 pt-8 border-t border-border/40">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+            {/* Heading Block */}
+            <div className="flex flex-col justify-center p-2 text-left">
+              <span className="text-[10px] font-bold text-primary uppercase tracking-widest mb-1.5">Core Architecture</span>
+              <h3 className="text-lg font-bold text-foreground tracking-tight leading-snug">
+                One intelligent foundation
+              </h3>
+              <p className="text-xs text-muted-foreground mt-2 leading-relaxed">
+                Transforming enterprise workflows with secure, high-resilience systems.
+              </p>
             </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:w-3/4">
-              {/* Item 1 */}
-              <div className="flex items-start gap-3 p-4 rounded-xl border border-border/40 bg-card/30 backdrop-blur-sm">
-                <div className="flex size-9 items-center justify-center rounded-lg bg-primary/10 text-primary shrink-0">
-                  <Database size={16} />
-                </div>
-                <div>
-                  <h4 className="text-xs font-semibold text-foreground">ERP & Operations</h4>
-                  <p className="text-[11px] text-muted-foreground mt-1 leading-normal">
-                    Streamline processes. Optimize resources. Drive performance.
-                  </p>
-                </div>
-              </div>
 
-              {/* Item 2 */}
-              <div className="flex items-start gap-3 p-4 rounded-xl border border-border/40 bg-card/30 backdrop-blur-sm">
-                <div className="flex size-9 items-center justify-center rounded-lg bg-secondary/10 text-secondary shrink-0">
-                  <Users size={16} />
-                </div>
-                <div>
-                  <h4 className="text-xs font-semibold text-foreground">CRM & Growth</h4>
-                  <p className="text-[11px] text-muted-foreground mt-1 leading-normal">
-                    Deepen relationships. Accelerate pipeline. Retain with impact.
-                  </p>
-                </div>
+            {/* Card 1 */}
+            <div className="flex flex-col items-start gap-4 p-5 rounded-xl border border-border/40 bg-card/45 backdrop-blur-sm hover:border-primary/45 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(6,182,212,0.04)] transition-all duration-300 group cursor-pointer text-left">
+              <div className="flex size-9 items-center justify-center rounded-lg bg-primary/10 border border-primary/20 text-primary shrink-0 group-hover:scale-110 transition-transform duration-300">
+                <Database size={16} />
               </div>
+              <div>
+                <h4 className="text-xs font-semibold text-foreground group-hover:text-primary transition-colors duration-200">ERP & Operations</h4>
+                <p className="text-[11px] text-muted-foreground mt-1.5 leading-relaxed">
+                  Streamline processes. Optimize resources. Drive performance.
+                </p>
+              </div>
+            </div>
 
-              {/* Item 3 */}
-              <div className="flex items-start gap-3 p-4 rounded-xl border border-border/40 bg-card/30 backdrop-blur-sm">
-                <div className="flex size-9 items-center justify-center rounded-lg bg-accent/10 text-accent shrink-0">
-                  <GitBranch size={16} />
-                </div>
-                <div>
-                  <h4 className="text-xs font-semibold text-foreground">Legacy Modernization</h4>
-                  <p className="text-[11px] text-muted-foreground mt-1 leading-normal">
-                    Modernize with confidence. Extend value. Future-proof your business.
-                  </p>
-                </div>
+            {/* Card 2 */}
+            <div className="flex flex-col items-start gap-4 p-5 rounded-xl border border-border/40 bg-card/45 backdrop-blur-sm hover:border-secondary/45 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(239,68,68,0.04)] transition-all duration-300 group cursor-pointer text-left">
+              <div className="flex size-9 items-center justify-center rounded-lg bg-secondary/10 border border-secondary/20 text-secondary shrink-0 group-hover:scale-110 transition-transform duration-300">
+                <Users size={16} />
+              </div>
+              <div>
+                <h4 className="text-xs font-semibold text-foreground group-hover:text-secondary transition-colors duration-200">CRM & Growth</h4>
+                <p className="text-[11px] text-muted-foreground mt-1.5 leading-relaxed">
+                  Deepen relationships. Accelerate pipeline. Retain with impact.
+                </p>
+              </div>
+            </div>
+
+            {/* Card 3 */}
+            <div className="flex flex-col items-start gap-4 p-5 rounded-xl border border-border/40 bg-card/45 backdrop-blur-sm hover:border-accent/45 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(234,179,8,0.04)] transition-all duration-300 group cursor-pointer text-left">
+              <div className="flex size-9 items-center justify-center rounded-lg bg-accent/10 border border-accent/20 text-accent shrink-0 group-hover:scale-110 transition-transform duration-300">
+                <GitBranch size={16} />
+              </div>
+              <div>
+                <h4 className="text-xs font-semibold text-foreground group-hover:text-accent transition-colors duration-200">Legacy Modernization</h4>
+                <p className="text-[11px] text-muted-foreground mt-1.5 leading-relaxed">
+                  Modernize with confidence. Extend value. Future-proof your business.
+                </p>
               </div>
             </div>
           </div>
