@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowDown, Cpu, Network, Database, Brain, Globe, Cloud, Sparkles } from "lucide-react";
+import { Network, Database, Globe, Cloud, Sparkles } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 
 interface LayerProps {

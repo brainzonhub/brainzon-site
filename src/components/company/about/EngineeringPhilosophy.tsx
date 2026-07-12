@@ -74,7 +74,7 @@ export function EngineeringPhilosophy() {
 
               {/* Number Index */}
               <span className="absolute top-4 right-4 text-[9px] font-mono font-bold text-muted-foreground/30 group-hover:text-primary/30 transition-colors">
-                // 0{idx + 1}
+                {"//"} 0{idx + 1}
               </span>
 
               {/* Icon Container */}

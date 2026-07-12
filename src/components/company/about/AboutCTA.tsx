@@ -40,7 +40,7 @@ export function AboutCTA() {
           </div>
 
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
-            Let's Build The Future Together
+            Let&apos;s Build The Future Together
           </h2>
           <p className="mt-4 text-sm sm:text-base text-muted-foreground max-w-lg mx-auto leading-relaxed">
             Partner with Brainzon to transform your ideas into scalable, secure, and intelligent digital solutions.

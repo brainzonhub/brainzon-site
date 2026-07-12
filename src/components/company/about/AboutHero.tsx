@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles, Database, Users, Cpu, Network, Cloud } from "lucide-react";
+import { ArrowRight, Sparkles, Terminal, Activity, ShieldCheck, Database, Layers } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 
 export function AboutHero() {
@@ -88,131 +88,129 @@ export function AboutHero() {
             </motion.div>
           </motion.div>
 
-          {/* Right Column: Interactive Ecosystem Visual */}
+          {/* Right Column: Modern Tech Dashboard Viewport */}
           <motion.div 
-            className="lg:col-span-6 hidden lg:flex justify-center relative w-full h-[400px]"
-            initial={{ opacity: 0, scale: 0.9 }}
+            className="lg:col-span-6 hidden lg:flex justify-center relative w-full h-[420px]"
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+            transition={{ duration: 0.8, ease: "easeOut" as const, delay: 0.3 }}
           >
-            <div className="relative w-full h-full border border-border/40 rounded-3xl bg-surface/30 backdrop-blur-md overflow-hidden shadow-elevated flex items-center justify-center">
-              {/* Grid Overlay inside visual container */}
-              <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(6,182,212,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(6,182,212,0.02)_1px,transparent_1px)] bg-[size:1.5rem_1.5rem]" />
+            <div className="relative w-full h-full border border-border/30 rounded-3xl bg-surface/20 backdrop-blur-md overflow-hidden shadow-2xl flex items-center justify-center">
+              {/* Outer Grid overlay */}
+              <div className="absolute inset-0 bg-[radial-gradient(rgba(30,51,77,0.04)_1px,transparent_1px)] bg-[size:1.5rem_1.5rem]" />
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 pointer-events-none" />
 
-              {/* SVG Network Connections */}
-              <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 400 400">
-                <style>{`
-                  @keyframes dash {
-                    to {
-                      stroke-dashoffset: -30;
-                    }
-                  }
-                  .network-line {
-                    stroke-dasharray: 4 8;
-                    animation: dash 3s linear infinite;
-                  }
-                `}</style>
-                {/* Center Hub to Outer Nodes */}
-                <path d="M 200 200 L 90 90" stroke="currentColor" className="text-border/40" strokeWidth="1" />
-                <path d="M 200 200 L 310 90" stroke="currentColor" className="text-border/40" strokeWidth="1" />
-                <path d="M 200 200 L 70 200" stroke="currentColor" className="text-border/40" strokeWidth="1" />
-                <path d="M 200 200 L 330 200" stroke="currentColor" className="text-border/40" strokeWidth="1" />
-                <path d="M 200 200 L 90 310" stroke="currentColor" className="text-border/40" strokeWidth="1" />
-                <path d="M 200 200 L 310 310" stroke="currentColor" className="text-border/40" strokeWidth="1" />
+              {/* Floating blur orbs */}
+              <div className="absolute -top-12 -left-12 w-40 h-40 bg-primary/10 rounded-full blur-3xl animate-[pulse_4s_infinite]" />
+              <div className="absolute -bottom-12 -right-12 w-40 h-40 bg-secondary/10 rounded-full blur-3xl animate-[pulse_6s_infinite_reverse]" />
 
-                {/* Flow lines */}
-                <path d="M 200 200 L 90 90" stroke="var(--primary)" className="network-line opacity-60" strokeWidth="1.2" />
-                <path d="M 200 200 L 310 90" stroke="var(--primary)" className="network-line opacity-60" strokeWidth="1.2" />
-                <path d="M 200 200 L 70 200" stroke="var(--secondary)" className="network-line opacity-60" strokeWidth="1.2" />
-                <path d="M 200 200 L 330 200" stroke="var(--secondary)" className="network-line opacity-60" strokeWidth="1.2" />
-                <path d="M 200 200 L 90 310" stroke="var(--primary)" className="network-line opacity-60" strokeWidth="1.2" />
-                <path d="M 200 200 L 310 310" stroke="var(--primary)" className="network-line opacity-60" strokeWidth="1.2" />
-              </svg>
+              {/* Mock Dashboard Window */}
+              <div className="relative w-[90%] h-[90%] rounded-2xl border border-border/50 bg-card/90 backdrop-blur-md p-4 flex flex-col shadow-2xl transition-all duration-500 hover:scale-[1.01] hover:border-primary/20 group">
+                {/* HUD corners */}
+                <div className="absolute top-0 left-0 w-2.5 h-2.5 border-t border-l border-primary/40 rounded-tl" />
+                <div className="absolute top-0 right-0 w-2.5 h-2.5 border-t border-r border-primary/40 rounded-tr" />
+                <div className="absolute bottom-0 left-0 w-2.5 h-2.5 border-b border-l border-primary/40 rounded-bl" />
+                <div className="absolute bottom-0 right-0 w-2.5 h-2.5 border-b border-r border-primary/40 rounded-br" />
 
-              {/* Central Core Node (Brainzon) */}
-              <motion.div 
-                className="absolute size-20 rounded-full border-2 border-primary bg-background shadow-[0_0_30px_rgba(6,182,212,0.4)] flex items-center justify-center z-10"
-                animate={{ scale: [1, 1.05, 1] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              >
-                <div className="flex flex-col items-center">
-                  <span className="text-[9px] font-bold text-foreground font-mono tracking-widest leading-none">BRAINZON</span>
-                  <span className="text-[6px] text-cyan-400 font-mono tracking-wider mt-1 uppercase">HQ CORE</span>
+                {/* Top Control Bar */}
+                <div className="flex items-center justify-between pb-3 border-b border-border/10">
+                  <div className="flex items-center gap-1.5">
+                    <span className="w-2.5 h-2.5 rounded-full bg-rose-500/80 inline-block" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80 inline-block" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80 inline-block" />
+                  </div>
+                  <div className="text-[10px] font-mono text-foreground/80 tracking-wider flex items-center gap-1.5 bg-background/60 px-3 py-1 rounded border border-border/10">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping inline-block" />
+                    <span className="font-bold">ENGINE STATUS: ONLINE</span>
+                  </div>
                 </div>
-              </motion.div>
 
-              {/* Satellite Node 1: ERP (Top-Left) */}
-              <motion.div 
-                className="absolute left-[22.5%] top-[22.5%] -translate-x-1/2 -translate-y-1/2 flex items-center gap-1.5 p-1.5 pr-2.5 rounded-xl border border-border bg-card/85 backdrop-blur-xs shadow-sm hover:border-primary/40 hover:scale-105 transition-all duration-300"
-                animate={{ y: [0, -6, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
-              >
-                <div className="flex size-5 items-center justify-center rounded bg-blue-500/10 text-blue-400">
-                  <Database size={10} />
-                </div>
-                <span className="text-[9px] font-bold text-foreground">BrainERP</span>
-              </motion.div>
+                {/* Main Content Area */}
+                <div className="flex-1 flex flex-col justify-between pt-3">
+                  {/* Dynamic Wave Chart */}
+                  <div className="relative w-full h-20 rounded-lg bg-background/60 border border-border/10 overflow-hidden flex items-center justify-center p-2">
+                    <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:10px_10px]" />
+                    
+                    {/* SVG Pulsing Wave */}
+                    <svg className="w-full h-full text-primary" viewBox="0 0 300 80" preserveAspectRatio="none">
+                      <style>{`
+                        @keyframes strokeOffset {
+                          to {
+                            stroke-dashoffset: -40;
+                          }
+                        }
+                        .pulse-wave {
+                          stroke-dasharray: 6 12;
+                          animation: strokeOffset 3s linear infinite;
+                        }
+                      `}</style>
+                      <path 
+                        d="M0,45 Q40,15 80,55 T160,35 T240,70 T300,40" 
+                        fill="none" 
+                        stroke="var(--primary)" 
+                        strokeWidth="2.5" 
+                        className="pulse-wave"
+                      />
+                      <path 
+                        d="M0,45 Q30,70 70,35 T150,60 T220,25 T300,50" 
+                        fill="none" 
+                        stroke="var(--secondary)" 
+                        strokeWidth="1.5" 
+                        className="opacity-55 animate-pulse"
+                      />
+                    </svg>
 
-              {/* Satellite Node 2: CRM (Top-Right) */}
-              <motion.div 
-                className="absolute right-[22.5%] top-[22.5%] translate-x-1/2 -translate-y-1/2 flex items-center gap-1.5 p-1.5 pr-2.5 rounded-xl border border-border bg-card/85 backdrop-blur-xs shadow-sm hover:border-primary/40 hover:scale-105 transition-all duration-300"
-                animate={{ y: [0, 6, 0] }}
-                transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-              >
-                <div className="flex size-5 items-center justify-center rounded bg-rose-500/10 text-rose-400">
-                  <Users size={10} />
-                </div>
-                <span className="text-[9px] font-bold text-foreground">BrainCRM</span>
-              </motion.div>
+                    <span className="absolute top-2 left-3 text-[8px] font-mono text-muted-foreground font-semibold tracking-wider">
+                      TRANSACTION & INTEGRATION THROUGHPUT
+                    </span>
+                  </div>
 
-              {/* Satellite Node 3: AI (Bottom-Right) */}
-              <motion.div 
-                className="absolute right-[22.5%] bottom-[22.5%] translate-x-1/2 translate-y-1/2 flex items-center gap-1.5 p-1.5 pr-2.5 rounded-xl border border-border bg-card/85 backdrop-blur-xs shadow-sm hover:border-primary/40 hover:scale-105 transition-all duration-300"
-                animate={{ y: [0, -6, 0] }}
-                transition={{ duration: 5.2, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
-              >
-                <div className="flex size-5 items-center justify-center rounded bg-cyan-500/10 text-cyan-400">
-                  <Sparkles size={10} />
-                </div>
-                <span className="text-[9px] font-bold text-foreground">BrainAI</span>
-              </motion.div>
+                  {/* Operational Logs */}
+                  <div className="flex-1 my-2 flex flex-col justify-center gap-1 p-2.5 rounded-lg bg-background/60 border border-border/10 font-mono text-[9px] text-muted-foreground overflow-hidden">
+                    <div className="flex items-center gap-2 mb-0.5">
+                      <Terminal size={10} className="text-secondary" />
+                      <span className="text-foreground font-bold">SYSTEM TELEMETRY LOGS</span>
+                    </div>
+                    <div className="flex items-center justify-between text-muted-foreground border-t border-border/5 pt-1">
+                      <span>&gt; ERP Ledger replication stream</span>
+                      <span className="text-emerald-500 font-semibold">ACTIVE</span>
+                    </div>
+                    <div className="flex items-center justify-between text-muted-foreground">
+                      <span>&gt; Customer 360 models loading</span>
+                      <span className="text-primary font-semibold">SYNCED</span>
+                    </div>
+                    <div className="flex items-center justify-between text-muted-foreground">
+                      <span>&gt; Multi-cloud replication sync</span>
+                      <span className="text-cyan-400 font-semibold">AWS &lt;-&gt; AZURE</span>
+                    </div>
+                  </div>
 
-              {/* Satellite Node 4: Integration (Bottom-Left) */}
-              <motion.div 
-                className="absolute left-[22.5%] bottom-[22.5%] -translate-x-1/2 translate-y-1/2 flex items-center gap-1.5 p-1.5 pr-2.5 rounded-xl border border-border bg-card/85 backdrop-blur-xs shadow-sm hover:border-primary/40 hover:scale-105 transition-all duration-300"
-                animate={{ y: [0, 6, 0] }}
-                transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut", delay: 1.1 }}
-              >
-                <div className="flex size-5 items-center justify-center rounded bg-violet-500/10 text-violet-400">
-                  <Network size={10} />
+                  {/* Telemetry Footer */}
+                  <div className="grid grid-cols-3 gap-2 pt-2 border-t border-border/10">
+                    <div className="flex flex-col p-1.5 rounded bg-background/50 border border-border/5 text-center">
+                      <span className="text-[8px] font-mono text-muted-foreground font-semibold tracking-wider uppercase">DELIVERY</span>
+                      <span className="text-[11px] font-extrabold text-foreground mt-0.5 flex items-center justify-center gap-0.5">
+                        <Activity size={9} className="text-primary animate-pulse" />
+                        <span>100+ Clients</span>
+                      </span>
+                    </div>
+                    <div className="flex flex-col p-1.5 rounded bg-background/50 border border-border/5 text-center">
+                      <span className="text-[8px] font-mono text-muted-foreground font-semibold tracking-wider uppercase">AI UPTIME</span>
+                      <span className="text-[11px] font-extrabold text-foreground mt-0.5 flex items-center justify-center gap-0.5">
+                        <Sparkles size={9} className="text-secondary animate-pulse" />
+                        <span>99.8%</span>
+                      </span>
+                    </div>
+                    <div className="flex flex-col p-1.5 rounded bg-background/50 border border-border/5 text-center">
+                      <span className="text-[8px] font-mono text-muted-foreground font-semibold tracking-wider uppercase">SECURITY</span>
+                      <span className="text-[11px] font-extrabold text-foreground mt-0.5 flex items-center justify-center gap-0.5">
+                        <ShieldCheck size={9} className="text-emerald-500" />
+                        <span>ISO SECURE</span>
+                      </span>
+                    </div>
+                  </div>
                 </div>
-                <span className="text-[9px] font-bold text-foreground">BrainConnect</span>
-              </motion.div>
-
-              {/* Satellite Node 5: Cloud (Mid-Left) */}
-              <motion.div 
-                className="absolute left-[17.5%] top-[50%] -translate-x-1/2 -translate-y-1/2 flex items-center gap-1.5 p-1.5 pr-2.5 rounded-xl border border-border bg-card/85 backdrop-blur-xs shadow-sm hover:border-primary/40 hover:scale-105 transition-all duration-300"
-                animate={{ x: [0, -5, 0] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1.4 }}
-              >
-                <div className="flex size-5 items-center justify-center rounded bg-emerald-500/10 text-emerald-400">
-                  <Cloud size={10} />
-                </div>
-                <span className="text-[9px] font-bold text-foreground">Cloud</span>
-              </motion.div>
-
-              {/* Satellite Node 6: Modernization (Mid-Right) */}
-              <motion.div 
-                className="absolute right-[17.5%] top-[50%] translate-x-1/2 -translate-y-1/2 flex items-center gap-1.5 p-1.5 pr-2.5 rounded-xl border border-border bg-card/85 backdrop-blur-xs shadow-sm hover:border-primary/40 hover:scale-105 transition-all duration-300"
-                animate={{ x: [0, 5, 0] }}
-                transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 1.7 }}
-              >
-                <div className="flex size-5 items-center justify-center rounded bg-amber-500/10 text-amber-400">
-                  <Cpu size={10} />
-                </div>
-                <span className="text-[9px] font-bold text-foreground">Modernization</span>
-              </motion.div>
+              </div>
             </div>
           </motion.div>
         </div>

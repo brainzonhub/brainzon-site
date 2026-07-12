@@ -2,8 +2,7 @@
 
 import React from "react";
 import { 
-  Bot, 
-  Target, 
+  Bot,
   LayoutDashboard, 
   Users,
   Sparkles,
@@ -104,7 +103,7 @@ export function CRMHeroDiagram({ className }: CRMHeroDiagramProps) {
           </div>
           {/* Chat Bubble Simulation */}
           <div className="bg-muted/40 rounded p-1 text-[7.5px] text-muted-foreground italic border border-border/10">
-            "Hey Sarah! Let's..."
+            &ldquo;Hey Sarah! Let&apos;s...&rdquo;
           </div>
           <span className="text-[6.5px] font-mono text-violet-400 mt-1 text-right">Autonomous</span>
         </div>

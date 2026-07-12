@@ -65,7 +65,7 @@ export function CulturePreview() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.7 }}
           >
-            {culture.behaviors.map((item, idx) => (
+            {culture.behaviors.map((item) => (
               <div 
                 key={item.title}
                 className="group relative p-5 rounded-2xl border border-border bg-card/45 backdrop-blur-md hover:border-primary/50 hover:shadow-glow-primary transition-all duration-300 flex items-start gap-4 overflow-hidden"

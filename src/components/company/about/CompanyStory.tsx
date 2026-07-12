@@ -1,18 +1,18 @@
 "use client";
 
-import React from "react";
 import { motion } from "framer-motion";
-import { ShieldCheck, Cpu, GitBranch, Terminal } from "lucide-react";
+import { ShieldCheck, Cpu, GitBranch, Terminal, type LucideIcon } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { companyConfig } from "@/config/company";
 
 export function CompanyStory() {
   const { about, statistics } = companyConfig;
-
-
-
-  // We need to import the correct icons or use fallbacks, let's import standard Lucide icons
-  // Since companyConfig statistics has 4 entries, we can map icons respectively.
+  const statisticIcons: readonly { icon: LucideIcon; className: string }[] = [
+    { icon: Terminal, className: "bg-blue-500/10 text-blue-400" },
+    { icon: GitBranch, className: "bg-cyan-500/10 text-cyan-400" },
+    { icon: Cpu, className: "bg-violet-500/10 text-violet-400" },
+    { icon: ShieldCheck, className: "bg-emerald-500/10 text-emerald-400" },
+  ];
   
   const containerVariants = {
     hidden: {},
@@ -96,21 +96,8 @@ export function CompanyStory() {
             viewport={{ once: true, margin: "-100px" }}
           >
             {statistics.map((stat, idx) => {
-              // Select appropriate icon
-              const icon = [
-                <div className="flex size-8 items-center justify-center rounded-xl bg-blue-500/10 text-blue-400" key="0">
-                  <Terminal size={16} />
-                </div>,
-                <div className="flex size-8 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-400" key="1">
-                  <GitBranch size={16} />
-                </div>,
-                <div className="flex size-8 items-center justify-center rounded-xl bg-violet-500/10 text-violet-400" key="2">
-                  <Cpu size={16} />
-                </div>,
-                <div className="flex size-8 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-400" key="3">
-                  <ShieldCheck size={16} />
-                </div>
-              ][idx];
+              const iconConfig = statisticIcons[idx] ?? statisticIcons[0]!;
+              const StatisticIcon = iconConfig.icon;
 
               return (
                 <motion.div
@@ -122,7 +109,9 @@ export function CompanyStory() {
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   
                   <div className="mb-4 relative z-10">
-                    {icon}
+                    <div className={`flex size-8 items-center justify-center rounded-xl ${iconConfig.className}`}>
+                      <StatisticIcon size={16} />
+                    </div>
                   </div>
                   <span className="text-3xl font-extrabold text-foreground tracking-tight relative z-10">
                     {stat.value}

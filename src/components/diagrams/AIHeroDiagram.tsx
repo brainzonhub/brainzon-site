@@ -6,9 +6,7 @@ import {
   FileText, 
   MessageSquare, 
   Database,
-  TrendingUp,
-  Sparkles,
-  Cpu
+  TrendingUp
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -117,7 +115,7 @@ export function AIHeroDiagram({ className }: AIHeroDiagramProps) {
           </div>
           {/* User Prompt Simulation */}
           <div className="bg-muted/40 rounded p-1 text-[7.5px] text-muted-foreground italic border border-border/10 truncate">
-            "Summarize financial report"
+            &ldquo;Summarize financial report&rdquo;
           </div>
           <span className="text-[6.5px] font-mono text-violet-400 mt-1 text-right">RAG Activated</span>
         </div>

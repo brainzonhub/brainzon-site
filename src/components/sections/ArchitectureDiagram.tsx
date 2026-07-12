@@ -1,7 +1,7 @@
 import { Container } from "@/components/layout/Container";
 import { cn } from "@/lib/utils";
 import { ArchitectureData } from "@/config/products";
-import { Server, ArrowDown, Database, Cpu, Network } from "lucide-react";
+import { Server, Database, Cpu, Network } from "lucide-react";
 
 interface ArchitectureDiagramProps {
   architecture: ArchitectureData;

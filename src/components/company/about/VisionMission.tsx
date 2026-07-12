@@ -34,7 +34,7 @@ export function VisionMission() {
               Our Vision
             </h3>
             <p className="text-base sm:text-lg text-muted-foreground leading-relaxed font-medium">
-              "{about.vision}"
+              &ldquo;{about.vision}&rdquo;
             </p>
           </motion.div>
 
@@ -56,7 +56,7 @@ export function VisionMission() {
               Our Mission
             </h3>
             <p className="text-base sm:text-lg text-muted-foreground leading-relaxed font-medium">
-              "{about.mission}"
+              &ldquo;{about.mission}&rdquo;
             </p>
           </motion.div>
         </div>
