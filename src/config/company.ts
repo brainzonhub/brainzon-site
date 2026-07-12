@@ -25,15 +25,43 @@ export interface CareerRole {
   description: string;
 }
 
+export interface CompanyStatistic {
+  value: string;
+  label: string;
+}
+
+export interface CompanyCapability {
+  title: string;
+  description: string;
+  icon: string;
+}
+
+export interface EngineeringPrinciple {
+  title: string;
+  description: string;
+}
+
+export interface PartnershipStep {
+  step: string;
+  title: string;
+  description: string;
+}
+
 export const companyConfig = {
   about: {
     title: "About Brainzon",
-    headline: "Architecting Digital Transformation Worldwide",
-    description: "Brainzon is a leading software development company, trusted by businesses worldwide for delivering high-quality, innovative digital solutions. Since our inception in 2020, we have successfully partnered with 100+ clients across the globe.",
+    headline: "Architecting Digital Foundations Of Tomorrow",
+    description: "Brainzon is a global technology partner helping organizations modernize their operations through innovative software solutions. We unify proprietary ERP engines, pipeline CRMs, predictive AI, and cloud legacy modernization into one secure, high-resilience digital foundation.",
     philosophy: "We provide flexible, dedicated development teams made up of proactive and creative professionals who adapt seamlessly to our clients’ unique business needs. By working closely with our clients, we don’t just build software; we help accelerate business growth, improve operational efficiency, and create long-term value.",
-    vision: "To be recognized as the most trusted and innovative software development partner globally, continuously setting industry standards for quality, reliability, and client satisfaction. We aspire to foster long-term relationships with our clients, helping them achieve their goals and expand their potential through advanced technology solutions.",
-    mission: "To empower businesses worldwide by delivering cutting-edge software solutions through a team of proactive, creative developers. We are committed to closely collaborating with our clients, understanding their unique needs, and providing superior quality services that drive innovation and sustainable business growth."
+    vision: "To become a trusted global technology partner recognized for innovation, quality, and customer success.",
+    mission: "To empower organizations worldwide with reliable, scalable, and intelligent technology solutions that create measurable business impact."
   },
+  statistics: [
+    { value: "100+", label: "Clients Supported" },
+    { value: "Global", label: "Technology Partner" },
+    { value: "Multiple", label: "Industries Served" },
+    { value: "Modern", label: "Technology Stack" }
+  ] as CompanyStatistic[],
   values: [
     {
       title: "Customer Success First",
@@ -46,7 +74,7 @@ export const companyConfig = {
       icon: "Lightbulb"
     },
     {
-      title: "Collaboration & Partnership",
+      title: "Collaboration",
       description: "We work as an extension of our clients' teams. Through close collaboration and shared goals, we build long-term partnerships—not just projects.",
       icon: "Users"
     },
@@ -56,11 +84,85 @@ export const companyConfig = {
       icon: "ShieldAlert"
     },
     {
-      title: "Excellence in Quality",
+      title: "Excellence",
       description: "We are committed to delivering reliable, scalable, and high-quality software solutions. From planning to deployment, excellence is embedded in every step of our work.",
       icon: "Award"
     }
   ] as CoreValue[],
+  capabilities: [
+    {
+      title: "Enterprise Platforms",
+      description: "Build and implement ERP, CRM, and business applications.",
+      icon: "LayoutDashboard"
+    },
+    {
+      title: "AI Transformation",
+      description: "Create intelligent systems using AI automation and analytics.",
+      icon: "Sparkles"
+    },
+    {
+      title: "Software Modernization",
+      description: "Transform legacy applications into modern cloud-ready platforms.",
+      icon: "Cpu"
+    },
+    {
+      title: "Integration Engineering",
+      description: "Connect business systems through secure integration architecture.",
+      icon: "Network"
+    },
+    {
+      title: "Custom Development",
+      description: "Build scalable software solutions tailored to business needs.",
+      icon: "Code"
+    }
+  ] as CompanyCapability[],
+  engineeringPhilosophy: [
+    {
+      title: "Business First",
+      description: "Technology decisions are driven by real business outcomes."
+    },
+    {
+      title: "Quality Engineering",
+      description: "Reliable architecture, clean code, and scalable solutions."
+    },
+    {
+      title: "Continuous Innovation",
+      description: "Adopting modern technologies to solve evolving challenges."
+    },
+    {
+      title: "Long-Term Partnership",
+      description: "Growing together beyond project delivery."
+    }
+  ] as EngineeringPrinciple[],
+  partnershipApproach: [
+    {
+      step: "01",
+      title: "Understand",
+      description: "Analyze business goals."
+    },
+    {
+      step: "02",
+      title: "Design",
+      description: "Create solution architecture."
+    },
+    {
+      step: "03",
+      title: "Build",
+      description: "Develop and implement."
+    },
+    {
+      step: "04",
+      title: "Grow",
+      description: "Continuously optimize."
+    }
+  ] as PartnershipStep[],
+  technologyStack: {
+    frontend: ["Next.js", "React", "Angular", "TypeScript", "Tailwind CSS"],
+    backend: [".NET", "Node.js", "Python", "Go"],
+    database: ["SQL Server", "PostgreSQL", "Redis", "MongoDB"],
+    cloud: ["Azure", "AWS", "Google Cloud", "Kubernetes"],
+    ai: ["Generative AI", "Machine Learning", "Inference Pools", "Semantic Search"]
+  },
   culture: {
     headline: "Driven by Innovation, Collaboration, and Real Value",
     description: "At Brainzon, our culture is built on innovation, collaboration, and a strong commitment to delivering real business value. We foster an environment where people are empowered to think creatively, act responsibly, and grow continuously—both professionally and personally.",
@@ -142,4 +244,5 @@ export const companyConfig = {
     ] as CareerRole[]
   }
 };
+
 export type CompanyConfigType = typeof companyConfig;

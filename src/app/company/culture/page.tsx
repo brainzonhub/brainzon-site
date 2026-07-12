@@ -29,7 +29,7 @@ export default function CulturePage() {
 
         <Container>
           <div className="max-w-4xl flex flex-col items-start text-left">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider text-accent bg-accent/10 border border-accent/20 mb-6">
+            <span className="badge-accent">
               Team & Collaboration
             </span>
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-foreground mb-4">

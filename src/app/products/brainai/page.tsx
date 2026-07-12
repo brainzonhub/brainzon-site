@@ -5,6 +5,7 @@ import { FeatureGrid } from "@/components/sections/FeatureGrid";
 import { ArchitectureDiagram } from "@/components/sections/ArchitectureDiagram";
 import { IntegrationSection } from "@/components/sections/IntegrationSection";
 import { DemoCTA } from "@/components/sections/DemoCTA";
+import { AIHeroDiagram } from "@/components/diagrams/AIHeroDiagram";
 import { notFound } from "next/navigation";
 
 export const metadata: Metadata = {
@@ -49,8 +50,10 @@ export default function BrainAIPage() {
       <ProductHero 
         name={product.name} 
         headline={product.headline} 
+        highlight={product.highlight}
         description={product.description} 
         icon={product.icon} 
+        rightElement={<AIHeroDiagram />}
       />
 
       <FeatureGrid 

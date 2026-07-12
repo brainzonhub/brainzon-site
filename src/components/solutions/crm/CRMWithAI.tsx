@@ -204,7 +204,7 @@ export default function CRMWithAI() {
       <Container>
         {/* Header Block */}
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-primary/20 bg-primary/10 text-xs font-mono font-bold tracking-widest text-primary uppercase mb-4 animate-pulse">
+          <span className="badge-primary animate-blink-primary mb-4 font-mono">
             <Sparkles className="size-3.5" /> Embedded AI Core
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground bg-gradient-to-r from-foreground via-foreground to-muted-foreground bg-clip-text">

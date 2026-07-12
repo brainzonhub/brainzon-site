@@ -140,4 +140,66 @@
   --background-image-technology-gradient: var(--gradient-technology);
   --background-image-highlight-gradient: var(--gradient-highlight);
   --background-image-surface-glow: var(--gradient-surface);
+
+  /* Custom Blink & Glow Animations */
+  --animate-blink-accent: blink-accent 1.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-blink-primary: blink-primary 1.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-blink-secondary: blink-secondary 1.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
+  @keyframes blink-accent {
+    0%, 100% {
+      opacity: 1;
+      filter: brightness(1.2);
+      box-shadow: 0 0 18px var(--accent);
+      border-color: var(--accent);
+    }
+    50% {
+      opacity: 0.55;
+      filter: brightness(0.95);
+      box-shadow: 0 0 3px rgba(250, 204, 21, 0.1);
+      border-color: rgba(250, 204, 21, 0.15);
+    }
+  }
+
+  @keyframes blink-primary {
+    0%, 100% {
+      opacity: 1;
+      filter: brightness(1.2);
+      box-shadow: 0 0 18px var(--primary);
+      border-color: var(--primary);
+    }
+    50% {
+      opacity: 0.55;
+      filter: brightness(0.95);
+      box-shadow: 0 0 3px rgba(34, 211, 238, 0.1);
+      border-color: rgba(34, 211, 238, 0.15);
+    }
+  }
+
+  @keyframes blink-secondary {
+    0%, 100% {
+      opacity: 1;
+      filter: brightness(1.2);
+      box-shadow: 0 0 18px var(--secondary);
+      border-color: var(--secondary);
+    }
+    50% {
+      opacity: 0.55;
+      filter: brightness(0.95);
+      box-shadow: 0 0 3px rgba(239, 68, 68, 0.1);
+      border-color: rgba(239, 68, 68, 0.15);
+    }
+  }
+
+  /* Shifting Gradient Text Highlights */
+  --animate-gradient-flow: gradient-flow 6s ease infinite;
+
+  @keyframes gradient-flow {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
 }

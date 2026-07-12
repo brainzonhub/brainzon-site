@@ -32,6 +32,7 @@ export interface Product {
   slug: string;
   description: string;
   headline: string;
+  highlight?: string;
   features: string[]; // For homepage compatibility
   detailedFeatures: DetailedFeature[];
   benefits: Benefit[];
@@ -47,6 +48,7 @@ export const productsConfig: Product[] = [
     slug: "brainerp",
     description: "Enterprise Resource Planning platform to synchronize finance, inventory, manufacturing, and HR operations.",
     headline: "Unify Operations, Finance, and Resources in Real Time",
+    highlight: "Real Time",
     features: [
       "Finance & Ledger Management",
       "Real-time Inventory Control",
@@ -141,6 +143,7 @@ export const productsConfig: Product[] = [
     slug: "braincrm",
     description: "Customer Relationship Management platform to drive lead conversion, automate marketing, and offer customer 360 views.",
     headline: "Convert Pipelines and Streamline Customer Journeys",
+    highlight: "Customer Journeys",
     features: [
       "Lead Management & Tracking",
       "Visual Sales Pipeline",
@@ -222,6 +225,7 @@ export const productsConfig: Product[] = [
     slug: "brainai",
     description: "Enterprise Artificial Intelligence platform providing document intelligence, predictive analytics, and generative assistants.",
     headline: "Predict, Parse, and Automate with Cognitive AI",
+    highlight: "Cognitive AI",
     features: [
       "Interactive AI Assistant",
       "Cognitive Document Intelligence",
@@ -303,6 +307,7 @@ export const productsConfig: Product[] = [
     slug: "brainconnect",
     description: "Integration platform to orchestrate APIs, automate enterprise workflows, and synchronize databases.",
     headline: "Orchestrate Enterprise Data Flows and API Pipelines",
+    highlight: "API Pipelines",
     features: [
       "High-throughput API Integration",
       "Dynamic Workflow Automation",

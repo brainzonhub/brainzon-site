@@ -75,7 +75,7 @@ export function AIShowcase() {
           
           {/* Left Column: Descriptions */}
           <div className="lg:col-span-5 flex flex-col items-start text-left">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider text-accent bg-accent/10 border border-accent/20 mb-6">
+            <span className="badge-accent animate-blink-accent">
               Artificial Intelligence
             </span>
             <h2 className="text-heading-2 font-bold tracking-tight text-foreground">

@@ -7,11 +7,13 @@ import { cn } from "@/lib/utils";
 interface ProductHeroProps {
   name: string;
   headline: string;
+  highlight?: string;
   description: string;
   icon: string;
+  rightElement?: React.ReactNode;
 }
 
-export function ProductHero({ name, headline, description, icon }: ProductHeroProps) {
+export function ProductHero({ name, headline, highlight, description, icon, rightElement }: ProductHeroProps) {
   return (
     <section className="relative overflow-hidden pt-12 pb-16 md:pt-16 md:pb-24 border-b border-border/40 bg-background transition-colors duration-300">
       {/* Dynamic background glows */}
@@ -39,7 +41,7 @@ export function ProductHero({ name, headline, description, icon }: ProductHeroPr
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-center">
           {/* Left copy */}
           <div className="lg:col-span-7 flex flex-col items-start text-left">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider text-accent bg-accent/10 border border-accent/20 mb-6">
+            <span className="badge-accent">
               Core Ecosystem Product
             </span>
 
@@ -53,7 +55,15 @@ export function ProductHero({ name, headline, description, icon }: ProductHeroPr
             </div>
 
             <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight text-foreground mt-2 leading-tight">
-              <span className="bg-brand-gradient bg-clip-text text-transparent">{headline}</span>
+              {highlight && headline.includes(highlight) ? (
+                <>
+                  <span>{headline.split(highlight)[0]}</span>
+                  <span className="bg-brand-gradient bg-clip-text text-transparent">{highlight}</span>
+                  <span>{headline.split(highlight)[1]}</span>
+                </>
+              ) : (
+                <span className="bg-brand-gradient bg-clip-text text-transparent">{headline}</span>
+              )}
             </h2>
 
             <p className="mt-6 text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl">
@@ -85,19 +95,25 @@ export function ProductHero({ name, headline, description, icon }: ProductHeroPr
             </div>
           </div>
 
-          {/* Right illustration spacer */}
-          <div className="lg:col-span-5 hidden lg:flex justify-center relative w-full h-[300px] border border-border/40 rounded-3xl bg-surface/30 backdrop-blur-md overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5" />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="flex size-24 items-center justify-center rounded-3xl bg-card border border-border shadow-glow-primary p-4 animate-[pulse_4s_ease-in-out_infinite]">
-                {getMenuIcon(icon, { size: 48, className: "text-primary animate-pulse" })}
+          {/* Right illustration or custom diagram */}
+          <div className="lg:col-span-5 hidden lg:flex items-center justify-center w-full">
+            {rightElement ? (
+              rightElement
+            ) : (
+              <div className="relative w-full h-[300px] border border-border/40 rounded-3xl bg-surface/30 backdrop-blur-md overflow-hidden flex items-center justify-center">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5" />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="flex size-24 items-center justify-center rounded-3xl bg-card border border-border shadow-glow-primary p-4 animate-[pulse_4s_ease-in-out_infinite]">
+                    {getMenuIcon(icon, { size: 48, className: "text-primary animate-pulse" })}
+                  </div>
+                </div>
+                {/* Tech details */}
+                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-[10px] font-mono text-muted-foreground/60 border-t border-border/20 pt-3">
+                  <span>SYSTEM: ACTIVE</span>
+                  <span>BRAINZON CORE PLATFORM</span>
+                </div>
               </div>
-            </div>
-            {/* Tech details */}
-            <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-[10px] font-mono text-muted-foreground/60 border-t border-border/20 pt-3">
-              <span>SYSTEM: ACTIVE</span>
-              <span>BRAINZON CORE PLATFORM</span>
-            </div>
+            )}
           </div>
         </div>
       </Container>
