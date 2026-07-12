@@ -26,6 +26,7 @@ import {
   TrendingUp,
   Award,
   ShieldAlert,
+  Mail,
   type LucideProps
 } from "lucide-react";
 
@@ -93,6 +94,8 @@ export function getMenuIcon(name: string, props: LucideProps = {}) {
       return <Award {...props} />;
     case "shieldalert":
       return <ShieldAlert {...props} />;
+    case "mail":
+      return <Mail {...props} />;
     default:
       return null;
   }

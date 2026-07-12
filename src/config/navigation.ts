@@ -89,6 +89,12 @@ export const navigationConfig: NavItem[] = [
         href: "/company/careers",
         iconName: "briefcase",
       },
+      {
+        title: "Contact Us",
+        description: "Get in touch with our solutions and transformation specialists",
+        href: "/contact",
+        iconName: "mail",
+      },
     ],
   },
   {
