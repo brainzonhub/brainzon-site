@@ -63,7 +63,7 @@ export function IntegrationHero() {
               </Link>
               
               <Link 
-                href="/talk-to-expert" 
+                href="/contact" 
                 className="inline-flex min-h-12 items-center justify-center rounded-lg border border-border bg-card/40 px-6 text-sm font-bold text-foreground backdrop-blur-md transition-all duration-300 hover:bg-card/60 hover:border-primary/45 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
               >
                 {secondaryCta}

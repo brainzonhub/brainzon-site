@@ -117,7 +117,7 @@ export function MobileMenu() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "tween", duration: 0.28, ease: "easeInOut" }}
-              className="fixed inset-y-0 right-0 z-50 w-full max-w-sm border-l border-border bg-card shadow-elevated flex flex-col h-full"
+              className="fixed inset-y-0 right-0 z-50 w-full max-w-sm border-l border-border bg-card-opaque shadow-elevated flex flex-col h-full"
               role="dialog"
               aria-modal="true"
               aria-label="Navigation Drawer"

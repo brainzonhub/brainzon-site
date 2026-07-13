@@ -48,7 +48,7 @@ export function AboutCTA() {
 
           <div className="mt-8 flex flex-wrap gap-4 items-center justify-center">
             <Link
-              href="/talk-to-expert"
+              href="/contact"
               className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-3.5 text-sm font-semibold rounded-lg text-primary-foreground bg-primary hover:bg-primary/90 shadow-glow-primary transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
               <span>Start A Conversation</span>

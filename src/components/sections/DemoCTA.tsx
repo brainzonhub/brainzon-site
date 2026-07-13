@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import {
   ShieldCheck,
   ArrowRight,
@@ -208,7 +209,11 @@ export function DemoCTA() {
 
                     {/* Privacy note */}
                     <p className="text-[10px] text-muted-foreground/60 text-center leading-relaxed">
-                      By submitting, you agree to Brainzon&apos;s Privacy Policy. We never share your data with third parties.
+                      By submitting, you agree to Brainzon&apos;s{" "}
+                      <Link href="/privacy-policy" className="underline hover:text-primary transition-colors">
+                        Privacy Policy
+                      </Link>
+                      . We never share your data with third parties.
                     </p>
                   </form>
                 )}

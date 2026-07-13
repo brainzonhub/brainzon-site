@@ -83,7 +83,7 @@ export function ProductHero({ name, headline, highlight, description, icon, righ
                 <ArrowRight size={16} />
               </Link>
               <Link
-                href="/talk-to-expert"
+                href="/contact"
                 className={cn(
                   "inline-flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-3.5 text-sm font-semibold rounded-lg border border-border bg-card/40 backdrop-blur-sm text-foreground hover:bg-muted/40 transition-colors duration-200",
                   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"

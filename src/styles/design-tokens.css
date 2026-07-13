@@ -27,6 +27,7 @@
   --foreground: #0f172a;
   --surface: #f8fafc;
   --card: rgb(255 255 255 / 0.92);
+  --card-opaque: #ffffff;
   --card-foreground: #0f172a;
   --border: #dbe4ee;
   --primary: var(--brand-cyan-600);
@@ -58,6 +59,7 @@
   --foreground: #f8fafc;
   --surface: #07101f;
   --card: rgb(11 18 35 / 0.82);
+  --card-opaque: #0b1223;
   --card-foreground: #f8fafc;
   --border: #1e334d;
   --primary: var(--brand-cyan-400);
@@ -92,6 +94,7 @@
   --color-foreground: var(--foreground);
   --color-surface: var(--surface);
   --color-card: var(--card);
+  --color-card-opaque: var(--card-opaque);
   --color-card-foreground: var(--card-foreground);
   --color-border: var(--border);
   --color-card-border: var(--border);

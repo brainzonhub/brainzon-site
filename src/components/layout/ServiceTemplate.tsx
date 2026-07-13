@@ -182,7 +182,7 @@ export function ServiceTemplate({ service }: ServiceTemplateProps) {
 
             <div className="mt-8 flex flex-col sm:flex-row gap-4 items-center justify-center">
               <Link
-                href="/talk-to-expert"
+                href="/contact"
                 className={cn(
                   "inline-flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-3.5 text-sm font-semibold rounded-lg text-primary-foreground bg-primary hover:bg-primary/90 shadow-glow-primary transition-all duration-200"
                 )}

@@ -134,7 +134,7 @@ export function MegaMenu() {
                   exit={{ opacity: 0, y: 8, scale: 0.98 }}
                   transition={{ duration: 0.18, ease: "easeOut" }}
                   className={cn(
-                    "absolute top-full left-1/2 -translate-x-1/2 mt-2 z-50 rounded-xl border border-border shadow-card bg-card/95 backdrop-blur-md",
+                    "absolute top-full left-1/2 -translate-x-1/2 mt-2 z-50 rounded-xl border border-border shadow-card bg-card-opaque",
                     "p-6 transition-all duration-300",
                     item.title === "Products" ? "w-[680px]" : "w-[300px]"
                   )}
@@ -157,7 +157,7 @@ export function MegaMenu() {
                         <Link
                           href="/products"
                           onClick={() => setActiveCategory(null)}
-                          className="text-xs font-medium text-secondary hover:text-secondary-foreground hover:underline inline-flex items-center gap-1"
+                          className="text-xs font-medium text-secondary hover:text-brand-red-dark dark:hover:text-brand-red-light hover:underline inline-flex items-center gap-1"
                         >
                           <span>All Products</span>
                           <ArrowRight size={12} />

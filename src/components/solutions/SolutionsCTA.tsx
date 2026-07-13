@@ -35,7 +35,7 @@ export function SolutionsCTA() {
               <span>Book Architecture Consultation</span>
             </Link>
             <Link
-              href="/talk-to-expert"
+              href="/contact"
               className={cn(
                 "inline-flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-3.5 text-sm font-bold rounded-lg border border-border bg-background/50 hover:bg-muted/40 transition-colors duration-200"
               )}

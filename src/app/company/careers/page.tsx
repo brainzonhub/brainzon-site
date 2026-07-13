@@ -119,7 +119,7 @@ export default function CareersPage() {
 
                 <div className="shrink-0 flex items-center">
                   <Link
-                    href="/talk-to-expert"
+                    href="/contact"
                     className="inline-flex items-center justify-center gap-1.5 w-full md:w-auto px-5 py-2.5 text-xs font-semibold rounded-lg border border-border bg-muted/40 text-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-200"
                   >
                     <span>Apply Now</span>
@@ -148,7 +148,7 @@ export default function CareersPage() {
             </p>
             <div className="mt-8 flex flex-wrap gap-4 items-center justify-center">
               <Link
-                href="/talk-to-expert"
+                href="/contact"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-sm font-semibold rounded-lg text-primary-foreground bg-primary hover:bg-primary/90 transition-all duration-200"
               >
                 <span>Send General Application</span>

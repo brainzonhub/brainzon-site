@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { cn } from "@/lib/utils";
@@ -448,9 +449,9 @@ export function DemoForm() {
                 {/* Privacy note */}
                 <p className="text-center text-[11px] text-muted-foreground/60 leading-relaxed">
                   By submitting this form you agree to our{" "}
-                  <a href="/privacy" className="underline hover:text-primary transition-colors">
+                  <Link href="/privacy-policy" className="underline hover:text-primary transition-colors">
                     Privacy Policy
-                  </a>
+                  </Link>
                   . Your data is encrypted and will never be shared with third parties.
                 </p>
               </form>
