@@ -3,16 +3,18 @@ import { siteConfig } from "@/config/site";
 import { productsConfig } from "@/config/products";
 import { industriesConfig } from "@/config/industries";
 import { servicesConfig } from "@/config/services";
-import { blogPosts, caseStudies } from "@/config/resources";
+import { caseStudies } from "@/config/case-studies";
+import { getInsights } from "@/lib/insights";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = siteConfig.url;
+  const insights = await getInsights();
 
   // Base paths
   const baseRoutes = [
     "",
     "/resources",
-    "/resources/blog",
+    "/insights",
     "/resources/case-studies",
   ].map((route) => ({
     url: `${baseUrl}${route}`,
@@ -61,9 +63,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.3,
   }));
 
-  // Blog detail paths
-  const blogDetailRoutes = blogPosts.map((post) => ({
-    url: `${baseUrl}/resources/blog/${post.slug}`,
+  // Insights detail paths
+  const insightDetailRoutes = insights.map((insight) => ({
+    url: `${baseUrl}/insights/${insight.slug}`,
     lastModified: new Date(),
     changeFrequency: "weekly" as const,
     priority: 0.6,
@@ -71,7 +73,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Case study detail paths
   const caseStudyDetailRoutes = caseStudies.map((study) => ({
-    url: `${baseUrl}/resources/case-studies/${study.slug}`,
+    url: `${baseUrl}/case-studies/${study.slug}`,
     lastModified: new Date(),
     changeFrequency: "weekly" as const,
     priority: 0.6,
@@ -84,7 +86,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...serviceRoutes,
     ...companyRoutes,
     ...legalRoutes,
-    ...blogDetailRoutes,
+    ...insightDetailRoutes,
     ...caseStudyDetailRoutes,
   ];
 }

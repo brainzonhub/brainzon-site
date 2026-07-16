@@ -1,7 +1,8 @@
 import { Metadata } from "next";
-import { getBlogPosts, getCaseStudies } from "@/lib/cms";
+import { getCaseStudies } from "@/lib/cms";
+import { getInsights } from "@/lib/insights";
 import { Container } from "@/components/layout/Container";
-import { BlogCard, CaseStudyCard } from "@/components/ui";
+import { InsightCard, CaseStudyCard } from "@/components/ui";
 import { ArrowRight, BookOpen, Layers } from "lucide-react";
 import Link from "next/link";
 
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
 };
 
 export default async function ResourcesPage() {
-  const posts = await getBlogPosts();
+  const posts = await getInsights();
   const studies = await getCaseStudies();
 
   // Take recent items
@@ -81,7 +82,7 @@ export default async function ResourcesPage() {
             </div>
           </div>
 
-          {/* Recent Blog Posts */}
+          {/* Recent Insights */}
           <div>
             <div className="flex items-center justify-between mb-8 pb-4 border-b border-border/40">
               <div className="flex items-center gap-3">
@@ -89,21 +90,21 @@ export default async function ResourcesPage() {
                   <BookOpen size={18} />
                 </div>
                 <h2 className="text-xl sm:text-2xl font-bold text-foreground">
-                  Recent Articles
+                  Recent Insights
                 </h2>
               </div>
               <Link 
-                href="/resources/blog"
+                href="/insights"
                 className="inline-flex items-center gap-1 text-xs font-semibold text-primary hover:underline group"
               >
-                <span>All Articles</span>
+                <span>All Insights</span>
                 <ArrowRight size={12} className="transform group-hover:translate-x-0.5 transition-transform" />
               </Link>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {recentPosts.map((post) => (
-                <BlogCard key={post.slug} post={post} />
+              {recentPosts.map((insight) => (
+                <InsightCard key={insight.slug} insight={insight} />
               ))}
             </div>
           </div>

@@ -1,0 +1,24 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#020817"/>
+  <circle cx="960" cy="80" r="300" fill="#06B6D4" fill-opacity=".12"/>
+  <circle cx="160" cy="600" r="260" fill="#EF4444" fill-opacity=".1"/>
+  <path d="M0 105H1200M0 210H1200M0 315H1200M0 420H1200M0 525H1200M200 0V630M400 0V630M600 0V630M800 0V630M1000 0V630" stroke="#1E334D" stroke-opacity=".55"/>
+  <rect x="116" y="138" width="968" height="354" rx="32" fill="#0B1223" fill-opacity=".92" stroke="#1E334D"/>
+  <rect x="164" y="190" width="210" height="250" rx="22" fill="#111D30" stroke="#1E334D"/>
+  <rect x="414" y="190" width="300" height="112" rx="22" fill="#111D30" stroke="#22D3EE" stroke-opacity=".4"/>
+  <rect x="414" y="328" width="300" height="112" rx="22" fill="#111D30" stroke="#1E334D"/>
+  <rect x="754" y="190" width="282" height="250" rx="22" fill="#111D30" stroke="#1E334D"/>
+  <path d="M374 315H414M714 246H754M714 384H754" stroke="#22D3EE" stroke-width="4" stroke-dasharray="8 10"/>
+  <circle cx="269" cy="268" r="52" fill="#06B6D4" fill-opacity=".16" stroke="#22D3EE"/>
+  <path d="M242 294V260L269 242L296 260V294M255 294V274H283V294" stroke="#67E8F9" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M470 267L512 239L554 256L604 218L658 242" stroke="#22D3EE" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="470" cy="267" r="7" fill="#22D3EE"/><circle cx="512" cy="239" r="7" fill="#22D3EE"/><circle cx="554" cy="256" r="7" fill="#22D3EE"/><circle cx="604" cy="218" r="7" fill="#22D3EE"/><circle cx="658" cy="242" r="7" fill="#22D3EE"/>
+  <rect x="470" y="372" width="184" height="13" rx="6.5" fill="#1E334D"/><rect x="470" y="372" width="132" height="13" rx="6.5" fill="url(#a)"/>
+  <rect x="470" y="402" width="184" height="13" rx="6.5" fill="#1E334D"/><rect x="470" y="402" width="158" height="13" rx="6.5" fill="url(#a)"/>
+  <circle cx="895" cy="315" r="84" fill="#06B6D4" fill-opacity=".12" stroke="#22D3EE" stroke-opacity=".7"/>
+  <circle cx="895" cy="315" r="52" fill="#EF4444" fill-opacity=".1" stroke="#F87171" stroke-opacity=".7"/>
+  <path d="M871 316L888 333L923 296" stroke="#67E8F9" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="116" y="96" fill="#F8FAFC" font-family="Arial, sans-serif" font-size="30" font-weight="700">BRAINZON ENTERPRISE TRANSFORMATION</text>
+  <text x="758" y="466" fill="#94A3B8" font-family="Arial, sans-serif" font-size="16">CONNECTED • INTELLIGENT • MEASURABLE</text>
+  <defs><linearGradient id="a" x1="470" y1="378" x2="654" y2="378" gradientUnits="userSpaceOnUse"><stop stop-color="#22D3EE"/><stop offset="1" stop-color="#EF4444"/></linearGradient></defs>
+</svg>

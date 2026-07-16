@@ -101,9 +101,9 @@ export const navigationConfig: NavItem[] = [
     title: "Resources",
     items: [
       {
-        title: "Blog",
-        description: "Latest insights, news, and technical deep-dives",
-        href: "/resources/blog",
+        title: "Insights",
+        description: "Latest insights, research, and technical deep-dives",
+        href: "/insights",
         iconName: "file-text",
       },
       {

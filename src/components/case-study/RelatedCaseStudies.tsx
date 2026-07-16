@@ -1,0 +1,9 @@
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+import { Container } from "@/components/layout/Container";
+import type { CaseStudy } from "@/config/case-studies";
+
+export function RelatedCaseStudies({ studies }: { studies: CaseStudy[] }) {
+  if (studies.length === 0) return null;
+  return <section aria-labelledby="related-case-studies" className="bg-surface/40 py-24"><Container><div className="flex items-end justify-between gap-6"><div><p className="text-sm font-bold uppercase tracking-[0.2em] text-primary">More client outcomes</p><h2 id="related-case-studies" className="mt-3 text-3xl font-extrabold tracking-tight text-foreground">Related case studies</h2></div><Link href="/resources/case-studies" className="hidden text-sm font-bold text-primary hover:underline sm:block">View all</Link></div><div className="mt-10 grid gap-6 md:grid-cols-2">{studies.map((study) => <article key={study.slug} className="group rounded-3xl border border-border bg-card/70 p-7 shadow-card backdrop-blur transition-all hover:-translate-y-1 hover:border-primary/40"><p className="text-xs font-bold uppercase tracking-widest text-primary">{study.industry}</p><h3 className="mt-3 text-xl font-bold text-foreground">{study.title}</h3><p className="mt-3 text-sm leading-6 text-muted-foreground">{study.summary}</p><div className="mt-6 flex items-center justify-between border-t border-border pt-5"><span className="text-2xl font-extrabold text-foreground">{study.resultsMetrics[0]?.value}</span><Link href={`/case-studies/${study.slug}`} aria-label={`Read ${study.title}`} className="flex size-10 items-center justify-center rounded-xl bg-primary text-primary-foreground transition-transform group-hover:rotate-6"><ArrowUpRight className="size-5" aria-hidden="true" /></Link></div></article>)}</div></Container></section>;
+}

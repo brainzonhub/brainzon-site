@@ -1,4 +1,5 @@
-import { blogPosts, caseStudies, BlogPost, CaseStudy } from "@/config/resources";
+import { blogPosts, type BlogPost } from "@/config/resources";
+import { caseStudies, type CaseStudy } from "@/config/case-studies";
 
 /**
  * Fetches all blog posts from the CMS database.

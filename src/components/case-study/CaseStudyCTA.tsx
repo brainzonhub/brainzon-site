@@ -1,0 +1,8 @@
+import Link from "next/link";
+import { ArrowRight, MessagesSquare } from "lucide-react";
+import { Container } from "@/components/layout/Container";
+import type { CaseStudy } from "@/config/case-studies";
+
+export function CaseStudyCTA({ study }: { study: CaseStudy }) {
+  return <section className="py-24"><Container><div className="relative overflow-hidden rounded-[2rem] border border-secondary/25 bg-card p-8 shadow-elevated sm:p-12"><div className="absolute -right-20 -top-24 size-80 rounded-full bg-secondary/10 blur-3xl" /><MessagesSquare className="relative size-8 text-secondary" aria-hidden="true" /><div className="relative mt-5 max-w-3xl"><h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">Build your next measurable transformation</h2><p className="mt-4 text-base leading-7 text-muted-foreground">Talk with Brainzon experts about the ERP, CRM, AI, integration, cloud, and modernization capabilities that fit your operating model.</p><div className="mt-8 flex flex-wrap gap-3"><Link href={study.primaryCta.href} className="inline-flex items-center gap-2 rounded-xl bg-secondary text-secondary-foreground hover:bg-secondary/90 px-5 py-3 text-sm font-bold shadow-glow-secondary transition-transform hover:-translate-y-0.5">{study.primaryCta.label}<ArrowRight className="size-4" aria-hidden="true" /></Link><Link href={study.secondaryCta.href} className="inline-flex items-center rounded-xl border border-border bg-background px-5 py-3 text-sm font-bold text-foreground transition-colors hover:border-primary/50 hover:text-primary">{study.secondaryCta.label}</Link></div></div></div></Container></section>;
+}
