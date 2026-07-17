@@ -3,6 +3,35 @@ import Link from "next/link";
 import Image from "next/image";
 import { AlertTriangle, CheckCircle, Info } from "lucide-react";
 import { cn } from "@/lib/utils";
+import {
+  getSafeExternalRel,
+  getSafeMdxUrl,
+  isExternalMdxUrl,
+} from "@/lib/mdx-security";
+
+const blockedMdxElement = () => null;
+
+function SafeMdxLink({
+  href,
+  target,
+  rel,
+  children,
+  ...props
+}: React.ComponentPropsWithoutRef<"a">) {
+  const safeHref = getSafeMdxUrl(href);
+
+  if (!safeHref) {
+    return <span {...props}>{children}</span>;
+  }
+
+  const safeRel = getSafeExternalRel(target, rel);
+
+  return (
+    <a href={safeHref} target={target} rel={safeRel} {...props}>
+      {children}
+    </a>
+  );
+}
 
 // --- CTAButton Component ---
 interface CTAButtonProps {
@@ -11,18 +40,28 @@ interface CTAButtonProps {
 }
 
 export function CTAButton({ href, children }: CTAButtonProps) {
+  const safeHref = getSafeMdxUrl(href);
+  const buttonClassName = cn(
+    "inline-flex items-center justify-center px-6 py-3 rounded-lg text-sm font-semibold text-primary-foreground bg-primary hover:bg-primary/90 shadow-glow-primary transition-all duration-300",
+    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+    "hover:scale-[1.02]",
+  );
+
   return (
     <div className="my-8 flex justify-start">
-      <Link
-        href={href}
-        className={cn(
-          "inline-flex items-center justify-center px-6 py-3 rounded-lg text-sm font-semibold text-primary-foreground bg-primary hover:bg-primary/90 shadow-glow-primary transition-all duration-300",
-          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
-          "hover:scale-[1.02]"
-        )}
-      >
-        {children}
-      </Link>
+      {safeHref ? (
+        <Link
+          href={safeHref}
+          className={buttonClassName}
+          {...(isExternalMdxUrl(safeHref)
+            ? { target: "_blank", rel: "noopener noreferrer" }
+            : {})}
+        >
+          {children}
+        </Link>
+      ) : (
+        <span className={buttonClassName}>{children}</span>
+      )}
     </div>
   );
 }
@@ -122,11 +161,19 @@ interface InsightImageProps {
 }
 
 export function InsightImage({ src, alt, caption }: InsightImageProps) {
+  const safeSrc = getSafeMdxUrl(src, {
+    allowHttp: false,
+    allowMailto: false,
+    allowTel: false,
+  });
+
+  if (!safeSrc) return null;
+
   return (
     <figure className="my-8 rounded-2xl overflow-hidden border border-border bg-card/10 backdrop-blur-sm p-2">
       <div className="relative aspect-video w-full rounded-xl overflow-hidden">
         <Image
-          src={src}
+          src={safeSrc}
           alt={alt}
           fill
           sizes="(max-width: 1200px) 100vw, 800px"
@@ -194,6 +241,14 @@ export const MdxComponents = {
   InsightChart,
   InsightImage,
   HighlightBlock,
+  a: SafeMdxLink,
+  iframe: blockedMdxElement,
+  object: blockedMdxElement,
+  embed: blockedMdxElement,
+  script: blockedMdxElement,
+  form: blockedMdxElement,
+  base: blockedMdxElement,
+  meta: blockedMdxElement,
   // Also pass native overrides if desired
   h2: (props: React.ComponentPropsWithoutRef<"h2">) => (
     <h2 className="text-xl sm:text-2xl font-bold text-foreground mt-8 mb-4 border-b border-border/40 pb-2" {...props} />

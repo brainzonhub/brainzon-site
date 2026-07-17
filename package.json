@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
+    "test": "node --test src/lib/mdx-security.test.ts",
     "check": "pnpm lint && pnpm typecheck"
   },
   "dependencies": {

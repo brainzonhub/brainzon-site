@@ -5,6 +5,7 @@ import { Container } from "@/components/layout/Container";
 import { InsightCard } from "@/components/ui";
 import { MdxComponents } from "@/components/ui/MdxComponents";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import { disableRawHtmlInMdx } from "@/lib/mdx-security";
 import { ArrowLeft, Calendar, Clock, Share2, Mail } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -271,7 +272,15 @@ export default async function InsightDetailPage({ params }: PageProps) {
             <div className="lg:col-span-8 space-y-6">
               {/* MDX Body rendering */}
               <div className="prose prose-invert max-w-none border-b border-border/40 pb-12">
-                <MDXRemote source={insight.content} components={MdxComponents} />
+                <MDXRemote
+                  source={insight.content}
+                  components={MdxComponents}
+                  options={{
+                    mdxOptions: {
+                      remarkPlugins: [disableRawHtmlInMdx],
+                    },
+                  }}
+                />
               </div>
 
               {/* Tags block */}
