@@ -7,16 +7,14 @@ interface LogoProps {
 }
 
 export function Logo({ className, height = 36 }: LogoProps) {
-  // Width based on the visual aspect ratio of the logo image
-  const width = Math.round(height * 3.75);
-
   return (
     <div className={cn("relative flex items-center select-none", className)} style={{ height }}>
       <Image
         src="/logo.png"
         alt="Brainzon Logo"
-        width={width}
-        height={height}
+        width={400}
+        height={100}
+        style={{ height, width: "auto" }}
         className="object-contain"
         priority
       />

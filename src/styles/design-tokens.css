@@ -30,7 +30,8 @@
   --card-opaque: #ffffff;
   --card-foreground: #0f172a;
   --border: #dbe4ee;
-  --primary: var(--brand-cyan-600);
+  /* Cyan 700 keeps small primary text and controls above WCAG AA on white. */
+  --primary: var(--brand-cyan-700);
   --primary-foreground: #ffffff;
   --secondary: var(--brand-red-600);
   --secondary-foreground: #ffffff;

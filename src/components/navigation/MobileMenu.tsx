@@ -4,7 +4,6 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Logo } from "@/components/ui/logo";
-import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { navigationConfig } from "@/config/navigation";
 import { getMenuIcon } from "./menu-icons";
@@ -97,27 +96,19 @@ export function MobileMenu() {
         <Menu size={24} />
       </button>
 
-      <AnimatePresence>
         {isOpen && (
           <>
             {/* Backdrop overlay */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
+            <div
               onClick={toggleOpen}
               className="fixed inset-0 z-50 bg-background/80 backdrop-blur-sm"
               aria-hidden="true"
             />
 
             {/* Slide-out Drawer */}
-            <motion.div
+            <div
               ref={drawerRef}
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ type: "tween", duration: 0.28, ease: "easeInOut" }}
-              className="fixed inset-y-0 right-0 z-50 w-full max-w-sm border-l border-border bg-card-opaque shadow-elevated flex flex-col h-full"
+              className="fixed inset-y-0 right-0 z-50 w-full max-w-sm border-l border-border bg-card-opaque shadow-elevated flex flex-col h-full animate-[slide-in-from-right_280ms_ease-in-out]"
               role="dialog"
               aria-modal="true"
               aria-label="Navigation Drawer"
@@ -188,13 +179,8 @@ export function MobileMenu() {
                           />
                         </button>
 
-                        <AnimatePresence initial={false}>
                           {isExpanded && (
-                            <motion.div
-                              initial={{ height: 0, opacity: 0 }}
-                              animate={{ height: "auto", opacity: 1 }}
-                              exit={{ height: 0, opacity: 0 }}
-                              transition={{ duration: 0.2 }}
+                            <div
                               className="overflow-hidden pl-4 pr-1 space-y-1"
                             >
                               {item.items?.map((subItem) => (
@@ -222,9 +208,8 @@ export function MobileMenu() {
                                   </div>
                                 </Link>
                               ))}
-                            </motion.div>
+                            </div>
                           )}
-                        </AnimatePresence>
                       </div>
                     );
                   })}
@@ -248,10 +233,9 @@ export function MobileMenu() {
                   <ThemeSwitcher />
                 </div>
               </div>
-            </motion.div>
+            </div>
           </>
         )}
-      </AnimatePresence>
     </div>
   );
 }

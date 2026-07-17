@@ -1,5 +1,3 @@
-"use client";
-
 import { ShieldCheck, Cloud, RefreshCw, Activity, type LucideIcon } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 

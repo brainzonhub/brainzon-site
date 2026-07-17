@@ -3,7 +3,6 @@
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { ChevronDown, ArrowRight } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { navigationConfig } from "@/config/navigation";
 import { getMenuIcon } from "./menu-icons";
@@ -124,18 +123,13 @@ export function MegaMenu() {
               />
             </button>
 
-            <AnimatePresence>
-              {isOpen && (
-                <motion.div
+            {isOpen && (
+                <div
                   id={`menu-${item.title.toLowerCase()}`}
                   ref={(el) => { menuRefs.current[item.title] = el; }}
-                  initial={{ opacity: 0, y: 10, scale: 0.98 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: 8, scale: 0.98 }}
-                  transition={{ duration: 0.18, ease: "easeOut" }}
                   className={cn(
                     "absolute top-full left-1/2 -translate-x-1/2 mt-2 z-50 rounded-xl border border-border shadow-card bg-card-opaque",
-                    "p-6 transition-all duration-300",
+                    "p-6 animate-[fade-in_180ms_ease-out]",
                     item.title === "Products" ? "w-[680px]" : "w-[300px]"
                   )}
                 >
@@ -215,9 +209,8 @@ export function MegaMenu() {
                       ))}
                     </div>
                   )}
-                </motion.div>
+                </div>
               )}
-            </AnimatePresence>
           </div>
         );
       })}

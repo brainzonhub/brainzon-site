@@ -417,9 +417,9 @@ export function Hero() {
                 </span>
                 <span className="text-[10px] font-bold text-primary uppercase tracking-widest font-mono">Core Architecture</span>
               </div>
-              <h3 className="text-xl font-extrabold text-foreground tracking-tight leading-snug">
+              <h2 className="text-xl font-extrabold text-foreground tracking-tight leading-snug">
                 One Intelligent Foundation
-              </h3>
+              </h2>
               <p className="text-xs text-muted-foreground mt-2.5 leading-relaxed">
                 Transforming enterprise workflows with secure, high-resilience systems built for scale.
               </p>
@@ -434,9 +434,9 @@ export function Hero() {
                 <div className="flex size-9 items-center justify-center rounded-xl bg-primary/10 border border-primary/20 text-primary shrink-0 group-hover:scale-105 transition-transform duration-300">
                   <Database size={16} />
                 </div>
-                <h4 className="text-[13px] font-bold text-foreground mt-4 group-hover:text-primary transition-colors duration-200">
+                <h3 className="text-[13px] font-bold text-foreground mt-4 group-hover:text-primary transition-colors duration-200">
                   ERP & Operations
-                </h4>
+                </h3>
                 <p className="text-[11px] text-muted-foreground mt-2 leading-relaxed">
                   Streamline processes, optimize resources, and drive discrete manufacturing performance.
                 </p>
@@ -456,9 +456,9 @@ export function Hero() {
                 <div className="flex size-9 items-center justify-center rounded-xl bg-secondary/10 border border-secondary/20 text-secondary shrink-0 group-hover:scale-105 transition-transform duration-300">
                   <Users size={16} />
                 </div>
-                <h4 className="text-[13px] font-bold text-foreground mt-4 group-hover:text-secondary transition-colors duration-200">
+                <h3 className="text-[13px] font-bold text-foreground mt-4 group-hover:text-secondary transition-colors duration-200">
                   CRM & Growth
-                </h4>
+                </h3>
                 <p className="text-[11px] text-muted-foreground mt-2 leading-relaxed">
                   Deepen relationships, accelerate pipeline velocity, and automate outreach schedules.
                 </p>
@@ -478,9 +478,9 @@ export function Hero() {
                 <div className="flex size-9 items-center justify-center rounded-xl bg-accent/10 border border-accent/20 text-accent shrink-0 group-hover:scale-105 transition-transform duration-300">
                   <Cpu size={16} />
                 </div>
-                <h4 className="text-[13px] font-bold text-foreground mt-4 group-hover:text-accent transition-colors duration-200">
+                <h3 className="text-[13px] font-bold text-foreground mt-4 group-hover:text-accent transition-colors duration-200">
                   AI & Intelligence
-                </h4>
+                </h3>
                 <p className="text-[11px] text-muted-foreground mt-2 leading-relaxed">
                   Embed predictive models, document reasoning pipelines, and conversational assistant features.
                 </p>
@@ -500,9 +500,9 @@ export function Hero() {
                 <div className="flex size-9 items-center justify-center rounded-xl bg-primary/10 border border-primary/20 text-primary shrink-0 group-hover:scale-105 transition-transform duration-300">
                   <GitBranch size={16} />
                 </div>
-                <h4 className="text-[13px] font-bold text-foreground mt-4 group-hover:text-primary transition-colors duration-200">
+                <h3 className="text-[13px] font-bold text-foreground mt-4 group-hover:text-primary transition-colors duration-200">
                   Legacy Modernization
-                </h4>
+                </h3>
                 <p className="text-[11px] text-muted-foreground mt-2 leading-relaxed">
                   Re-platform monolithic databases into scalable containerized cloud microservices.
                 </p>

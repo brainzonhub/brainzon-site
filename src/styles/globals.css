@@ -37,6 +37,16 @@ html {
   scroll-behavior: smooth;
 }
 
+@keyframes fade-in {
+  from { opacity: 0; transform: translate(-50%, 0.625rem) scale(0.98); }
+  to { opacity: 1; transform: translate(-50%, 0) scale(1); }
+}
+
+@keyframes slide-in-from-right {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
 body {
   margin: 0;
   background: var(--background);
