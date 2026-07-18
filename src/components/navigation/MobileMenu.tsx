@@ -101,14 +101,14 @@ export function MobileMenu() {
             {/* Backdrop overlay */}
             <div
               onClick={toggleOpen}
-              className="fixed inset-0 z-50 bg-background/80 backdrop-blur-sm"
+              className="fixed inset-0 z-40 bg-background/80 backdrop-blur-sm"
               aria-hidden="true"
             />
 
             {/* Slide-out Drawer */}
             <div
               ref={drawerRef}
-              className="fixed inset-y-0 right-0 z-50 w-full max-w-sm border-l border-border bg-card-opaque shadow-elevated flex flex-col h-full animate-[slide-in-from-right_280ms_ease-in-out]"
+              className="fixed inset-y-0 right-0 z-50 w-full max-w-sm border-l border-border bg-background shadow-elevated flex flex-col h-full overflow-hidden animate-[slide-in-from-right_280ms_ease-in-out]"
               role="dialog"
               aria-modal="true"
               aria-label="Navigation Drawer"
@@ -217,21 +217,18 @@ export function MobileMenu() {
               </div>
 
               {/* Drawer Footer */}
-              <div className="p-5 border-t border-border/60 space-y-4 bg-muted/20">
+              <div className="p-5 border-t border-border/60 flex items-center gap-4 bg-muted/20">
                 <Link
                   href="/book-demo"
                   onClick={handleLinkClick}
                   className={cn(
-                    "flex w-full items-center justify-center px-4 py-2.5 text-sm font-semibold rounded-lg bg-primary text-primary-foreground shadow-glow-primary hover:bg-primary/90 transition-all duration-200",
+                    "flex-1 flex items-center justify-center px-4 py-2.5 text-sm font-semibold rounded-lg bg-primary text-primary-foreground shadow-glow-primary hover:bg-primary/95 transition-all duration-200",
                     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                   )}
                 >
                   Book a Demo
                 </Link>
-                <div className="flex items-center justify-between text-xs text-muted-foreground pt-2">
-                  <span>Theme Preference</span>
-                  <ThemeSwitcher />
-                </div>
+                <ThemeSwitcher />
               </div>
             </div>
           </>

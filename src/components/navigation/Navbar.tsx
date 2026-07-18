@@ -8,8 +8,10 @@ import { cn } from "@/lib/utils";
 
 export function Navbar() {
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-border bg-background/80 backdrop-blur-md transition-colors duration-300">
-      <Container className="flex h-16 items-center justify-between">
+    <header className="sticky top-0 z-40 w-full border-b border-border transition-colors duration-300">
+      {/* Glassmorphic background layer (avoids making header a containing block for fixed children) */}
+      <div className="absolute inset-0 -z-10 bg-background/80 backdrop-blur-md" />
+      <Container className="flex h-16 items-center justify-between relative">
         {/* Brand Logo */}
         <Link 
           href="/" 
