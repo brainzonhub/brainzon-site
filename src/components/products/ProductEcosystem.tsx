@@ -146,10 +146,7 @@ export function ProductEcosystem() {
           <p className="text-sm text-muted-foreground leading-relaxed">
             Brainzon platforms operate as an interconnected ecosystem. <strong>BrainAI</strong> serves as the unified cognitive layer, analyzing operational flows from <strong>BrainERP</strong>, customer engagement from <strong>BrainCRM</strong>, and data transactions routed by <strong>BrainConnect</strong>.
           </p>
-          <div className="p-5 rounded-2xl border border-border bg-card-opaque shadow-sm text-xs text-muted-foreground space-y-2">
-            <span className="font-bold text-foreground block">💡 Interactivity Tip</span>
-            Hover over any node in the architectural map to view its integration summary and detailed capabilities.
-          </div>
+
         </div>
 
         {/* Right Col: Interactive Visual Map */}

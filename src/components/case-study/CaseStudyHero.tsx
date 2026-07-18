@@ -20,8 +20,13 @@ export function CaseStudyHero({ study }: { study: CaseStudy }) {
         <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
           <div>
             <div className="badge-primary">{study.industry} case study</div>
-            <h1 className="max-w-4xl text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-6xl">{study.title}</h1>
-            <p className="mt-6 max-w-3xl text-lg leading-8 text-muted-foreground sm:text-xl">{study.summary}</p>
+            <h1 className="max-w-4xl text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold tracking-tight text-foreground leading-[1.1]">
+              {study.title.split(" ").slice(0, -2).join(" ")}{" "}
+              <span className="bg-gradient-to-r from-secondary via-accent to-primary bg-[size:200%_auto] bg-clip-text text-transparent animate-gradient-flow drop-shadow-[0_0_15px_rgba(6,182,212,0.12)] dark:drop-shadow-[0_0_20px_rgba(34,211,238,0.25)]">
+                {study.title.split(" ").slice(-2).join(" ")}
+              </span>
+            </h1>
+            <p className="mt-6 max-w-3xl text-base md:text-lg text-muted-foreground leading-relaxed">{study.summary}</p>
             <div className="mt-9 flex flex-wrap gap-3">
               <Link href={study.primaryCta.href} className="inline-flex items-center gap-2 rounded-xl bg-secondary text-secondary-foreground hover:bg-secondary/90 px-5 py-3 text-sm font-bold shadow-glow-secondary transition-transform hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
                 {study.primaryCta.label}<ArrowUpRight className="size-4" aria-hidden="true" />

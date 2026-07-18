@@ -141,11 +141,11 @@ export default async function InsightsListingPage({ searchParams }: PageProps) {
             <span className="badge-primary">
               Enterprise Hub
             </span>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-foreground mb-4">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold tracking-tight text-foreground leading-[1.1] mb-4">
               Brainzon Insights
             </h1>
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight text-foreground mt-2 leading-tight">
-              <span className="bg-brand-gradient bg-clip-text text-transparent">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight text-foreground mt-2 leading-[1.1]">
+              <span className="bg-gradient-to-r from-secondary via-accent to-primary bg-[size:200%_auto] bg-clip-text text-transparent animate-gradient-flow drop-shadow-[0_0_15px_rgba(6,182,212,0.12)] dark:drop-shadow-[0_0_20px_rgba(34,211,238,0.25)]">
                 Research, Architecture Guides, & Industry Vision
               </span>
             </h2>

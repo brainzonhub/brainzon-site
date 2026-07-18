@@ -49,20 +49,20 @@ export function ProductHero({ name, headline, highlight, description, icon, righ
               <div className="flex size-12 items-center justify-center rounded-2xl border border-primary/20 bg-primary/10 text-primary">
                 {getMenuIcon(icon, { size: 24 })}
               </div>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-foreground">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold tracking-tight text-foreground leading-[1.1]">
                 {name}
               </h1>
             </div>
 
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight text-foreground mt-2 leading-tight">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight text-foreground mt-2 leading-[1.1]">
               {highlight && headline.includes(highlight) ? (
                 <>
                   <span>{headline.split(highlight)[0]}</span>
-                  <span className="bg-brand-gradient bg-clip-text text-transparent">{highlight}</span>
+                  <span className="bg-gradient-to-r from-secondary via-accent to-primary bg-[size:200%_auto] bg-clip-text text-transparent animate-gradient-flow drop-shadow-[0_0_15px_rgba(6,182,212,0.12)] dark:drop-shadow-[0_0_20px_rgba(34,211,238,0.25)]">{highlight}</span>
                   <span>{headline.split(highlight)[1]}</span>
                 </>
               ) : (
-                <span className="bg-brand-gradient bg-clip-text text-transparent">{headline}</span>
+                <span className="bg-gradient-to-r from-secondary via-accent to-primary bg-[size:200%_auto] bg-clip-text text-transparent animate-gradient-flow drop-shadow-[0_0_15px_rgba(6,182,212,0.12)] dark:drop-shadow-[0_0_20px_rgba(34,211,238,0.25)]">{headline}</span>
               )}
             </h2>
 

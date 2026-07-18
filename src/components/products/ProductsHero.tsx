@@ -48,9 +48,9 @@ export function ProductsHero() {
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 border border-primary/20 shadow-[0_0_12px_rgba(6,182,212,0.15)]">
               Brainzon Suite
             </span>
-            <h1 className="text-display font-bold text-foreground leading-[1.1] tracking-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold tracking-tight text-foreground leading-[1.1]">
               Explore Brainzon’s <br className="hidden md:inline" />
-              <span className="bg-gradient-to-r from-primary via-[#a78bfa] to-secondary bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-secondary via-accent to-primary bg-[size:200%_auto] bg-clip-text text-transparent animate-gradient-flow drop-shadow-[0_0_15px_rgba(6,182,212,0.12)] dark:drop-shadow-[0_0_20px_rgba(34,211,238,0.25)]">
                 Enterprise Software
               </span>{" "}
               Ecosystem

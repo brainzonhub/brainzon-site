@@ -82,8 +82,11 @@ export default function ServicesPage() {
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 border border-primary/20">
               Professional Services
             </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground leading-tight">
-              Enterprise software & Cloud transformation
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold tracking-tight text-foreground leading-[1.1]">
+              Enterprise Software &{" "}
+              <span className="bg-gradient-to-r from-secondary via-accent to-primary bg-[size:200%_auto] bg-clip-text text-transparent animate-gradient-flow drop-shadow-[0_0_15px_rgba(6,182,212,0.12)] dark:drop-shadow-[0_0_20px_rgba(34,211,238,0.25)]">
+                Cloud Transformation
+              </span>
             </h1>
             <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
               Breathe life into legacy code, deploy multi-cloud infrastructures, and consult with system integration experts to scale operations.

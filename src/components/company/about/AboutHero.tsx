@@ -52,11 +52,11 @@ export function AboutHero() {
             </motion.span>
             
             <motion.h1 
-              className="text-4xl sm:text-5xl lg:text-[3.25rem] font-extrabold tracking-tight text-foreground leading-[1.1]"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold tracking-tight text-foreground leading-[1.1]"
               variants={itemVariants}
             >
               Building The <br className="hidden sm:inline" />
-              <span className="bg-brand-gradient bg-clip-text text-transparent">Digital Foundations</span><br />
+              <span className="bg-gradient-to-r from-secondary via-accent to-primary bg-[size:200%_auto] bg-clip-text text-transparent animate-gradient-flow drop-shadow-[0_0_15px_rgba(6,182,212,0.12)] dark:drop-shadow-[0_0_20px_rgba(34,211,238,0.25)]">Digital Foundations</span><br />
               Of Tomorrow
             </motion.h1>
 

@@ -39,11 +39,11 @@ export default async function ResourcesPage() {
             <span className="badge-accent">
               Knowledge Base
             </span>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-foreground mb-4">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold tracking-tight text-foreground leading-[1.1] mb-4">
               Resources Hub
             </h1>
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight text-foreground mt-2 leading-tight">
-              <span className="bg-brand-gradient bg-clip-text text-transparent">Insights, Case Studies, & Blueprints</span>
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight text-foreground mt-2 leading-[1.1]">
+              <span className="bg-gradient-to-r from-secondary via-accent to-primary bg-[size:200%_auto] bg-clip-text text-transparent animate-gradient-flow drop-shadow-[0_0_15px_rgba(6,182,212,0.12)] dark:drop-shadow-[0_0_20px_rgba(34,211,238,0.25)]">Insights, Case Studies, & Blueprints</span>
             </h2>
             <p className="mt-6 text-base md:text-lg text-muted-foreground leading-relaxed">
               Explore custom-trained LLM models, ledger database optimizations, and client transformation blueprints compiled by our software architects.

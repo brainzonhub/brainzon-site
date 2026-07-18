@@ -42,9 +42,9 @@ export function IntegrationHero() {
               {badge}
             </div>
             
-            <h1 className="max-w-3xl text-heading-1 font-extrabold leading-[1.05] tracking-[-0.035em] text-foreground">
+            <h1 className="max-w-3xl text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold tracking-tight text-foreground leading-[1.1]">
               {headline.split(" ").slice(0, -2).join(" ")}{" "}
-              <span className="text-primary dark:text-cyan-300 drop-shadow-[0_0_15px_rgba(34,211,238,0.15)]">
+              <span className="bg-gradient-to-r from-secondary via-accent to-primary bg-[size:200%_auto] bg-clip-text text-transparent animate-gradient-flow drop-shadow-[0_0_15px_rgba(6,182,212,0.12)] dark:drop-shadow-[0_0_20px_rgba(34,211,238,0.25)]">
                 {headline.split(" ").slice(-2).join(" ")}
               </span>
             </h1>
