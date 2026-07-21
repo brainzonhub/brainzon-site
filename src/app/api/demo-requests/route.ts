@@ -41,37 +41,28 @@ export async function POST(request: Request) {
     }
 
     const data = result.data;
-    const timestamp = new Date().toISOString();
+    const adminApiUrl = process.env.ADMIN_API_URL || process.env.NEXT_PUBLIC_ADMIN_SITE_URL || "http://localhost:3001";
 
-    // 1. SIMULATED CRM & SALES LOGGING
-    console.log("==================================================");
-    console.log("ENTERPRISE DEMO BOOKING RECEIVED (SIMULATED)");
-    console.log("Timestamp:", timestamp);
-    console.log("--------------------------------------------------");
-    console.log(`Full Name:   ${data.fullName}`);
-    console.log(`Email:       ${data.businessEmail}`);
-    console.log(`Company:     ${data.companyName}`);
-    console.log(`Phone:       ${data.phone || "N/A"}`);
-    console.log(`Country:     ${data.country || "N/A"}`);
-    console.log(`Company Size: ${data.companySize || "N/A"}`);
-    console.log(`Solutions:   ${data.solutions?.join(", ") || "None selected"}`);
-    console.log(`Current Sys: ${data.currentSystem || "N/A"}`);
-    console.log(`Challenge:   ${data.businessChallenge || "N/A"}`);
-    console.log(`Meeting Time: ${data.preferredMeetingTime || "N/A"}`);
-    console.log("==================================================");
+    const adminResponse = await fetch(`${adminApiUrl}/api/demo-requests`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
 
-    // 2. SIMULATED DATA PERSISTENCE & CRM INTEGRATION
-    // TODO: Salesforce / HubSpot API lead capture
-    // TODO: Microsoft Exchange / Google Calendar slot reservation
+    if (!adminResponse.ok) {
+      const errorText = await adminResponse.text();
+      console.error(`Admin API demo ingestion failed (${adminResponse.status}):`, errorText);
+      throw new Error(`Admin service returned status ${adminResponse.status}`);
+    }
+
+    const adminResult = await adminResponse.json();
 
     return NextResponse.json(
       {
         success: true,
         message: "Enterprise demo booking request received successfully. A solutions architect will contact you to confirm the meeting slot.",
-        booking: {
-          ...data,
-          receivedAt: timestamp,
-        },
+        id: adminResult.id,
+        status: adminResult.status,
       },
       { status: 200 }
     );
@@ -86,3 +77,4 @@ export async function POST(request: Request) {
     );
   }
 }
+

@@ -40,36 +40,28 @@ export async function POST(request: Request) {
     }
 
     const data = result.data;
-    const timestamp = new Date().toISOString();
+    const adminApiUrl = process.env.ADMIN_API_URL || process.env.NEXT_PUBLIC_ADMIN_SITE_URL || "http://localhost:3001";
 
-    // 1. SIMULATED EMAIL NOTIFICATION & CRM INGESTION LOGS
-    console.log("==================================================");
-    console.log("CONTACT MESSAGE RECEIVED (SIMULATED)");
-    console.log("Timestamp:", timestamp);
-    console.log("--------------------------------------------------");
-    console.log(`Inquiry Type: ${data.inquiryType}`);
-    console.log(`Full Name:    ${data.fullName}`);
-    console.log(`Email:        ${data.businessEmail}`);
-    console.log(`Company:      ${data.companyName} (${data.companySize})`);
-    console.log(`Phone:        ${data.phone || "N/A"}`);
-    console.log(`Country:      ${data.country || "N/A"}`);
-    console.log(`Website:      ${data.companyWebsite || "N/A"}`);
-    console.log("Message:");
-    console.log(data.message);
-    console.log("==================================================");
+    const adminResponse = await fetch(`${adminApiUrl}/api/contact-messages`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
 
-    // 2. SIMULATED CRM & DATABASE PERSISTENCE
-    // TODO: HubSpot/Salesforce leads sync
-    // TODO: Slack notification webhook trigger
+    if (!adminResponse.ok) {
+      const errorText = await adminResponse.text();
+      console.error(`Admin API ingestion failed (${adminResponse.status}):`, errorText);
+      throw new Error(`Admin service returned status ${adminResponse.status}`);
+    }
+
+    const adminResult = await adminResponse.json();
 
     return NextResponse.json(
       {
         success: true,
         message: "Message received successfully. Our solutions team will be in touch shortly.",
-        messageDetails: {
-          ...data,
-          receivedAt: timestamp,
-        },
+        id: adminResult.id,
+        status: adminResult.status,
       },
       { status: 200 }
     );
@@ -84,3 +76,4 @@ export async function POST(request: Request) {
     );
   }
 }
+

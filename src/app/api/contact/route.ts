@@ -17,44 +17,43 @@ export async function POST(request: Request) {
     }
 
     const data = result.data;
-    const timestamp = new Date().toISOString();
+    const adminApiUrl = process.env.ADMIN_API_URL || process.env.NEXT_PUBLIC_ADMIN_SITE_URL || "http://localhost:3001";
 
-    // 1. SIMULATED EMAIL NOTIFICATION
-    // In production, you would integrate Resend, SendGrid, or AWS SES here.
-    // Example using Resend:
-    // await resend.emails.send({
-    //   from: 'Brainzon Inquiries <inquiries@brainzon.com>',
-    //   to: ['sales@brainzon.com', 'info@brainzon.com'],
-    //   subject: `New Contact Inquiry - Brainzon [${data.inquiryType}]`,
-    //   html: EmailHtmlTemplate(data, timestamp)
-    // });
-    console.log("==================================================");
-    console.log("EMAIL NOTIFICATION SENT (SIMULATED)");
-    console.log("Subject: New Contact Inquiry - Brainzon");
-    console.log("Timestamp:", timestamp);
-    console.log("--------------------------------------------------");
-    console.log(`Inquiry Type: ${data.inquiryType}`);
-    console.log(`Contact Name: ${data.name}`);
-    console.log(`Company:      ${data.company} (${data.companySize})`);
-    console.log(`Email:        ${data.email}`);
-    console.log(`Phone:        ${data.phone || "N/A"}`);
-    console.log(`Country:      ${data.country || "N/A"}`);
-    console.log(`Website:      ${data.website || "N/A"}`);
-    console.log("Message:");
-    console.log(data.message);
-    console.log("==================================================");
+    // Map form fields to admin schema (contactMessageInputSchema)
+    const adminPayload = {
+      fullName: data.name,
+      companyName: data.company,
+      businessEmail: data.email,
+      phone: data.phone || undefined,
+      country: data.country || undefined,
+      companyWebsite: data.website || undefined,
+      inquiryType: data.inquiryType,
+      companySize: data.companySize,
+      message: data.message,
+    };
 
-    // 2. SIMULATED CRM & DATABASE STORAGE
-    // TODO: Salesforce / HubSpot API integration:
-    // await hubspot.contacts.createOrUpdate({ email: data.email, properties: { firstname: data.name, company: data.company, ... } })
-    //
-    // TODO: Database persist (e.g. Prisma / Postgres):
-    // await prisma.contactInquiry.create({ data: { ... } })
+    // Forward to brainzon-admin endpoint
+    const adminResponse = await fetch(`${adminApiUrl}/api/contact-messages`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(adminPayload),
+    });
+
+    if (!adminResponse.ok) {
+      const errorText = await adminResponse.text();
+      console.error(`Admin API ingestion failed (${adminResponse.status}):`, errorText);
+      throw new Error(`Admin service returned status ${adminResponse.status}`);
+    }
+
+    const adminResult = await adminResponse.json();
 
     return NextResponse.json(
       {
         success: true,
         message: "Inquiry received successfully. Our solutions team will be in touch shortly.",
+        id: adminResult.id,
       },
       { status: 200 }
     );
@@ -69,3 +68,4 @@ export async function POST(request: Request) {
     );
   }
 }
+
