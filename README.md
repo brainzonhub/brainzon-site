@@ -1,336 +1,131 @@
-# Brainzon Website - Project README
+# Brainzon Enterprise Website
 
-## Overview
+The official enterprise digital platform for **Brainzon** — a global software company and enterprise digital transformation partner. Built as a high-performance, multi-page web application featuring proprietary SaaS product showcase, solutions, legacy application modernization services, and dynamic content resources.
 
-The Brainzon website is a premium enterprise multi-page digital platform
-built to represent Brainzon as a global software and digital
-transformation company.
+**Positioning Statement:** *"Digital Transformation Partner for Modern Businesses"*
+
+---
 
-Brainzon helps organizations transform business operations through:
+## 🚀 Core Product Ecosystem
 
--   Enterprise Software
--   ERP Platforms
--   CRM Solutions
--   Artificial Intelligence
--   System Integration
--   Legacy Application Modernization
--   Cloud Transformation
+Brainzon provides enterprise-grade platforms designed for scale, intelligence, and integration:
 
-Positioning:
+*   **[BrainERP](https://brainzon.com/products/brainerp)**: Enterprise Resource Planning platform covering Finance, Procurement, Manufacturing, Inventory, HR, and Business Intelligence.
+*   **[BrainCRM](https://brainzon.com/products/braincrm)**: Customer Relationship Management platform featuring 360° Customer View, Sales Pipelines, Lead Management, and Marketing Automation.
+*   **[BrainAI](https://brainzon.com/products/brainai)**: Enterprise Artificial Intelligence platform offering Document Intelligence, Predictive Analytics, OCR Automation, and Generative AI Assistants.
+*   **[BrainConnect](https://brainzon.com/products/brainconnect)**: Integration Platform enabling seamless API Management, Workflow Automation, and Data Synchronization across legacy and cloud systems.
 
-**Digital Transformation Partner for Modern Businesses**
+---
 
-------------------------------------------------------------------------
+## 🛠️ Technology Stack
 
-# Project Goals
+*   **Framework:** [Next.js 16](https://nextjs.org/) (App Router, React Server Components)
+*   **Library:** [React 19](https://react.dev/)
+*   **Language:** [TypeScript](https://www.typescriptlang.org/) (Strict Mode)
+*   **Styling:** [Tailwind CSS v4](https://tailwindcss.com/)
+*   **Animations:** [Framer Motion](https://www.framer.com/motion/)
+*   **Theme Management:** [next-themes](https://github.com/pacocoursey/next-themes) (Dark / Light / System support)
+*   **Forms & Validation:** [React Hook Form](https://react-hook-form.com/) & [Zod](https://zod.dev/)
+*   **Content & MDX:** [next-mdx-remote](https://github.com/hashicorp/next-mdx-remote) & [gray-matter](https://github.com/jonschlinkert/gray-matter)
+*   **Icons:** [Lucide React](https://lucide.dev/)
+*   **Package Manager:** [pnpm](https://pnpm.io/)
 
-The website should:
+---
 
-1.  Present Brainzon as a product-driven software company.
-2.  Showcase proprietary platforms.
-3.  Generate enterprise leads.
-4.  Explain industry solutions.
-5.  Build trust through case studies, partners, and company information.
-6.  Provide a scalable foundation for future CMS, blogs, documentation,
-    and customer portals.
+## 📁 Repository Structure
 
-------------------------------------------------------------------------
+```text
+brainzon-site/
+├── src/
+│   ├── app/                    # Next.js App Router pages & API routes
+│   │   ├── (marketing pages)   # /, /modernization, /book-demo, /contact
+│   │   ├── company/            # /company/about, /company/careers, /company/partners
+│   │   ├── products/           # /products, /products/[brainerp|braincrm|brainai|brainconnect]
+│   │   ├── services/           # /services, /services/custom-development, /services/cloud-services
+│   │   ├── solutions/          # /solutions, /solutions/[erp|crm|ai|integration]
+│   │   ├── resources/          # /resources, /resources/blog, /resources/case-studies
+│   │   ├── sitemap.ts          # Dynamic SEO Sitemap
+│   │   └── robots.ts           # Robots.txt handler
+│   ├── components/             # Reusable UI & Layout components
+│   │   ├── layout/             # Navbar, MegaMenu, Footer, ThemeSwitcher
+│   │   ├── ui/                 # Buttons, Cards, Glass Panels, Inputs
+│   │   └── sections/           # Hero, Features, Stats, CTA, Testimonials
+│   ├── config/                 # Navigation, Site Metadata, & Business Configs
+│   ├── content/                # MDX content files (Blog posts, Case Studies)
+│   ├── hooks/                  # Custom React Hooks
+│   ├── lib/                    # Utilities, MDX parsing, Security helpers
+│   ├── styles/                 # Global CSS & Tailwind design tokens
+│   └── types/                  # TypeScript interface definitions
+├── public/                     # Static assets (images, logos, favicon)
+├── package.json
+└── README.md
+```
 
-# Core Product Ecosystem
+---
 
-## BrainERP
+## 🚦 Getting Started
 
-Enterprise Resource Planning Platform.
+### Prerequisites
 
-Purpose:
+*   **Node.js**: v20.x or higher
+*   **pnpm**: v9.x or higher
 
-A unified business management platform for finance, operations, supply
-chain, sales, workforce, and analytics.
+### Installation
 
-Main capabilities:
+Clone the repository and install dependencies:
 
--   Finance & Accounting
--   Sales Management
--   Inventory & Warehouse
--   Procurement
--   Manufacturing
--   Human Resources
--   Project Management
--   Business Intelligence
+```bash
+git clone https://github.com/brainzonhub/brainzon-site.git
+cd brainzon-site
+pnpm install
+```
 
-Deployment:
+### Development Server
 
--   Cloud SaaS
--   Private Cloud
--   On-Premise Enterprise
+Run the development server locally:
 
-------------------------------------------------------------------------
+```bash
+pnpm dev
+```
 
-## BrainCRM
+Open [http://localhost:3000](http://localhost:3000) in your browser to view the site.
 
-Customer Relationship Management Platform.
+---
 
-Capabilities:
+## 📜 Available Scripts
 
--   Lead Management
--   Sales Pipeline
--   Customer 360 View
--   Marketing Automation
--   Customer Support
--   Analytics
+| Command | Description |
+| :--- | :--- |
+| `pnpm dev` | Starts the Next.js development server with Webpack. |
+| `pnpm build` | Compiles and builds the production bundle. |
+| `pnpm start` | Runs the compiled production server. |
+| `pnpm lint` | Runs ESLint to check code quality and rules. |
+| `pnpm typecheck` | Runs TypeScript compiler check (`tsc --noEmit`). |
+| `pnpm test` | Runs unit tests (e.g., MDX security tests). |
+| `pnpm check` | Runs both `lint` and `typecheck` in sequence. |
 
-------------------------------------------------------------------------
+---
 
-## BrainAI
+## 🎨 Design System & Visual Direction
 
-Enterprise Artificial Intelligence Platform.
+*   **Theme Concept:** Premium enterprise technology with dark dashboard aesthetics and clean corporate light modes.
+*   **Color Palette:**
+    *   *Navy Base:* Deep navy background gradients (`#0B1120`, `#0F172A`)
+    *   *Technology Accents:* Cyan technology glow (`#06B6D4`) and vibrant Indigo/Violet
+    *   *Brand Highlights:* Crimson / Orange brand focal points
+*   **Styling Elements:** Glassmorphism (`backdrop-blur`), subtle glowing borders, interactive hover states, and responsive mega-navigation menus.
 
-Capabilities:
+---
 
--   AI Business Assistant
--   Enterprise Chatbot
--   Knowledge Assistant
--   Document Intelligence
--   OCR Automation
--   Predictive Analytics
--   Generative AI Solutions
+## 🔒 Security & Code Standards
 
-------------------------------------------------------------------------
+*   **Strict Typing:** Zero `any` usage policy across all app routes and components.
+*   **Content Security:** MDX rendering is sanitized with custom AST validation to protect against malicious injections.
+*   **Form Validation:** All public inputs (Demo requests, Contact forms) are validated client and server-side via Zod schemas.
+*   **SEO & Metadata:** Every route exports static/dynamic `Metadata` including OpenGraph, Twitter Cards, and canonical URLs.
 
-## BrainConnect
+---
 
-Integration and Automation Platform.
+## 📄 License
 
-Capabilities:
-
--   ERP Integration
--   CRM Integration
--   eCommerce Integration
--   Payment Integration
--   API Management
--   Workflow Automation
--   Data Synchronization
-
-------------------------------------------------------------------------
-
-# Website Architecture
-
-The project is a complete multi-page enterprise website.
-
-## Main Routes
-
-    /
-    ├── products
-    │   ├── brainerp
-    │   ├── braincrm
-    │   ├── brainai
-    │   └── brainconnect
-    │
-    ├── solutions
-    │   ├── erp
-    │   ├── crm
-    │   ├── ai
-    │   └── integration
-    │
-    ├── modernization
-    │
-    ├── services
-    │   ├── custom-development
-    │   └── cloud-services
-    │
-    ├── company
-    │   ├── about
-    │   ├── careers
-    │   └── partners
-    │
-    └── resources
-        ├── blog
-        └── case-studies
-
-------------------------------------------------------------------------
-
-# Technology Stack
-
-## Frontend
-
--   Latest Next.js
--   TypeScript
--   Tailwind CSS
--   React
--   App Router
-
-## UI
-
--   Tailwind CSS
--   Framer Motion
--   Lucide Icons
-
-## Theme
-
-Support:
-
--   Light Theme
--   Dark Theme
--   System Theme
-
-Default:
-
-System Theme
-
-Implementation:
-
--   next-themes
--   CSS Variables
--   Tailwind dark mode
-
-------------------------------------------------------------------------
-
-# Design System
-
-Visual direction:
-
-Premium enterprise technology.
-
-Inspired by:
-
--   Microsoft
--   SAP
--   Salesforce
--   ServiceNow
-
-## Theme Style
-
-Dark:
-
--   Deep navy background
--   Cyan technology glow
--   Red/orange highlights
--   Glass panels
--   Data visualization style
-
-Light:
-
--   Clean enterprise white surfaces
--   Professional typography
--   Brand accents
-
-------------------------------------------------------------------------
-
-# Navigation
-
-Global navigation:
-
--   Solutions
--   Products
--   Modernization
--   Company
--   Resources
-
-Products Mega Menu:
-
-BrainERP
-
-Enterprise Resource Planning
-
-BrainCRM
-
-Customer Relationship Management
-
-BrainAI
-
-Enterprise Artificial Intelligence
-
-BrainConnect
-
-Integration Platform
-
-------------------------------------------------------------------------
-
-# Component Strategy
-
-Reusable components:
-
-## Layout
-
--   Navbar
--   MegaMenu
--   Footer
--   ThemeSwitcher
-
-## Marketing Components
-
--   HeroSection
--   ProductHero
--   FeatureGrid
--   SolutionCards
--   StatisticsSection
--   CTASection
-
-## Content Components
-
--   BlogCard
--   CaseStudyCard
--   PartnerGrid
--   Testimonial
-
-------------------------------------------------------------------------
-
-# SEO Strategy
-
-Every page must include:
-
--   Metadata
--   OpenGraph tags
--   Twitter cards
--   Structured data
--   Proper heading hierarchy
-
-SEO priorities:
-
--   Enterprise software keywords
--   ERP solutions
--   CRM solutions
--   AI transformation
--   Software modernization
-
-------------------------------------------------------------------------
-
-# Development Principles
-
-Always:
-
--   Write production-level code
--   Use strict TypeScript
--   Keep components reusable
--   Avoid duplicated code
--   Use server components by default
--   Optimize performance
--   Follow accessibility standards
-
-Avoid:
-
--   Temporary code
--   Hardcoded content
--   Large components
--   Generic SaaS templates
-
-------------------------------------------------------------------------
-
-# Future Expansion
-
-The architecture should support:
-
--   Headless CMS
--   Blog management
--   Documentation portal
--   Customer dashboard
--   AI assistant
--   Product demo platform
--   Multi-language support
-
-------------------------------------------------------------------------
-
-# Final Objective
-
-Create a world-class enterprise software website that positions Brainzon
-as a trusted global technology partner.
+Copyright © Brainzon Enterprise Technologies. All rights reserved.
