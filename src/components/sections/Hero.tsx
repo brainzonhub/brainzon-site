@@ -324,15 +324,17 @@ export function Hero() {
                   </div>
                 ) : (
                   <div className="flex flex-col items-center">
-                    <div className="relative size-14 sm:size-16 rounded-2xl bg-card border border-border p-1.5 flex items-center justify-center animate-[pulse_4s_ease-in-out_infinite] shadow-sm">
-                      <Image
-                        src="/hero-center-logo.png"
-                        alt="Brainzon Icon"
-                        width={60}
-                        height={60}
-                        className="w-full h-full object-contain"
-                        priority
-                      />
+                    <div className="relative size-11 sm:size-12 rounded-xl bg-card border border-border p-1 flex items-center justify-center animate-[pulse_4s_ease-in-out_infinite] shadow-sm">
+                      <div className="relative size-full">
+                        <Image
+                          src="/hero-center-logo.png"
+                          alt="Brainzon Icon"
+                          fill
+                          sizes="48px"
+                          className="object-contain"
+                          priority
+                        />
+                      </div>
                     </div>
                     <span className="text-[8px] font-mono font-semibold tracking-widest text-muted-foreground uppercase mt-2">
                       CORE INTEG-HUB
