@@ -327,7 +327,7 @@ export function Hero() {
                     <div className="relative size-11 sm:size-12 rounded-xl bg-card border border-border p-1 flex items-center justify-center animate-[pulse_4s_ease-in-out_infinite] shadow-sm">
                       <div className="relative size-full">
                         <Image
-                          src="/hero-center-logo.png"
+                          src="/hero-center-logo-v2.png"
                           alt="Brainzon Icon"
                           fill
                           sizes="48px"
