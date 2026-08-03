@@ -14,6 +14,7 @@ export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
       themes={["light", "dark"]}
       storageKey="brainzon-theme"
       disableTransitionOnChange
+      scriptProps={{ id: "brainzon-theme-script" }}
       {...props}
     >
       {children}

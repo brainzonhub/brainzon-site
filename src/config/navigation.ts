@@ -71,6 +71,42 @@ export const navigationConfig: NavItem[] = [
     ],
   },
   {
+    title: "Services",
+    href: "/services",
+    items: [
+      {
+        title: "Overview",
+        description: "Explore all enterprise services and transformation capabilities",
+        href: "/services",
+        iconName: "briefcase",
+      },
+      {
+        title: "Custom Development",
+        description: "Bespoke enterprise software architectures & scalable SaaS",
+        href: "/services/custom-development",
+        iconName: "cpu",
+      },
+      {
+        title: "Cloud & Managed Services",
+        description: "Multi-cloud architecture, DevOps pipelines & support",
+        href: "/services/cloud",
+        iconName: "cloud",
+      },
+      {
+        title: "ERP Consulting",
+        description: "Enterprise ERP architecture, setup & operational tuning",
+        href: "/services/erp-consulting",
+        iconName: "database",
+      },
+      {
+        title: "Modernization",
+        description: "Refactoring legacy monolithic apps to cloud microservices",
+        href: "/services/modernization",
+        iconName: "refreshcw",
+      },
+    ],
+  },
+  {
     title: "Modernization",
     href: "/modernization",
   },

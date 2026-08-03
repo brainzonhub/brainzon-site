@@ -128,9 +128,11 @@ export function MegaMenu() {
                   id={`menu-${item.title.toLowerCase()}`}
                   ref={(el) => { menuRefs.current[item.title] = el; }}
                   className={cn(
-                    "absolute top-full left-1/2 -translate-x-1/2 mt-2 z-50 rounded-xl border border-border shadow-card bg-card-opaque",
+                    "absolute top-full mt-2 z-50 rounded-xl border border-border shadow-card bg-card-opaque",
                     "p-6 animate-[fade-in_180ms_ease-out]",
-                    item.title === "Products" ? "w-[680px]" : "w-[300px]"
+                    item.title === "Products"
+                      ? "w-[680px] left-0 sm:left-[-1rem] translate-x-0"
+                      : "w-[300px] left-1/2 -translate-x-1/2"
                   )}
                 >
                   {/* Glowing background accent inside dropdown */}

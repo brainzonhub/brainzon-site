@@ -66,6 +66,7 @@ export default function Home() {
     <>
       <script
         type="application/ld+json"
+        id="home-structured-data"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
         }}

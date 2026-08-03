@@ -68,7 +68,27 @@ export const servicesConfig: Service[] = [
         description: "Orchestrate production deployment using container pools, verify performance tuning, and run compliance audits."
       }
     ],
-    technology: ["Next.js", "TypeScript", "Node.js", "Go", "PostgreSQL", "Docker"],
+    technology: [
+      ".NET 9 / C#",
+      "ASP.NET Core",
+      "Next.js 16", 
+      "React 19", 
+      "TypeScript", 
+      "Node.js", 
+      "Go (Golang)", 
+      "Python / FastAPI", 
+      "Entity Framework Core",
+      "SQL Server / T-SQL",
+      "PostgreSQL", 
+      "Redis Caching", 
+      "MongoDB", 
+      "SignalR Real-time",
+      "Docker Containers", 
+      "Kubernetes (K8s)", 
+      "Apache Kafka", 
+      "AWS / Azure DevOps", 
+      "CI/CD Pipelines"
+    ],
     icon: "cpu",
     href: "/services/custom-development"
   },

@@ -4,6 +4,7 @@ import { Container } from "@/components/layout/Container";
 import { servicesConfig } from "@/config/services";
 import { getMenuIcon } from "@/components/navigation/menu-icons";
 import { ArrowRight, Check } from "lucide-react";
+import { ServicesHeroDiagram } from "@/components/diagrams/ServicesHeroDiagram";
 
 const title = "Professional Services | Brainzon Enterprise Software & Cloud Solutions";
 const description = "Explore Brainzon professional services including custom software development, cloud transformations, ERP consulting, and legacy system modernization.";
@@ -64,10 +65,12 @@ export default function ServicesPage() {
     <>
       <script
         type="application/ld+json"
+        id="services-breadcrumb-schema"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <script
         type="application/ld+json"
+        id="services-list-schema"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesListSchema) }}
       />
 
@@ -77,34 +80,44 @@ export default function ServicesPage() {
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[100px] pointer-events-none -z-10 animate-pulse" />
 
         {/* 1. Hero Section */}
-        <section className="py-20 lg:py-28 relative">
-          <Container className="text-center max-w-3xl space-y-6">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 border border-primary/20">
-              Professional Services
-            </span>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold tracking-tight text-foreground leading-[1.1]">
-              Enterprise Software &{" "}
-              <span className="bg-gradient-to-r from-secondary via-accent to-primary bg-[size:200%_auto] bg-clip-text text-transparent animate-gradient-flow drop-shadow-[0_0_15px_rgba(6,182,212,0.12)] dark:drop-shadow-[0_0_20px_rgba(34,211,238,0.25)]">
-                Cloud Transformation
-              </span>
-            </h1>
-            <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-              Breathe life into legacy code, deploy multi-cloud infrastructures, and consult with system integration experts to scale operations.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4 pt-4">
-              <Link
-                href="/book-demo"
-                className="inline-flex items-center justify-center px-6 py-3.5 text-sm font-semibold rounded-lg text-primary-foreground bg-primary hover:bg-primary/95 shadow-glow-primary transition-all duration-200"
-              >
-                <span>Book a Demo</span>
-                <ArrowRight size={16} className="ml-2" />
-              </Link>
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center px-6 py-3.5 text-sm font-semibold rounded-lg border border-border bg-card-opaque text-foreground hover:bg-muted/40 transition-colors duration-200"
-              >
-                Talk to an Expert
-              </Link>
+        <section className="py-16 lg:py-24 relative">
+          <Container>
+            <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-center">
+              {/* Left Copy Column */}
+              <div className="lg:col-span-7 flex flex-col items-start text-left space-y-6">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 border border-primary/20">
+                  Professional Services
+                </span>
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold tracking-tight text-foreground leading-[1.1]">
+                  Enterprise Software &{" "}
+                  <span className="bg-gradient-to-r from-secondary via-accent to-primary bg-[size:200%_auto] bg-clip-text text-transparent animate-gradient-flow drop-shadow-[0_0_15px_rgba(6,182,212,0.12)] dark:drop-shadow-[0_0_20px_rgba(34,211,238,0.25)]">
+                    Cloud Transformation
+                  </span>
+                </h1>
+                <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl">
+                  Breathe life into legacy code, deploy multi-cloud infrastructures, and consult with system integration experts to scale operations.
+                </p>
+                <div className="flex flex-wrap items-center gap-4 pt-2 w-full sm:w-auto">
+                  <Link
+                    href="/book-demo"
+                    className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-3.5 text-sm font-semibold rounded-lg text-primary-foreground bg-primary hover:bg-primary/95 shadow-glow-primary transition-all duration-200"
+                  >
+                    <span>Book a Demo</span>
+                    <ArrowRight size={16} />
+                  </Link>
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-3.5 text-sm font-semibold rounded-lg border border-border bg-card-opaque text-foreground hover:bg-muted/40 transition-colors duration-200"
+                  >
+                    Talk to an Expert
+                  </Link>
+                </div>
+              </div>
+
+              {/* Right Diagram Column */}
+              <div className="lg:col-span-5 flex items-center justify-center w-full">
+                <ServicesHeroDiagram />
+              </div>
             </div>
           </Container>
         </section>
