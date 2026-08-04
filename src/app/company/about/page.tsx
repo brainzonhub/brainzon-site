@@ -13,6 +13,7 @@ import { GlobalImpact } from "@/components/company/about/GlobalImpact";
 import { TechnologyStack } from "@/components/company/about/TechnologyStack";
 import { PartnershipApproach } from "@/components/company/about/PartnershipApproach";
 import { CulturePreview } from "@/components/company/about/CulturePreview";
+import { TeamSection } from "@/components/company/about/TeamSection";
 import { AboutCTA } from "@/components/company/about/AboutCTA";
 
 // Primary metadata config
@@ -112,6 +113,7 @@ export default function AboutPage() {
       <TechnologyStack />
       <PartnershipApproach />
       <CulturePreview />
+      <TeamSection />
       <AboutCTA />
     </div>
   );

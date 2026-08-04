@@ -2,63 +2,63 @@
 
 import React, { useState } from "react";
 import { 
+  RefreshCw, 
+  GitFork, 
   Database, 
-  Layers, 
-  Settings, 
-  Zap, 
-  CheckCircle2,
+  Code2, 
   ShieldCheck,
-  Building2,
-  Boxes
+  Server,
+  Zap,
+  Layers
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-interface ERPHeroDiagramProps {
+interface ModernizationHeroDiagramProps {
   className?: string;
 }
 
-const erpProducts = [
+const modernizationNodes = [
   {
-    id: "d365",
-    title: "Dynamics 365 BC",
-    badge: "Microsoft Cloud ERP",
-    icon: Building2,
-    color: "primary",
-    coords: { x: 75, y: 75 },
-    desc: "Enterprise Financials, SCM & Power Platform Sync"
-  },
-  {
-    id: "odoo",
-    title: "Odoo Enterprise",
-    badge: "Modular ERP",
-    icon: Boxes,
-    color: "accent",
-    coords: { x: 75, y: 225 },
-    desc: "Modular All-in-One Sales, Inventory & POS"
-  },
-  {
-    id: "erpnext",
-    title: "ERPNext",
-    badge: "Open-Source ERP",
-    icon: Layers,
-    color: "primary",
-    coords: { x: 325, y: 75 },
-    desc: "Agile Frappe Framework & Manufacturing ERP"
-  },
-  {
-    id: "customization",
-    title: "Customization & APIs",
-    badge: "Bespoke Modules",
-    icon: Settings,
+    id: "legacy",
+    title: "Legacy Monolith",
+    icon: Server,
+    tech: "VB6 / COBOL / .NET",
     color: "secondary",
+    coords: { x: 75, y: 75 },
+    desc: "Existing Enterprise Monolith & Mainframe"
+  },
+  {
+    id: "wrapper",
+    title: "API Proxy Wrapper",
+    icon: Code2,
+    tech: "REST / GraphQL",
+    color: "primary",
+    coords: { x: 75, y: 225 },
+    desc: "Authenticated API Layer Enveloping Legacy Data"
+  },
+  {
+    id: "microservices",
+    title: "Modern Microservices",
+    icon: GitFork,
+    tech: "Docker / K8s",
+    color: "accent",
+    coords: { x: 325, y: 75 },
+    desc: "Decoupled Containerized Cloud Services"
+  },
+  {
+    id: "sync",
+    title: "CDC Data Sync",
+    icon: Database,
+    tech: "Kafka / Change Data",
+    color: "primary",
     coords: { x: 325, y: 225 },
-    desc: "Custom Extensions, Reports & Third-Party APIs"
+    desc: "Real-time Dual-Write Data Parity Loop"
   }
 ];
 
-export function ERPHeroDiagram({ className }: ERPHeroDiagramProps) {
+export function ModernizationHeroDiagram({ className }: ModernizationHeroDiagramProps) {
   const [hoveredNode, setHoveredNode] = useState<string | null>(null);
-  const activeObj = erpProducts.find((n) => n.id === hoveredNode);
+  const activeObj = modernizationNodes.find((n) => n.id === hoveredNode);
 
   return (
     <div className={cn(
@@ -67,7 +67,7 @@ export function ERPHeroDiagram({ className }: ERPHeroDiagramProps) {
     )}>
       {/* Tech grid backdrop */}
       <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(30,51,77,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(30,51,77,0.03)_1px,transparent_1px)] bg-[size:1.5rem_1.5rem] pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 pointer-events-none" />
 
       {/* SVG Topology Connections */}
       <svg 
@@ -114,27 +114,27 @@ export function ERPHeroDiagram({ className }: ERPHeroDiagramProps) {
         {/* Animated Active Circuit Flow Streams */}
         <path 
           d="M 75 75 C 130 75, 150 150, 200 150" 
-          stroke="var(--primary)" 
-          className={cn("circuit-flow-in", hoveredNode === "d365" ? "opacity-100" : "opacity-60")} 
-          strokeWidth={hoveredNode === "d365" ? 2.5 : 1.5} 
+          stroke="var(--secondary)" 
+          className={cn("circuit-flow-in", hoveredNode === "legacy" ? "opacity-100" : "opacity-60")} 
+          strokeWidth={hoveredNode === "legacy" ? 2.5 : 1.5} 
         />
         <path 
           d="M 75 225 C 130 225, 150 150, 200 150" 
-          stroke="var(--accent)" 
-          className={cn("circuit-flow-in", hoveredNode === "odoo" ? "opacity-100" : "opacity-60")} 
-          strokeWidth={hoveredNode === "odoo" ? 2.5 : 1.5} 
+          stroke="var(--primary)" 
+          className={cn("circuit-flow-in", hoveredNode === "wrapper" ? "opacity-100" : "opacity-60")} 
+          strokeWidth={hoveredNode === "wrapper" ? 2.5 : 1.5} 
         />
         <path 
           d="M 200 150 C 250 150, 270 75, 325 75" 
-          stroke="var(--primary)" 
-          className={cn("circuit-flow-out", hoveredNode === "erpnext" ? "opacity-100" : "opacity-60")} 
-          strokeWidth={hoveredNode === "erpnext" ? 2.5 : 1.5} 
+          stroke="var(--accent)" 
+          className={cn("circuit-flow-out", hoveredNode === "microservices" ? "opacity-100" : "opacity-60")} 
+          strokeWidth={hoveredNode === "microservices" ? 2.5 : 1.5} 
         />
         <path 
           d="M 200 150 C 250 150, 270 225, 325 225" 
-          stroke="var(--secondary)" 
-          className={cn("circuit-flow-out", hoveredNode === "customization" ? "opacity-100" : "opacity-60")} 
-          strokeWidth={hoveredNode === "customization" ? 2.5 : 1.5} 
+          stroke="var(--primary)" 
+          className={cn("circuit-flow-out", hoveredNode === "sync" ? "opacity-100" : "opacity-60")} 
+          strokeWidth={hoveredNode === "sync" ? 2.5 : 1.5} 
         />
 
         {/* Concentric Rotating Rings */}
@@ -143,63 +143,63 @@ export function ERPHeroDiagram({ className }: ERPHeroDiagramProps) {
       </svg>
 
       {/* ================= LEFT COLUMN NODES ================= */}
-      {/* Node 1: Dynamics 365 BC */}
+      {/* Node 1: Legacy Monolith */}
       <div 
         className="absolute left-3 top-[25%] -translate-y-1/2 z-10 w-[135px] cursor-pointer"
-        onMouseEnter={() => setHoveredNode("d365")}
+        onMouseEnter={() => setHoveredNode("legacy")}
         onMouseLeave={() => setHoveredNode(null)}
       >
         <div className={cn(
           "flex flex-col p-2.5 rounded-xl border bg-card/85 backdrop-blur-xs shadow-sm transition-all duration-300 group",
-          hoveredNode === "d365" 
-            ? "border-primary shadow-[0_0_15px_rgba(6,182,212,0.3)] scale-105 bg-card" 
-            : "border-primary/20 hover:border-primary/40"
+          hoveredNode === "legacy" 
+            ? "border-secondary shadow-[0_0_15px_rgba(239,68,68,0.3)] scale-105 bg-card" 
+            : "border-secondary/20 hover:border-secondary/40"
         )}>
           <div className="flex items-center gap-1.5 mb-1 border-b border-border/20 pb-1">
-            <div className="flex size-5 items-center justify-center rounded-md bg-primary/10 text-primary">
-              <Building2 className="size-3 group-hover:scale-110 transition-transform" />
+            <div className="flex size-5 items-center justify-center rounded-md bg-secondary/10 text-secondary">
+              <Server className="size-3 group-hover:scale-110 transition-transform" />
             </div>
-            <span className="text-[9px] font-bold text-foreground truncate">Dynamics 365 BC</span>
+            <span className="text-[9px] font-bold text-foreground truncate">Legacy Monolith</span>
           </div>
           <div className="flex flex-col gap-0.5 mt-0.5">
             <div className="flex items-center justify-between text-[7.5px] text-muted-foreground font-mono">
-              <span>Platform:</span>
-              <span className="text-primary font-bold">Microsoft ERP</span>
+              <span>Codebase:</span>
+              <span className="text-secondary font-bold">Monolithic</span>
             </div>
             <div className="flex items-center justify-between text-[7.5px] text-muted-foreground font-mono">
-              <span>Service:</span>
-              <span className="text-emerald-500 font-bold">Impl & Custom</span>
+              <span>Status:</span>
+              <span className="text-amber-500 font-bold">Wrapping</span>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Node 2: Odoo ERP */}
+      {/* Node 2: API Proxy Wrapper */}
       <div 
         className="absolute left-3 bottom-[25%] translate-y-1/2 z-10 w-[135px] cursor-pointer"
-        onMouseEnter={() => setHoveredNode("odoo")}
+        onMouseEnter={() => setHoveredNode("wrapper")}
         onMouseLeave={() => setHoveredNode(null)}
       >
         <div className={cn(
           "flex flex-col p-2.5 rounded-xl border bg-card/85 backdrop-blur-xs shadow-sm transition-all duration-300 group",
-          hoveredNode === "odoo" 
-            ? "border-accent shadow-[0_0_15px_rgba(234,179,8,0.3)] scale-105 bg-card" 
-            : "border-accent/20 hover:border-accent/40"
+          hoveredNode === "wrapper" 
+            ? "border-primary shadow-[0_0_15px_rgba(6,182,212,0.3)] scale-105 bg-card" 
+            : "border-primary/20 hover:border-primary/40"
         )}>
           <div className="flex items-center gap-1.5 mb-1 border-b border-border/20 pb-1">
-            <div className="flex size-5 items-center justify-center rounded-md bg-accent/10 text-accent">
-              <Boxes className="size-3 group-hover:scale-110 transition-transform" />
+            <div className="flex size-5 items-center justify-center rounded-md bg-primary/10 text-primary">
+              <Code2 className="size-3 group-hover:scale-110 transition-transform" />
             </div>
-            <span className="text-[9px] font-bold text-foreground truncate">Odoo ERP</span>
+            <span className="text-[9px] font-bold text-foreground truncate">API Wrapper Layer</span>
           </div>
           <div className="flex flex-col gap-0.5 mt-0.5">
             <div className="flex items-center justify-between text-[7.5px] text-muted-foreground font-mono">
-              <span>Modules:</span>
-              <span className="text-accent font-bold">Modular Apps</span>
+              <span>Gateway:</span>
+              <span className="text-primary font-bold">REST / GraphQL</span>
             </div>
             <div className="flex items-center justify-between text-[7.5px] text-muted-foreground font-mono">
-              <span>Service:</span>
-              <span className="text-emerald-500 font-bold">Python/OWL</span>
+              <span>Security:</span>
+              <span className="text-emerald-500 font-bold">OAuth Proxy</span>
             </div>
           </div>
         </div>
@@ -220,19 +220,19 @@ export function ERPHeroDiagram({ className }: ERPHeroDiagramProps) {
                 {activeObj.title}
               </span>
               <span className="text-[6px] font-mono text-primary font-bold">
-                ● READY TO DEPLOY
+                ● REFACTORED
               </span>
             </div>
           ) : (
             <div className="flex flex-col items-center text-center">
               <div className="flex size-7 items-center justify-center rounded-xl bg-primary/10 text-primary mb-1">
-                <Database className="size-4 animate-pulse" />
+                <RefreshCw className="size-4 animate-spin" />
               </div>
               <span className="text-[7.5px] font-mono font-extrabold text-foreground uppercase tracking-wider">
-                ERP ENGINE
+                STRANGLER
               </span>
               <span className="text-[6.5px] font-mono text-primary font-bold tracking-tighter">
-                IMPL & CUSTOM
+                ENGINEERING
               </span>
             </div>
           )}
@@ -240,63 +240,63 @@ export function ERPHeroDiagram({ className }: ERPHeroDiagramProps) {
       </div>
 
       {/* ================= RIGHT COLUMN NODES ================= */}
-      {/* Node 3: ERPNext */}
+      {/* Node 3: Modern Microservices */}
       <div 
         className="absolute right-3 top-[25%] -translate-y-1/2 z-10 w-[135px] cursor-pointer"
-        onMouseEnter={() => setHoveredNode("erpnext")}
+        onMouseEnter={() => setHoveredNode("microservices")}
         onMouseLeave={() => setHoveredNode(null)}
       >
         <div className={cn(
           "flex flex-col p-2.5 rounded-xl border bg-card/85 backdrop-blur-xs shadow-sm transition-all duration-300 group",
-          hoveredNode === "erpnext" 
-            ? "border-primary shadow-[0_0_15px_rgba(6,182,212,0.3)] scale-105 bg-card" 
-            : "border-primary/20 hover:border-primary/40"
+          hoveredNode === "microservices" 
+            ? "border-accent shadow-[0_0_15px_rgba(234,179,8,0.3)] scale-105 bg-card" 
+            : "border-accent/20 hover:border-accent/40"
         )}>
           <div className="flex items-center gap-1.5 mb-1 border-b border-border/20 pb-1">
-            <div className="flex size-5 items-center justify-center rounded-md bg-primary/10 text-primary">
-              <Layers className="size-3 group-hover:scale-110 transition-transform" />
+            <div className="flex size-5 items-center justify-center rounded-md bg-accent/10 text-accent">
+              <GitFork className="size-3 group-hover:scale-110 transition-transform" />
             </div>
-            <span className="text-[9px] font-bold text-foreground truncate">ERPNext</span>
+            <span className="text-[9px] font-bold text-foreground truncate">Microservices</span>
           </div>
           <div className="flex flex-col gap-0.5 mt-0.5">
             <div className="flex items-center justify-between text-[7.5px] text-muted-foreground font-mono">
-              <span>Framework:</span>
-              <span className="text-primary font-bold">Frappe OS</span>
+              <span>Container:</span>
+              <span className="text-accent font-bold">Docker/K8s</span>
             </div>
             <div className="flex items-center justify-between text-[7.5px] text-muted-foreground font-mono">
-              <span>Service:</span>
-              <span className="text-emerald-500 font-bold">Custom Doctypes</span>
+              <span>Scalability:</span>
+              <span className="text-emerald-500 font-bold">Auto-Scale</span>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Node 4: Custom Extensions */}
+      {/* Node 4: CDC Data Sync */}
       <div 
         className="absolute right-3 bottom-[25%] translate-y-1/2 z-10 w-[135px] cursor-pointer"
-        onMouseEnter={() => setHoveredNode("customization")}
+        onMouseEnter={() => setHoveredNode("sync")}
         onMouseLeave={() => setHoveredNode(null)}
       >
         <div className={cn(
           "flex flex-col p-2.5 rounded-xl border bg-card/85 backdrop-blur-xs shadow-sm transition-all duration-300 group",
-          hoveredNode === "customization" 
-            ? "border-secondary shadow-[0_0_15px_rgba(239,68,68,0.3)] scale-105 bg-card" 
-            : "border-secondary/20 hover:border-secondary/40"
+          hoveredNode === "sync" 
+            ? "border-primary shadow-[0_0_15px_rgba(6,182,212,0.3)] scale-105 bg-card" 
+            : "border-primary/20 hover:border-primary/40"
         )}>
           <div className="flex items-center gap-1.5 mb-1 border-b border-border/20 pb-1">
-            <div className="flex size-5 items-center justify-center rounded-md bg-secondary/10 text-secondary">
-              <Settings className="size-3 group-hover:scale-110 transition-transform" />
+            <div className="flex size-5 items-center justify-center rounded-md bg-primary/10 text-primary">
+              <Database className="size-3 group-hover:scale-110 transition-transform" />
             </div>
-            <span className="text-[9px] font-bold text-foreground truncate">Deep Customization</span>
+            <span className="text-[9px] font-bold text-foreground truncate">CDC Data Sync</span>
           </div>
           <div className="flex flex-col gap-0.5 mt-0.5">
             <div className="flex items-center justify-between text-[7.5px] text-muted-foreground font-mono">
-              <span>Integrations:</span>
-              <span className="text-secondary font-bold">REST / GraphQL</span>
+              <span>Sync Stream:</span>
+              <span className="text-primary font-bold">Kafka CDC</span>
             </div>
             <div className="flex items-center justify-between text-[7.5px] text-muted-foreground font-mono">
-              <span>Tailoring:</span>
-              <span className="text-emerald-500 font-bold">100% Fit</span>
+              <span>Parity:</span>
+              <span className="text-emerald-500 font-bold">100% Dual-Write</span>
             </div>
           </div>
         </div>
@@ -307,10 +307,10 @@ export function ERPHeroDiagram({ className }: ERPHeroDiagramProps) {
         <div className="flex items-center gap-1">
           <ShieldCheck className="size-2.5 text-emerald-500" />
           <span className="font-bold text-foreground">
-            {activeObj ? activeObj.desc.toUpperCase() : "HOVER PRODUCTS FOR SPECIFICATIONS"}
+            {activeObj ? activeObj.desc.toUpperCase() : "HOVER NODES TO INSPECT MODERNIZATION PATTERN"}
           </span>
         </div>
-        <span className="tracking-widest uppercase text-primary font-bold">ERP IMPLEMENTATION & CUSTOMIZATION</span>
+        <span className="tracking-widest uppercase text-primary font-bold">STRANGLER FIG REFACTORING</span>
       </div>
     </div>
   );

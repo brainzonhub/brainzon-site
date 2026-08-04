@@ -7,6 +7,15 @@ import { cn } from "@/lib/utils";
 import * as LucideIcons from "lucide-react";
 import { CustomDevHeroDiagram } from "@/components/diagrams/CustomDevHeroDiagram";
 import { CloudHeroDiagram } from "@/components/diagrams/CloudHeroDiagram";
+import { ERPHeroDiagram } from "@/components/diagrams/ERPHeroDiagram";
+import { ModernizationHeroDiagram } from "@/components/diagrams/ModernizationHeroDiagram";
+
+import { ERPProductsShowcase } from "@/components/sections/ERPProductsShowcase";
+import { ERPProductTechStack } from "@/components/sections/ERPProductTechStack";
+import { CloudInfraShowcase } from "@/components/sections/CloudInfraShowcase";
+import { ModernizationArchitectureShowcase } from "@/components/sections/ModernizationArchitectureShowcase";
+import { CustomDevArchitectureShowcase } from "@/components/sections/CustomDevArchitectureShowcase";
+import { InteractiveProcessTimeline } from "@/components/sections/InteractiveProcessTimeline";
 
 interface ServiceTemplateProps {
   service: Service;
@@ -107,6 +116,10 @@ export function ServiceTemplate({ service }: ServiceTemplateProps) {
                 <CustomDevHeroDiagram />
               ) : service.slug === "cloud" ? (
                 <CloudHeroDiagram />
+              ) : service.slug === "erp-consulting" ? (
+                <ERPHeroDiagram />
+              ) : service.slug === "modernization" ? (
+                <ModernizationHeroDiagram />
               ) : (
                 <div className="relative w-full h-[320px] border border-border/40 rounded-3xl bg-surface/30 backdrop-blur-md overflow-hidden flex flex-col justify-between p-6 shadow-glow-primary group">
                   <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 pointer-events-none" />
@@ -156,6 +169,12 @@ export function ServiceTemplate({ service }: ServiceTemplateProps) {
         </Container>
       </section>
 
+      {/* Service-Specific Specialized Architectural Showcase Sections */}
+      {service.slug === "custom-development" && <CustomDevArchitectureShowcase />}
+      {service.slug === "cloud" && <CloudInfraShowcase />}
+      {service.slug === "erp-consulting" && <ERPProductsShowcase />}
+      {service.slug === "modernization" && <ModernizationArchitectureShowcase />}
+
       {/* 2. Service Capabilities */}
       <section className="relative py-20 border-b border-border/40 bg-surface/30 transition-colors duration-300">
         <Container>
@@ -175,18 +194,74 @@ export function ServiceTemplate({ service }: ServiceTemplateProps) {
             {service.capabilities.map((cap, idx) => {
               const IconComponent = (LucideIcons as unknown as Record<string, React.ComponentType<{ size?: number }>>)[cap.icon] || LucideIcons.HelpCircle;
 
-              // Tailored spec tags based on index
-              const techTags = idx === 0 
-                ? ["Next.js", "TypeScript", "PostgreSQL"] 
-                : idx === 1 
-                ? ["Docker", "Kubernetes", "gRPC / Kafka"] 
-                : ["ACID Ledger", "Double-Entry Audit", "Redis"];
+              // Dynamic per-service capability tech tags, spec highlights, sub-titles & status badges
+              let techTags = ["Next.js", "TypeScript", "PostgreSQL"];
+              let specHighlights = ["Multi-Tenant SaaS Database Architecture", "Granular Role-Based Access Control (RBAC)", "Sub-Second Response Times & Caching", "Automated CI/CD Integration Pipelines"];
+              let subTitle = "High-Resilience Enterprise Feature";
+              let statusText = "PRODUCTION READY";
 
-              const specHighlights = idx === 0
-                ? ["Multi-Tenant SaaS Database Architecture", "Granular Role-Based Access Control (RBAC)", "Sub-Second Response Times & Caching"]
-                : idx === 1
-                ? ["Event-Driven Microservices Communication", "Auto-scaling Container Orchestration", "High-Throughput Validated API Protocols"]
-                : ["ACID-Compliant Double-Entry Accounting", "Immutable Ledger & Auditing Logs", "Real-Time Transaction Integrity Checks"];
+              if (service.slug === "erp-consulting") {
+                techTags = idx === 0 
+                  ? ["AL Language", "C# / .NET 9", "SQL Server"] 
+                  : idx === 1 
+                  ? ["Python 3.12+", "OWL Library", "PostgreSQL"] 
+                  : ["Frappe OS", "Python / JS", "MariaDB"];
+
+                specHighlights = idx === 0
+                  ? ["Chart of Accounts & General Ledger Setup", "Azure SQL & Power BI Workspace Config", "Custom AL Extension App (.app) Development", "Role-Tailored RoleCenter Workspaces"]
+                  : idx === 1
+                  ? ["Custom Python & OWL View Modules", "Multi-Location POS & Inventory Integration", "Automated QWeb Invoices & Report Templates", "Server Actions & Automated Python Scripts"]
+                  : ["Frappe Framework Custom Apps", "Custom Doctypes & Server Script Rules", "Jinja2 Print Formats & Webhooks", "Socket.io Real-Time Notifications"];
+
+                subTitle = idx === 0 ? "Microsoft Cloud ERP Platform" : idx === 1 ? "Python & OWL Modular Engine" : "Open-Source Agile Framework";
+                statusText = idx === 0 ? "MICROSOFT CERTIFIED" : idx === 1 ? "MODULAR & EXPANDABLE" : "OPEN-SOURCE AGILE";
+              } else if (service.slug === "cloud") {
+                techTags = idx === 0 
+                  ? ["AWS EC2 / S3", "IAM Security", "CloudFront"] 
+                  : idx === 1 
+                  ? ["Terraform", "GitHub Actions", "GitOps"] 
+                  : ["Datadog", "Prometheus", "24/7 Alerts"];
+
+                specHighlights = idx === 0
+                  ? ["Multi-AZ AWS Cloud Infrastructure", "IAM Role Governance & KMS Encryption", "Sub-15ms Edge CDN Routing", "Elastic Compute Auto-Scaling Pools"]
+                  : idx === 1
+                  ? ["Infrastructure-as-Code (IaC) Automation", "Automated CI/CD Deployment Pipelines", "Zero-Downtime Environment Releases", "Automated Rollback & Fallback Triggers"]
+                  : ["24/7 Real-Time Telemetry & APM", "Automated Security Incident Alerts", "Continuous Cost & Utilization Audits", "SOC 2 Type II Security Compliance"];
+
+                subTitle = idx === 0 ? "Multi-AZ Cloud Infrastructure" : idx === 1 ? "GitOps Infrastructure Automation" : "24/7 SRE Telemetry & Security";
+                statusText = idx === 0 ? "99.99% MULTI-AZ SLA" : idx === 1 ? "AUTOMATED GITOPS" : "24/7 SOC MONITORING";
+              } else if (service.slug === "modernization") {
+                techTags = idx === 0 
+                  ? ["Strangler Fig", "Docker", "Kubernetes", "Go / Node"] 
+                  : idx === 1 
+                  ? ["PostgreSQL", "Kafka CDC", "Dual-Write", "Redis"] 
+                  : ["REST / GraphQL", "OAuth2", "BrainConnect", "JWT"];
+
+                specHighlights = idx === 0
+                  ? ["Strangler Pattern Monolith Migration", "Decoupled Containerized Microservices", "Zero Global Outage or Service Downtime", "Automated Parallel Execution Verification"]
+                  : idx === 1
+                  ? ["Legacy Unindexed Relational Schema Overhaul", "Kafka Change Data Capture (CDC) Streams", "Bi-Directional Dual-Write Data Parity", "Sub-Second Query Indexing & Performance"]
+                  : ["REST & GraphQL API Gateway Layering", "OAuth2 & JWT Token Security Enveloping", "Extends Legacy System Lifespan by 5+ Years", "Rate-Limiting & High-Speed Response Caching"];
+
+                subTitle = idx === 0 ? "Strangler Fig Microservice Migration" : idx === 1 ? "Real-Time CDC Replication & Indexing" : "REST & GraphQL Security Gateway";
+                statusText = idx === 0 ? "ZERO-DOWNTIME MIGRATION" : idx === 1 ? "100% DATA PARITY" : "SECURE API ENVELOPING";
+              } else {
+                // Custom Development defaults
+                techTags = idx === 0 
+                  ? ["Next.js", "TypeScript", "PostgreSQL"] 
+                  : idx === 1 
+                  ? ["Docker", "Kubernetes", "gRPC / Kafka"] 
+                  : ["ACID Ledger", "Double-Entry Audit", "Redis"];
+
+                specHighlights = idx === 0
+                  ? ["Multi-Tenant SaaS Database Architecture", "Granular Role-Based Access Control (RBAC)", "Sub-Second Response Times & Caching", "Automated CI/CD Integration Pipelines"]
+                  : idx === 1
+                  ? ["Event-Driven Microservices Communication", "Auto-scaling Container Orchestration", "High-Throughput Validated API Protocols", "Zero Technical Debt Standards"]
+                  : ["ACID-Compliant Double-Entry Accounting", "Immutable Ledger & Auditing Logs", "Real-Time Transaction Integrity Checks", "Sub-10ms Financial Ledger Sync"];
+
+                subTitle = idx === 0 ? "Multi-Tenant SaaS Engine" : idx === 1 ? "High-Speed Microservice Mesh" : "Financial ACID Ledger";
+                statusText = "PRODUCTION READY";
+              }
 
               return (
                 <div
@@ -203,6 +278,9 @@ export function ServiceTemplate({ service }: ServiceTemplateProps) {
                       <IconComponent size={22} />
                     </div>
 
+                    <span className="text-[10px] font-mono text-primary font-bold uppercase tracking-wider block mb-1">
+                      {subTitle}
+                    </span>
                     <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors duration-200">
                       {cap.title}
                     </h3>
@@ -236,7 +314,7 @@ export function ServiceTemplate({ service }: ServiceTemplateProps) {
                     <div className="flex items-center justify-between text-[9px] font-mono text-primary">
                       <span className="flex items-center gap-1 font-bold">
                         <span className="size-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                        <span>PRODUCTION READY</span>
+                        <span>{statusText}</span>
                       </span>
                       <span className="text-muted-foreground/60 font-bold">100% SPEC COMPLIANT</span>
                     </div>
@@ -248,201 +326,114 @@ export function ServiceTemplate({ service }: ServiceTemplateProps) {
         </Container>
       </section>
 
-      {/* 3. Process Timeline */}
-      <section className="relative py-20 border-b border-border/40 bg-background transition-colors duration-300">
-        <Container>
-          <div className="max-w-3xl mx-auto text-center mb-16 space-y-3">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 border border-primary/20">
-              Delivery Framework
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
-              Our Process Methodology
-            </h2>
-            <p className="text-sm text-muted-foreground leading-relaxed max-w-xl mx-auto">
-              An iterative 3-phase engineering engagement model structured to guarantee transparency, compliance, and zero deployment risk.
-            </p>
-          </div>
-
-          {/* Process Step Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
-            {service.process.map((p, idx) => {
-              const phaseNames = ["PHASE 01: DISCOVERY", "PHASE 02: DEVELOPMENT", "PHASE 03: DEPLOYMENT"];
-              const phaseTimelines = ["EST. WEEKS 1–2", "EST. WEEKS 3–6", "EST. WEEKS 7+"];
-              
-              const processActivities = idx === 0 
-                ? [
-                    "Operational Requirements Workshop",
-                    "Data Schema & API Blueprinting",
-                    "Security & Compliance Audit Specs"
-                  ]
-                : idx === 1 
-                ? [
-                    "Modular TypeScript & Service Coding",
-                    "Continuous Integration (CI) Testing",
-                    "Static Code Security & Penetration Scans"
-                  ]
-                : [
-                    "Container Cluster Pod Orchestration",
-                    "Load Testing & Latency Tuning",
-                    "Zero-Downtime Production Migration"
-                  ];
-
-              return (
-                <div
-                  key={p.step}
-                  className="group relative p-6 sm:p-8 rounded-3xl border border-border/60 bg-gradient-to-b from-card to-card/50 backdrop-blur-md shadow-card hover:border-primary/50 hover:shadow-glow-primary hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden"
-                >
-                  {/* Top Connector accent line for desktop */}
-                  {idx < service.process.length - 1 && (
-                    <div className="hidden lg:block absolute top-10 right-[-2.25rem] w-9 h-[2px] bg-gradient-to-r from-primary/40 via-primary/20 to-transparent z-20 pointer-events-none" />
-                  )}
-
-                  <div>
-                    {/* Header Row: Step Number & Phase Badge */}
-                    <div className="flex items-center justify-between border-b border-border/30 pb-4">
-                      <div className="flex size-11 items-center justify-center rounded-2xl bg-primary/10 border border-primary/20 text-primary font-mono font-extrabold text-sm shrink-0 group-hover:scale-105 transition-transform duration-300">
-                        {p.step}
-                      </div>
-                      <span className="text-[9.5px] font-mono font-bold text-primary bg-primary/10 border border-primary/20 px-2.5 py-1 rounded-full uppercase tracking-wider">
-                        {phaseNames[idx] || `PHASE 0${idx + 1}`}
-                      </span>
-                    </div>
-
-                    <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors duration-200 mt-5">
-                      {p.title}
-                    </h3>
-                    <p className="text-xs text-muted-foreground leading-relaxed mt-2.5">
-                      {p.description}
-                    </p>
-
-                    {/* Key Activities Checklist */}
-                    <div className="mt-6 pt-4 border-t border-border/30 space-y-2">
-                      <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-foreground block mb-2">
-                        Phase Key Activities:
-                      </span>
-                      {processActivities.map((activity) => (
-                        <div key={activity} className="flex items-start gap-2 text-[11px] text-muted-foreground">
-                          <span className="size-1.5 rounded-full bg-primary shrink-0 mt-1.5" />
-                          <span className="leading-snug">{activity}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Card Bottom Footer: Timeline & Status */}
-                  <div className="mt-8 pt-4 border-t border-border/30 flex items-center justify-between text-[9.5px] font-mono">
-                    <span className="font-semibold text-muted-foreground/80 bg-muted/60 border border-border/50 px-2.5 py-0.5 rounded">
-                      {phaseTimelines[idx] || "TIMELINE READY"}
-                    </span>
-                    <span className="flex items-center gap-1 text-emerald-500 font-bold">
-                      <span className="size-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                      <span>RISK FREE</span>
-                    </span>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </Container>
-      </section>
+      {/* 3. Interactive Process Timeline */}
+      <InteractiveProcessTimeline serviceSlug={service.slug} />
 
       {/* 4. Technology Stack */}
-      <section className="relative py-20 border-b border-border/40 bg-surface/30 transition-colors duration-300">
-        <Container>
-          <div className="max-w-3xl mx-auto text-center mb-16 space-y-3">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 border border-primary/20">
-              Engineering Stack
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
-              Core Technologies & Engineering Stack
-            </h2>
-            <p className="text-sm text-muted-foreground leading-relaxed max-w-xl mx-auto">
-              We leverage production-grade frameworks, container networks, high-speed databases, and event message brokers to build resilient global platforms.
-            </p>
-          </div>
-
-          {/* Categorized Tech Stack Matrix */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            {[
-              {
-                category: "Frontend & Application",
-                icon: LucideIcons.Layout,
-                items: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS v4", "GraphQL", "WebSockets"]
-              },
-              {
-                category: "Backend & Enterprise APIs",
-                icon: LucideIcons.Server,
-                items: [".NET 9 / C#", "ASP.NET Core", "Node.js", "Go (Golang)", "Python / FastAPI", "gRPC Protocols"]
-              },
-              {
-                category: "Databases & ORM Layers",
-                icon: LucideIcons.Database,
-                items: ["SQL Server (T-SQL)", "EF Core ORM", "PostgreSQL", "Redis Caching", "MongoDB", "ACID Ledgers"]
-              },
-              {
-                category: "Cloud, DevOps & Real-time",
-                icon: LucideIcons.Cloud,
-                items: ["Azure Cloud / DevOps", "SignalR Real-Time", "Docker Containers", "Kubernetes (K8s)", "AWS", "Kafka Stream"]
-              }
-            ].map((cat, idx) => {
-              const CatIcon = cat.icon;
-
-              return (
-                <div 
-                  key={idx}
-                  className="p-6 rounded-3xl border border-border/60 bg-gradient-to-b from-card to-card/50 backdrop-blur-md shadow-card hover:border-primary/50 hover:shadow-glow-primary transition-all duration-300 flex flex-col justify-between group"
-                >
-                  <div>
-                    <div className="flex items-center gap-3 mb-4 border-b border-border/30 pb-3">
-                      <div className="flex size-9 items-center justify-center rounded-xl bg-primary/10 border border-primary/20 text-primary shrink-0 group-hover:scale-105 transition-transform duration-300">
-                        <CatIcon size={18} />
-                      </div>
-                      <h3 className="text-xs font-bold text-foreground group-hover:text-primary transition-colors">
-                        {cat.category}
-                      </h3>
-                    </div>
-
-                    <div className="flex flex-wrap gap-1.5">
-                      {cat.items.map((item) => (
-                        <span 
-                          key={item}
-                          className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-[10px] font-mono font-medium bg-muted/50 border border-border/40 text-foreground/90 hover:border-primary/40 hover:text-primary transition-colors"
-                        >
-                          <span className="size-1 rounded-full bg-primary/60" />
-                          <span>{item}</span>
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="mt-6 pt-3 border-t border-border/20 flex items-center justify-between text-[9px] font-mono text-muted-foreground">
-                    <span>{cat.items.length} TECHNOLOGIES</span>
-                    <span className="text-primary font-bold">100% AUDITED</span>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-
-          {/* Expanded Technology Chips */}
-          <div className="max-w-4xl mx-auto pt-6 border-t border-border/40 text-center">
-            <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-muted-foreground block mb-4">
-              All Technology Stack Specifications:
-            </span>
-            <div className="flex flex-wrap items-center justify-center gap-2">
-              {service.technology.map((item) => (
-                <span 
-                  key={item}
-                  className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-mono font-semibold bg-card border border-border/60 text-foreground shadow-xs hover:border-primary/60 hover:text-primary hover:shadow-glow-primary hover:-translate-y-0.5 transition-all duration-200"
-                >
-                  <Cpu size={13} className="text-primary" />
-                  <span>{item}</span>
-                </span>
-              ))}
+      {service.slug === "erp-consulting" ? (
+        <ERPProductTechStack />
+      ) : (
+        <section className="relative py-20 border-b border-border/40 bg-surface/30 transition-colors duration-300">
+          <Container>
+            <div className="max-w-3xl mx-auto text-center mb-16 space-y-3">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 border border-primary/20">
+                Engineering Stack
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
+                Core Technologies & Engineering Stack
+              </h2>
+              <p className="text-sm text-muted-foreground leading-relaxed max-w-xl mx-auto">
+                We leverage production-grade frameworks, container networks, high-speed databases, and event message brokers to build resilient global platforms.
+              </p>
             </div>
-          </div>
-        </Container>
-      </section>
+
+            {/* Categorized Tech Stack Matrix */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+              {[
+                {
+                  category: "Frontend & Application",
+                  icon: LucideIcons.Layout,
+                  badge: "100% AUDITED",
+                  items: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS v4", "GraphQL", "WebSockets"]
+                },
+                {
+                  category: "Backend & Enterprise APIs",
+                  icon: LucideIcons.Server,
+                  badge: "100% AUDITED",
+                  items: [".NET 9 / C#", "ASP.NET Core", "Node.js", "Go (Golang)", "Python / FastAPI", "gRPC Protocols"]
+                },
+                {
+                  category: "Databases & ORM Layers",
+                  icon: LucideIcons.Database,
+                  badge: "100% AUDITED",
+                  items: ["SQL Server (T-SQL)", "EF Core ORM", "PostgreSQL", "Redis Caching", "MongoDB", "ACID Ledgers"]
+                },
+                {
+                  category: "Cloud, DevOps & Real-time",
+                  icon: LucideIcons.Cloud,
+                  badge: "100% AUDITED",
+                  items: ["Azure Cloud / DevOps", "SignalR Real-Time", "Docker Containers", "Kubernetes (K8s)", "AWS", "Kafka Stream"]
+                }
+              ].map((cat, idx) => {
+                const CatIcon = cat.icon;
+
+                return (
+                  <div 
+                    key={idx}
+                    className="p-6 rounded-3xl border border-border/60 bg-gradient-to-b from-card to-card/50 backdrop-blur-md shadow-card hover:border-primary/50 hover:shadow-glow-primary transition-all duration-300 flex flex-col justify-between group"
+                  >
+                    <div>
+                      <div className="flex items-center gap-3 mb-4 border-b border-border/30 pb-3">
+                        <div className="flex size-9 items-center justify-center rounded-xl bg-primary/10 border border-primary/20 text-primary shrink-0 group-hover:scale-105 transition-transform duration-300">
+                          <CatIcon size={18} />
+                        </div>
+                        <h3 className="text-xs font-bold text-foreground group-hover:text-primary transition-colors">
+                          {cat.category}
+                        </h3>
+                      </div>
+
+                      <div className="flex flex-wrap gap-1.5">
+                        {cat.items.map((item) => (
+                          <span 
+                            key={item}
+                            className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-[10px] font-mono font-medium bg-muted/50 border border-border/40 text-foreground/90 hover:border-primary/40 hover:text-primary transition-colors"
+                          >
+                            <span className="size-1 rounded-full bg-primary/60" />
+                            <span>{item}</span>
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="mt-6 pt-3 border-t border-border/20 flex items-center justify-between text-[9px] font-mono text-muted-foreground">
+                      <span>{cat.items.length} TECHNOLOGIES</span>
+                      <span className="text-primary font-bold">{cat.badge}</span>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Expanded Technology Chips */}
+            <div className="max-w-4xl mx-auto pt-6 border-t border-border/40 text-center">
+              <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-muted-foreground block mb-4">
+                All Technology Stack Specifications:
+              </span>
+              <div className="flex flex-wrap items-center justify-center gap-2">
+                {service.technology.map((item) => (
+                  <span 
+                    key={item}
+                    className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-mono font-semibold bg-card border border-border/60 text-foreground shadow-xs hover:border-primary/60 hover:text-primary hover:shadow-glow-primary hover:-translate-y-0.5 transition-all duration-200"
+                  >
+                    <Cpu size={13} className="text-primary" />
+                    <span>{item}</span>
+                  </span>
+                ))}
+              </div>
+            </div>
+          </Container>
+        </section>
+      )}
 
       {/* 5. CTA Section */}
       <section className="relative py-20 bg-background transition-colors duration-300">

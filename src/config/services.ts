@@ -143,48 +143,59 @@ export const servicesConfig: Service[] = [
   {
     title: "Enterprise ERP Consulting",
     slug: "erp-consulting",
-    headline: "Strategic Blueprinting, Optimizations, and Operational Audits",
-    description: "Expert consulting to help you audit business operations, design target software specs, and successfully transition to modern ERP platforms.",
+    headline: "Turnkey Implementation & Customization for Dynamics 365 BC, Odoo & ERPNext",
+    description: "End-to-end implementation, seamless data migration, and deep customization for the world's leading readymade ERP platforms: Microsoft Dynamics 365 Business Central, Odoo, and ERPNext — engineered to fit your exact business workflows.",
     features: [
-      "Workflow Gap Analysis",
-      "Procurement & Inventory Auditing",
-      "User Acceptance & Training Sprints"
+      "Dynamics 365 BC Implementation",
+      "Odoo & ERPNext Customization",
+      "Legacy System Data Migration"
     ],
     capabilities: [
       {
-        title: "Sourcing & SCM Audits",
-        description: "Analyze supply chain workflows, materials ordering thresholds, and warehousing layouts to identify bottleneck factors.",
-        icon: "Package"
+        title: "Dynamics 365 BC Implementation",
+        description: "Full Microsoft cloud ERP deployment, chart of accounts setup, supply chain integration, and custom AL language extension development.",
+        icon: "Building2"
       },
       {
-        title: "System Auditing & Security Reviews",
-        description: "Enforce division of duties controls, database access auditing, and audit logs.",
-        icon: "ShieldCheck"
+        title: "Odoo Modular ERP Customization",
+        description: "Modular Odoo implementation across CRM, Sales, POS, and Manufacturing with custom Python and OWL view modules.",
+        icon: "Boxes"
       },
       {
-        title: "Legacy System Replacements",
-        description: "Create migration pathways to replace old back-office database schemas with modern structures.",
-        icon: "RefreshCw"
+        title: "ERPNext Open-Source Development",
+        description: "Agile ERPNext deployment on Frappe framework with custom Doctypes, server scripts, and zero vendor lock-in.",
+        icon: "Layers"
       }
     ],
     process: [
       {
         step: "01",
-        title: "Workflow Discovery",
-        description: "Map current finance, warehouse sorting, and procurement procedures to logical system entities."
+        title: "Platform Selection & Discovery",
+        description: "Evaluate your operational workflows to select the best-fit base platform (Dynamics 365 BC, Odoo, or ERPNext) and map data schemas."
       },
       {
         step: "02",
-        title: "Gap Analysis Review",
-        description: "Identify operational bottlenecks, determine custom module needs, and draft integration schemas."
+        title: "Implementation & Customization",
+        description: "Configure core finance & SCM modules, write custom extensions, and run seamless data migration sweeps from legacy systems."
       },
       {
         step: "03",
-        title: "User Training & Go-live",
-        description: "Run UAT testing cycles, train operational personnel on the new screens, and execute final cutover sequences."
+        title: "UAT, Go-Live & 24/7 Support",
+        description: "Conduct user acceptance testing, train operational teams, execute final cutover, and provide ongoing 24/7 system maintenance."
       }
     ],
-    technology: ["BrainERP", "Dynamics 365 BC", "Odoo", "ERPNext", "SAP Core", "PostgreSQL"],
+    technology: [
+      "Dynamics 365 BC", 
+      "Odoo ERP", 
+      "ERPNext", 
+      "AL Language", 
+      "Python / OWL", 
+      "Frappe Framework", 
+      "SQL Server (T-SQL)", 
+      "PostgreSQL", 
+      "Power BI", 
+      "REST / GraphQL APIs"
+    ],
     icon: "database",
     href: "/services/erp-consulting"
   },
