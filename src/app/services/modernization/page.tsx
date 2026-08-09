@@ -1,29 +1,31 @@
 import { Metadata } from "next";
-import { servicesConfig } from "@/config/services";
-import { ServiceTemplate } from "@/components/layout/ServiceTemplate";
-import { notFound } from "next/navigation";
+import { CloudTransformation } from "@/components/modernization/CloudTransformation";
+import { DatabaseModernization } from "@/components/modernization/DatabaseModernization";
+import { LegacyChallenges } from "@/components/modernization/LegacyChallenges";
+import { ModernArchitecture } from "@/components/modernization/ModernArchitecture";
+import { ModernizationApproach } from "@/components/modernization/ModernizationApproach";
+import { ModernizationCTA } from "@/components/modernization/ModernizationCTA";
+import { ModernizationHero } from "@/components/modernization/ModernizationHero";
+import { ModernizationServices } from "@/components/modernization/ModernizationServices";
+import { TechnologyTransformation } from "@/components/modernization/TechnologyTransformation";
+import { WhyBrainzonModernization } from "@/components/modernization/WhyBrainzonModernization";
 
 export const metadata: Metadata = {
-  title: "Legacy System Modernization - Brainzon",
-  description: "Incorporate modern API wrappers, strangler refactoring patterns, and unified database layers to breathe new life into older enterprise monoliths.",
+  title: "Legacy Application Modernization Services - Brainzon",
+  description: "Brainzon helps businesses modernize outdated applications, upgrade technology platforms, migrate databases, and build scalable cloud architectures without disrupting operations.",
   openGraph: {
-    title: "Legacy System Modernization - Brainzon",
-    description: "Incorporate modern API wrappers, strangler refactoring patterns, and unified database layers to breathe new life into older enterprise monoliths.",
+    title: "Legacy Application Modernization Services - Brainzon",
+    description: "Brainzon helps businesses modernize outdated applications, upgrade technology platforms, migrate databases, and build scalable cloud architectures without disrupting operations.",
     type: "website",
   }
 };
 
-export default function ModernizationPage() {
-  const service = servicesConfig.find((s) => s.slug === "modernization");
-  if (!service) {
-    notFound();
-  }
-
+export default function ModernizationServicePage() {
   const schemaData = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
-    "name": service.title,
-    "description": service.description,
+    "name": "Legacy Application Modernization Services",
+    "description": "Brainzon helps businesses modernize outdated applications, upgrade technology platforms, migrate databases, and build scalable cloud architectures without disrupting operations.",
     "provider": {
       "@type": "Organization",
       "name": "Brainzon"
@@ -33,10 +35,20 @@ export default function ModernizationPage() {
   return (
     <>
       <script
+        id="modernization-service-jsonld"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
       />
-      <ServiceTemplate service={service} />
+      <ModernizationHero />
+      <LegacyChallenges />
+      <ModernizationServices />
+      <TechnologyTransformation />
+      <ModernizationApproach />
+      <ModernArchitecture />
+      <DatabaseModernization />
+      <CloudTransformation />
+      <WhyBrainzonModernization />
+      <ModernizationCTA />
     </>
   );
 }

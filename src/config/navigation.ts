@@ -107,10 +107,6 @@ export const navigationConfig: NavItem[] = [
     ],
   },
   {
-    title: "Modernization",
-    href: "/modernization",
-  },
-  {
     title: "Company",
     items: [
       {
