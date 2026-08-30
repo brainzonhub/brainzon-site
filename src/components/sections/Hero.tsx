@@ -324,19 +324,19 @@ export function Hero() {
                   </div>
                 ) : (
                   <div className="flex flex-col items-center">
-                    <div className="relative size-16 sm:size-20 flex items-center justify-center animate-[pulse_4s_ease-in-out_infinite]">
+                    <div className="relative size-12 sm:size-14 rounded-2xl bg-[#009CB4]/10 dark:bg-[#009CB4]/15 border border-[#009CB4]/30 dark:border-[#009CB4]/45 flex items-center justify-center p-2 mb-1.5 shadow-[0_2px_12px_rgba(0,156,180,0.25)] animate-[pulse_4s_ease-in-out_infinite]">
                       <div className="relative size-full">
                         <Image
                           src="/brainzon-brand-mark.png"
                           alt="Brainzon Brand Icon"
                           fill
-                          sizes="80px"
-                          className="object-contain drop-shadow-[0_4px_12px_rgba(239,68,68,0.2)]"
+                          sizes="56px"
+                          className="object-contain drop-shadow-[0_2px_8px_rgba(0,156,180,0.25)]"
                           priority
                         />
                       </div>
                     </div>
-                    <span className="text-[9px] font-mono font-bold tracking-widest text-foreground uppercase mt-1">
+                    <span className="text-[9px] font-mono font-bold tracking-widest text-foreground uppercase mt-0.5">
                       BRAINZON CORE
                     </span>
                     <span className="text-[7.5px] text-muted-foreground mt-0.5 animate-pulse">
