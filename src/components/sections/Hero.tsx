@@ -324,23 +324,23 @@ export function Hero() {
                   </div>
                 ) : (
                   <div className="flex flex-col items-center">
-                    <div className="relative size-11 sm:size-12 rounded-xl bg-card border border-border p-1 flex items-center justify-center animate-[pulse_4s_ease-in-out_infinite] shadow-sm">
+                    <div className="relative size-16 sm:size-20 flex items-center justify-center animate-[pulse_4s_ease-in-out_infinite]">
                       <div className="relative size-full">
                         <Image
-                          src="/hero-center-logo-v2.png"
-                          alt="Brainzon Icon"
+                          src="/brainzon-brand-mark.png"
+                          alt="Brainzon Brand Icon"
                           fill
-                          sizes="48px"
-                          className="object-contain"
+                          sizes="80px"
+                          className="object-contain drop-shadow-[0_4px_12px_rgba(239,68,68,0.2)]"
                           priority
                         />
                       </div>
                     </div>
-                    <span className="text-[8px] font-mono font-semibold tracking-widest text-muted-foreground uppercase mt-2">
-                      CORE INTEG-HUB
+                    <span className="text-[9px] font-mono font-bold tracking-widest text-foreground uppercase mt-1">
+                      BRAINZON CORE
                     </span>
-                    <span className="text-[7px] text-muted-foreground/60 mt-0.5 animate-pulse">
-                      Hover nodes to scan
+                    <span className="text-[7.5px] text-muted-foreground mt-0.5 animate-pulse">
+                      Hover nodes to inspect
                     </span>
                   </div>
                 )}
