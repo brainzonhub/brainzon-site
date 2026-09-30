@@ -15,9 +15,9 @@ export function Navbar() {
         {/* Brand Logo */}
         <Link 
           href="/" 
-          className="flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-lg py-1"
+          className="flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-lg shrink-0"
         >
-          <Logo height={32} />
+          <Logo className="h-8 sm:h-[34px] w-auto" />
         </Link>
 
         {/* Desktop Navigation */}

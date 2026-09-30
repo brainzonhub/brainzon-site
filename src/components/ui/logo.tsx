@@ -6,18 +6,25 @@ interface LogoProps {
   height?: number;
 }
 
-export function Logo({ className, height = 36 }: LogoProps) {
+export function Logo({ className, height }: LogoProps) {
+  const hasHeightClass = className?.includes("h-");
+  const effectiveHeight = height ?? (hasHeightClass ? undefined : 34);
+
   return (
-    <div className={cn("relative flex items-center select-none", className)} style={{ height }}>
+    <div
+      className={cn("relative flex items-center select-none", className)}
+      style={effectiveHeight ? { height: effectiveHeight } : undefined}
+    >
       <Image
         src="/logo.png"
         alt="Brainzon Logo"
-        width={400}
-        height={100}
-        style={{ height, width: "auto" }}
-        className="object-contain"
+        width={778}
+        height={122}
+        style={effectiveHeight ? { height: effectiveHeight, width: "auto" } : { width: "auto" }}
+        className="object-contain max-h-full w-auto"
         priority
       />
     </div>
   );
 }
+
