@@ -25,7 +25,7 @@ export const teamMembers: TeamMember[] = [
     name: "Ahasan Habib",
     role: "Chief Executive Officer (CEO)",
     group: "executive",
-    image: "/images/team/ahasan-habib-ceo.jpg",
+    image: "/images/team/member-01-ceo.svg",
     imageAlt: "Ahasan Habib - CEO",
     summary: "Strategic technology leader with 16+ years of experience driving enterprise digital transformation, ERP consulting, cloud adoption, and global business growth.",
     expertise: ["Enterprise Strategy", "ERP & Cloud Transformation", "Executive Leadership", "Global Expansion"],
