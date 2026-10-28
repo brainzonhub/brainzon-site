@@ -16,7 +16,9 @@ import {
   GitBranch, 
   RefreshCw, 
   Code2, 
-  Cloud 
+  Cloud,
+  CheckCircle2,
+  Sparkles 
 } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { ProductIcon } from "@/components/ui/ProductIcon";
@@ -133,6 +135,45 @@ const nodes = [
     dur: "2.8s",
     desc: "High-resilience cloud architecture setup on AWS, Azure, and Google Cloud."
   }
+];
+
+const architecturePillars = [
+  {
+    id: "erp",
+    title: "ERP & Operations",
+    description: "Finance, inventory, and supply chain synchronized on a real-time ledger.",
+    icon: Database,
+    color: "primary" as const,
+    href: "/products/brainerp",
+    metric: "99.99% Availability",
+  },
+  {
+    id: "crm",
+    title: "CRM & Growth",
+    description: "Omnichannel customer pipelines, predictive lead scoring, and automated outreach.",
+    icon: Users,
+    color: "secondary" as const,
+    href: "/products/braincrm",
+    metric: "Real-Time Pipeline Sync",
+  },
+  {
+    id: "ai",
+    title: "AI & Intelligence",
+    description: "Autonomous task agents, enterprise document reasoning, and private secure LLMs.",
+    icon: Cpu,
+    color: "accent" as const,
+    href: "/products/brainai",
+    metric: "Private Agent Workflows",
+  },
+  {
+    id: "modernization",
+    title: "Legacy Modernization",
+    description: "Refactor legacy monolithic systems into scalable containerized cloud microservices.",
+    icon: GitBranch,
+    color: "primary" as const,
+    href: "/services/modernization",
+    metric: "Zero-Downtime Migration",
+  },
 ];
 
 export function Hero() {
@@ -410,116 +451,82 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Hero Footer Bar: One Intelligent Foundation */}
-        <div className="mt-8 md:mt-12 pt-8 border-t border-border/40">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 items-stretch">
-            {/* Heading Block */}
-            <div className="flex flex-col justify-center p-3 text-left">
-              <div className="flex items-center gap-1.5 mb-2">
-                <span className="relative flex size-2 shrink-0">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+        {/* Hero Architecture Section: One Intelligent Foundation */}
+        <div className="mt-10 md:mt-14 pt-8 md:pt-10 border-t border-border/40">
+          {/* Header */}
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6 text-left">
+            <div>
+              <div className="flex items-center gap-2 mb-1.5">
+                <span className="size-2 rounded-full bg-emerald-500 animate-pulse" />
+                <span className="text-[11px] font-bold text-primary uppercase tracking-widest font-mono">
+                  Core Architecture
                 </span>
-                <span className="text-[10px] font-bold text-primary uppercase tracking-widest font-mono">Core Architecture</span>
               </div>
-              <h2 className="text-xl font-extrabold text-foreground tracking-tight leading-snug">
+              <h2 className="text-xl sm:text-2xl font-extrabold text-foreground tracking-tight">
                 One Intelligent Foundation
               </h2>
-              <p className="text-xs text-muted-foreground mt-2.5 leading-relaxed">
-                Transforming enterprise workflows with secure, high-resilience systems built for scale.
+              <p className="text-xs sm:text-sm text-muted-foreground mt-1 max-w-xl">
+                A connected enterprise foundation unifying business operations, customer growth, and AI.
               </p>
             </div>
 
-            {/* Card 1: ERP & Operations */}
-            <div className="flex flex-col justify-between p-5 rounded-2xl border border-border/40 bg-gradient-to-b from-card to-card/50 backdrop-blur-sm hover:border-primary/50 hover:-translate-y-1 hover:shadow-[0_0_25px_rgba(6,182,212,0.15)] transition-all duration-300 group cursor-pointer text-left relative overflow-hidden">
-              <span className="absolute top-4 right-4 text-[9px] font-mono text-primary/40 font-bold tracking-wider select-none">
-                [SYS.01]
-              </span>
-              <div>
-                <div className="flex size-9 items-center justify-center rounded-xl bg-primary/10 border border-primary/20 text-primary shrink-0 group-hover:scale-105 transition-transform duration-300">
-                  <Database size={16} />
-                </div>
-                <h3 className="text-[13px] font-bold text-foreground mt-4 group-hover:text-primary transition-colors duration-200">
-                  ERP & Operations
-                </h3>
-                <p className="text-[11px] text-muted-foreground mt-2 leading-relaxed">
-                  Streamline processes, optimize resources, and drive discrete manufacturing performance.
-                </p>
-              </div>
-              <div className="mt-4 pt-3 border-t border-border/30 flex items-center gap-2 text-[9px] font-mono text-primary">
-                <span>●</span>
-                <span>SYSTEM CORE</span>
-              </div>
-            </div>
-
-            {/* Card 2: CRM & Growth */}
-            <div className="flex flex-col justify-between p-5 rounded-2xl border border-border/40 bg-gradient-to-b from-card to-card/50 backdrop-blur-sm hover:border-secondary/50 hover:-translate-y-1 hover:shadow-[0_0_25px_rgba(239,68,68,0.15)] transition-all duration-300 group cursor-pointer text-left relative overflow-hidden">
-              <span className="absolute top-4 right-4 text-[9px] font-mono text-secondary/40 font-bold tracking-wider select-none">
-                [SYS.02]
-              </span>
-              <div>
-                <div className="flex size-9 items-center justify-center rounded-xl bg-secondary/10 border border-secondary/20 text-secondary shrink-0 group-hover:scale-105 transition-transform duration-300">
-                  <Users size={16} />
-                </div>
-                <h3 className="text-[13px] font-bold text-foreground mt-4 group-hover:text-secondary transition-colors duration-200">
-                  CRM & Growth
-                </h3>
-                <p className="text-[11px] text-muted-foreground mt-2 leading-relaxed">
-                  Deepen relationships, accelerate pipeline velocity, and automate outreach schedules.
-                </p>
-              </div>
-              <div className="mt-4 pt-3 border-t border-border/30 flex items-center gap-2 text-[9px] font-mono text-secondary">
-                <span>●</span>
-                <span>RELATIONAL LAYER</span>
-              </div>
-            </div>
-
-            {/* Card 3: AI & Intelligence */}
-            <div className="flex flex-col justify-between p-5 rounded-2xl border border-border/40 bg-gradient-to-b from-card to-card/50 backdrop-blur-sm hover:border-accent/50 hover:-translate-y-1 hover:shadow-[0_0_25px_rgba(234,179,8,0.15)] transition-all duration-300 group cursor-pointer text-left relative overflow-hidden">
-              <span className="absolute top-4 right-4 text-[9px] font-mono text-accent/40 font-bold tracking-wider select-none">
-                [SYS.03]
-              </span>
-              <div>
-                <div className="flex size-9 items-center justify-center rounded-xl bg-accent/10 border border-accent/20 text-accent shrink-0 group-hover:scale-105 transition-transform duration-300">
-                  <Cpu size={16} />
-                </div>
-                <h3 className="text-[13px] font-bold text-foreground mt-4 group-hover:text-accent transition-colors duration-200">
-                  AI & Intelligence
-                </h3>
-                <p className="text-[11px] text-muted-foreground mt-2 leading-relaxed">
-                  Embed predictive models, document reasoning pipelines, and conversational assistant features.
-                </p>
-              </div>
-              <div className="mt-4 pt-3 border-t border-border/30 flex items-center gap-2 text-[9px] font-mono text-accent">
-                <span>●</span>
-                <span>COGNITIVE LAYER</span>
-              </div>
-            </div>
-
-            {/* Card 4: Legacy Modernization */}
-            <div className="flex flex-col justify-between p-5 rounded-2xl border border-border/40 bg-gradient-to-b from-card to-card/50 backdrop-blur-sm hover:border-primary/50 hover:-translate-y-1 hover:shadow-[0_0_25px_rgba(6,182,212,0.15)] transition-all duration-300 group cursor-pointer text-left relative overflow-hidden">
-              <span className="absolute top-4 right-4 text-[9px] font-mono text-primary/40 font-bold tracking-wider select-none">
-                [SYS.04]
-              </span>
-              <div>
-                <div className="flex size-9 items-center justify-center rounded-xl bg-primary/10 border border-primary/20 text-primary shrink-0 group-hover:scale-105 transition-transform duration-300">
-                  <GitBranch size={16} />
-                </div>
-                <h3 className="text-[13px] font-bold text-foreground mt-4 group-hover:text-primary transition-colors duration-200">
-                  Legacy Modernization
-                </h3>
-                <p className="text-[11px] text-muted-foreground mt-2 leading-relaxed">
-                  Re-platform monolithic databases into scalable containerized cloud microservices.
-                </p>
-              </div>
-              <div className="mt-4 pt-3 border-t border-border/30 flex items-center gap-2 text-[9px] font-mono text-primary">
-                <span>●</span>
-                <span>CLOUD TRANSITION</span>
-              </div>
+            {/* Live Operational Status */}
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-border/60 bg-card/60 backdrop-blur-sm text-xs font-mono text-muted-foreground shrink-0 self-start sm:self-auto">
+              <span className="size-1.5 rounded-full bg-emerald-500" />
+              <span>All Systems Operational</span>
+              <span className="text-border">|</span>
+              <span className="text-foreground/90 font-semibold">99.99% SLA</span>
             </div>
           </div>
+
+          {/* 4 Concise & Easy Cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch">
+            {architecturePillars.map((pillar) => {
+              const Icon = pillar.icon;
+              return (
+                <Link
+                  key={pillar.id}
+                  href={pillar.href}
+                  className="group relative flex flex-col justify-between p-5 rounded-2xl border border-border/60 bg-card/50 hover:bg-card/90 hover:border-primary/50 hover:-translate-y-1 hover:shadow-md transition-all duration-200 text-left"
+                >
+                  <div>
+                    {/* Icon + Top Action Arrow */}
+                    <div className="flex items-center justify-between gap-2 mb-3.5">
+                      <div className={cn(
+                        "flex size-9 items-center justify-center rounded-xl border transition-colors",
+                        pillar.color === "primary" ? "bg-primary/10 border-primary/20 text-primary group-hover:bg-primary/15" :
+                        pillar.color === "secondary" ? "bg-secondary/10 border-secondary/20 text-secondary group-hover:bg-secondary/15" :
+                        "bg-accent/10 border-accent/20 text-accent group-hover:bg-accent/15"
+                      )}>
+                        <Icon size={18} />
+                      </div>
+                      <span className="inline-flex items-center text-xs text-muted-foreground/60 group-hover:text-primary transition-colors font-medium">
+                        <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform duration-200" />
+                      </span>
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="text-sm sm:text-base font-bold text-foreground group-hover:text-primary transition-colors duration-200">
+                      {pillar.title}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="text-xs text-muted-foreground mt-1.5 leading-relaxed">
+                      {pillar.description}
+                    </p>
+                  </div>
+
+                  {/* Clean Metric Tag */}
+                  <div className="mt-4 pt-3 border-t border-border/40 flex items-center gap-1.5 text-[11px] font-mono text-muted-foreground">
+                    <span className="size-1.5 rounded-full bg-emerald-500/80" />
+                    <span>{pillar.metric}</span>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
         </div>
-      </Container>
+        </Container>
     </section>
   );
 }
