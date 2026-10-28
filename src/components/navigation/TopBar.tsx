@@ -200,7 +200,7 @@ export function TopBar() {
 
     >
 
-      <div className="w-full border-b border-border/60 bg-slate-50/90 dark:bg-surface text-muted-foreground text-xs transition-colors">
+      <div className="w-full border-b border-purple-200/60 dark:border-purple-900/40 bg-purple-50 dark:bg-purple-950/40 text-muted-foreground text-xs transition-colors">
 
       <Container className="flex h-9 items-center justify-between gap-4">
 
@@ -306,7 +306,7 @@ export function TopBar() {
 
               aria-label="Facebook"
 
-              className="p-1 rounded text-muted-foreground hover:text-primary hover:bg-slate-200/50 dark:hover:bg-muted transition-colors"
+              className="p-1 rounded text-muted-foreground hover:text-primary hover:bg-purple-100 dark:hover:bg-purple-900/40 transition-colors"
 
             >
 
@@ -324,7 +324,7 @@ export function TopBar() {
 
               aria-label="Instagram"
 
-              className="p-1 rounded text-muted-foreground hover:text-primary hover:bg-slate-200/50 dark:hover:bg-muted transition-colors"
+              className="p-1 rounded text-muted-foreground hover:text-primary hover:bg-purple-100 dark:hover:bg-purple-900/40 transition-colors"
 
             >
 
@@ -342,7 +342,7 @@ export function TopBar() {
 
               aria-label="YouTube"
 
-              className="p-1 rounded text-muted-foreground hover:text-primary hover:bg-slate-200/50 dark:hover:bg-muted transition-colors"
+              className="p-1 rounded text-muted-foreground hover:text-primary hover:bg-purple-100 dark:hover:bg-purple-900/40 transition-colors"
 
             >
 
@@ -360,7 +360,7 @@ export function TopBar() {
 
               aria-label="LinkedIn"
 
-              className="p-1 rounded text-muted-foreground hover:text-primary hover:bg-slate-200/50 dark:hover:bg-muted transition-colors"
+              className="p-1 rounded text-muted-foreground hover:text-primary hover:bg-purple-100 dark:hover:bg-purple-900/40 transition-colors"
 
             >
 
@@ -378,7 +378,7 @@ export function TopBar() {
 
               aria-label="X (formerly Twitter)"
 
-              className="p-1 rounded text-muted-foreground hover:text-primary hover:bg-slate-200/50 dark:hover:bg-muted transition-colors"
+              className="p-1 rounded text-muted-foreground hover:text-primary hover:bg-purple-100 dark:hover:bg-purple-900/40 transition-colors"
 
             >
 
@@ -396,7 +396,7 @@ export function TopBar() {
 
               aria-label="GitHub"
 
-              className="p-1 rounded text-muted-foreground hover:text-primary hover:bg-slate-200/50 dark:hover:bg-muted transition-colors"
+              className="p-1 rounded text-muted-foreground hover:text-primary hover:bg-purple-100 dark:hover:bg-purple-900/40 transition-colors"
 
             >
 
