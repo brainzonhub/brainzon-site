@@ -379,12 +379,6 @@ export function MegaMenu() {
                                   <p className="text-[11px] text-muted-foreground line-clamp-2 mt-1 leading-relaxed">
                                     {product.description}
                                   </p>
-                                  {product.aiAgent && (
-                                    <div className="mt-2 inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-primary/10 text-primary text-[10px] font-medium">
-                                      <Sparkles size={10} />
-                                      <span>{product.aiAgent}</span>
-                                    </div>
-                                  )}
                                 </div>
                               </Link>
                             );
