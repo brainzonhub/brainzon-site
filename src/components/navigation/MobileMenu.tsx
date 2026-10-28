@@ -1,11 +1,12 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
-import { Menu, X, ChevronDown, Sparkles, ArrowRight, Boxes } from "lucide-react";
+import { Menu, X, ChevronDown, ArrowRight, Boxes } from "lucide-react";
 import { Logo } from "@/components/ui/logo";
 import { cn } from "@/lib/utils";
-import { navigationConfig, SubNavItem, AIAgentItem } from "@/config/navigation";
+import { navigationConfig, SubNavItem } from "@/config/navigation";
 import { getMenuIcon } from "./menu-icons";
 import { ThemeSwitcher } from "@/components/theme-switcher";
 
@@ -17,8 +18,44 @@ function WhatsAppIcon({ className }: { className?: string }) {
   );
 }
 
+
+const getProductColorClasses = (color?: string) => {
+  switch (color) {
+    case "cyan":
+      return {
+        iconBox: "bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border-cyan-500/25 group-hover:bg-cyan-500/20 group-hover:border-cyan-500/40",
+        tag: "bg-cyan-500/15 text-cyan-700 dark:text-cyan-300 border-cyan-500/30",
+      };
+    case "amber":
+      return {
+        iconBox: "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/25 group-hover:bg-amber-500/20 group-hover:border-amber-500/40",
+        tag: "bg-amber-500/15 text-amber-700 dark:text-amber-300 border-amber-500/30",
+      };
+    case "violet":
+      return {
+        iconBox: "bg-violet-500/10 text-violet-600 dark:text-violet-400 border-violet-500/25 group-hover:bg-violet-500/20 group-hover:border-violet-500/40",
+        tag: "bg-violet-500/15 text-violet-700 dark:text-violet-300 border-violet-500/30",
+      };
+    case "emerald":
+      return {
+        iconBox: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/25 group-hover:bg-emerald-500/20 group-hover:border-emerald-500/40",
+        tag: "bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30",
+      };
+    default:
+      return {
+        iconBox: "bg-muted text-muted-foreground border-border/40 group-hover:bg-primary/10 group-hover:text-primary",
+        tag: "bg-muted text-muted-foreground border-border/40",
+      };
+  }
+};
+
 export function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
   const [expandedGroups, setExpandedGroups] = useState<{ [key: string]: boolean }>({});
   const drawerRef = useRef<HTMLDivElement | null>(null);
   const triggerRef = useRef<HTMLButtonElement | null>(null);
@@ -100,17 +137,17 @@ export function MobileMenu() {
         <Menu size={24} />
       </button>
 
-      {isOpen && (
-        <>
+      {isOpen && mounted && createPortal(
+        <div className="fixed inset-0 z-[100] lg:hidden">
           <div
             onClick={toggleOpen}
-            className="fixed inset-0 z-40 bg-background/80 backdrop-blur-sm"
+            className="fixed inset-0 bg-background/80 backdrop-blur-sm"
             aria-hidden="true"
           />
 
           <div
             ref={drawerRef}
-            className="fixed inset-y-0 right-0 z-50 w-full max-w-sm border-l border-border bg-background shadow-2xl flex flex-col h-full overflow-hidden animate-[slide-in-from-right_250ms_ease-in-out]"
+            className="fixed inset-y-0 right-0 z-[101] w-full max-w-sm border-l border-border bg-background shadow-2xl flex flex-col h-[100dvh] overflow-hidden animate-[slide-in-from-right_250ms_ease-in-out]"
             role="dialog"
             aria-modal="true"
             aria-label="Navigation Drawer"
@@ -184,85 +221,69 @@ export function MobileMenu() {
 
                       {isExpanded && (
                         <div className="overflow-hidden pl-3 pr-1 py-1 space-y-3 border-l border-border/50 ml-3">
-                          {/* Special Organized View for Products: Business Apps & AI Platforms */}
+                          {/* Dedicated View for Products: Business Applications */}
                           {item.title === "Products" ? (
-                            <>
-                              {/* 1. Business Applications */}
-                              <div className="space-y-1">
-                                <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground/90 px-2.5 flex items-center gap-1.5">
-                                  <Boxes size={12} className="text-primary" />
-                                  <span>Business Applications</span>
-                                </p>
-                                {item.items?.map((subItem: SubNavItem) => (
+                            <div className="space-y-1">
+                              <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground/90 px-2.5 flex items-center gap-1.5">
+                                <Boxes size={12} className="text-primary" />
+                                <span>Core Business Applications</span>
+                              </p>
+                              {item.items?.map((subItem: SubNavItem) => {
+                                const colorStyles = getProductColorClasses(subItem.color);
+                                return (
                                   <Link
                                     key={subItem.title}
                                     href={subItem.href}
                                     onClick={handleLinkClick}
                                     className={cn(
-                                      "flex items-start gap-3 p-2 rounded-lg hover:bg-muted/40 group",
+                                      "flex items-start gap-3 p-2.5 rounded-xl hover:bg-muted/50 border border-transparent hover:border-border/60 group",
                                       "transition-all duration-150 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                                     )}
                                   >
-                                    <div className="flex size-8 items-center justify-center rounded-lg bg-muted text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary transition-colors shrink-0">
-                                      {getMenuIcon(subItem.iconName, { size: 20 })}
+                                    <div
+                                      className={cn(
+                                        "flex size-10 items-center justify-center rounded-xl border transition-all shrink-0 mt-0.5",
+                                        colorStyles.iconBox
+                                      )}
+                                    >
+                                      {getMenuIcon(subItem.iconName, { size: 28 })}
                                     </div>
                                     <div className="flex-1 min-w-0">
-                                      <div className="flex items-center gap-1.5">
-                                        <h5 className="text-xs font-semibold text-foreground group-hover:text-primary transition-colors">
-                                          {subItem.title}
-                                        </h5>
-                                        {subItem.badge && (
-                                          <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.2 rounded bg-primary/10 text-primary">
-                                            {subItem.badge}
-                                          </span>
-                                        )}
+                                      <div className="flex items-center justify-between gap-1">
+                                        <div className="flex items-center gap-1.5">
+                                          <h5 className="text-xs font-bold text-foreground group-hover:text-primary transition-colors">
+                                            {subItem.title}
+                                          </h5>
+                                          {subItem.badge && (
+                                            <span
+                                              className={cn(
+                                                "text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.2 rounded border",
+                                                colorStyles.tag
+                                              )}
+                                            >
+                                              {subItem.badge}
+                                            </span>
+                                          )}
+                                        </div>
+                                        <ArrowRight
+                                          size={12}
+                                          className="text-muted-foreground/40 opacity-0 group-hover:opacity-100 group-hover:text-primary transition-all group-hover:translate-x-0.5 shrink-0"
+                                        />
                                       </div>
-                                      <p className="text-[11px] text-muted-foreground mt-0.5 line-clamp-1">
+                                      {subItem.subtitle && (
+                                        <p className="text-[11px] font-medium text-foreground/80 line-clamp-1 mt-0.5">
+                                          {subItem.subtitle}
+                                        </p>
+                                      )}
+                                      <p className="text-[10px] text-muted-foreground line-clamp-2 mt-0.5 leading-relaxed">
                                         {subItem.description}
                                       </p>
                                     </div>
                                   </Link>
-                                ))}
-                              </div>
-
-                              {/* 2. AI Platforms (Product AI Agents) */}
-                              <div className="pt-2 space-y-1 border-t border-border/40">
-                                <p className="text-[10px] font-bold uppercase tracking-wider text-primary px-2.5 flex items-center gap-1.5">
-                                  <Sparkles size={12} />
-                                  <span>AI Platforms (Product AI Agents)</span>
-                                </p>
-                                {item.aiAgents?.map((agent: AIAgentItem) => (
-                                  <Link
-                                    key={agent.title}
-                                    href={agent.href}
-                                    onClick={handleLinkClick}
-                                    className={cn(
-                                      "flex items-start gap-3 p-2 rounded-lg hover:bg-muted/40 group",
-                                      "transition-all duration-150 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
-                                    )}
-                                  >
-                                    <div className="flex size-7 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors shrink-0">
-                                      <Sparkles size={13} />
-                                    </div>
-                                    <div className="flex-1 min-w-0">
-                                      <div className="flex items-center gap-1.5">
-                                        <h5 className="text-xs font-semibold text-foreground group-hover:text-primary transition-colors">
-                                          {agent.title}
-                                        </h5>
-                                        <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.2 rounded bg-muted text-muted-foreground">
-                                          {agent.product}
-                                        </span>
-                                      </div>
-                                      <p className="text-[10px] text-muted-foreground line-clamp-1 mt-0.5">
-                                        {agent.description}
-                                      </p>
-                                    </div>
-                                  </Link>
-                                ))}
-                              </div>
-                            </>
-                          ) : (
-                            <>
+                                );
+                              })}
+                            </div>
+                          ) : (<>
                               {/* Render regular direct items */}
                               {item.items?.map((subItem: SubNavItem) => (
                                 <Link
@@ -304,8 +325,8 @@ export function MobileMenu() {
                                         "transition-all duration-150 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                                       )}
                                     >
-                                      <div className="flex size-6 items-center justify-center rounded bg-muted text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary transition-colors shrink-0">
-                                        {getMenuIcon(subItem.iconName, { size: 12 })}
+                                      <div className="flex size-7 items-center justify-center rounded-lg bg-muted/60 border border-border/40 text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary transition-colors shrink-0">
+                                        {getMenuIcon(subItem.iconName, { size: 14 })}
                                       </div>
                                       <div className="flex-1 min-w-0">
                                         <h6 className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
@@ -394,7 +415,8 @@ export function MobileMenu() {
               </div>
             </div>
           </div>
-        </>
+        </div>,
+        document.body
       )}
     </div>
   );
