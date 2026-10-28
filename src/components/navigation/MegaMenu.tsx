@@ -349,7 +349,7 @@ export function MegaMenu() {
                                     colorStyles.iconBox
                                   )}
                                 >
-                                  {getMenuIcon(product.iconName, { size: 19 })}
+                                  {getMenuIcon(product.iconName, { size: 32 })}
                                 </div>
                                 <div className="flex-1 min-w-0">
                                   <div className="flex items-center justify-between gap-1">

@@ -143,7 +143,7 @@ export const productsConfig: Product[] = [
       ]
     },
     integrations: ["BrainCRM", "Google Ads", "Meta Ads", "LinkedIn Campaign Manager", "Mailchimp", "HubSpot", "Zapier"],
-    icon: "megaphone",
+    icon: "brainmkt",
     href: "/products/brainmkt",
     aiAgent: {
       name: "BrainMKT AI Agent",
@@ -254,7 +254,7 @@ export const productsConfig: Product[] = [
       ]
     },
     integrations: ["BrainMKT", "BrainERP", "BrainBooks", "Twilio", "Stripe", "Zendesk", "Microsoft 365", "Google Workspace"],
-    icon: "users",
+    icon: "braincrm",
     href: "/products/braincrm",
     aiAgent: {
       name: "BrainCRM AI Agent",
@@ -365,7 +365,7 @@ export const productsConfig: Product[] = [
       ]
     },
     integrations: ["BrainCRM", "BrainBooks", "Dynamics 365 BC", "Odoo", "Shopify Plus", "Amazon FBA", "FedEx / UPS APIs"],
-    icon: "database",
+    icon: "brainerp",
     href: "/products/brainerp",
     aiAgent: {
       name: "BrainERP AI Agent",
@@ -476,7 +476,7 @@ export const productsConfig: Product[] = [
       ]
     },
     integrations: ["BrainERP", "BrainCRM", "Plaid", "Stripe", "QuickBooks Data Importer", "Xero Sync", "Standard Tax Authorities"],
-    icon: "receipt",
+    icon: "brainbooks",
     href: "/products/brainbooks",
     aiAgent: {
       name: "BrainBooks AI Agent",

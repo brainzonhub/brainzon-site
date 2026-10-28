@@ -19,13 +19,14 @@ import {
   Cloud 
 } from "lucide-react";
 import { Container } from "@/components/layout/Container";
+import { ProductIcon } from "@/components/ui/ProductIcon";
 import { cn } from "@/lib/utils";
 
 const nodes = [
   {
     id: "erp",
     title: "BrainERP",
-    icon: Database,
+    icon: "brainerp",
     type: "core",
     pos: "top-[20%] left-[50%]",
     coords: { x: 250, y: 100 },
@@ -36,7 +37,7 @@ const nodes = [
   {
     id: "crm",
     title: "BrainCRM",
-    icon: Users,
+    icon: "braincrm",
     type: "core",
     pos: "top-[50%] left-[20%]",
     coords: { x: 100, y: 250 },
@@ -47,7 +48,7 @@ const nodes = [
   {
     id: "mkt",
     title: "BrainMKT",
-    icon: Megaphone,
+    icon: "brainmkt",
     type: "core",
     pos: "top-[50%] left-[80%]",
     coords: { x: 400, y: 250 },
@@ -58,8 +59,7 @@ const nodes = [
   {
     id: "books",
     title: "BrainBooks",
-    icon: Receipt,
-  Cpu,
+    icon: "brainbooks",
     type: "core",
     pos: "top-[80%] left-[50%]",
     coords: { x: 250, y: 400 },
@@ -307,7 +307,7 @@ export function Hero() {
                       activeNodeObj.color === "secondary" ? "bg-secondary/10 text-secondary" :
                       "bg-accent/10 text-accent"
                     )}>
-                      <activeNodeObj.icon size={22} />
+                      {typeof activeNodeObj.icon === "string" ? <ProductIcon product={activeNodeObj.icon} size={24} /> : <activeNodeObj.icon size={22} />}
                     </div>
                     <span className="text-[10px] font-mono font-bold tracking-wider text-foreground">
                       {activeNodeObj.title}
@@ -391,7 +391,7 @@ export function Hero() {
                     shadowClass
                   )}>
                     <div className={cn("flex size-4 items-center justify-center rounded-full transition-colors", iconBgClass)}>
-                      <node.icon size={10} />
+                      {typeof node.icon === "string" ? <ProductIcon product={node.icon} size={12} /> : <node.icon size={10} />}
                     </div>
                     <span className="text-[9px] font-mono font-bold tracking-wider text-foreground">{node.title}</span>
                     {node.type === "core" && (

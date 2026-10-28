@@ -50,6 +50,7 @@ import {
   Check,
   type LucideProps
 } from "lucide-react";
+import { ProductIcon, normalizeProductSlug } from "@/components/ui/ProductIcon";
 
 /**
  * Resolves a Lucide React icon component based on its name string.
@@ -59,6 +60,17 @@ export function getMenuIcon(name: string, props: LucideProps = {}) {
   if (!name) return null;
 
   const normalized = name.toLowerCase().replace(/[^a-z0-9]/g, "");
+
+  const productSlug = normalizeProductSlug(normalized);
+  if (productSlug) {
+    const numericSize =
+      typeof props.size === "number"
+        ? props.size
+        : typeof props.size === "string"
+        ? parseInt(props.size, 10) || 20
+        : 20;
+    return <ProductIcon product={productSlug} size={numericSize} className={props.className} />;
+  }
 
   switch (normalized) {
     case "database":

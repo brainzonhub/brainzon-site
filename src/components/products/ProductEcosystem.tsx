@@ -3,6 +3,7 @@
 import { useState, type ComponentType } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Container } from "@/components/layout/Container";
+import { ProductIcon } from "@/components/ui/ProductIcon";
 import { Megaphone, Database, Users, Receipt, Code, Globe, ShoppingBag, ShieldAlert } from "lucide-react";
 
 interface NodeData {
@@ -11,7 +12,7 @@ interface NodeData {
   type: "product" | "external";
   x: number;
   y: number;
-  icon: ComponentType<{ size?: number }>;
+  icon: ComponentType<{ size?: number }> | string;
   color: string;
   description: string;
   capabilities: string[];
@@ -27,7 +28,7 @@ export function ProductEcosystem() {
       type: "product",
       x: 140,
       y: 120,
-      icon: Megaphone,
+      icon: "brainmkt",
       color: "text-cyan-400 border-cyan-500 bg-cyan-500/5",
       description: "Marketing management engine coordinating campaigns, audiences, and lead handoffs.",
       capabilities: ["Campaign Planning", "Audience Segmentation", "BrainMKT AI Agent"]
@@ -38,7 +39,7 @@ export function ProductEcosystem() {
       type: "product",
       x: 360,
       y: 120,
-      icon: Users,
+      icon: "braincrm",
       color: "text-amber-500 border-amber-500 bg-amber-500/5",
       description: "Customer relationship manager linking pipelines, customer 360, and support channels.",
       capabilities: ["Lead Qualification", "Visual Pipeline", "BrainCRM AI Agent"]
@@ -49,7 +50,7 @@ export function ProductEcosystem() {
       type: "product",
       x: 360,
       y: 320,
-      icon: Database,
+      icon: "brainerp",
       color: "text-violet-400 border-violet-500 bg-violet-500/5",
       description: "Enterprise operations core coordinating inventory, procurement, and manufacturing.",
       capabilities: ["Inventory Control", "Procurement POs", "BrainERP AI Agent"]
@@ -60,7 +61,7 @@ export function ProductEcosystem() {
       type: "product",
       x: 140,
       y: 320,
-      icon: Receipt,
+      icon: "brainbooks",
       color: "text-emerald-400 border-emerald-500 bg-emerald-500/5",
       description: "Structured double-entry accounting ledger with automated reconciliations and compliance.",
       capabilities: ["General Ledger", "AR / AP Workflows", "BrainBooks AI Agent"]
@@ -192,7 +193,7 @@ export function ProductEcosystem() {
                         isHovered ? "ring-4 ring-primary/20 scale-110" : ""
                       }`}
                     >
-                      <IconComponent size={20} />
+                      {typeof node.icon === "string" ? <ProductIcon product={node.icon} size={26} /> : <IconComponent size={20} />}
                     </div>
                     <span className="text-[11px] font-bold text-foreground bg-card/80 px-2 py-0.5 rounded-md border border-border/40 backdrop-blur-sm whitespace-nowrap">
                       {node.name}
@@ -217,7 +218,7 @@ export function ProductEcosystem() {
                 >
                   <div className="flex items-center gap-3">
                     <div className={`size-10 rounded-xl border flex items-center justify-center ${hoveredNode.color}`}>
-                      <hoveredNode.icon size={20} />
+                      {typeof hoveredNode.icon === "string" ? <ProductIcon product={hoveredNode.icon} size={24} /> : <hoveredNode.icon size={20} />}
                     </div>
                     <div>
                       <h4 className="text-base font-bold text-foreground">

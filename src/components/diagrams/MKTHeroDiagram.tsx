@@ -12,6 +12,7 @@ import {
   Share2
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { ProductIcon } from "@/components/ui/ProductIcon";
 
 interface MKTHeroDiagramProps {
   className?: string;
@@ -57,7 +58,7 @@ export function MKTHeroDiagram({ className }: MKTHeroDiagramProps) {
       <div className="relative z-10 flex flex-col items-center">
         <div className="size-24 rounded-3xl border-2 border-cyan-500/50 bg-card/90 shadow-2xl flex flex-col items-center justify-center relative group">
           <div className="absolute -inset-1 rounded-3xl bg-cyan-500/20 blur-md pointer-events-none" />
-          <Megaphone size={26} className="text-cyan-400 relative z-10 mb-1" />
+          <ProductIcon product="brainmkt" size={28} className="relative z-10 mb-1" />
           <span className="text-xs font-bold text-foreground relative z-10">BrainMKT</span>
           <span className="text-[9px] font-mono uppercase tracking-wider text-cyan-400 relative z-10">Orchestrator</span>
         </div>

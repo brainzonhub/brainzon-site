@@ -11,6 +11,7 @@ import {
   Scale
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { ProductIcon } from "@/components/ui/ProductIcon";
 
 interface BooksHeroDiagramProps {
   className?: string;
@@ -56,7 +57,7 @@ export function BooksHeroDiagram({ className }: BooksHeroDiagramProps) {
       <div className="relative z-10 flex flex-col items-center">
         <div className="size-24 rounded-3xl border-2 border-emerald-500/50 bg-card/90 shadow-2xl flex flex-col items-center justify-center relative group">
           <div className="absolute -inset-1 rounded-3xl bg-emerald-500/20 blur-md pointer-events-none" />
-          <Receipt size={26} className="text-emerald-400 relative z-10 mb-1" />
+          <ProductIcon product="brainbooks" size={28} className="relative z-10 mb-1" />
           <span className="text-xs font-bold text-foreground relative z-10">BrainBooks</span>
           <span className="text-[9px] font-mono uppercase tracking-wider text-emerald-400 relative z-10">Audit Ledger</span>
         </div>

@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Container } from "@/components/layout/Container";
+import { ProductIcon } from "@/components/ui/ProductIcon";
 import { Database, Users, Megaphone, Receipt, ArrowRight } from "lucide-react";
 
 export function ProductsHero() {
@@ -24,10 +25,10 @@ export function ProductsHero() {
   };
 
   const floatingNodes = [
-    { name: "BrainMKT", icon: Megaphone, color: "text-cyan-400 border-cyan-500/30 shadow-[0_0_15px_rgba(6,182,212,0.2)]", x: "12%", y: "20%", delay: 0 },
-    { name: "BrainERP", icon: Database, color: "text-violet-400 border-violet-500/30 shadow-[0_0_15px_rgba(167,139,250,0.2)]", x: "78%", y: "15%", delay: 1.5 },
-    { name: "BrainCRM", icon: Users, color: "text-amber-400 border-amber-500/30 shadow-[0_0_15px_rgba(251,191,36,0.2)]", x: "18%", y: "70%", delay: 0.8 },
-    { name: "BrainBooks", icon: Receipt, color: "text-emerald-400 border-emerald-500/30 shadow-[0_0_15px_rgba(16,185,129,0.2)]", x: "72%", y: "65%", delay: 2.2 },
+    { name: "BrainMKT", slug: "brainmkt", color: "text-cyan-400 border-cyan-500/30 shadow-[0_0_15px_rgba(6,182,212,0.2)]", x: "12%", y: "20%", delay: 0 },
+    { name: "BrainERP", slug: "brainerp", color: "text-violet-400 border-violet-500/30 shadow-[0_0_15px_rgba(167,139,250,0.2)]", x: "78%", y: "15%", delay: 1.5 },
+    { name: "BrainCRM", slug: "braincrm", color: "text-amber-400 border-amber-500/30 shadow-[0_0_15px_rgba(251,191,36,0.2)]", x: "18%", y: "70%", delay: 0.8 },
+    { name: "BrainBooks", slug: "brainbooks", color: "text-emerald-400 border-emerald-500/30 shadow-[0_0_15px_rgba(16,185,129,0.2)]", x: "72%", y: "65%", delay: 2.2 },
   ];
 
   return (
@@ -130,7 +131,7 @@ export function ProductsHero() {
 
           {/* Floating Product Nodes */}
           {floatingNodes.map((node) => {
-            const Icon = node.icon;
+            // icon rendered via ProductIcon
             return (
               <motion.div
                 key={node.name}
@@ -144,8 +145,8 @@ export function ProductsHero() {
                   delay: node.delay,
                 }}
               >
-                <div className={`size-14 rounded-2xl border bg-card-opaque flex items-center justify-center transition-all duration-300 group-hover:scale-110 ${node.color}`}>
-                  <Icon size={24} />
+                <div className={`size-14 rounded-2xl border bg-card-opaque flex items-center justify-center transition-all duration-300 group-hover:scale-110 ${node.color} p-2.5`}>
+                  <ProductIcon product={node.slug} size={30} />
                 </div>
                 <div className="px-3 py-1 rounded-full border border-border bg-card-opaque text-xs font-semibold shadow-card text-foreground group-hover:border-primary/50 group-hover:text-primary transition-colors">
                   {node.name}

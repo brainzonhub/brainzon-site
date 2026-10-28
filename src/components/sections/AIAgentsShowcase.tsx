@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Sparkles, ShieldCheck, ArrowRight, type LucideIcon, Megaphone, Users, Database, Receipt } from "lucide-react";
 import { Container } from "@/components/layout/Container";
+import { ProductIcon } from "@/components/ui/ProductIcon";
 import { cn } from "@/lib/utils";
 
 type AIAgentUseCase = {
@@ -128,7 +129,7 @@ export function AIAgentsShowcase() {
                         "flex size-8 items-center justify-center rounded-lg transition-colors",
                         isSelected ? "bg-primary/20 text-primary" : "bg-muted text-muted-foreground"
                       )}>
-                        <Icon size={16} />
+                        <ProductIcon product={useCase.product} size={18} />
                       </div>
                       <div>
                         <span className="text-xs font-bold block">{useCase.agentName}</span>

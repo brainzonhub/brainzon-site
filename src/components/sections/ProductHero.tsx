@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight, ArrowLeft } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { getMenuIcon } from "@/components/navigation/menu-icons";
+import { ProductLogo, isProductSlug } from "@/components/ui/ProductIcon";
 import { cn } from "@/lib/utils";
 
 interface ProductHeroProps {
@@ -45,14 +46,26 @@ export function ProductHero({ name, headline, highlight, description, icon, righ
               Core Ecosystem Product
             </span>
 
-            <div className="flex items-center gap-4 mb-4">
-              <div className="flex size-12 items-center justify-center rounded-2xl border border-primary/20 bg-primary/10 text-primary">
-                {getMenuIcon(icon, { size: 24 })}
-              </div>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold tracking-tight text-foreground leading-[1.1]">
-                {name}
+            {isProductSlug(name) ? (
+              <h1 className="mb-4 mt-2">
+                <ProductLogo
+                  product={name}
+                  height={56}
+                  className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto"
+                  priority
+                />
+                <span className="sr-only">{name}</span>
               </h1>
-            </div>
+            ) : (
+              <div className="flex items-center gap-4 mb-4">
+                <div className="flex size-12 items-center justify-center rounded-2xl border border-primary/20 bg-primary/10 text-primary">
+                  {getMenuIcon(icon, { size: 28 })}
+                </div>
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold tracking-tight text-foreground leading-[1.1]">
+                  {name}
+                </h1>
+              </div>
+            )}
 
             <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight text-foreground mt-2 leading-[1.1]">
               {highlight && headline.includes(highlight) ? (

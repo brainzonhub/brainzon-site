@@ -63,7 +63,7 @@ export function ProductCard({ product, index }: ProductCardProps) {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <div className={cn("size-12 rounded-2xl border flex items-center justify-center transition-colors", getIconColor(product.slug))}>
-              {getMenuIcon(product.icon, { size: 24 })}
+              {getMenuIcon(product.icon, { size: 28 })}
             </div>
             <div>
               <h3 className="text-xl font-bold text-foreground transition-colors group-hover:text-primary">
