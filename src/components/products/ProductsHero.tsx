@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Container } from "@/components/layout/Container";
-import { Database, Users, Cpu, Network, ArrowRight } from "lucide-react";
+import { Database, Users, Megaphone, Receipt, ArrowRight } from "lucide-react";
 
 export function ProductsHero() {
   const containerVariants = {
@@ -24,10 +24,10 @@ export function ProductsHero() {
   };
 
   const floatingNodes = [
-    { name: "BrainAI", icon: Cpu, color: "text-primary border-primary/30 shadow-glow-primary", x: "12%", y: "20%", delay: 0 },
+    { name: "BrainMKT", icon: Megaphone, color: "text-cyan-400 border-cyan-500/30 shadow-[0_0_15px_rgba(6,182,212,0.2)]", x: "12%", y: "20%", delay: 0 },
     { name: "BrainERP", icon: Database, color: "text-violet-400 border-violet-500/30 shadow-[0_0_15px_rgba(167,139,250,0.2)]", x: "78%", y: "15%", delay: 1.5 },
     { name: "BrainCRM", icon: Users, color: "text-amber-400 border-amber-500/30 shadow-[0_0_15px_rgba(251,191,36,0.2)]", x: "18%", y: "70%", delay: 0.8 },
-    { name: "BrainConnect", icon: Network, color: "text-secondary border-secondary/30 shadow-glow-secondary", x: "72%", y: "65%", delay: 2.2 },
+    { name: "BrainBooks", icon: Receipt, color: "text-emerald-400 border-emerald-500/30 shadow-[0_0_15px_rgba(16,185,129,0.2)]", x: "72%", y: "65%", delay: 2.2 },
   ];
 
   return (
@@ -46,17 +46,17 @@ export function ProductsHero() {
         >
           <motion.div variants={itemVariants} className="space-y-4">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 border border-primary/20 shadow-[0_0_12px_rgba(6,182,212,0.15)]">
-              Brainzon Suite
+              Connected Enterprise Foundation
             </span>
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold tracking-tight text-foreground leading-[1.1]">
               Explore Brainzon’s <br className="hidden md:inline" />
               <span className="bg-gradient-to-r from-secondary via-accent to-primary bg-[size:200%_auto] bg-clip-text text-transparent animate-gradient-flow drop-shadow-[0_0_15px_rgba(6,182,212,0.12)] dark:drop-shadow-[0_0_20px_rgba(34,211,238,0.25)]">
-                Enterprise Software
+                Business Applications
               </span>{" "}
-              Ecosystem
+              &amp; AI Agents
             </h1>
             <p className="text-lg text-muted-foreground max-w-xl mx-auto lg:mx-0">
-              Unified platforms for ERP, CRM, AI, and system integration—engineered for scale, efficiency, and growth.
+              BrainMKT, BrainCRM, BrainERP, and BrainBooks—each powered by a dedicated AI agent with enterprise-grade access and human approval controls.
             </p>
           </motion.div>
 
@@ -90,10 +90,9 @@ export function ProductsHero() {
           {/* Inner Connecting Paths SVG */}
           <div className="absolute inset-0 z-0">
             <svg className="w-full h-full" viewBox="0 0 400 400" fill="none">
-              {/* Central node connection lines */}
               <motion.line
                 x1="200" y1="200" x2="80" y2="120"
-                stroke="currentColor" className="text-primary/20 dark:text-primary/10" strokeWidth="2"
+                stroke="currentColor" className="text-cyan-500/20 dark:text-cyan-500/10" strokeWidth="2"
                 strokeDasharray="4 4"
               />
               <motion.line
@@ -108,7 +107,7 @@ export function ProductsHero() {
               />
               <motion.line
                 x1="200" y1="200" x2="300" y2="280"
-                stroke="currentColor" className="text-secondary/20 dark:text-secondary/10" strokeWidth="2"
+                stroke="currentColor" className="text-emerald-500/20 dark:text-emerald-500/10" strokeWidth="2"
                 strokeDasharray="4 4"
               />
             </svg>
@@ -117,16 +116,14 @@ export function ProductsHero() {
           {/* Central Platform Core Node */}
           <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 z-10">
             <div className="relative">
-              {/* Outer pulsing ring */}
               <motion.div
                 className="absolute inset-0 -m-6 rounded-full border border-primary/30 bg-primary/5 shadow-glow-primary pointer-events-none"
                 animate={{ scale: [1, 1.25, 1], opacity: [0.6, 0.1, 0.6] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
               />
-              {/* Platform Core Shield */}
               <div className="flex flex-col items-center justify-center size-28 rounded-full border border-border bg-card-opaque shadow-elevated">
-                <span className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground">Platform</span>
-                <span className="text-sm font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Core</span>
+                <span className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground">Connected</span>
+                <span className="text-sm font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Operations</span>
               </div>
             </div>
           </div>

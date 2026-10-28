@@ -167,10 +167,11 @@ export function DemoCTA() {
                             onChange={(e) => setFormData({ ...formData, product: e.target.value })}
                             className="w-full pl-9 pr-3.5 py-2.5 text-sm rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary/60 transition-all duration-200 appearance-none cursor-pointer"
                           >
-                            <option value="brainerp">BrainERP System</option>
-                            <option value="braincrm">BrainCRM Pipeline</option>
-                            <option value="brainai">BrainAI Neural Models</option>
-                            <option value="brainconnect">BrainConnect Integration</option>
+                            <option value="brainmkt">BrainMKT (Marketing)</option>
+                            <option value="braincrm">BrainCRM (Sales & Support)</option>
+                            <option value="brainerp">BrainERP (Operations)</option>
+                            <option value="brainbooks">BrainBooks (Accounting)</option>
+                            <option value="integration">Enterprise Integration</option>
                             <option value="modernization">Legacy Modernization</option>
                           </select>
                         </div>

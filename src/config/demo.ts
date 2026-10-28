@@ -37,14 +37,14 @@ export interface TrustMetric {
 /* ──────────────────────────────────────── Solution Options ── */
 
 export const solutionOptions: SolutionOption[] = [
-  { id: "brainerp", label: "BrainERP", icon: "Database" },
-  { id: "braincrm", label: "BrainCRM", icon: "Users" },
-  { id: "brainai", label: "BrainAI", icon: "Cpu" },
-  { id: "brainconnect", label: "BrainConnect", icon: "Network" },
-  { id: "erp-implementation", label: "ERP Implementation", icon: "Package" },
-  { id: "legacy-modernization", label: "Legacy Modernization", icon: "RefreshCw" },
-  { id: "custom-software", label: "Custom Software Development", icon: "Code2" },
-  { id: "cloud-solutions", label: "Cloud Solutions", icon: "Cloud" },
+  { id: "brainmkt", label: "BrainMKT (Marketing Management)", icon: "Megaphone" },
+  { id: "braincrm", label: "BrainCRM (Customer Relationships)", icon: "Users" },
+  { id: "brainerp", label: "BrainERP (Enterprise Operations)", icon: "Database" },
+  { id: "brainbooks", label: "BrainBooks (Accounting Management)", icon: "Receipt" },
+  { id: "odoo-bc-implementation", label: "Odoo / Dynamics 365 BC Implementation", icon: "Layers" },
+  { id: "enterprise-integration", label: "Enterprise Integration Services", icon: "Network" },
+  { id: "legacy-modernization", label: "Legacy System Modernization", icon: "RefreshCw" },
+  { id: "custom-software", label: "Custom Software Engineering", icon: "Code2" },
 ];
 
 /* ──────────────────────────────────────── Company Size ── */
@@ -76,25 +76,25 @@ export const demoBenefits: DemoBenefit[] = [
   {
     title: "Understand Your Business",
     description:
-      "Discuss your workflows, challenges, and transformation goals with our enterprise consultants.",
+      "Discuss your workflows, operational challenges, and transformation goals with our enterprise consultants.",
     icon: "Search",
   },
   {
     title: "Personalized Solution Strategy",
     description:
-      "Get tailored recommendations based on your industry, scale, and business requirements.",
+      "Get tailored platform recommendations (Brainzon products, Odoo, Dynamics 365 BC, or custom) based on your operating model.",
     icon: "Target",
   },
   {
-    title: "Product Walkthrough",
+    title: "Product & AI Agent Walkthrough",
     description:
-      "Explore BrainERP, BrainCRM, AI capabilities, integrations, and automation features live.",
+      "Explore BrainMKT, BrainCRM, BrainERP, and BrainBooks live alongside their dedicated AI workflow assistants.",
     icon: "Monitor",
   },
   {
     title: "Transformation Roadmap",
     description:
-      "Receive a clear implementation approach with milestones, timelines, and ROI projections.",
+      "Receive a phased implementation approach with discovery milestones, migration controls, and ROI projections.",
     icon: "Map",
   },
 ];
@@ -106,25 +106,25 @@ export const demoTimeline: TimelineStep[] = [
     step: "01",
     title: "Discovery Call",
     description:
-      "Understand your business goals, current systems, and digital transformation priorities.",
+      "Understand your business goals, current applications, data sources, and digital transformation priorities.",
   },
   {
     step: "02",
     title: "Solution Discussion",
     description:
-      "Review suitable Brainzon solutions aligned to your operational requirements and industry.",
+      "Review suitable Brainzon solutions aligned to your operating requirements, governance rules, and budget.",
   },
   {
     step: "03",
-    title: "Live Demo",
+    title: "Live Guided Demo",
     description:
-      "Experience platform capabilities firsthand with a guided walkthrough of relevant modules.",
+      "Experience platform capabilities firsthand with a guided walkthrough of relevant modules and AI workflows.",
   },
   {
     step: "04",
     title: "Implementation Planning",
     description:
-      "Create a detailed transformation roadmap with timelines, resource allocation, and milestones.",
+      "Create a phased delivery roadmap with data migration rehearsals, training, and cutover milestones.",
   },
 ];
 
@@ -141,9 +141,9 @@ export const trustMetrics: TrustMetric[] = [
 
 export const demoHeroContent = {
   badge: "Book a Demo",
-  headline: "See How Brainzon Can Modernize Your Business",
+  headline: "See How Brainzon Connects Your Business Operations",
   subheadline:
-    "Schedule a personalized consultation with our experts to explore ERP, CRM, AI, automation, and software modernization solutions designed around your business goals.",
+    "Schedule a consultation with our experts to explore BrainMKT, BrainCRM, BrainERP, BrainBooks, enterprise platforms, integration, and modernization solutions.",
   primaryCta: "Book Your Demo",
   secondaryCta: "Talk to an Expert",
 };
@@ -151,6 +151,6 @@ export const demoHeroContent = {
 /* ──────────────────────────────────────── Final CTA ── */
 
 export const demoFinalCta = {
-  headline: "Ready to Build the Next Era of Your Business?",
+  headline: "Ready to Build the Connected Era of Your Business?",
   cta: "Schedule Your Free Consultation",
 };

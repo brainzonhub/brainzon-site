@@ -103,7 +103,7 @@ export function ERPProductsShowcase() {
             <span>Readymade ERP Platforms</span>
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-foreground">
-            We Implement & Customize the World's Leading ERPs
+            We Implement & Customize the World&apos;s Leading ERPs
           </h2>
           <p className="text-base text-muted-foreground leading-relaxed max-w-2xl mx-auto">
             Whether you choose Microsoft Dynamics 365 Business Central, Odoo, or ERPNext, our core engineers deliver flawless implementation and build custom modules tailored to your exact workflows.

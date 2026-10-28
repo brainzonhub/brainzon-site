@@ -3,7 +3,7 @@
 import { useState, type ComponentType } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Container } from "@/components/layout/Container";
-import { Cpu, Database, Users, Network, Code, Globe, ShoppingBag, ShieldAlert } from "lucide-react";
+import { Megaphone, Database, Users, Receipt, Code, Globe, ShoppingBag, ShieldAlert } from "lucide-react";
 
 interface NodeData {
   id: string;
@@ -22,107 +22,105 @@ export function ProductEcosystem() {
 
   const nodes: NodeData[] = [
     {
-      id: "brainai",
-      name: "BrainAI",
+      id: "brainmkt",
+      name: "BrainMKT",
       type: "product",
-      x: 250,
-      y: 200,
-      icon: Cpu,
-      color: "text-primary border-primary bg-primary/5",
-      description: "Cognitive Intelligence Layer orchestrating all data flows and predictive metrics.",
-      capabilities: ["LLM Assistants", "Document Parsing", "Predictive Analytics"]
-    },
-    {
-      id: "brainerp",
-      name: "BrainERP",
-      type: "product",
-      x: 100,
-      y: 100,
-      icon: Database,
-      color: "text-violet-400 border-violet-500 bg-violet-500/5",
-      description: "Enterprise operations core managing ledgers, inventory, and supply lines.",
-      capabilities: ["Finance", "Inventory Control", "Procurement Automation"]
+      x: 140,
+      y: 120,
+      icon: Megaphone,
+      color: "text-cyan-400 border-cyan-500 bg-cyan-500/5",
+      description: "Marketing management engine coordinating campaigns, audiences, and lead handoffs.",
+      capabilities: ["Campaign Planning", "Audience Segmentation", "BrainMKT AI Agent"]
     },
     {
       id: "braincrm",
       name: "BrainCRM",
       type: "product",
-      x: 400,
-      y: 100,
+      x: 360,
+      y: 120,
       icon: Users,
       color: "text-amber-500 border-amber-500 bg-amber-500/5",
-      description: "Unified relationship manager linking pipelines, customer 360, and support channels.",
-      capabilities: ["Lead Scoring", "Pipeline Forecasts", "Customer 360 View"]
+      description: "Customer relationship manager linking pipelines, customer 360, and support channels.",
+      capabilities: ["Lead Qualification", "Visual Pipeline", "BrainCRM AI Agent"]
     },
     {
-      id: "brainconnect",
-      name: "BrainConnect",
+      id: "brainerp",
+      name: "BrainERP",
       type: "product",
-      x: 250,
-      y: 350,
-      icon: Network,
-      color: "text-secondary border-secondary bg-secondary/5",
-      description: "High-throughput messaging queue connecting internal assets to external targets.",
-      capabilities: ["API Gateway", "Kafka Events", "Change Data Capture"]
+      x: 360,
+      y: 320,
+      icon: Database,
+      color: "text-violet-400 border-violet-500 bg-violet-500/5",
+      description: "Enterprise operations core coordinating inventory, procurement, and manufacturing.",
+      capabilities: ["Inventory Control", "Procurement POs", "BrainERP AI Agent"]
+    },
+    {
+      id: "brainbooks",
+      name: "BrainBooks",
+      type: "product",
+      x: 140,
+      y: 320,
+      icon: Receipt,
+      color: "text-emerald-400 border-emerald-500 bg-emerald-500/5",
+      description: "Structured double-entry accounting ledger with automated reconciliations and compliance.",
+      capabilities: ["General Ledger", "AR / AP Workflows", "BrainBooks AI Agent"]
     },
     // External Systems
     {
       id: "legacy",
-      name: "Legacy Apps",
+      name: "Legacy Systems",
       type: "external",
-      x: 60,
-      y: 280,
+      x: 460,
+      y: 450,
       icon: ShieldAlert,
       color: "text-rose-400 border-rose-500/30 bg-rose-500/5",
-      description: "On-Premises or legacy backends connected via secure modernization pipes.",
-      capabilities: ["AS400 Mainframes", "COBOL Code Bases", "Direct Database Bridges"]
+      description: "On-Premises or legacy backends connected via governed modernization APIs.",
+      capabilities: ["Mainframes", "Legacy Databases", "Controlled Cutover"]
     },
     {
       id: "ecommerce",
       name: "eCommerce",
       type: "external",
-      x: 440,
-      y: 280,
+      x: 480,
+      y: 200,
       icon: ShoppingBag,
       color: "text-indigo-400 border-indigo-500/30 bg-indigo-500/5",
-      description: "Digital web storefront systems feeding customer logs into BrainCRM.",
-      capabilities: ["Storefront Catalogs", "Transaction Handlers", "Cart Analytics"]
+      description: "Digital web storefront systems feeding customer orders into BrainCRM and BrainERP.",
+      capabilities: ["Storefront Catalogs", "Transaction Handlers", "Cart Sync"]
     },
     {
       id: "apis",
-      name: "External APIs",
+      name: "Banking & Tax APIs",
       type: "external",
-      x: 100,
+      x: 40,
       y: 450,
       icon: Code,
-      color: "text-emerald-400 border-emerald-500/30 bg-emerald-500/5",
-      description: "Third-party application endpoints connected via REST and GraphQL engines.",
-      capabilities: ["Payment Integrations", "Shipping webhooks", "Identity Providers"]
+      color: "text-teal-400 border-teal-500/30 bg-teal-500/5",
+      description: "Bank statement feeds and tax authority endpoints connected via secure bridges.",
+      capabilities: ["Open Banking Feeds", "Payment Gateways", "Statutory Filings"]
     },
     {
       id: "cloud",
-      name: "Cloud Storage",
+      name: "Ad Networks",
       type: "external",
-      x: 400,
-      y: 450,
+      x: 40,
+      y: 200,
       icon: Globe,
-      color: "text-cyan-400 border-cyan-500/30 bg-cyan-500/5",
-      description: "Distributed cloud buckets and datalakes parsed by BrainAI OCR models.",
-      capabilities: ["Amazon S3", "Azure Blob", "Google Cloud Storage"]
+      color: "text-blue-400 border-blue-500/30 bg-blue-500/5",
+      description: "External advertising platforms and social channels streaming campaign responses.",
+      capabilities: ["Google Ads", "Meta Ads", "LinkedIn API"]
     }
   ];
 
-  // Map out connection lines from nodes
-  // Central node (BrainAI) connects to core products and core products connect to external integrations.
   const connections = [
-    { from: "brainai", to: "brainerp", color: "stroke-primary/30" },
-    { from: "brainai", to: "braincrm", color: "stroke-primary/30" },
-    { from: "brainai", to: "brainconnect", color: "stroke-primary/30" },
-    { from: "brainconnect", to: "legacy", color: "stroke-secondary/20" },
-    { from: "brainconnect", to: "apis", color: "stroke-secondary/20" },
-    { from: "brainconnect", to: "cloud", color: "stroke-secondary/20" },
-    { from: "braincrm", to: "ecommerce", color: "stroke-amber-500/20" },
-    { from: "brainerp", to: "legacy", color: "stroke-violet-500/20" }
+    { from: "brainmkt", to: "braincrm", color: "stroke-cyan-500/30" },
+    { from: "braincrm", to: "brainerp", color: "stroke-amber-500/30" },
+    { from: "brainerp", to: "brainbooks", color: "stroke-violet-500/30" },
+    { from: "brainbooks", to: "brainmkt", color: "stroke-emerald-500/30" },
+    { from: "brainmkt", to: "cloud", color: "stroke-blue-500/20" },
+    { from: "braincrm", to: "ecommerce", color: "stroke-indigo-500/20" },
+    { from: "brainerp", to: "legacy", color: "stroke-rose-500/20" },
+    { from: "brainbooks", to: "apis", color: "stroke-teal-500/20" }
   ];
 
   const getNodeCoords = (id: string) => {
@@ -131,117 +129,146 @@ export function ProductEcosystem() {
   };
 
   return (
-    <section className="py-24 bg-card/10 border-y border-border relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-brand/5 opacity-40 pointer-events-none" />
-      <Container className="grid lg:grid-cols-12 gap-12 items-center relative z-10">
-        
-        {/* Left Col: Explanatory Copy */}
-        <div className="lg:col-span-5 space-y-6 text-center lg:text-left">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider text-secondary bg-secondary/10 border border-secondary/20">
-            Enterprise Architecture
+    <section className="py-24 bg-card/20 border-y border-border/50 relative overflow-hidden">
+      {/* Background Decor */}
+      <div className="absolute inset-0 bg-radial-gradient from-primary/5 via-transparent to-transparent opacity-50 pointer-events-none" />
+
+      <Container className="space-y-16 relative z-10">
+        {/* Section Heading */}
+        <div className="text-center max-w-2xl mx-auto space-y-4">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 border border-primary/20">
+            Interactive Ecosystem
           </span>
           <h2 className="text-heading-2 font-bold tracking-tight">
-            Connected Enterprise Ecosystem
+            One Connected Enterprise Foundation
           </h2>
           <p className="text-sm text-muted-foreground leading-relaxed">
-            Brainzon platforms operate as an interconnected ecosystem. <strong>BrainAI</strong> serves as the unified cognitive layer, analyzing operational flows from <strong>BrainERP</strong>, customer engagement from <strong>BrainCRM</strong>, and data transactions routed by <strong>BrainConnect</strong>.
+            BrainMKT, BrainCRM, BrainERP, and BrainBooks synchronize seamlessly. Hover over each node to view integration touchpoints and dedicated AI agent roles.
           </p>
-
         </div>
 
-        {/* Right Col: Interactive Visual Map */}
-        <div className="lg:col-span-7 relative bg-card-opaque border border-border/80 rounded-3xl p-6 sm:p-10 shadow-card min-h-[550px] flex items-center justify-center overflow-x-auto">
-          <div className="relative w-[500px] h-[500px] shrink-0">
-            {/* SVG Lines */}
-            <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 500 500">
-              <defs>
-                <linearGradient id="primaryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="var(--primary)" stopOpacity="0.4" />
-                  <stop offset="100%" stopColor="var(--secondary)" stopOpacity="0.4" />
-                </linearGradient>
-              </defs>
-
-              {connections.map((conn, idx) => {
-                const start = getNodeCoords(conn.from);
-                const end = getNodeCoords(conn.to);
+        {/* Diagram Area */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+          {/* SVG Map Canvas */}
+          <div className="lg:col-span-2 relative h-[450px] w-full rounded-2xl border border-border/70 bg-card/60 backdrop-blur-md p-4 flex items-center justify-center overflow-hidden">
+            <svg
+              className="absolute inset-0 size-full"
+              viewBox="0 0 520 480"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              {/* Connection Curves */}
+              {connections.map((c, i) => {
+                const from = getNodeCoords(c.from);
+                const to = getNodeCoords(c.to);
                 return (
-                  <g key={idx}>
-                    <motion.path
-                      d={`M ${start.x} ${start.y} Q ${(start.x + end.x) / 2} ${(start.y + end.y) / 2 - 20} ${end.x} ${end.y}`}
-                      fill="none"
-                      className={conn.color}
-                      strokeWidth="2"
-                    />
-                    {/* Animated moving dash pulse */}
-                    <motion.path
-                      d={`M ${start.x} ${start.y} Q ${(start.x + end.x) / 2} ${(start.y + end.y) / 2 - 20} ${end.x} ${end.y}`}
-                      fill="none"
-                      stroke="url(#primaryGrad)"
-                      strokeWidth="2"
-                      strokeDasharray="10 15"
-                      animate={{ strokeDashoffset: [-30, 0] }}
-                      transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                    />
-                  </g>
+                  <path
+                    key={i}
+                    d={`M ${from.x} ${from.y} Q ${(from.x + to.x) / 2} ${(from.y + to.y) / 2 - 20} ${to.x} ${to.y}`}
+                    fill="none"
+                    strokeWidth="2"
+                    strokeDasharray="4,4"
+                    className={c.color}
+                  />
                 );
               })}
             </svg>
 
-            {/* Render Nodes */}
-            {nodes.map((node) => {
-              const Icon = node.icon;
-              const isProduct = node.type === "product";
-              return (
-                <div
-                  key={node.id}
-                  className="absolute -translate-x-1/2 -translate-y-1/2 cursor-pointer z-10"
-                  style={{ top: node.y, left: node.x }}
-                  onMouseEnter={() => setHoveredNode(node)}
-                  onMouseLeave={() => setHoveredNode(null)}
-                >
+            {/* Nodes */}
+            <div className="relative size-full">
+              {nodes.map((node) => {
+                const IconComponent = node.icon;
+                const isHovered = hoveredNode?.id === node.id;
+                return (
                   <motion.div
-                    whileHover={{ scale: 1.1 }}
-                    className={`flex items-center justify-center rounded-2xl border bg-card-opaque transition-all duration-300 shadow-sm ${node.color} ${isProduct ? "size-14" : "size-12"}`}
+                    key={node.id}
+                    className={`absolute -translate-x-1/2 -translate-y-1/2 cursor-pointer flex flex-col items-center gap-2 group z-20`}
+                    style={{ left: `${(node.x / 520) * 100}%`, top: `${(node.y / 480) * 100}%` }}
+                    onMouseEnter={() => setHoveredNode(node)}
+                    whileHover={{ scale: 1.15 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
                   >
-                    <Icon size={isProduct ? 24 : 18} />
-                  </motion.div>
-                  <span className="absolute top-full left-1/2 -translate-x-1/2 mt-1.5 text-[10px] font-bold text-foreground bg-card-opaque/90 px-1.5 py-0.5 rounded border border-border/40 whitespace-nowrap shadow-xs">
-                    {node.name}
-                  </span>
-                </div>
-              );
-            })}
-
-            {/* Hover Tooltip Overlay */}
-            <AnimatePresence>
-              {hoveredNode && (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.95, y: 10 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.95, y: 10 }}
-                  className="absolute bottom-4 left-4 right-4 z-30 p-5 rounded-2xl border border-border bg-card-opaque shadow-elevated"
-                >
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className={`text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded ${hoveredNode.type === "product" ? "bg-primary/10 text-primary border border-primary/20" : "bg-muted text-muted-foreground border border-border"}`}>
-                      {hoveredNode.type === "product" ? "Core Platform" : "System Target"}
+                    <div
+                      className={`size-12 rounded-2xl border flex items-center justify-center shadow-lg transition-all duration-300 ${node.color} ${
+                        isHovered ? "ring-4 ring-primary/20 scale-110" : ""
+                      }`}
+                    >
+                      <IconComponent size={20} />
+                    </div>
+                    <span className="text-[11px] font-bold text-foreground bg-card/80 px-2 py-0.5 rounded-md border border-border/40 backdrop-blur-sm whitespace-nowrap">
+                      {node.name}
                     </span>
-                    <h4 className="text-sm font-bold text-foreground">{hoveredNode.name}</h4>
-                  </div>
-                  <p className="text-xs text-muted-foreground mb-3">{hoveredNode.description}</p>
-                  <div className="flex flex-wrap gap-1.5">
-                    {hoveredNode.capabilities.map((c) => (
-                      <span key={c} className="text-[9px] font-semibold bg-muted/60 text-foreground border border-border/50 px-2 py-0.5 rounded">
-                        {c}
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Details / Interactive Panel */}
+          <div className="lg:col-span-1 rounded-2xl border border-border/70 bg-card/40 backdrop-blur-md p-6 h-[450px] flex flex-col justify-between">
+            <AnimatePresence mode="wait">
+              {hoveredNode ? (
+                <motion.div
+                  key={hoveredNode.id}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.2 }}
+                  className="space-y-6"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className={`size-10 rounded-xl border flex items-center justify-center ${hoveredNode.color}`}>
+                      <hoveredNode.icon size={20} />
+                    </div>
+                    <div>
+                      <h4 className="text-base font-bold text-foreground">
+                        {hoveredNode.name}
+                      </h4>
+                      <span className="text-xs text-muted-foreground uppercase tracking-wider font-semibold">
+                        {hoveredNode.type === "product" ? "Core Application" : "Integration Node"}
                       </span>
-                    ))}
+                    </div>
+                  </div>
+
+                  <p className="text-xs text-muted-foreground leading-relaxed">
+                    {hoveredNode.description}
+                  </p>
+
+                  <div className="space-y-2">
+                    <span className="text-xs font-bold text-foreground uppercase tracking-wider">
+                      Core Scope:
+                    </span>
+                    <ul className="space-y-1.5">
+                      {hoveredNode.capabilities.map((cap, i) => (
+                        <li key={i} className="flex items-center gap-2 text-xs text-muted-foreground">
+                          <span className="size-1.5 rounded-full bg-primary" />
+                          {cap}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </motion.div>
+              ) : (
+                <div className="flex flex-col items-center justify-center size-full text-center space-y-4">
+                  <div className="size-12 rounded-full border border-dashed border-border flex items-center justify-center text-muted-foreground">
+                    <Database size={24} />
+                  </div>
+                  <div className="space-y-1">
+                    <h4 className="text-sm font-semibold text-foreground">
+                      Explore the Connected Foundation
+                    </h4>
+                    <p className="text-xs text-muted-foreground max-w-xs">
+                      Hover over any node in the topology diagram to reveal capability sets, data flows, and dedicated AI agent assistance.
+                    </p>
+                  </div>
+                </div>
               )}
             </AnimatePresence>
 
+            <div className="border-t border-border/50 pt-4 text-[11px] text-muted-foreground">
+              Architecture: Business-led, Modular, API-first &amp; Observable
+            </div>
           </div>
         </div>
-
       </Container>
     </section>
   );

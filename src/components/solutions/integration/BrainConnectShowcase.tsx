@@ -23,20 +23,20 @@ export function BrainConnectShowcase() {
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-3xl">
             <p className="mb-4 text-xs font-bold uppercase tracking-[0.24em] text-primary">
-              Proprietary Integration Platform
+              Enterprise Integration Services
             </p>
             <h2 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl">
-              BrainConnect &mdash; Integration & Workflow Automation
+              Connected Operations &mdash; API &amp; Workflow Orchestration
             </h2>
             <p className="mt-5 text-base leading-8 text-muted-foreground sm:text-lg">
-              Power your business processes with BrainConnect. Designed to unify your APIs, synchronize database tables in real-time, and run event-driven automated workflows.
+              Power your business processes with governed integration engineering. Designed to unify your APIs, synchronize database records in real-time, and run event-driven automated workflows with dead-letter recovery.
             </p>
           </div>
           <Link
-            href="/products/brainconnect"
+            href="/contact"
             className="group inline-flex shrink-0 items-center gap-2 rounded-lg border border-secondary/20 bg-secondary/5 px-5 py-2.5 text-sm font-bold text-secondary backdrop-blur transition-all duration-300 hover:bg-secondary/10 hover:shadow-glow-secondary hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary"
           >
-            <span>Explore BrainConnect</span>
+            <span>Discuss Integration Needs</span>
             <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
           </Link>
         </div>
@@ -59,35 +59,29 @@ export function BrainConnectShowcase() {
                 <div className="absolute inset-0 -z-10 bg-gradient-to-br from-white/[0.02] to-transparent pointer-events-none" />
 
                 <div>
-                  <div className="flex items-center gap-4">
-                    <span
-                      className={cn(
-                        "flex size-11 items-center justify-center rounded-xl border transition-colors",
-                        isFeatured
-                          ? "border-primary/30 bg-primary/10 text-primary"
-                          : "border-border/60 bg-muted/40 text-muted-foreground"
-                      )}
-                    >
-                      <IconComponent className="size-5" />
-                    </span>
-                    <div>
-                      <p className="font-mono text-[10px] font-bold tracking-widest text-primary uppercase">
-                        Feature {String(index + 1).padStart(2, "0")}
-                      </p>
-                      <h3 className="mt-1 text-lg font-bold text-foreground">{feature.title}</h3>
+                  <div className="flex items-center justify-between">
+                    <div className="flex size-12 items-center justify-center rounded-xl border border-primary/25 bg-primary/10 text-primary shadow-xs">
+                      <IconComponent className="size-6" />
                     </div>
+                    {isFeatured && (
+                      <span className="rounded-full border border-primary/40 bg-primary/15 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-primary">
+                        Core Service
+                      </span>
+                    )}
                   </div>
 
-                  <p className="mt-5 text-sm leading-7 text-muted-foreground">
+                  <h3 className="mt-6 text-xl font-bold tracking-tight text-foreground">
+                    {feature.title}
+                  </h3>
+
+                  <p className="mt-3 text-sm leading-6 text-muted-foreground">
                     {feature.description}
                   </p>
-                </div>
 
-                <div className="mt-6 pt-5 border-t border-border/60">
-                  <ul className="grid gap-2.5">
+                  <ul className="mt-6 space-y-2.5 border-t border-border/40 pt-5">
                     {feature.bullets.map((bullet) => (
-                      <li key={bullet} className="flex items-center gap-2.5 text-sm text-foreground/85">
-                        <Check className="size-4 shrink-0 text-primary" />
+                      <li key={bullet} className="flex items-start gap-2.5 text-xs text-muted-foreground">
+                        <Check className="size-4 shrink-0 text-primary mt-0.5" />
                         <span>{bullet}</span>
                       </li>
                     ))}

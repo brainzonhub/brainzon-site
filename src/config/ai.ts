@@ -170,10 +170,12 @@ export const generativeAICapabilities: GenerativeAICapability[] = [
 /* ──────────────────────────────────────── Integration Options ── */
 
 export const aiIntegrationOptions = [
-  { name: "BrainERP Core", description: "Operational sync" },
-  { name: "BrainCRM Pipeline", description: "Lead scoring" },
-  { name: "BrainConnect iPaaS", description: "Workflow triggers" },
-  { name: "Microsoft Dynamics", description: "Cloud synchronization" },
+  { name: "BrainMKT Marketing", description: "Campaign summaries & copy generation" },
+  { name: "BrainCRM Pipeline", description: "Lead context & follow-up drafting" },
+  { name: "BrainERP Core", description: "Operational inventory & exception alerts" },
+  { name: "BrainBooks Accounting", description: "Financial statement & variance summaries" },
+  { name: "Enterprise Integration Services", description: "Workflow triggers & event sync" },
+  { name: "Microsoft Dynamics 365 BC", description: "Cloud synchronization" },
   { name: "Enterprise Databases", description: "SQL/NoSQL ingestion" },
   { name: "Cloud Platforms", description: "Azure/AWS endpoints" },
   { name: "Custom APIs & Hubs", description: "Webhook data loops" },
@@ -267,9 +269,9 @@ export const whyChooseAI: WhyChooseAICard[] = [
 /* ──────────────────────────────────────── Hero Content ── */
 
 export const aiHeroContent = {
-  badge: "Artificial Intelligence",
-  headline: "Unlock the Power of Enterprise AI With BrainAI",
-  subheadline: "Brainzon delivers secure and scalable AI solutions that automate processes, enhance customer experiences, and help organizations make smarter decisions.",
+  badge: "Product-Specific AI Agents",
+  headline: "Dedicated AI Assistance Embedded in Core Workflows",
+  subheadline: "Brainzon delivers context-aware, permission-gated AI agents for BrainMKT, BrainCRM, BrainERP, and BrainBooks with strict human review controls.",
   primaryCta: "Explore AI Solutions",
   secondaryCta: "Talk to an AI Expert",
 };

@@ -11,11 +11,11 @@ import { ProductCTA } from "@/components/products/ProductCTA";
 
 // Server-side SEO Metadata
 export const metadata: Metadata = {
-  title: "Products | Brainzon Enterprise Software Solutions",
-  description: "Discover Brainzon enterprise software products including BrainERP, BrainCRM, BrainAI, and BrainConnect, engineered for digital transformation, ERP/CRM integration, AI automation, and enterprise modernization.",
+  title: "Products | Brainzon Connected Enterprise Suite",
+  description: "Discover Brainzon's proprietary business applications: BrainMKT, BrainCRM, BrainERP, and BrainBooks—each supported by a dedicated AI agent with enterprise-grade access and human approval controls.",
   openGraph: {
-    title: "Brainzon Enterprise Software Ecosystem",
-    description: "Unified platforms for ERP, CRM, AI, and system integration—engineered for scale, efficiency, and growth.",
+    title: "Brainzon Enterprise Software Ecosystem | Connected Applications & AI",
+    description: "One Connected Enterprise Foundation: BrainMKT + BrainCRM + BrainERP + BrainBooks with dedicated AI agents.",
     url: "https://brainzon.com/products",
     type: "website",
     siteName: "Brainzon",
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Brainzon Enterprise Software Ecosystem",
-    description: "Unified platforms for ERP, CRM, AI, and system integration.",
+    description: "One Connected Enterprise Foundation: BrainMKT + BrainCRM + BrainERP + BrainBooks.",
   },
 };
 
@@ -52,8 +52,8 @@ export default function ProductsPage() {
   const productSuiteSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    "name": "Brainzon Enterprise Software Suite",
-    "description": "Unified platforms for ERP, CRM, AI, and system integration—engineered for scale, efficiency, and growth.",
+    "name": "Brainzon Connected Enterprise Software Suite",
+    "description": "One Connected Enterprise Foundation: BrainMKT, BrainCRM, BrainERP, and BrainBooks—each supported by a dedicated AI agent.",
     "numberOfItems": 4,
     "itemListElement": productsConfig.map((p, idx) => ({
       "@type": "Product",
@@ -94,10 +94,10 @@ export default function ProductsPage() {
                 Product Suite
               </span>
               <h2 className="text-heading-2 font-bold tracking-tight">
-                Our Core Products
+                Our Core Business Applications
               </h2>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                Explore our purpose-built cloud platforms designed to automate back-office ledgers, coordinate client relationships, inject AI cognitive flows, and connect API pipelines.
+                Explore our four proprietary cloud platforms: BrainMKT, BrainCRM, BrainERP, and BrainBooks—each powered by a dedicated AI agent with enterprise-grade access and human approval controls.
               </p>
             </div>
 

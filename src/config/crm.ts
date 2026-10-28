@@ -141,8 +141,10 @@ export const crmAiCapabilities: CRMAiCapability[] = [
 /* ──────────────────────────────────────── Integration Options ── */
 
 export const crmIntegrationOptions = [
+  { name: "BrainMKT Marketing", description: "Streams campaign responses and qualified leads directly into CRM pipelines." },
   { name: "BrainERP Operations", description: "Bridges customer deals with billing, warehouses, and fulfillment modules." },
-  { name: "BrainConnect iPaaS", description: "Configures webhook triggers, API syncs, and event-driven automation." },
+  { name: "BrainBooks Accounting", description: "Synchronizes customer accounts, invoices, balances, and payment terms." },
+  { name: "Enterprise Integration Services", description: "Configures webhook triggers, API syncs, and event-driven automation." },
   { name: "External Databases", description: "Connects securely with legacy custom SQL databases or cloud datastores." },
 ];
 

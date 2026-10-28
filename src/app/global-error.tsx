@@ -28,7 +28,7 @@ export default function GlobalError({ error, reset }: GlobalErrorProps) {
           </p>
           <button
             onClick={() => reset()}
-            className="inline-flex items-center justify-center gap-2 px-5 py-2.5 text-xs font-semibold rounded-lg text-white bg-blue-600 hover:bg-blue-500 transition-colors duration-200"
+            className="inline-flex items-center justify-center gap-2 px-5 py-2.5 text-xs font-semibold rounded-lg text-white bg-[#0065bd] hover:bg-[#00529b] transition-colors duration-200"
           >
             <RefreshCw size={12} />
             <span>Re-bootstrap Application</span>

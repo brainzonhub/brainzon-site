@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 import { siteConfig } from "@/config/site";
 import { Hero } from "@/components/sections/Hero";
 import { ProductEcosystem } from "@/components/sections/ProductEcosystem";
-import { ERPShowcase } from "@/components/sections/ERPShowcase";
+import { MKTShowcase } from "@/components/sections/MKTShowcase";
 import { CRMShowcase } from "@/components/sections/CRMShowcase";
-import { AIShowcase } from "@/components/sections/AIShowcase";
-import { ConnectShowcase } from "@/components/sections/ConnectShowcase";
+import { ERPShowcase } from "@/components/sections/ERPShowcase";
+import { BooksShowcase } from "@/components/sections/BooksShowcase";
+import { AIAgentsShowcase } from "@/components/sections/AIAgentsShowcase";
+import { IntegrationShowcase } from "@/components/sections/IntegrationShowcase";
 import { SolutionsGrid } from "@/components/sections/SolutionsGrid";
 import { WhyChoose } from "@/components/sections/WhyChoose";
 import { DemoCTA } from "@/components/sections/DemoCTA";
@@ -73,10 +75,12 @@ export default function Home() {
       />
       <Hero />
       <ProductEcosystem />
-      <ERPShowcase />
+      <MKTShowcase />
       <CRMShowcase />
-      <AIShowcase />
-      <ConnectShowcase />
+      <ERPShowcase />
+      <BooksShowcase />
+      <AIAgentsShowcase />
+      <IntegrationShowcase />
       <SolutionsGrid />
       <WhyChoose />
       <DemoCTA />

@@ -12,8 +12,8 @@ import { AISecurity } from "@/components/solutions/ai/AISecurity";
 import { WhyBrainzonAI } from "@/components/solutions/ai/WhyBrainzonAI";
 import { AICTA } from "@/components/solutions/ai/AICTA";
 
-const title = "AI Solutions | Brainzon Enterprise Artificial Intelligence Platform";
-const description = "Brainzon delivers enterprise AI solutions including generative AI, AI assistants, predictive analytics, document intelligence, automation, and AI-powered business transformation.";
+const title = "Dedicated AI Solutions & Agents | Brainzon Enterprise Platforms";
+const description = "Brainzon delivers product-specific AI agents (BrainMKT, BrainCRM, BrainERP, BrainBooks) with permission-aware access, grounded answers, and responsible human-in-the-loop controls.";
 const canonicalUrl = new URL("/solutions/ai", siteConfig.url).toString();
 
 export const metadata: Metadata = {
@@ -53,21 +53,12 @@ export default function AIPage() {
     },
     {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      name: "BrainAI",
-      applicationCategory: "BusinessApplication",
-      applicationSubCategory: "Enterprise Artificial Intelligence Platform",
-      operatingSystem: "Web",
-      url: new URL("/products/brainai", siteConfig.url).toString(),
-      description: "Enterprise AI platform to leverage artificial intelligence across operations, customer engagement, analytics, and decision-making.",
-      featureList: [
-        "AI Business Assistant",
-        "Generative AI Solutions",
-        "Document Intelligence",
-        "Predictive Analytics",
-        "AI Automation",
-      ],
-      publisher: { "@id": `${siteConfig.url}/#organization` },
+      "@type": "Service",
+      name: "Brainzon Dedicated Product AI Agents",
+      serviceType: "Product-Specific AI Assistance",
+      provider: { "@id": `${siteConfig.url}/#organization` },
+      url: new URL("/solutions/ai", siteConfig.url).toString(),
+      description: "Product-specific AI agents embedded into BrainMKT, BrainCRM, BrainERP, and BrainBooks workflows with strict authorization controls.",
     },
   ];
 
@@ -79,12 +70,10 @@ export default function AIPage() {
           __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
         }}
       />
-      <div className="flex flex-col min-h-screen bg-background">
+      <div className="flex flex-col min-h-screen">
         <AIHero />
         <AIChallenges />
-        <div id="showcase">
-          <BrainAIShowcase />
-        </div>
+        <BrainAIShowcase />
         <AIEcosystem />
         <AIFunctionSolutions />
         <GenerativeAISection />

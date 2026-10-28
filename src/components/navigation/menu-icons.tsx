@@ -27,6 +27,27 @@ import {
   Award,
   ShieldAlert,
   Mail,
+  Megaphone,
+  Receipt,
+  Layers,
+  Code2,
+  Workflow,
+  Boxes,
+  BookOpen,
+  SlidersHorizontal,
+  CheckCircle2,
+  Server,
+  BarChart3,
+  Lock,
+  Scale,
+  Terminal,
+  Compass,
+  HelpCircle,
+  Activity,
+  Shield,
+  Bot,
+  Zap,
+  Check,
   type LucideProps
 } from "lucide-react";
 
@@ -49,6 +70,7 @@ export function getMenuIcon(name: string, props: LucideProps = {}) {
     case "network":
       return <Network {...props} />;
     case "building2":
+    case "building":
       return <Building2 {...props} />;
     case "hearthandshake":
       return <HeartHandshake {...props} />;
@@ -61,6 +83,7 @@ export function getMenuIcon(name: string, props: LucideProps = {}) {
     case "briefcase":
       return <Briefcase {...props} />;
     case "filetext":
+    case "file":
       return <FileText {...props} />;
     case "graduationcap":
       return <GraduationCap {...props} />;
@@ -80,7 +103,10 @@ export function getMenuIcon(name: string, props: LucideProps = {}) {
       return <Cloud {...props} />;
     case "shieldcheck":
       return <ShieldCheck {...props} />;
+    case "shield":
+      return <Shield {...props} />;
     case "refreshcw":
+    case "refresh":
       return <RefreshCw {...props} />;
     case "usercheck":
       return <UserCheck {...props} />;
@@ -96,6 +122,52 @@ export function getMenuIcon(name: string, props: LucideProps = {}) {
       return <ShieldAlert {...props} />;
     case "mail":
       return <Mail {...props} />;
+    case "megaphone":
+      return <Megaphone {...props} />;
+    case "receipt":
+      return <Receipt {...props} />;
+    case "layers":
+      return <Layers {...props} />;
+    case "code2":
+    case "code":
+      return <Code2 {...props} />;
+    case "workflow":
+      return <Workflow {...props} />;
+    case "boxes":
+    case "box":
+      return <Boxes {...props} />;
+    case "bookopen":
+    case "book":
+      return <BookOpen {...props} />;
+    case "sliders":
+    case "slidershorizontal":
+      return <SlidersHorizontal {...props} />;
+    case "checkcircle":
+    case "checkcircle2":
+      return <CheckCircle2 {...props} />;
+    case "check":
+      return <Check {...props} />;
+    case "server":
+      return <Server {...props} />;
+    case "barchart":
+    case "barchart3":
+      return <BarChart3 {...props} />;
+    case "lock":
+      return <Lock {...props} />;
+    case "scale":
+      return <Scale {...props} />;
+    case "terminal":
+      return <Terminal {...props} />;
+    case "compass":
+      return <Compass {...props} />;
+    case "helpcircle":
+      return <HelpCircle {...props} />;
+    case "activity":
+      return <Activity {...props} />;
+    case "bot":
+      return <Bot {...props} />;
+    case "zap":
+      return <Zap {...props} />;
     default:
       return null;
   }

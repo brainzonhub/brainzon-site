@@ -24,7 +24,7 @@ export const contactOptions: ContactOption[] = [
   {
     id: "consultation",
     title: "Solution Consultation",
-    description: "Explore how our core ERP, CRM, AI, or system integration platforms can transform your workflow.",
+    description: "Explore how our core applications (BrainMKT, BrainCRM, BrainERP, BrainBooks) or integration services can transform your operations.",
     ctaText: "Talk To Experts",
     inquiryType: "ERP Solutions",
     iconName: "presentation",
@@ -83,23 +83,23 @@ export const companyContactInfo = {
 
 export const contactFAQs: FAQItem[] = [
   {
-    question: "What solutions does Brainzon provide?",
-    answer: "Brainzon offers a premium suite of digital transformation products and custom enterprise solutions: BrainERP (Enterprise Resource Planning), BrainCRM (Customer Relationship Management), BrainAI (Enterprise Artificial Intelligence), and BrainConnect (Integration Platform). We also provide end-to-end consulting, cloud transformation, and modernization services.",
+    question: "What products and services does Brainzon provide?",
+    answer: "Brainzon offers four proprietary business applications—BrainMKT (Marketing Management), BrainCRM (Customer Relationship Management), BrainERP (Enterprise Resource Planning), and BrainBooks (Accounting Management)—each supported by a dedicated AI agent. We also provide implementation services for Odoo and Microsoft Dynamics 365 Business Central, enterprise integration services, custom engineering, and legacy system modernization.",
   },
   {
-    question: "Can Brainzon modernize existing software?",
-    answer: "Yes, legacy application modernization is one of our primary service pillars. We wrap legacy databases, mainframe systems, and older software platforms in modern, containerized microservices APIs without disrupting your current operations, easing transition to the cloud.",
+    question: "Can Brainzon modernize existing legacy software?",
+    answer: "Yes, legacy system modernization is a core capability. We assess aging applications and databases, and execute staged modernization through the 6 pathways: Retain & improve, Rehost, Re-platform, Refactor, Replace, and Retire, ensuring data continuity and zero unplanned disruption.",
   },
   {
-    question: "Does Brainzon support ERP implementation?",
-    answer: "Absolutely. We provide full-lifecycle BrainERP implementation services, including business process alignment, custom module development (Finance, Supply Chain, HR), data migration, system testing, employee onboarding, and post-deployment support.",
+    question: "Does Brainzon support ERP and platform implementation?",
+    answer: "Absolutely. We follow a platform-neutral approach: evaluating whether BrainERP, Odoo, Microsoft Dynamics 365 Business Central, or a custom application best fits your operating model, workflows, and total cost of ownership.",
   },
   {
-    question: "Can Brainzon integrate existing systems?",
-    answer: "Yes, using BrainConnect—our low-latency enterprise integration platform—we build secure workflow automations, sync data in real-time between legacy and SaaS systems, and establish robust, authenticated API structures.",
+    question: "How does Brainzon integrate disparate business systems?",
+    answer: "Through our Enterprise Integration Services, we design governed REST, SOAP, GraphQL, OData, and webhook interfaces, orchestrate multi-step automated workflows, implement reliable data synchronization, and build observability runbooks with automated dead-letter recovery.",
   },
   {
     question: "How can I request a product demo?",
-    answer: "You can request a live, personalized product demonstration by submitting the contact form on this page with 'General Inquiry' or by selecting your specific product/solution of interest. A solutions engineer will reach out to schedule a demo tailored to your company's challenges.",
+    answer: "You can request an interactive product demonstration by submitting our demo booking form or contacting sales. An enterprise solution architect will coordinate a session focused on your specific business requirements.",
   },
 ];

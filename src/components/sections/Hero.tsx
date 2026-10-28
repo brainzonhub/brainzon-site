@@ -8,8 +8,9 @@ import {
   Shield, 
   Database, 
   Users, 
+  Megaphone,
+  Receipt,
   Cpu, 
-  Network, 
   Briefcase, 
   Package, 
   GitBranch, 
@@ -44,26 +45,27 @@ const nodes = [
     desc: "Advanced CRM engine tracking lead pipelines and automating campaign schedules."
   },
   {
-    id: "ai",
-    title: "BrainAI",
-    icon: Cpu,
+    id: "mkt",
+    title: "BrainMKT",
+    icon: Megaphone,
     type: "core",
     pos: "top-[50%] left-[80%]",
     coords: { x: 400, y: 250 },
     color: "accent",
     dur: "1.6s",
-    desc: "Enterprise AI running cognitive model workflows and predictive forecasting."
+    desc: "Marketing management engine coordinating campaigns, content schedules, and lead handoffs."
   },
   {
-    id: "connect",
-    title: "BrainConnect",
-    icon: Network,
+    id: "books",
+    title: "BrainBooks",
+    icon: Receipt,
+  Cpu,
     type: "core",
     pos: "top-[80%] left-[50%]",
     coords: { x: 250, y: 400 },
     color: "primary",
     dur: "2.2s",
-    desc: "High-speed integration gateway bridging enterprise databases and API endpoints."
+    desc: "Accounting management platform for structured ledgers, cash flow, and reconciliations."
   },
   {
     id: "dynamics",
@@ -165,7 +167,7 @@ export function Hero() {
             </h1>
 
             <p className="mt-6 text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl">
-              Unifying proprietary ERP engines, pipeline CRMs, predictive AI, and cloud legacy modernization into one secure, high-resilience digital foundation.
+              Connecting operations, customer relationships, marketing, and accounting through proprietary applications and dedicated AI agents, alongside enterprise platforms and legacy modernization.
             </p>
 
             {/* Action buttons */}

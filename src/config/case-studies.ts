@@ -95,7 +95,7 @@ export const caseStudies: CaseStudy[] = [
     slug: "smart-factory-iot-overhaul",
     title: "Factory Optimization & Smart Scheduling Overhaul",
     summary: "A connected ERP and industrial AI platform unified production planning, maintenance signals, and shop-floor execution for a growing manufacturer.",
-    description: "How Brainzon combined BrainERP, BrainAI, and BrainConnect to reduce production cycle time and improve equipment effectiveness for Alim Agro Industries.",
+    description: "How Brainzon combined BrainERP, Dedicated AI Agents, and Enterprise Integration Services to reduce production cycle time and improve equipment effectiveness for Alim Agro Industries.",
     clientName: "Alim Agro Industries",
     clientSummary: "A multi-site food and agro-processing manufacturer coordinating raw-material intake, batch production, quality control, maintenance, warehousing, and regional distribution.",
     industry: "Manufacturing",
@@ -115,8 +115,8 @@ export const caseStudies: CaseStudy[] = [
       { label: "Unplanned downtime", value: "18 hrs/mo" },
       { label: "Production data delay", value: "8–24 hrs" },
     ],
-    solutionSummary: "Brainzon established BrainERP as the operational system of record, connected plant events through BrainConnect, and used BrainAI to identify equipment anomalies and scheduling risk. A cloud-first analytics layer provided governed cross-site visibility without placing reporting load on transactional systems.",
-    products: ["BrainERP", "BrainAI", "BrainConnect", "Cloud Transformation"],
+    solutionSummary: "Brainzon established BrainERP as the operational system of record, connected plant events through Enterprise Integration Services, and used dedicated AI agents to identify equipment anomalies and scheduling risk. A cloud-first analytics layer provided governed cross-site visibility without placing reporting load on transactional systems.",
+    products: ["BrainERP", "Dedicated AI Agents", "Integration Services", "Cloud Transformation"],
     deploymentModel: "Hybrid cloud with plant-edge integration and a centrally governed regional data platform",
     features: [
       "Finite-capacity production scheduling",
@@ -169,7 +169,7 @@ export const caseStudies: CaseStudy[] = [
       { label: "Peak checkout capacity", value: "1× baseline" },
     ],
     solutionSummary: "Brainzon introduced a governed inventory service with atomic reservations, connected channels through BrainConnect events, synchronized operational and financial records in BrainERP, and used BrainCRM to provide consistent order status and service communication.",
-    products: ["BrainERP", "BrainCRM", "BrainConnect", "Cloud Transformation"],
+    products: ["BrainERP", "BrainCRM", "Integration Services", "Cloud Transformation"],
     deploymentModel: "Cloud-first regional deployment with resilient store integration and event-driven synchronization",
     features: [
       "Real-time inventory positions and reservations",

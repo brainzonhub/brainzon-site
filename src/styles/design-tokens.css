@@ -22,6 +22,13 @@
   --brand-yellow-500: #eab308;
   --brand-yellow-950: #422006;
 
+  /* Brand Blue primitives matching user palette #0065bd */
+  --brand-blue: #0065bd;
+  --brand-blue-hover: #00529b;
+  --brand-blue-light: #1a7fd9;
+  --brand-blue-dark: #004580;
+  --brand-blue-glow: 0 0 2rem rgba(0, 101, 189, 0.35);
+
   /* Semantic light theme */
   --background: #ffffff;
   --foreground: #0f172a;
@@ -30,8 +37,8 @@
   --card-opaque: #ffffff;
   --card-foreground: #0f172a;
   --border: #dbe4ee;
-  /* Cyan 700 keeps small primary text and controls above WCAG AA on white. */
-  --primary: var(--brand-cyan-700);
+  /* Buttons & primary interactive focal actions are blue #0065bd */
+  --primary: #0065bd;
   --primary-foreground: #ffffff;
   --secondary: var(--brand-red-600);
   --secondary-foreground: #ffffff;
@@ -39,43 +46,45 @@
   --accent-foreground: var(--brand-yellow-950);
   --muted: #eef2f7;
   --muted-foreground: #64748b;
-  --ring: var(--brand-cyan-500);
+  --ring: #0065bd;
 
   /* Shape */
   --radius: 0.75rem;
 
   /* Brand effects */
-  --gradient-brand: linear-gradient(135deg, var(--brand-cyan-500) 0%, #3b82f6 35%, #8b5cf6 65%, var(--brand-red-500) 100%);
+  --gradient-brand: linear-gradient(135deg, var(--brand-cyan-500) 0%, #3b82f6 35%, #0065bd 65%, var(--brand-red-500) 100%);
   --gradient-technology: linear-gradient(135deg, #020817 0%, #0b2447 52%, #083344 100%);
   --gradient-highlight: linear-gradient(135deg, var(--brand-red-600) 0%, #f97316 58%, var(--brand-yellow-400) 100%);
-  --gradient-surface: radial-gradient(circle at 50% 0%, rgb(6 182 212 / 0.11), transparent 42%);
+  --gradient-surface: radial-gradient(circle at 50% 0%, rgb(0 101 189 / 0.12), transparent 42%);
 
-  --glow-primary: 0 0 2rem rgb(6 182 212 / 0.22);
+  --glow-primary: 0 0 2rem rgba(0, 101, 189, 0.35);
   --glow-secondary: 0 0 2rem rgb(239 68 68 / 0.18);
   --glow-accent: 0 0 1.5rem rgb(250 204 21 / 0.18);
 }
 
 .dark {
-  --background: #020817;
-  --foreground: #f8fafc;
-  --surface: #07101f;
-  --card: rgb(11 18 35 / 0.82);
-  --card-opaque: #0b1223;
-  --card-foreground: #f8fafc;
-  --border: #1e334d;
-  --primary: var(--brand-cyan-400);
-  --primary-foreground: var(--brand-cyan-950);
-  --secondary: var(--brand-red-500);
-  --secondary-foreground: #ffffff;
-  --accent: var(--brand-yellow-300);
-  --accent-foreground: var(--brand-yellow-950);
-  --muted: #111d30;
-  --muted-foreground: #94a3b8;
-  --ring: var(--brand-cyan-400);
+  /* Gruvbox Material Dark (Medium) Palette with #0065bd Button Primary */
+  --background: #282828;
+  --foreground: #d4be98;
+  --surface: #32302f;
+  --card: rgb(50 48 47 / 0.94);
+  --card-opaque: #32302f;
+  --card-foreground: #d4be98;
+  --border: #45403d;
+  --primary: #0065bd;
+  --primary-foreground: #ffffff;
+  --secondary: #ea6962;
+  --secondary-foreground: #1d2021;
+  --accent: #d8a657;
+  --accent-foreground: #1d2021;
+  --muted: #3c3836;
+  --muted-foreground: #a89984;
+  --ring: #0065bd;
 
-  --glow-primary: 0 0 2.5rem rgb(34 211 238 / 0.28);
-  --glow-secondary: 0 0 2.25rem rgb(239 68 68 / 0.22);
-  --glow-accent: 0 0 1.75rem rgb(253 224 71 / 0.2);
+  --gradient-technology: linear-gradient(135deg, #1d2021 0%, #282828 52%, #32302f 100%);
+  --glow-primary: 0 0 2.5rem rgba(0, 101, 189, 0.4);
+  --glow-secondary: 0 0 2.25rem rgb(234 105 98 / 0.22);
+  --glow-accent: 0 0 1.75rem rgb(216 166 87 / 0.22);
 }
 
 @theme inline {
@@ -89,6 +98,9 @@
   --color-brand-yellow: var(--brand-yellow-400);
   --color-brand-yellow-light: var(--brand-yellow-300);
   --color-brand-yellow-dark: var(--brand-yellow-500);
+  --color-brand-blue: var(--brand-blue);
+  --color-brand-blue-hover: var(--brand-blue-hover);
+  --color-brand-blue-light: var(--brand-blue-light);
 
   /* Semantic colors */
   --color-background: var(--background);

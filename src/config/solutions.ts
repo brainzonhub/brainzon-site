@@ -89,7 +89,7 @@ export const architectureLayers: ArchLayer[] = [
     number: "04",
     title: "Integration Layer",
     description: "Low-latency communications fabric connecting applications and files.",
-    components: ["BrainConnect Fabric", "Enterprise Service Bus", "API Gateway", "Data Sync Services"]
+    components: ["Enterprise Integration Fabric", "API Gateway", "Data Sync Services", "Event Queue Engine"]
   },
   {
     number: "05",
@@ -124,14 +124,14 @@ export const transformationCards: TransformationCard[] = [
   },
   {
     title: "Intelligence Transformation",
-    tech: "BrainAI",
+    tech: "Dedicated AI Agents",
     capabilities: ["Conversational Assistants", "Document Intelligence", "Predictive Forecasting", "Cognitive Automations"],
     description: "Embed localized Large Language Models and custom machine learning inference endpoints straight into core systems.",
     color: "accent"
   },
   {
     title: "Connectivity Transformation",
-    tech: "BrainConnect",
+    tech: "Enterprise Integration Services",
     capabilities: ["Low-Latency API Integrations", "Workflow Event Brokers", "Real-Time Telemetry Sync", "File Pipeline Queues"],
     description: "Connect multi-source databases, legacy codebases, and partner software endpoints with a zero-downtime messaging framework.",
     color: "primary"
@@ -161,7 +161,7 @@ export const architectureScenarios: ArchScenario[] = [
     nodes: [
       { label: "Core Database", role: "PostgreSQL High Availability", highlight: true },
       { label: "BrainERP", role: "Operations Layer", highlight: true },
-      { label: "CRM Sync Interface", role: "BrainConnect Bridge" },
+      { label: "CRM Sync Interface", role: "Integration Bridge" },
       { label: "Ledger Pipeline", role: "Real-time Audits" },
       { label: "Analytics Panel", role: "Business Intelligence" }
     ],
@@ -173,7 +173,7 @@ export const architectureScenarios: ArchScenario[] = [
     description: "Secure data extraction pipeline feeding a sandboxed model system for automation and analysis.",
     nodes: [
       { label: "Telemetry Database", role: "Vector Storage", highlight: true },
-      { label: "BrainAI Agent", role: "Semantic Parser", highlight: true },
+      { label: "Dedicated AI Agent", role: "Semantic Parser", highlight: true },
       { label: "ERP/CRM Data Sync", role: "Ingestion Pipeline" },
       { label: "Prompt Guardrail", role: "Security Layer" },
       { label: "User Client Portal", role: "UI Interaction" }
@@ -187,7 +187,7 @@ export const architectureScenarios: ArchScenario[] = [
     nodes: [
       { label: "Event Message Bus", role: "RabbitMQ/Kafka Broker", highlight: true },
       { label: "API Gateway", role: "Reverse Proxy & Auth", highlight: true },
-      { label: "BrainConnect Engine", role: "Telemetry Routing" },
+      { label: "Integration Engine", role: "Telemetry Routing" },
       { label: "Government System API", role: "External Endpoint" },
       { label: "Partner SaaS ERP", role: "System Endpoint" }
     ],
@@ -221,7 +221,7 @@ export const industryScenarios: IndustryScenario[] = [
     layers: [
       { name: "Execution", components: ["BrainERP Manufacturing", "MES Hardware Integrations", "PLC Telemetry Ingest"] },
       { name: "Intelligence", components: ["Predictive Maintenance Models", "Supply Chain Analytics"] },
-      { name: "Integration", components: ["BrainConnect Event Bus", "Warehouse RFID Scanner Hub"] }
+      { name: "Integration", components: ["Enterprise Event Bus", "Warehouse RFID Scanner Hub"] }
     ]
   },
   {
@@ -239,7 +239,7 @@ export const industryScenarios: IndustryScenario[] = [
     layers: [
       { name: "Security", components: ["End-to-End Database Encryption", "Audited OAuth2 Access Controls"] },
       { name: "Applications", components: ["EHR Sync Gateways", "BrainERP Hospital Operations", "Staff Scheduling Engine"] },
-      { name: "Analysis", components: ["BrainAI Document Telemetry", "Patient Flow Predictor Models"] }
+      { name: "Analysis", components: ["Document Intelligence Models", "Patient Flow Predictor Models"] }
     ]
   },
   {
@@ -257,7 +257,7 @@ export const industryScenarios: IndustryScenario[] = [
     layers: [
       { name: "Fleet Telemetry", components: ["GPS Tracker Streams", "Route Optimizer Core", "Driver Mobile Clients"] },
       { name: "Backoffice", components: ["BrainERP Logistics Ledger", "Fleet Invoicing Automation"] },
-      { name: "Integrations", components: ["BrainConnect Event Bus", "Government Customs APIs"] }
+      { name: "Integrations", components: ["Enterprise Event Bus", "Government Customs APIs"] }
     ]
   }
 ];
@@ -272,7 +272,7 @@ export const technologyStack: TechItem[] = [
   { category: "Backend Microservices", items: ["Node.js", "Python (FastAPI)", ".NET Core", "Go (low-latency brokers)"] },
   { category: "Database & Vector", items: ["PostgreSQL (HA Cluster)", "Microsoft SQL Server", "Redis Cache", "pgvector (AI Indexes)"] },
   { category: "Cloud Infrastructure", items: ["Microsoft Azure", "Amazon Web Services (AWS)", "Docker & Kubernetes", "Terraform IaC"] },
-  { category: "Enterprise Integration", items: ["BrainConnect ESB", "RESTful / GraphQL APIs", "Apache Kafka", "gRPC Communication"] }
+  { category: "Enterprise Integration", items: ["Enterprise Integration Fabric", "RESTful / GraphQL APIs", "Apache Kafka", "gRPC Communication"] }
 ];
 
 export interface TimelineStep {

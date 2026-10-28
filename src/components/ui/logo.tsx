@@ -8,7 +8,7 @@ interface LogoProps {
 
 export function Logo({ className, height }: LogoProps) {
   const hasHeightClass = className?.includes("h-");
-  const effectiveHeight = height ?? (hasHeightClass ? undefined : 34);
+  const effectiveHeight = height ?? (hasHeightClass ? undefined : 26);
 
   return (
     <div
@@ -27,4 +27,3 @@ export function Logo({ className, height }: LogoProps) {
     </div>
   );
 }
-

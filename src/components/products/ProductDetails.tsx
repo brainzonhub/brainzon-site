@@ -9,21 +9,33 @@ import { productsConfig } from "@/config/products";
 import {
   DollarSign, Package, ShoppingCart, Cpu, Users, BarChart3, Target, LayoutDashboard,
   Mail, TrendingUp, Brain, AlertTriangle, Key, GitBranch, RefreshCw, Activity,
-  ArrowRight, Check
+  ArrowRight, Check, Megaphone, Workflow, FileText, Receipt, BookOpen, CreditCard,
+  Wallet, ShieldCheck, Clock, HeartHandshake, Truck
 } from "lucide-react";
 
-// Helper to resolve detailed icons
 function getDetailedIcon(name: string, className?: string) {
   const props = { className: className || "size-6", size: 24 };
   switch (name) {
-    case "DollarSign": return <DollarSign {...props} />;
-    case "Package": return <Package {...props} />;
-    case "ShoppingCart": return <ShoppingCart {...props} />;
-    case "Cpu": return <Cpu {...props} />;
+    case "Megaphone": return <Megaphone {...props} />;
+    case "Workflow": return <Workflow {...props} />;
+    case "FileText": return <FileText {...props} />;
     case "Users": return <Users {...props} />;
+    case "ArrowRight": return <ArrowRight {...props} />;
     case "BarChart3": return <BarChart3 {...props} />;
     case "Target": return <Target {...props} />;
     case "LayoutDashboard": return <LayoutDashboard {...props} />;
+    case "Clock": return <Clock {...props} />;
+    case "HeartHandshake": return <HeartHandshake {...props} />;
+    case "Package": return <Package {...props} />;
+    case "ShoppingCart": return <ShoppingCart {...props} />;
+    case "Cpu": return <Cpu {...props} />;
+    case "Truck": return <Truck {...props} />;
+    case "BookOpen": return <BookOpen {...props} />;
+    case "Receipt": return <Receipt {...props} />;
+    case "CreditCard": return <CreditCard {...props} />;
+    case "Wallet": return <Wallet {...props} />;
+    case "ShieldCheck": return <ShieldCheck {...props} />;
+    case "DollarSign": return <DollarSign {...props} />;
     case "Mail": return <Mail {...props} />;
     case "TrendingUp": return <TrendingUp {...props} />;
     case "Brain": return <Brain {...props} />;
@@ -37,27 +49,26 @@ function getDetailedIcon(name: string, className?: string) {
 }
 
 export function ProductDetails() {
-  const [activeTab, setActiveTab] = useState(productsConfig[0]!.slug);
+  const [activeTab, setActiveTab] = useState(productsConfig[0]?.slug || "brainmkt");
   const activeProduct = productsConfig.find((p) => p.slug === activeTab) || productsConfig[0]!;
 
-  // Helper to color active tabs
   const getTabColor = (slug: string, isActive: boolean) => {
     if (!isActive) return "border-transparent text-muted-foreground hover:text-foreground";
     switch (slug) {
-      case "brainai": return "border-primary text-primary bg-primary/5";
-      case "brainerp": return "border-violet-500 text-violet-400 bg-violet-500/5";
+      case "brainmkt": return "border-cyan-500 text-cyan-400 bg-cyan-500/5";
       case "braincrm": return "border-amber-500 text-amber-500 bg-amber-500/5";
-      case "brainconnect": return "border-secondary text-secondary bg-secondary/5";
+      case "brainerp": return "border-violet-500 text-violet-400 bg-violet-500/5";
+      case "brainbooks": return "border-emerald-500 text-emerald-400 bg-emerald-500/5";
       default: return "border-primary text-primary bg-primary/5";
     }
   };
 
   const getThemeColorClass = (slug: string) => {
     switch (slug) {
-      case "brainai": return "text-primary";
-      case "brainerp": return "text-violet-400";
+      case "brainmkt": return "text-cyan-400";
       case "braincrm": return "text-amber-500";
-      case "brainconnect": return "text-secondary";
+      case "brainerp": return "text-violet-400";
+      case "brainbooks": return "text-emerald-400";
       default: return "text-primary";
     }
   };
@@ -138,80 +149,64 @@ export function ProductDetails() {
                 ))}
               </div>
 
-              {/* Benefits with key metrics */}
-              <div className="space-y-4">
-                <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Expected Business Outcomes</span>
+              {/* Business Benefits */}
+              <div className="space-y-4 pt-4">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Quantified Business Impact</h4>
                 <div className="grid sm:grid-cols-3 gap-4">
-                  {activeProduct.benefits.map((b) => (
-                    <div key={b.title} className="p-5 rounded-2xl border border-border bg-card-opaque text-center relative overflow-hidden">
-                      {/* Metric Callout */}
-                      {b.metric && (
-                        <div className={`text-3xl font-extrabold mb-1 tracking-tight ${getThemeColorClass(activeProduct.slug)}`}>
-                          {b.metric}
-                        </div>
+                  {activeProduct.benefits.map((benefit) => (
+                    <div key={benefit.title} className="p-4 rounded-xl border border-border bg-card/60 space-y-1">
+                      {benefit.metric && (
+                        <div className="text-2xl font-black text-primary">{benefit.metric}</div>
                       )}
-                      <h4 className="text-xs font-bold text-foreground mb-1">{b.title}</h4>
-                      <p className="text-[10px] text-muted-foreground leading-relaxed">{b.description}</p>
+                      <div className="text-xs font-bold text-foreground">{benefit.title}</div>
+                      <p className="text-[11px] text-muted-foreground leading-normal">{benefit.description}</p>
                     </div>
                   ))}
                 </div>
               </div>
             </div>
 
-            {/* Right Col: System Architecture View & Integrations */}
-            <div className="lg:col-span-5 space-y-8">
-              {/* System Architecture Block */}
-              <div className="p-6 sm:p-8 rounded-3xl border border-border bg-card-opaque shadow-card space-y-6">
-                <div>
-                  <h4 className="text-sm font-bold text-foreground">{activeProduct.architecture.title}</h4>
-                  <p className="text-xs text-muted-foreground mt-1">{activeProduct.architecture.description}</p>
+            {/* Right Col: Architecture Diagram */}
+            <div className="lg:col-span-5 space-y-6">
+              <div className="p-6 rounded-3xl border border-border bg-card/50 backdrop-blur-md shadow-card space-y-6">
+                <div className="space-y-2 border-b border-border/50 pb-4">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-primary">System Blueprint</span>
+                  <h4 className="text-base font-bold text-foreground">{activeProduct.architecture.title}</h4>
+                  <p className="text-xs text-muted-foreground leading-relaxed">{activeProduct.architecture.description}</p>
                 </div>
 
-                {/* Topology list */}
                 <div className="space-y-4">
-                  {activeProduct.architecture.layers.map((layer) => (
+                  {activeProduct.architecture.layers.map((layer, idx) => (
                     <div key={layer.name} className="space-y-2">
-                      <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">{layer.name}</span>
-                      <div className="flex flex-col gap-2">
+                      <div className="flex items-center gap-2">
+                        <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">{`0${idx + 1}`}</span>
+                        <span className="text-xs font-semibold text-foreground">{layer.name}</span>
+                      </div>
+                      <div className="grid grid-cols-2 gap-2">
                         {layer.nodes.map((node) => (
-                          <div key={node.name} className={`flex items-center justify-between p-3 rounded-xl border text-xs ${getNodeColorClass(node.type)}`}>
-                            <div>
-                              <span className="font-bold block">{node.name}</span>
-                              <span className="text-[10px] opacity-80 mt-0.5 block">{node.description}</span>
-                            </div>
-                            <span className="text-[9px] font-mono uppercase tracking-wider border border-current px-2 py-0.5 rounded-full shrink-0">
-                              {node.type}
-                            </span>
+                          <div
+                            key={node.name}
+                            className={`p-2.5 rounded-lg border text-xs font-medium ${getNodeColorClass(node.type)}`}
+                            title={node.description}
+                          >
+                            <div className="font-semibold">{node.name}</div>
+                            <div className="text-[10px] opacity-75 truncate">{node.description}</div>
                           </div>
                         ))}
                       </div>
                     </div>
                   ))}
                 </div>
-              </div>
 
-              {/* Integrations Chips */}
-              <div className="space-y-3">
-                <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Supported Integrations</span>
-                <div className="flex flex-wrap gap-2">
-                  {activeProduct.integrations.map((integration) => (
-                    <span key={integration} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border bg-card-opaque text-xs font-medium text-foreground">
-                      <Check size={12} className="text-emerald-500" />
-                      {integration}
-                    </span>
-                  ))}
+                <div className="border-t border-border/50 pt-4 flex items-center justify-between">
+                  <span className="text-xs text-muted-foreground">Governed API Integrations</span>
+                  <Link
+                    href={activeProduct.href}
+                    className="inline-flex items-center gap-1 text-xs font-semibold text-primary hover:underline"
+                  >
+                    <span>Full specs &rarr;</span>
+                  </Link>
                 </div>
-              </div>
-
-              {/* Product Direct CTA */}
-              <div className="pt-2">
-                <Link
-                  href="/book-demo"
-                  className="inline-flex w-full items-center justify-center gap-2 px-6 py-4 rounded-2xl bg-foreground text-background hover:bg-foreground/90 transition-all font-semibold text-sm shadow-elevated"
-                >
-                  <span>Request Custom {activeProduct.name} Demo</span>
-                  <ArrowRight size={16} />
-                </Link>
               </div>
             </div>
           </motion.div>

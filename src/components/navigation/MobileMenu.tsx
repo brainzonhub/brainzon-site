@@ -2,12 +2,20 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, Sparkles, ArrowRight, Boxes } from "lucide-react";
 import { Logo } from "@/components/ui/logo";
 import { cn } from "@/lib/utils";
-import { navigationConfig } from "@/config/navigation";
+import { navigationConfig, SubNavItem, AIAgentItem } from "@/config/navigation";
 import { getMenuIcon } from "./menu-icons";
 import { ThemeSwitcher } from "@/components/theme-switcher";
+
+function WhatsAppIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+    </svg>
+  );
+}
 
 export function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,7 +24,7 @@ export function MobileMenu() {
   const triggerRef = useRef<HTMLButtonElement | null>(null);
 
   const toggleOpen = () => setIsOpen((prev) => !prev);
-  
+
   const toggleGroup = (title: string) => {
     setExpandedGroups((prev) => ({
       ...prev,
@@ -55,13 +63,11 @@ export function MobileMenu() {
         const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
 
         if (e.shiftKey) {
-          // Shift + Tab
           if (document.activeElement === firstElement) {
             lastElement.focus();
             e.preventDefault();
           }
         } else {
-          // Tab
           if (document.activeElement === lastElement) {
             firstElement.focus();
             e.preventDefault();
@@ -74,14 +80,12 @@ export function MobileMenu() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isOpen]);
 
-  // Close when clicking page routing links
   const handleLinkClick = () => {
     setIsOpen(false);
   };
 
   return (
     <div className="lg:hidden">
-      {/* Menu Hamburger Button */}
       <button
         ref={triggerRef}
         type="button"
@@ -90,149 +94,308 @@ export function MobileMenu() {
         aria-label="Open primary navigation drawer"
         className={cn(
           "inline-flex items-center justify-center p-2 rounded-lg text-muted-foreground hover:bg-muted hover:text-foreground",
-          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring transition-colors"
+          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring transition-colors cursor-pointer"
         )}
       >
         <Menu size={24} />
       </button>
 
-        {isOpen && (
-          <>
-            {/* Backdrop overlay */}
-            <div
-              onClick={toggleOpen}
-              className="fixed inset-0 z-40 bg-background/80 backdrop-blur-sm"
-              aria-hidden="true"
-            />
+      {isOpen && (
+        <>
+          <div
+            onClick={toggleOpen}
+            className="fixed inset-0 z-40 bg-background/80 backdrop-blur-sm"
+            aria-hidden="true"
+          />
 
-            {/* Slide-out Drawer */}
-            <div
-              ref={drawerRef}
-              className="fixed inset-y-0 right-0 z-50 w-full max-w-sm border-l border-border bg-background shadow-elevated flex flex-col h-full overflow-hidden animate-[slide-in-from-right_280ms_ease-in-out]"
-              role="dialog"
-              aria-modal="true"
-              aria-label="Navigation Drawer"
-            >
-              {/* Header */}
-              <div className="flex items-center justify-between p-5 border-b border-border/60">
-                <Link 
-                  href="/" 
-                  onClick={handleLinkClick}
-                  className="inline-flex items-center focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring rounded"
-                >
-                  <Logo height={28} />
-                </Link>
-                <button
-                  type="button"
-                  onClick={toggleOpen}
-                  aria-label="Close navigation drawer"
-                  className={cn(
-                    "inline-flex items-center justify-center p-2 rounded-lg text-muted-foreground hover:bg-muted hover:text-foreground",
-                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring transition-colors"
-                  )}
-                >
-                  <X size={20} />
-                </button>
-              </div>
+          <div
+            ref={drawerRef}
+            className="fixed inset-y-0 right-0 z-50 w-full max-w-sm border-l border-border bg-background shadow-2xl flex flex-col h-full overflow-hidden animate-[slide-in-from-right_250ms_ease-in-out]"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Navigation Drawer"
+          >
+            {/* Header */}
+            <div className="flex items-center justify-between p-4 sm:p-5 border-b border-border/60">
+              <Link
+                href="/"
+                onClick={handleLinkClick}
+                className="inline-flex items-center focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring rounded"
+              >
+                <Logo height={24} />
+              </Link>
+              <button
+                type="button"
+                onClick={toggleOpen}
+                aria-label="Close navigation drawer"
+                className={cn(
+                  "inline-flex items-center justify-center p-2 rounded-lg text-muted-foreground hover:bg-muted hover:text-foreground",
+                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring transition-colors cursor-pointer"
+                )}
+              >
+                <X size={20} />
+              </button>
+            </div>
 
-              {/* Drawer Content / Scrollable Area */}
-              <div className="flex-1 overflow-y-auto px-5 py-6 space-y-5">
-                <nav className="space-y-3" aria-label="Mobile Navigation Menu">
-                  {navigationConfig.map((item) => {
-                    const hasSubItems = !!item.items;
-                    const isExpanded = !!expandedGroups[item.title];
+            {/* Scrollable menu content */}
+            <div className="flex-1 overflow-y-auto px-4 sm:px-5 py-5 space-y-4">
+              <nav className="space-y-1.5" aria-label="Mobile Navigation Menu">
+                {navigationConfig.map((item) => {
+                  const hasSubItems = !!item.items || !!item.sections || !!item.capabilities || !!item.aiAgents;
+                  const isExpanded = !!expandedGroups[item.title];
 
-                    if (!hasSubItems) {
-                      return (
-                        <Link
-                          key={item.title}
-                          href={item.href || "#"}
-                          onClick={handleLinkClick}
-                          className={cn(
-                            "block px-3 py-2.5 text-sm font-medium rounded-lg text-muted-foreground hover:bg-muted/40 hover:text-foreground",
-                            "transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                          )}
-                        >
-                          {item.title}
-                        </Link>
-                      );
-                    }
-
+                  if (!hasSubItems) {
                     return (
-                      <div key={item.title} className="space-y-1">
-                        <button
-                          type="button"
-                          onClick={() => toggleGroup(item.title)}
-                          aria-expanded={isExpanded}
-                          className={cn(
-                            "w-full flex items-center justify-between px-3 py-2.5 text-sm font-medium rounded-lg text-muted-foreground hover:bg-muted/40 hover:text-foreground",
-                            "transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                          )}
-                        >
-                          <span>{item.title}</span>
-                          <ChevronDown
-                            size={16}
-                            className={cn(
-                              "transition-transform duration-200 text-muted-foreground/60",
-                              isExpanded && "transform rotate-180 text-primary"
-                            )}
-                          />
-                        </button>
+                      <Link
+                        key={item.title}
+                        href={item.href || "#"}
+                        onClick={handleLinkClick}
+                        className={cn(
+                          "block px-3 py-2.5 text-sm font-medium rounded-lg text-muted-foreground hover:bg-muted/40 hover:text-foreground",
+                          "transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                        )}
+                      >
+                        {item.title}
+                      </Link>
+                    );
+                  }
 
-                          {isExpanded && (
-                            <div
-                              className="overflow-hidden pl-4 pr-1 space-y-1"
-                            >
-                              {item.items?.map((subItem) => (
+                  return (
+                    <div key={item.title} className="space-y-1">
+                      <button
+                        type="button"
+                        onClick={() => toggleGroup(item.title)}
+                        aria-expanded={isExpanded}
+                        className={cn(
+                          "w-full flex items-center justify-between px-3 py-2.5 text-sm font-semibold rounded-lg text-muted-foreground hover:bg-muted/40 hover:text-foreground",
+                          "transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring cursor-pointer",
+                          isExpanded && "text-foreground bg-muted/50"
+                        )}
+                      >
+                        <span>{item.title}</span>
+                        <ChevronDown
+                          size={16}
+                          className={cn(
+                            "transition-transform duration-200 text-muted-foreground/60",
+                            isExpanded && "transform rotate-180 text-primary"
+                          )}
+                        />
+                      </button>
+
+                      {isExpanded && (
+                        <div className="overflow-hidden pl-3 pr-1 py-1 space-y-3 border-l border-border/50 ml-3">
+                          {/* Special Organized View for Products: Business Apps & AI Platforms */}
+                          {item.title === "Products" ? (
+                            <>
+                              {/* 1. Business Applications */}
+                              <div className="space-y-1">
+                                <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground/90 px-2.5 flex items-center gap-1.5">
+                                  <Boxes size={12} className="text-primary" />
+                                  <span>Business Applications</span>
+                                </p>
+                                {item.items?.map((subItem: SubNavItem) => (
+                                  <Link
+                                    key={subItem.title}
+                                    href={subItem.href}
+                                    onClick={handleLinkClick}
+                                    className={cn(
+                                      "flex items-start gap-3 p-2 rounded-lg hover:bg-muted/40 group",
+                                      "transition-all duration-150 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+                                    )}
+                                  >
+                                    <div className="flex size-7 items-center justify-center rounded-lg bg-muted text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary transition-colors shrink-0">
+                                      {getMenuIcon(subItem.iconName, { size: 14 })}
+                                    </div>
+                                    <div className="flex-1 min-w-0">
+                                      <div className="flex items-center gap-1.5">
+                                        <h5 className="text-xs font-semibold text-foreground group-hover:text-primary transition-colors">
+                                          {subItem.title}
+                                        </h5>
+                                        {subItem.badge && (
+                                          <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.2 rounded bg-primary/10 text-primary">
+                                            {subItem.badge}
+                                          </span>
+                                        )}
+                                      </div>
+                                      <p className="text-[11px] text-muted-foreground mt-0.5 line-clamp-1">
+                                        {subItem.description}
+                                      </p>
+                                    </div>
+                                  </Link>
+                                ))}
+                              </div>
+
+                              {/* 2. AI Platforms (Product AI Agents) */}
+                              <div className="pt-2 space-y-1 border-t border-border/40">
+                                <p className="text-[10px] font-bold uppercase tracking-wider text-primary px-2.5 flex items-center gap-1.5">
+                                  <Sparkles size={12} />
+                                  <span>AI Platforms (Product AI Agents)</span>
+                                </p>
+                                {item.aiAgents?.map((agent: AIAgentItem) => (
+                                  <Link
+                                    key={agent.title}
+                                    href={agent.href}
+                                    onClick={handleLinkClick}
+                                    className={cn(
+                                      "flex items-start gap-3 p-2 rounded-lg hover:bg-muted/40 group",
+                                      "transition-all duration-150 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+                                    )}
+                                  >
+                                    <div className="flex size-7 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors shrink-0">
+                                      <Sparkles size={13} />
+                                    </div>
+                                    <div className="flex-1 min-w-0">
+                                      <div className="flex items-center gap-1.5">
+                                        <h5 className="text-xs font-semibold text-foreground group-hover:text-primary transition-colors">
+                                          {agent.title}
+                                        </h5>
+                                        <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.2 rounded bg-muted text-muted-foreground">
+                                          {agent.product}
+                                        </span>
+                                      </div>
+                                      <p className="text-[10px] text-muted-foreground line-clamp-1 mt-0.5">
+                                        {agent.description}
+                                      </p>
+                                    </div>
+                                  </Link>
+                                ))}
+                              </div>
+                            </>
+                          ) : (
+                            <>
+                              {/* Render regular direct items */}
+                              {item.items?.map((subItem: SubNavItem) => (
                                 <Link
                                   key={subItem.title}
                                   href={subItem.href}
                                   onClick={handleLinkClick}
                                   className={cn(
-                                    "flex items-start gap-3 p-2.5 rounded-lg hover:bg-muted/30 group",
-                                    "transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                                    "flex items-start gap-3 p-2.5 rounded-lg hover:bg-muted/40 group",
+                                    "transition-all duration-150 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                                   )}
                                 >
-                                  <div className="flex size-7 items-center justify-center rounded bg-muted text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary transition-colors shrink-0">
+                                  <div className="flex size-7 items-center justify-center rounded-lg bg-muted text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary transition-colors shrink-0">
                                     {getMenuIcon(subItem.iconName, { size: 14 })}
                                   </div>
-                                  <div>
+                                  <div className="flex-1 min-w-0">
                                     <h5 className="text-xs font-semibold text-foreground group-hover:text-primary transition-colors">
                                       {subItem.title}
                                     </h5>
-                                    {item.title === "Products" && (
-                                      <p className="text-[10px] text-muted-foreground mt-0.5 leading-normal">
-                                        {subItem.description}
-                                      </p>
-                                    )}
+                                    <p className="text-[11px] text-muted-foreground mt-0.5 line-clamp-1">
+                                      {subItem.description}
+                                    </p>
                                   </div>
                                 </Link>
                               ))}
+
+                              {/* Render regular sectioned items */}
+                              {item.sections?.map((section) => (
+                                <div key={section.title} className="pt-2 space-y-1">
+                                  <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground/80 px-2.5">
+                                    {section.title}
+                                  </p>
+                                  {section.items.map((subItem) => (
+                                    <Link
+                                      key={subItem.title}
+                                      href={subItem.href}
+                                      onClick={handleLinkClick}
+                                      className={cn(
+                                        "flex items-start gap-3 p-2 rounded-lg hover:bg-muted/40 group",
+                                        "transition-all duration-150 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+                                      )}
+                                    >
+                                      <div className="flex size-6 items-center justify-center rounded bg-muted text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary transition-colors shrink-0">
+                                        {getMenuIcon(subItem.iconName, { size: 12 })}
+                                      </div>
+                                      <div className="flex-1 min-w-0">
+                                        <h6 className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
+                                          {subItem.title}
+                                        </h6>
+                                        <p className="text-[10px] text-muted-foreground line-clamp-1">
+                                          {subItem.description}
+                                        </p>
+                                      </div>
+                                    </Link>
+                                  ))}
+                                </div>
+                              ))}
+                            </>
+                          )}
+
+                          {/* Link to view overview page */}
+                          {item.href && (
+                            <div className="pt-2 px-2 border-t border-border/40">
+                              <Link
+                                href={item.href}
+                                onClick={handleLinkClick}
+                                className="text-xs font-semibold text-primary hover:underline inline-flex items-center gap-1 group"
+                              >
+                                <span>View all {item.title.toLowerCase()}</span>
+                                <ArrowRight size={12} className="transition-transform group-hover:translate-x-0.5" />
+                              </Link>
                             </div>
                           )}
-                      </div>
-                    );
-                  })}
-                </nav>
-              </div>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </nav>
+            </div>
 
-              {/* Drawer Footer */}
-              <div className="p-5 border-t border-border/60 flex items-center gap-4 bg-muted/20">
+            {/* Mobile Footer with Actions */}
+            <div className="p-4 sm:p-5 border-t border-border/60 bg-muted/20 space-y-3">
+              <div className="flex items-center gap-2">
                 <Link
                   href="/book-demo"
                   onClick={handleLinkClick}
                   className={cn(
-                    "flex-1 flex items-center justify-center px-4 py-2.5 text-sm font-semibold rounded-lg bg-primary text-primary-foreground shadow-glow-primary hover:bg-primary/95 transition-all duration-200",
-                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                    "flex-1 flex items-center justify-center gap-1.5 px-4 py-2.5 text-sm font-semibold rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-150",
+                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                   )}
                 >
-                  Book a Demo
+                  <span>Book a Demo</span>
+                  <ArrowRight size={14} />
                 </Link>
-                <ThemeSwitcher />
+                <div className="shrink-0">
+                  <ThemeSwitcher />
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-2 pt-1 border-t border-border/50 text-[11px] text-muted-foreground">
+                <div className="flex items-center justify-between">
+                  <a
+                    href="https://wa.me/8801557253788"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-foreground bg-surface/80 hover:bg-surface border border-border/60 transition-colors font-medium"
+                    title="Chat on WhatsApp"
+                  >
+                    <span className="size-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                    <WhatsAppIcon className="size-3.5 fill-emerald-500" />
+                    <span>WhatsApp</span>
+                  </a>
+                  <a
+                    href="mailto:info@brainzon.com"
+                    className="hover:text-foreground transition-colors"
+                  >
+                    info@brainzon.com
+                  </a>
+                </div>
+                <div className="text-center">
+                  <Link
+                    href="/contact"
+                    onClick={handleLinkClick}
+                    className="text-xs font-medium text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    Need help? Contact our enterprise advisors &rarr;
+                  </Link>
+                </div>
               </div>
             </div>
-          </>
-        )}
+          </div>
+        </>
+      )}
     </div>
   );
 }

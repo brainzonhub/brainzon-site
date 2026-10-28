@@ -27,6 +27,13 @@ export interface DetailedFeature {
   icon: string;
 }
 
+export interface ProductAIAgent {
+  name: string;
+  context: string;
+  assistance: string[];
+  controls: string[];
+}
+
 export interface Product {
   name: string;
   slug: string;
@@ -40,347 +47,452 @@ export interface Product {
   integrations: string[];
   icon: string;
   href: string;
+  aiAgent?: ProductAIAgent;
 }
 
 export const productsConfig: Product[] = [
   {
-    name: "BrainERP",
-    slug: "brainerp",
-    description: "Enterprise Resource Planning platform to synchronize finance, inventory, manufacturing, and HR operations.",
-    headline: "Unify Operations, Finance, and Resources in Real Time",
-    highlight: "Real Time",
+    name: "BrainMKT",
+    slug: "brainmkt",
+    description: "Marketing management platform to plan campaigns, coordinate multi-channel content, organize audiences, and streamline CRM lead handoffs.",
+    headline: "Coordinate Campaigns, Audiences, and High-Velocity Growth",
+    highlight: "High-Velocity Growth",
     features: [
-      "Finance & Ledger Management",
-      "Real-time Inventory Control",
-      "Strategic Procurement Engines",
-      "Advanced Manufacturing Schedulers",
-      "Human Resource Systems",
-      "Enterprise Business Intelligence"
+      "Campaign Planning & Calendars",
+      "Multi-Channel Coordination",
+      "Audience Segmentation Lists",
+      "Content & Asset Approval Workflows",
+      "Automated CRM Lead Handoff",
+      "Marketing Performance Analytics"
     ],
     detailedFeatures: [
       {
-        title: "Finance & Ledger Management",
-        description: "Complete general ledger tracking, accounts payable/receivable automation, multi-currency reporting, and automated tax compliance engines.",
-        icon: "DollarSign"
+        title: "Marketing Planning & Calendars",
+        description: "Organize strategic goals, campaign plans, collaborative calendars, asset owners, timelines, and launch milestones.",
+        icon: "Megaphone"
       },
       {
-        title: "Real-time Inventory Control",
-        description: "Live item tracking across multi-site warehouses, automatic reorder threshold alerts, and intelligent shelf-life optimization rules.",
+        title: "Campaign Coordination",
+        description: "Track live campaign status, multi-channel tasks, deliverables, creative approvals, and next operational steps.",
+        icon: "Workflow"
+      },
+      {
+        title: "Audience Segmentation",
+        description: "Structure dynamic audience groups and targeted campaign lists using validated criteria and data privacy boundaries.",
+        icon: "Users"
+      },
+      {
+        title: "Content & Publishing Workflows",
+        description: "Coordinate content production tasks, publishing schedules, creative assets, peer reviews, and legal approval steps.",
+        icon: "FileText"
+      },
+      {
+        title: "Seamless CRM Lead Handoff",
+        description: "Directly stream marketing campaign responses and scored leads into BrainCRM workflows for immediate sales engagement.",
+        icon: "ArrowRight"
+      },
+      {
+        title: "Performance Visibility & ROI",
+        description: "Consolidate campaign reach, conversion milestones, attribution indicators, and channel spend metrics into unified dashboards.",
+        icon: "BarChart3"
+      }
+    ],
+    benefits: [
+      {
+        title: "Campaign Velocity",
+        description: "Cut campaign kickoff and asset approval turnaround times with structured reviews.",
+        metric: "45%"
+      },
+      {
+        title: "Lead Handoff Speed",
+        description: "Eliminate manual export-import cycles by piping qualified responders directly into CRM.",
+        metric: "Near Instant"
+      },
+      {
+        title: "Attribution Clarity",
+        description: "Align marketing budget allocations to verified downstream pipeline conversion results.",
+        metric: "100%"
+      }
+    ],
+    architecture: {
+      title: "BrainMKT Platform Topology",
+      description: "Cloud-native event-driven marketing orchestration architecture with campaign scheduler queues and webhook connectors.",
+      layers: [
+        {
+          name: "Channel & Ingestion Layer",
+          nodes: [
+            { name: "Channel Connectors", type: "gateway", description: "Aggregates ad platform webhooks and social responses." },
+            { name: "Event Gateway", type: "gateway", description: "Secures external click and lead submission endpoints." }
+          ]
+        },
+        {
+          name: "Orchestration & Workflow Engine",
+          nodes: [
+            { name: "Campaign Planner", type: "core", description: "Manages calendar dependencies and milestone triggers." },
+            { name: "Audience Segmenter", type: "core", description: "Computes dynamic cohort lists using privacy-safe rules." },
+            { name: "Lead Dispatcher", type: "service", description: "Pipes verified leads into CRM workflows." }
+          ]
+        },
+        {
+          name: "Analytics & Persistence",
+          nodes: [
+            { name: "Campaign Datastore", type: "storage", description: "Maintains relational campaign schedules and creative assets." },
+            { name: "Attribution Cache", type: "storage", description: "Accelerates dashboard queries for channel attribution metrics." }
+          ]
+        }
+      ]
+    },
+    integrations: ["BrainCRM", "Google Ads", "Meta Ads", "LinkedIn Campaign Manager", "Mailchimp", "HubSpot", "Zapier"],
+    icon: "megaphone",
+    href: "/products/brainmkt",
+    aiAgent: {
+      name: "BrainMKT AI Agent",
+      context: "Marketing Management",
+      assistance: [
+        "Campaign executive summaries",
+        "Planning & calendar scheduling support",
+        "Creative copy drafting & variants",
+        "Marketing performance queries"
+      ],
+      controls: [
+        "Content review step required",
+        "Brand guideline adherence checks",
+        "Human publishing approval",
+        "Audience privacy access boundaries"
+      ]
+    }
+  },
+  {
+    name: "BrainCRM",
+    slug: "braincrm",
+    description: "Customer Relationship Management platform to organize customer information, manage leads and opportunities, coordinate follow-up, and empower sales and support.",
+    headline: "Convert Pipelines and Streamline Customer Journeys",
+    highlight: "Customer Journeys",
+    features: [
+      "Customer 360 & Account Records",
+      "Lead Capture & Qualification",
+      "Visual Sales Pipeline",
+      "Multi-Channel Interaction History",
+      "Customer Service Coordination",
+      "Predictive CRM Analytics"
+    ],
+    detailedFeatures: [
+      {
+        title: "Customer Records & Profiles",
+        description: "Maintain comprehensive customer profiles, relationship context, interaction history, and hierarchical account information.",
+        icon: "Users"
+      },
+      {
+        title: "Lead Management & Scoring",
+        description: "Support lead capture, automated qualification, territory assignment, activity tracking, and conversion visibility.",
+        icon: "Target"
+      },
+      {
+        title: "Visual Sales Pipeline",
+        description: "Track opportunity stages, next actions, pipeline value, probability weighting, and forecast-oriented reporting.",
+        icon: "LayoutDashboard"
+      },
+      {
+        title: "Unified Engagement History",
+        description: "Consolidate sales meetings, marketing touches, email threads, and service tickets into a single chronological timeline.",
+        icon: "Clock"
+      },
+      {
+        title: "Customer Service Coordination",
+        description: "Manage request ownership, ticket routing, communication history, and service SLA visibility.",
+        icon: "HeartHandshake"
+      },
+      {
+        title: "CRM Reporting & Velocity",
+        description: "Review sales activity volume, win rates, conversion stages, and team pipeline movements with executive exports.",
+        icon: "BarChart3"
+      }
+    ],
+    benefits: [
+      {
+        title: "Conversion Gains",
+        description: "Boost deal closing velocity and conversion percentages through automated lead scoring and structured follow-up.",
+        metric: "24%"
+      },
+      {
+        title: "Sales Team Efficiency",
+        description: "Equip sales teams with unified notes, pre-approved proposal templates, and scheduled follow-up alerts.",
+        metric: "40%"
+      },
+      {
+        title: "Account Retention",
+        description: "Proactively resolve customer issues with a centralized view of support tickets and engagement telemetry.",
+        metric: "18%"
+      }
+    ],
+    architecture: {
+      title: "BrainCRM Topology & Services",
+      description: "High-frequency interaction architecture designed for real-time customer event streaming and pipeline auditability.",
+      layers: [
+        {
+          name: "Ingestion & Communication Layer",
+          nodes: [
+            { name: "Interaction Gateway", type: "gateway", description: "Accepts email threads, form captures, and support webhooks." },
+            { name: "API Gateway", type: "gateway", description: "Secures client portal and mobile app endpoints." }
+          ]
+        },
+        {
+          name: "Pipeline & Service Engines",
+          nodes: [
+            { name: "Lead Qualification Engine", type: "core", description: "Evaluates lead score and automated territory routing." },
+            { name: "Opportunity Pipeline", type: "core", description: "Manages deal stage state transitions and audit logs." },
+            { name: "Service Ticket Router", type: "service", description: "Dispatches customer inquiries by skill and priority." }
+          ]
+        },
+        {
+          name: "Customer Graph & Storage",
+          nodes: [
+            { name: "Customer Graph DB", type: "storage", description: "Maintains relational hierarchies between accounts and contacts." },
+            { name: "Search & Telemetry Index", type: "storage", description: "Powers instant sub-second customer record searches." }
+          ]
+        }
+      ]
+    },
+    integrations: ["BrainMKT", "BrainERP", "BrainBooks", "Twilio", "Stripe", "Zendesk", "Microsoft 365", "Google Workspace"],
+    icon: "users",
+    href: "/products/braincrm",
+    aiAgent: {
+      name: "BrainCRM AI Agent",
+      context: "Customer Relationships",
+      assistance: [
+        "Customer account context summaries",
+        "Record & interaction history discovery",
+        "Pipeline deal probability queries",
+        "Personalized client follow-up drafts"
+      ],
+      controls: [
+        "User role data permissions enforced",
+        "Duplicate customer context validation",
+        "Review before external email dispatch",
+        "No autonomous contract commitments"
+      ]
+    }
+  },
+  {
+    name: "BrainERP",
+    slug: "brainerp",
+    description: "Enterprise Resource Planning platform to coordinate operations across finance, inventory, warehouse, procurement, sales, and manufacturing.",
+    headline: "Unify Operations, Supply Chain, and Resources in Real Time",
+    highlight: "Real Time",
+    features: [
+      "Operational Coordination",
+      "Multi-Warehouse Inventory Control",
+      "Strategic Procurement & POs",
+      "Advanced Manufacturing Scheduling",
+      "Sales Order Fulfillment",
+      "Executive Operational Reporting"
+    ],
+    detailedFeatures: [
+      {
+        title: "Operational Coordination",
+        description: "Coordinate relevant business operations in a consistent, unified environment aligned with your operating model.",
+        icon: "Workflow"
+      },
+      {
+        title: "Multi-Warehouse Inventory",
+        description: "Real-time stock visibility across multi-site warehouses, automatic reorder threshold triggers, and shelf-life tracking.",
         icon: "Package"
       },
       {
         title: "Strategic Procurement",
-        description: "Automate vendor evaluation workflows, contract auditing, purchase order tracking, and sourcing analytics tools.",
+        description: "Manage supplier records, purchase requisitions, multi-tier approval hierarchies, and vendor evaluation metrics.",
         icon: "ShoppingCart"
       },
       {
-        title: "Advanced Manufacturing Schedulers",
-        description: "MRP planning engines, interactive shop-floor control schedules, capacity forecasting, and bill-of-materials orchestration.",
+        title: "Manufacturing & Operations",
+        description: "Support production planning, bill of materials (BOM), shop-floor control, capacity forecasting, and work orders.",
         icon: "Cpu"
       },
       {
-        title: "Human Resource Systems",
-        description: "Global payroll administration, employee lifecycle tracking, timesheet automation, and performance analytics hubs.",
-        icon: "Users"
+        title: "Sales Order Fulfillment",
+        description: "Connect customer sales orders directly with inventory allocation, shipping logistics, and invoicing workflows.",
+        icon: "Truck"
       },
       {
-        title: "Enterprise Business Intelligence",
-        description: "Interactive executive dashboards, custom reporting generators, real-time KPI alerts, and predictive business forecasting models.",
+        title: "Management Reporting",
+        description: "Interactive operational dashboards, exception monitoring, supply chain KPIs, and cost variance reporting.",
         icon: "BarChart3"
       }
     ],
     benefits: [
       {
         title: "Operational Efficiency",
-        description: "Reduce core administrative overhead with end-to-end automation across functional teams.",
+        description: "Reduce administrative overhead with end-to-end operational coordination across departments.",
         metric: "35%"
       },
       {
-        title: "Audit Readiness",
-        description: "Ensure standard compliance with pre-configured reports, secure ledger records, and tracking logs.",
-        metric: "100%"
+        title: "Working Capital Optimization",
+        description: "Optimize stock carrying costs and purchase order batching to free up liquid operating capital.",
+        metric: "20%"
       },
       {
-        title: "Working Capital Gains",
-        description: "Optimize storage overhead and procurement schedules to unlock immediate capital.",
-        metric: "18%"
+        title: "Audit Readiness",
+        description: "Ensure complete transaction traceability with immutable stock movement and procurement logs.",
+        metric: "100%"
       }
     ],
     architecture: {
       title: "BrainERP Platform Topology",
-      description: "Designed on a modular ledger-centric microservices framework, built with high security and latency parameters.",
+      description: "Designed on a modular ledger-centric microservices framework with ACID transaction guarantees and enterprise audit trails.",
       layers: [
         {
           name: "Gateway & Integration Layer",
           nodes: [
-            { name: "Load Balancer", type: "gateway", description: "Distributes transactions across node pools." },
-            { name: "REST/GraphQL API", type: "gateway", description: "Standard endpoints for third-party client consumption." }
+            { name: "Enterprise Gateway", type: "gateway", description: "Distributes transactional requests across cluster nodes." },
+            { name: "B2B / EDI Interface", type: "gateway", description: "Secure interfaces for supplier and logistics interchange." }
           ]
         },
         {
-          name: "Core Processing Engines",
+          name: "Operational Engines",
           nodes: [
-            { name: "Ledger Service", type: "core", description: "Processes financial operations with ACID compliance." },
-            { name: "MRP Planner", type: "core", description: "Orchestrates factory resource schedulers." },
-            { name: "BI Analytics Engine", type: "service", description: "Runs aggregations for operations intelligence." }
+            { name: "Inventory Controller", type: "core", description: "Maintains real-time multi-site stock allocation state." },
+            { name: "Procurement Engine", type: "core", description: "Orchestrates purchase approval matrices and vendor POs." },
+            { name: "MRP Scheduler", type: "core", description: "Computes material requirements and factory work orders." }
           ]
         },
         {
           name: "Storage & Persistence",
           nodes: [
-            { name: "Main DB (PostgreSQL)", type: "storage", description: "Holds critical transaction records with partition clustering." },
-            { name: "Cache (Redis)", type: "storage", description: "Speeds up ledger balances query response rates." }
+            { name: "Operational DB (PostgreSQL)", type: "storage", description: "Encapsulates transaction tables with partition clustering." },
+            { name: "State Cache (Redis)", type: "storage", description: "Accelerates inventory lookups and active session caches." }
           ]
         }
       ]
     },
-    integrations: ["Dynamics 365 BC", "Odoo", "ERPNext", "AWS S3", "Azure Active Directory", "SAP"],
+    integrations: ["BrainCRM", "BrainBooks", "Dynamics 365 BC", "Odoo", "Shopify Plus", "Amazon FBA", "FedEx / UPS APIs"],
     icon: "database",
-    href: "/products/brainerp"
+    href: "/products/brainerp",
+    aiAgent: {
+      name: "BrainERP AI Agent",
+      context: "Operations & Supply Chain",
+      assistance: [
+        "Operational inventory queries",
+        "Supply chain exception summaries",
+        "Production trend explanations",
+        "Procurement workflow insights"
+      ],
+      controls: [
+        "Strict transaction authorization",
+        "Source record traceability",
+        "Human approval for stock adjustments",
+        "No autonomous purchase approvals"
+      ]
+    }
   },
   {
-    name: "BrainCRM",
-    slug: "braincrm",
-    description: "Customer Relationship Management platform to drive lead conversion, automate marketing, and offer customer 360 views.",
-    headline: "Convert Pipelines and Streamline Customer Journeys",
-    highlight: "Customer Journeys",
+    name: "BrainBooks",
+    slug: "brainbooks",
+    description: "Accounting management platform positioned to maintain structured financial records, coordinate accounts receivable/payable, and streamline reconciliation.",
+    headline: "Precision Accounting, Audit-Ready Ledgers, and Cash Flow Clarity",
+    highlight: "Cash Flow Clarity",
     features: [
-      "Lead Management & Tracking",
-      "Visual Sales Pipeline",
-      "Customer 360 Overview Portal",
-      "Advanced Marketing Automation"
+      "Structured General Ledger",
+      "Accounts Receivable Automation",
+      "Accounts Payable & Due Dates",
+      "Cash & Bank Feeds",
+      "Reconciliation & Internal Controls",
+      "Statutory Financial Reporting"
     ],
     detailedFeatures: [
       {
-        title: "Lead Management & Scoring",
-        description: "Analyze conversion probability, log lead activity, and route prospects using predictive priority engines.",
-        icon: "Target"
+        title: "General Ledger & Accounts",
+        description: "Organize custom chart of accounts, multi-currency journal entries, and fiscal closing periods under approved accounting models.",
+        icon: "BookOpen"
       },
       {
-        title: "Visual Sales Pipeline",
-        description: "Track deal progression with interactive drag-and-drop boards, automatic pipeline value forecasts, and task reminders.",
-        icon: "LayoutDashboard"
+        title: "Accounts Receivable (AR)",
+        description: "Automate customer invoicing, track outstanding balances, review aging summaries, and record payment receipts.",
+        icon: "Receipt"
       },
       {
-        title: "Customer 360 Portal",
-        description: "Unify support history, purchase records, communication logs, and preference parameters in one single pane.",
-        icon: "Users"
+        title: "Accounts Payable (AP)",
+        description: "Coordinate supplier bills, verify three-way PO matches, schedule due dates, and streamline payment preparation.",
+        icon: "CreditCard"
       },
       {
-        title: "Marketing Automation",
-        description: "Launch dynamic multi-channel campaigns, track engagement webhooks, and evaluate campaign attribution models.",
-        icon: "Mail"
+        title: "Cash & Bank Activity",
+        description: "Record bank account transactions, reconcile bank statements automatically, and monitor live liquid cash positions.",
+        icon: "Wallet"
+      },
+      {
+        title: "Reconciliation & Controls",
+        description: "Support transaction rule matching, variance review steps, role-based controls, and traceable journal audit trails.",
+        icon: "ShieldCheck"
+      },
+      {
+        title: "Financial Reporting",
+        description: "Generate compliant balance sheets, profit & loss (P&L) statements, cash flow statements, and statutory tax reports.",
+        icon: "BarChart3"
       }
     ],
     benefits: [
       {
-        title: "Conversion Gains",
-        description: "Boost deal closing velocity and conversion percentages through automated lead scoring structures.",
-        metric: "24%"
+        title: "Month-End Close Speed",
+        description: "Accelerate month-end closing cycles by ingesting approved operational transactions from BrainERP.",
+        metric: "50%"
       },
       {
-        title: "Team Efficiency",
-        description: "Equip sales reps with integrated notes, templates, and trigger-based email actions.",
-        metric: "40%"
+        title: "Reconciliation Accuracy",
+        description: "Eliminate manual bank matching errors with automated transaction reconciliation rules.",
+        metric: "99.8%"
       },
       {
-        title: "Retention Improvement",
-        description: "Proactively resolve customer issues with a centralized view of support tickets and engagement telemetry.",
-        metric: "15%"
+        title: "Audit Compliance",
+        description: "Provide external auditors with complete timestamped journal histories and approval trails.",
+        metric: "100%"
       }
     ],
     architecture: {
-      title: "BrainCRM Topology & Services",
-      description: "Architected for high-frequency customer interaction data ingestion and real-time activity streaming.",
+      title: "BrainBooks Financial Architecture",
+      description: "Compliant double-entry financial accounting ledger with strict immutability, role-segregated controls, and audit verification.",
       layers: [
         {
-          name: "Ingestion Layer",
+          name: "Bank & Transaction Ingestion",
           nodes: [
-            { name: "Webhook Gateway", type: "gateway", description: "Accepts web event streams from marketing platforms." },
-            { name: "API Gateway", type: "gateway", description: "Secures and routes dashboard requests." }
+            { name: "Bank Feeds Gateway", type: "gateway", description: "Securely ingests statement lines via Open Banking APIs." },
+            { name: "ERP Ingestion Bridge", type: "gateway", description: "Receives validated transaction batches from operational ERP." }
           ]
         },
         {
-          name: "Telemetry & Action Engines",
+          name: "Ledger & Compliance Engine",
           nodes: [
-            { name: "Lead Scorer", type: "core", description: "Processes predictive conversion likelihood." },
-            { name: "Workflows Service", type: "core", description: "Triggers actions on deal stage changes." }
+            { name: "Double-Entry Posting Engine", type: "core", description: "Enforces debit/credit equality with ACID compliance." },
+            { name: "Reconciliation Matcher", type: "service", description: "Automates rule-based matching of bank and ledger entries." },
+            { name: "Period-Close Governor", type: "core", description: "Locks closed fiscal periods against retrospective adjustments." }
           ]
         },
         {
-          name: "Persistence & Graph Layer",
+          name: "Ledger Persistence & Audit Vault",
           nodes: [
-            { name: "Relation Store", type: "storage", description: "Stores customer record trees." },
-            { name: "Search Index", type: "storage", description: "Provides instant name/company queries using Elasticsearch." }
+            { name: "Immutable Ledger Store", type: "storage", description: "Appends journal lines to cryptographically verified storage." },
+            { name: "Financial Reporting Datamart", type: "storage", description: "Powers rapid P&L and Balance Sheet aggregations." }
           ]
         }
       ]
     },
-    integrations: ["Salesforce", "HubSpot", "Twilio", "Mailchimp", "Stripe", "Zendesk"],
-    icon: "users",
-    href: "/products/braincrm"
-  },
-  {
-    name: "BrainAI",
-    slug: "brainai",
-    description: "Enterprise Artificial Intelligence platform providing document intelligence, predictive analytics, and generative assistants.",
-    headline: "Predict, Parse, and Automate with Cognitive AI",
-    highlight: "Cognitive AI",
-    features: [
-      "Interactive AI Assistant",
-      "Cognitive Document Intelligence",
-      "Predictive & Descriptive Analytics",
-      "Tailored Generative AI Engines"
-    ],
-    detailedFeatures: [
-      {
-        title: "Cognitive Document Intelligence",
-        description: "Extract semantic tables, entity fields, and metadata signatures from unstructured PDFs and images.",
-        icon: "FileText"
-      },
-      {
-        title: "Predictive & Forecast Engines",
-        description: "Predict supply demand, customer churn probabilities, and financial trends using custom time-series models.",
-        icon: "TrendingUp"
-      },
-      {
-        title: "Tailored Generative AI",
-        description: "Deploy domain-specific LLM assistants equipped with secure Retrieval-Augmented Generation (RAG) over local document storage.",
-        icon: "Brain"
-      },
-      {
-        title: "Real-time Anomaly Detection",
-        description: "Flag fraudulent transaction balances, cyber activity anomalies, and hardware wear alerts instantly.",
-        icon: "AlertTriangle"
-      }
-    ],
-    benefits: [
-      {
-        title: "Manual Labor Reductions",
-        description: "Automate invoice scanning, support ticket triage, and data entry reviews with semantic models.",
-        metric: "80%"
-      },
-      {
-        title: "Forecast Accuracy",
-        description: "Refine resource allocation plans with automated multivariate forecast models.",
-        metric: "92%"
-      },
-      {
-        title: "Decision Support Speed",
-        description: "Deliver instant, secure corporate knowledge lookups to teams via semantic search interfaces.",
-        metric: "10x"
-      }
-    ],
-    architecture: {
-      title: "BrainAI Machine Learning Stack",
-      description: "A state-of-the-art secure inference cluster supporting semantic indexing, local document vectors, and modular model configurations.",
-      layers: [
-        {
-          name: "Model Interface Layer",
-          nodes: [
-            { name: "Chat Gateway", type: "gateway", description: "Orchestrates prompt flows and token streaming." },
-            { name: "Document Parser", type: "gateway", description: "Performs OCR and layout structural reviews." }
-          ]
-        },
-        {
-          name: "Inference & Vector Processing",
-          nodes: [
-            { name: "LLM Cluster", type: "core", description: "Executes local model inference (Llama/Gemma pools)." },
-            { name: "RAG Retrieval Engine", type: "core", description: "Performs semantic text chunk similarity sweeps." }
-          ]
-        },
-        {
-          name: "Vector DB & Weights Storage",
-          nodes: [
-            { name: "Vector Store", type: "storage", description: "Holds high-dimensional document embedding vectors." },
-            { name: "Weights Cache", type: "storage", description: "Caches common context weights for fast inference responses." }
-          ]
-        }
+    integrations: ["BrainERP", "BrainCRM", "Plaid", "Stripe", "QuickBooks Data Importer", "Xero Sync", "Standard Tax Authorities"],
+    icon: "receipt",
+    href: "/products/brainbooks",
+    aiAgent: {
+      name: "BrainBooks AI Agent",
+      context: "Accounting & Finance",
+      assistance: [
+        "Financial statement summaries",
+        "Journal entry & ledger discovery",
+        "Report variance explanations",
+        "Reconciliation & review notes preparation"
+      ],
+      controls: [
+        "Strict financial access permissions",
+        "Comprehensive journal audit logging",
+        "ZERO autonomous payment approvals",
+        "Human review required for postings"
       ]
-    },
-    integrations: ["OpenAI", "Hugging Face", "Pinecone", "AWS SageMaker", "Postgres pgvector", "LangChain"],
-    icon: "cpu",
-    href: "/products/brainai"
-  },
-  {
-    name: "BrainConnect",
-    slug: "brainconnect",
-    description: "Integration platform to orchestrate APIs, automate enterprise workflows, and synchronize databases.",
-    headline: "Orchestrate Enterprise Data Flows and API Pipelines",
-    highlight: "API Pipelines",
-    features: [
-      "High-throughput API Integration",
-      "Dynamic Workflow Automation",
-      "Bi-directional Data Synchronization"
-    ],
-    detailedFeatures: [
-      {
-        title: "API Integration Engine",
-        description: "Configure REST, SOAP, and GraphQL integrations with automatic schema validation and credential vaults.",
-        icon: "Key"
-      },
-      {
-        title: "Visual Workflow Designer",
-        description: "Orchestrate multi-step pipelines with drag-and-drop conditions, error retry triggers, and parallel processing branches.",
-        icon: "GitBranch"
-      },
-      {
-        title: "Bi-directional Sync Hub",
-        description: "Keep local databases and cloud platforms in perfect sync using change-data-capture (CDC) listeners.",
-        icon: "RefreshCw"
-      },
-      {
-        title: "Enterprise Log & Audit",
-        description: "Audit every payload, review historical transaction trace logs, and set threshold alerts.",
-        icon: "Activity"
-      }
-    ],
-    benefits: [
-      {
-        title: "Shorter Setup Cycles",
-        description: "Connect legacy ERP database schemas to modern SaaS applications with zero custom code templates.",
-        metric: "75%"
-      },
-      {
-        title: "System Sync SLA",
-        description: "Achieve near zero latency event delivery rates with automatic retry queues.",
-        metric: "99.99%"
-      },
-      {
-        title: "Integration Outage Drops",
-        description: "Proactively resolve API failures via automatic notification webhooks.",
-        metric: "60%"
-      }
-    ],
-    architecture: {
-      title: "BrainConnect Integration Architecture",
-      description: "An event-driven integration framework designed for scale, queue management, and transaction logging.",
-      layers: [
-        {
-          name: "Ingestion & Queue Layer",
-          nodes: [
-            { name: "API Gateway", type: "gateway", description: "Ingests webhook calls with rate limit protection." },
-            { name: "Kafka Queue Cluster", type: "core", description: "Guarantees ordering and durability of messages." }
-          ]
-        },
-        {
-          name: "Orchestration & Rules Engines",
-          nodes: [
-            { name: "Flow Engine", type: "core", description: "Parses and executes visual pipeline workflow trees." },
-            { name: "Transformer Service", type: "service", description: "Performs JSON/XML/CSV payload mappings." }
-          ]
-        },
-        {
-          name: "State & Vault Storage",
-          nodes: [
-            { name: "Vault Store", type: "storage", description: "Stores API tokens and authorization certs securely." },
-            { name: "State Cache (Redis)", type: "storage", description: "Caches run execution states and trace log snapshots." }
-          ]
-        }
-      ]
-    },
-    integrations: ["RabbitMQ", "Kafka", "Zapier", "AWS EventBridge", "HashiCorp Vault", "Azure Service Bus"],
-    icon: "network",
-    href: "/products/brainconnect"
+    }
   }
 ];

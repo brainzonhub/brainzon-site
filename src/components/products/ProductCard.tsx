@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, Server, RefreshCw } from "lucide-react";
+import { ArrowRight, Server, RefreshCw, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { getMenuIcon } from "@/components/navigation/menu-icons";
 import type { Product } from "@/config/products";
@@ -13,17 +13,16 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product, index }: ProductCardProps) {
-  // Map custom borders/glow effects based on the product
   const getGlowStyles = (slug: string) => {
     switch (slug) {
-      case "brainai":
-        return "hover:border-primary/50 hover:shadow-glow-primary";
-      case "brainerp":
-        return "hover:border-violet-500/50 hover:shadow-[0_0_25px_rgba(167,139,250,0.25)]";
+      case "brainmkt":
+        return "hover:border-cyan-500/50 hover:shadow-[0_0_25px_rgba(6,182,212,0.25)]";
       case "braincrm":
         return "hover:border-amber-500/50 hover:shadow-[0_0_25px_rgba(251,191,36,0.25)]";
-      case "brainconnect":
-        return "hover:border-secondary/50 hover:shadow-glow-secondary";
+      case "brainerp":
+        return "hover:border-violet-500/50 hover:shadow-[0_0_25px_rgba(167,139,250,0.25)]";
+      case "brainbooks":
+        return "hover:border-emerald-500/50 hover:shadow-[0_0_25px_rgba(16,185,129,0.25)]";
       default:
         return "hover:border-primary/50 hover:shadow-glow-primary";
     }
@@ -31,14 +30,14 @@ export function ProductCard({ product, index }: ProductCardProps) {
 
   const getIconColor = (slug: string) => {
     switch (slug) {
-      case "brainai":
-        return "bg-primary/10 text-primary border-primary/20";
-      case "brainerp":
-        return "bg-violet-500/10 text-violet-400 border-violet-500/20";
+      case "brainmkt":
+        return "bg-cyan-500/10 text-cyan-400 border-cyan-500/20";
       case "braincrm":
         return "bg-amber-500/10 text-amber-400 border-amber-500/20";
-      case "brainconnect":
-        return "bg-secondary/10 text-secondary border-secondary/20";
+      case "brainerp":
+        return "bg-violet-500/10 text-violet-400 border-violet-500/20";
+      case "brainbooks":
+        return "bg-emerald-500/10 text-emerald-400 border-emerald-500/20";
       default:
         return "bg-primary/10 text-primary border-primary/20";
     }
@@ -56,22 +55,37 @@ export function ProductCard({ product, index }: ProductCardProps) {
         getGlowStyles(product.slug)
       )}
     >
-      {/* Subtle background glow element */}
+      {/* Background glow element */}
       <div className="absolute -top-12 -right-12 size-36 bg-foreground/5 rounded-full blur-2xl group-hover:bg-primary/5 transition-all duration-300 pointer-events-none" />
 
       <div className="space-y-6">
         {/* Header */}
-        <div className="flex items-center gap-4">
-          <div className={cn("size-12 rounded-2xl border flex items-center justify-center transition-colors", getIconColor(product.slug))}>
-            {getMenuIcon(product.icon, { size: 24 })}
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <div className={cn("size-12 rounded-2xl border flex items-center justify-center transition-colors", getIconColor(product.slug))}>
+              {getMenuIcon(product.icon, { size: 24 })}
+            </div>
+            <div>
+              <h3 className="text-xl font-bold text-foreground transition-colors group-hover:text-primary">
+                {product.name}
+              </h3>
+              <span className="text-xs text-muted-foreground font-medium">Business Application</span>
+            </div>
           </div>
-          <div>
-            <h3 className="text-xl font-bold text-foreground transition-colors group-hover:text-primary">
-              {product.name}
-            </h3>
-            <span className="text-xs text-muted-foreground font-medium">Enterprise Platform</span>
-          </div>
+          {(product.slug === "brainmkt" || product.slug === "brainbooks") && (
+            <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-cyan-500/15 text-cyan-400 border border-cyan-500/30">
+              New
+            </span>
+          )}
         </div>
+
+        {/* Dedicated AI Agent badge */}
+        {product.aiAgent && (
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-primary/10 border border-primary/20 text-primary text-xs font-medium">
+            <Sparkles size={12} />
+            <span>Dedicated: {product.aiAgent.name}</span>
+          </div>
+        )}
 
         {/* Description */}
         <p className="text-sm text-muted-foreground leading-relaxed">
@@ -82,7 +96,7 @@ export function ProductCard({ product, index }: ProductCardProps) {
         <div className="space-y-3 pt-2">
           <h4 className="text-xs font-bold uppercase tracking-wider text-foreground">Capabilities</h4>
           <div className="flex flex-wrap gap-2">
-            {product.features.map((feature) => (
+            {product.features.slice(0, 4).map((feature) => (
               <span
                 key={feature}
                 className="inline-flex items-center px-3 py-1 rounded-md text-xs font-medium bg-muted/50 border border-border/60 text-foreground"
@@ -101,7 +115,7 @@ export function ProductCard({ product, index }: ProductCardProps) {
               Deployment
             </span>
             <span className="text-xs text-foreground font-medium mt-1 block">
-              {product.slug === "brainerp" ? "Cloud, Private, On-Prem" : "Cloud / Hybrid"}
+              {product.slug === "brainerp" ? "Cloud, Private, Hybrid" : "Cloud / Managed"}
             </span>
           </div>
           <div>

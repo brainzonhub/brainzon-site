@@ -52,21 +52,23 @@ export default function IntegrationPage() {
     },
     {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      name: "BrainConnect",
-      applicationCategory: "BusinessApplication",
-      applicationSubCategory: "Integration Platform as a Service (iPaaS)",
-      operatingSystem: "Web",
-      url: new URL("/products/brainconnect", siteConfig.url).toString(),
-      description: "Enterprise integration platform to connect applications, automate workflows, synchronize data, and create a unified digital ecosystem.",
-      featureList: [
-        "API Management",
-        "Application Integration",
-        "Data Synchronization",
-        "Workflow Automation",
-        "Monitoring & Analytics",
-      ],
-      publisher: { "@id": `${siteConfig.url}/#organization` },
+      "@type": "Service",
+      name: "Brainzon Enterprise Integration Services",
+      serviceType: "Enterprise Integration & API Orchestration",
+      provider: { "@id": `${siteConfig.url}/#organization` },
+      url: new URL("/solutions/integration", siteConfig.url).toString(),
+      description: "Enterprise integration services connecting applications, automating workflows, synchronizing data, and creating a unified digital ecosystem.",
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "Integration Capabilities",
+        itemListElement: [
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "API Management & Gateways" } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Application Integration" } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Data Synchronization" } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Workflow Automation" } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Monitoring & Analytics" } },
+        ],
+      },
     },
   ];
 
@@ -78,12 +80,10 @@ export default function IntegrationPage() {
           __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
         }}
       />
-      <div className="flex flex-col min-h-screen bg-background">
+      <div className="flex flex-col min-h-screen">
         <IntegrationHero />
         <IntegrationChallenges />
-        <div id="showcase">
-          <BrainConnectShowcase />
-        </div>
+        <BrainConnectShowcase />
         <IntegrationArchitecture />
         <IntegrationServices />
         <IntegrationUseCases />

@@ -78,7 +78,7 @@ export function CustomDevArchitectureShowcase() {
             Bespoke Enterprise Software Engineered for High-Concurrency Scale
           </h2>
           <p className="text-base text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-            We don't build generic web scripts. We engineer mission-critical, cloud-native platforms with strict architectural rigor, zero technical debt, and ACID-compliant security.
+            We don&apos;t build generic web scripts. We engineer mission-critical, cloud-native platforms with strict architectural rigor, zero technical debt, and ACID-compliant security.
           </p>
         </div>
 

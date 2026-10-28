@@ -28,7 +28,7 @@ export function CaseStudyHero({ study }: { study: CaseStudy }) {
             </h1>
             <p className="mt-6 max-w-3xl text-base md:text-lg text-muted-foreground leading-relaxed">{study.summary}</p>
             <div className="mt-9 flex flex-wrap gap-3">
-              <Link href={study.primaryCta.href} className="inline-flex items-center gap-2 rounded-xl bg-secondary text-secondary-foreground hover:bg-secondary/90 px-5 py-3 text-sm font-bold shadow-glow-secondary transition-transform hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+              <Link href={study.primaryCta.href} className="inline-flex items-center gap-2 rounded-xl bg-primary text-primary-foreground hover:bg-primary/90 px-5 py-3 text-sm font-bold shadow-glow-primary transition-transform hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
                 {study.primaryCta.label}<ArrowUpRight className="size-4" aria-hidden="true" />
               </Link>
               <Link href={study.secondaryCta.href} className="inline-flex items-center rounded-xl border border-border bg-card/70 px-5 py-3 text-sm font-bold text-foreground backdrop-blur transition-colors hover:border-primary/50 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">

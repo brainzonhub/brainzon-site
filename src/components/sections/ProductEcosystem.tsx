@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight, Check, Sparkles } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { productsConfig } from "@/config/products";
 import { getMenuIcon } from "@/components/navigation/menu-icons";
@@ -13,11 +13,14 @@ export function ProductEcosystem() {
 
       <Container>
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-heading-2 font-bold tracking-tight text-foreground">
-            Our Product Ecosystem
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 border border-primary/20">
+            One Connected Foundation
+          </span>
+          <h2 className="text-heading-2 font-bold tracking-tight text-foreground mt-3">
+            Our Business Applications &amp; Dedicated AI Agents
           </h2>
           <p className="mt-4 text-base text-muted-foreground leading-relaxed">
-            Data-driven, highly integrated enterprise SaaS platforms built on modern intelligence architectures to future-proof your workflows.
+            BrainMKT, BrainCRM, BrainERP, and BrainBooks connect operations, customer relationships, marketing, and accounting. Each product includes a dedicated AI assistant.
           </p>
         </div>
 
@@ -34,22 +37,36 @@ export function ProductEcosystem() {
               <div className="absolute top-0 left-0 right-0 h-1 rounded-t-2xl bg-gradient-to-r from-transparent via-primary/0 to-transparent group-hover:via-primary/50 transition-all duration-300" />
               
               <div>
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="flex size-12 items-center justify-center rounded-xl bg-muted text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary transition-colors shrink-0">
-                    {getMenuIcon(product.icon, { size: 24 })}
+                <div className="flex items-center justify-between mb-6">
+                  <div className="flex items-center gap-4">
+                    <div className="flex size-12 items-center justify-center rounded-xl bg-muted text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary transition-colors shrink-0">
+                      {getMenuIcon(product.icon, { size: 24 })}
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors duration-200">
+                        {product.name}
+                      </h3>
+                      <p className="text-xs text-muted-foreground uppercase tracking-wider mt-0.5">
+                        {product.name === "BrainMKT" && "Marketing Management"}
+                        {product.name === "BrainCRM" && "Customer Relationship Management"}
+                        {product.name === "BrainERP" && "Enterprise Resource Planning"}
+                        {product.name === "BrainBooks" && "Accounting Management"}
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors duration-200">
-                      {product.name}
-                    </h3>
-                    <p className="text-xs text-muted-foreground uppercase tracking-wider mt-0.5">
-                      {product.name === "BrainERP" && "ERP Platform"}
-                      {product.name === "BrainCRM" && "CRM Platform"}
-                      {product.name === "BrainAI" && "AI Platform"}
-                      {product.name === "BrainConnect" && "Integration System"}
-                    </p>
-                  </div>
+                  {(product.slug === "brainmkt" || product.slug === "brainbooks") && (
+                    <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-cyan-500/15 text-cyan-400 border border-cyan-500/30">
+                      New
+                    </span>
+                  )}
                 </div>
+
+                {product.aiAgent && (
+                  <div className="mb-4 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-primary/10 border border-primary/20 text-primary text-xs font-medium">
+                    <Sparkles size={12} />
+                    <span>Dedicated: {product.aiAgent.name}</span>
+                  </div>
+                )}
 
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   {product.description}

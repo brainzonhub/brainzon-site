@@ -167,7 +167,7 @@ export const integrationUseCases: IntegrationUseCase[] = [
     icon: "Store",
     description: "Omnichannel Order Orchestration",
     challenge: "Online orders and in-store inventory levels are out of sync, leading to backorders.",
-    solution: "Deploy BrainConnect to unify Shopify, POS terminals, ERP ledger, and warehouse databases.",
+    solution: "Deploy Enterprise Integration Services to unify Shopify, POS terminals, ERP ledger, and warehouse databases.",
     benefit: "100% accurate real-time inventory count and automated dispatch routing.",
   },
   {
@@ -212,7 +212,7 @@ export const integrationProcessSteps: IntegrationProcessStep[] = [
   {
     number: "03",
     title: "Development & Config",
-    description: "Configure BrainConnect connectors, build APIs, and construct event workflows.",
+    description: "Configure integration connectors, build governed APIs, and construct event workflows.",
   },
   {
     number: "04",
