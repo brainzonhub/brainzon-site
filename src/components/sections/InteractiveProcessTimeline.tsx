@@ -2,20 +2,13 @@
 
 import React, { useState } from "react";
 import { Container } from "@/components/layout/Container";
-import { 
-  Search, 
-  Code2, 
-  Rocket, 
-  CheckCircle2, 
-  ArrowRight, 
-  Activity, 
-  Terminal, 
-  ShieldCheck, 
-  Cpu, 
-  GitBranch, 
-  RefreshCw,
-  Clock,
-  Layers
+import {
+  Search,
+  Code2,
+  Rocket,
+  CheckCircle2,
+  GitBranch,
+  Clock
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -389,7 +382,6 @@ export function InteractiveProcessTimeline({ serviceSlug = "modernization" }: In
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {phasesList.map((p, idx) => {
               const isActive = activeTab === idx;
-              const TabIcon = p.icon;
 
               return (
                 <button

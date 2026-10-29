@@ -4,10 +4,9 @@ import React from "react";
 import Link from "next/link";
 import { Container } from "@/components/layout/Container";
 import { 
-  Code2, 
+   
   ShieldCheck, 
   Zap, 
-  Cpu, 
   CheckCircle2, 
   ArrowRight,
   Terminal,

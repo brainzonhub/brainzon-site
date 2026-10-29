@@ -7,10 +7,8 @@ import {
   Building2, 
   Boxes, 
   Layers, 
-  Check, 
   Settings, 
-  ArrowRight, 
-  ShieldCheck,
+  ArrowRight,
   CheckCircle2,
   Sparkles,
   Zap

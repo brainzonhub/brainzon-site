@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles, Terminal, Activity, ShieldCheck, Database, Layers } from "lucide-react";
+import { ArrowRight, Sparkles, Terminal, Activity, ShieldCheck } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 
 export function AboutHero() {

@@ -48,7 +48,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
 
   // Company paths
-  const companyPaths = ["about", "culture", "partners", "careers"];
+  const companyPaths = ["about", "partners", "careers"];
   const companyRoutes = companyPaths.map((c) => ({
     url: `${baseUrl}/company/${c}`,
     lastModified: new Date(),

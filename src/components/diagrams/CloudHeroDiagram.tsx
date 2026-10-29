@@ -6,10 +6,8 @@ import {
   Server, 
   ShieldCheck, 
   GitBranch, 
-  Activity, 
-  Cpu,
-  Globe,
-  HardDrive
+  Activity,
+  Globe
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 

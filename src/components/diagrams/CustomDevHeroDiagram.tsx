@@ -6,8 +6,7 @@ import {
   Layout, 
   Network, 
   Database, 
-  ShieldCheck, 
-  Cpu,
+  ShieldCheck,
   Zap
 } from "lucide-react";
 import { cn } from "@/lib/utils";

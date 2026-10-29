@@ -6,11 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { 
   ArrowRight, 
   CheckCircle2, 
-  Layers, 
-  Activity, 
-  Sparkles, 
-  ShieldCheck, 
-  TrendingUp,
+  Activity,
   Workflow
 } from "lucide-react";
 import { Container } from "@/components/layout/Container";

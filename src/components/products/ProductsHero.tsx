@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { Container } from "@/components/layout/Container";
 import { ProductIcon } from "@/components/ui/ProductIcon";
-import { Database, Users, Megaphone, Receipt, ArrowRight } from "lucide-react";
+import {     ArrowRight } from "lucide-react";
 
 export function ProductsHero() {
   const containerVariants = {

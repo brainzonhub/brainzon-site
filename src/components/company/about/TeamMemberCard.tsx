@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import Image from "next/image";
 import type { TeamMember } from "@/config/team";
 import { X, ExternalLink, Sparkles, CheckCircle2 } from "lucide-react";
-import { cn } from "@/lib/utils";
 
 function LinkedInIcon({ className = "size-3.5" }: { className?: string }) {
   return (

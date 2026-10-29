@@ -7,18 +7,14 @@ import {
   ArrowRight, 
   Shield, 
   Database, 
-  Users, 
-  Megaphone,
-  Receipt,
+  Users,
   Cpu, 
   Briefcase, 
   Package, 
   GitBranch, 
   RefreshCw, 
   Code2, 
-  Cloud,
-  CheckCircle2,
-  Sparkles 
+  Cloud 
 } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { ProductIcon } from "@/components/ui/ProductIcon";
@@ -162,7 +158,7 @@ const architecturePillars = [
     description: "Autonomous task agents, enterprise document reasoning, and private secure LLMs.",
     icon: Cpu,
     color: "accent" as const,
-    href: "/products/brainai",
+    href: "/solutions/ai",
     metric: "Private Agent Workflows",
   },
   {

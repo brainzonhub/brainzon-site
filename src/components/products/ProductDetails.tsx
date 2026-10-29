@@ -9,7 +9,7 @@ import { productsConfig } from "@/config/products";
 import {
   DollarSign, Package, ShoppingCart, Cpu, Users, BarChart3, Target, LayoutDashboard,
   Mail, TrendingUp, Brain, AlertTriangle, Key, GitBranch, RefreshCw, Activity,
-  ArrowRight, Check, Megaphone, Workflow, FileText, Receipt, BookOpen, CreditCard,
+  ArrowRight, Megaphone, Workflow, FileText, Receipt, BookOpen, CreditCard,
   Wallet, ShieldCheck, Clock, HeartHandshake, Truck
 } from "lucide-react";
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { Container } from "@/components/layout/Container";
-import { ArrowRight, Globe } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 

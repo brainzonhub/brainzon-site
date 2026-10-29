@@ -1,6 +1,8 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef, useEffect, useSyncExternalStore } from "react";
+
+const emptySubscribe = () => () => {};
 import { createPortal } from "react-dom";
 import Link from "next/link";
 import { Menu, X, ChevronDown, ArrowRight, Boxes } from "lucide-react";
@@ -51,11 +53,11 @@ const getProductColorClasses = (color?: string) => {
 
 export function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const mounted = useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false
+  );
   const [expandedGroups, setExpandedGroups] = useState<{ [key: string]: boolean }>({});
   const drawerRef = useRef<HTMLDivElement | null>(null);
   const triggerRef = useRef<HTMLButtonElement | null>(null);

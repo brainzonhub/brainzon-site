@@ -4,9 +4,7 @@ import React, { useState } from "react";
 import { 
   Database, 
   Layers, 
-  Settings, 
-  Zap, 
-  CheckCircle2,
+  Settings,
   ShieldCheck,
   Building2,
   Boxes

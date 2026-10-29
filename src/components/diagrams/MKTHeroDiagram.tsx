@@ -2,9 +2,9 @@
 
 import React from "react";
 import { 
-  Megaphone, 
-  Workflow, 
-  Users, 
+   
+   
+   
   Sparkles, 
   BarChart3, 
   ArrowRight,

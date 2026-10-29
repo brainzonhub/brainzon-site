@@ -7,9 +7,7 @@ import {
   Database, 
   Code2, 
   ShieldCheck,
-  Server,
-  Zap,
-  Layers
+  Server
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 

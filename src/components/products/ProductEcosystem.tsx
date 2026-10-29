@@ -4,7 +4,7 @@ import { useState, type ComponentType } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Container } from "@/components/layout/Container";
 import { ProductIcon } from "@/components/ui/ProductIcon";
-import { Megaphone, Database, Users, Receipt, Code, Globe, ShoppingBag, ShieldAlert } from "lucide-react";
+import {  Database, Code, Globe, ShoppingBag, ShieldAlert } from "lucide-react";
 
 interface NodeData {
   id: string;

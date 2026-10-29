@@ -2,8 +2,8 @@
 
 import React from "react";
 import { 
-  Receipt, 
-  BookOpen, 
+   
+   
   Sparkles, 
   ShieldCheck, 
   Wallet, 

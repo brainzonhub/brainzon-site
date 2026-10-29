@@ -9,9 +9,7 @@ import {
   Code2, 
   Database, 
   CheckCircle2, 
-  ArrowRight, 
-  Zap, 
-  ShieldCheck,
+  ArrowRight,
   Check,
   X
 } from "lucide-react";

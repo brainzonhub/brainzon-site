@@ -7,13 +7,9 @@ import {
   Boxes, 
   Layers, 
   Settings, 
-  Cpu, 
-  CheckCircle2,
+  Cpu,
   Code2,
-  Database,
-  Server,
-  Terminal,
-  Layers3
+  Terminal
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 

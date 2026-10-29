@@ -110,7 +110,6 @@ export function AIAgentsShowcase() {
 
             <div className="mt-8 flex flex-col gap-2.5 w-full">
               {aiAgentUseCases.map((useCase) => {
-                const Icon = useCase.icon;
                 const isSelected = selectedCase.id === useCase.id;
                 return (
                   <button
