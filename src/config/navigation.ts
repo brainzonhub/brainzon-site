@@ -110,6 +110,15 @@ export const navigationConfig: NavItem[] = [
         aiAgent: "BrainBooks AI Agent",
         color: "emerald",
       },
+      {
+        title: "Product AI Agents",
+        subtitle: "Enterprise Workflow Assistants",
+        description: "Supervised domain assistants for marketing, CRM, ERP, and accounting workflows.",
+        href: "/ai-agents",
+        iconName: "sparkles",
+        badge: "New",
+        color: "violet",
+      },
     ],
     aiAgents: [
       {
@@ -267,14 +276,14 @@ export const navigationConfig: NavItem[] = [
             title: "Odoo Solution Services",
             subtitle: "Full-Suite ERP & Modular Apps",
             description: "Discovery, fit-gap analysis, controlled customization, data migration, and enablement.",
-            href: "/solutions/erp",
+            href: "/solutions/odoo",
             iconName: "layers",
           },
           {
             title: "Microsoft Dynamics 365 BC",
             subtitle: "Finance & Operations",
             description: "Process assessment, AL extensions, validation, cutover rehearsals, and ecosystem integration.",
-            href: "/solutions/erp",
+            href: "/solutions/microsoft-dynamics-365-business-central",
             iconName: "building-2",
           },
           {

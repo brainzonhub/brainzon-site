@@ -1,4 +1,6 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
+import Link from "next/link";
+import { siteConfig } from "@/config/site";
 import { productsConfig } from "@/config/products";
 import { ProductHero } from "@/components/sections/ProductHero";
 import { FeatureGrid } from "@/components/sections/FeatureGrid";
@@ -7,48 +9,106 @@ import { IntegrationSection } from "@/components/sections/IntegrationSection";
 import { DemoCTA } from "@/components/sections/DemoCTA";
 import { ERPHeroDiagram } from "@/components/diagrams/ERPHeroDiagram";
 import { notFound } from "next/navigation";
+import { ChevronRight } from "lucide-react";
 
-// Dynamic metadata configuration
+const pageUrl = new URL("/products/brainerp", siteConfig.url).toString();
+const title = "BrainERP | Enterprise Resource Planning Software";
+const description = "Unify real-time operations, multi-warehouse inventory, procurement approvals, bill of materials, and financial ledgers with BrainERP and dedicated AI assistance.";
+
 export const metadata: Metadata = {
-  title: "BrainERP - Enterprise Resource Planning Platform",
-  description: "Synchronize finance, inventory, manufacturing, procurement, and HR operations in a unified enterprise system. Built for real-time compliance and scale.",
+  title: { absolute: title },
+  description,
+  alternates: { canonical: pageUrl },
   openGraph: {
-    title: "BrainERP - Enterprise Resource Planning Platform",
-    description: "Synchronize finance, inventory, manufacturing, procurement, and HR operations in a unified enterprise system.",
+    title,
+    description,
+    url: pageUrl,
     type: "website",
-  }
+    siteName: siteConfig.name,
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+  },
 };
 
 export default function BrainERPPage() {
-  const product = productsConfig.find((p) => p.slug === "brainerp");
+  const product = productsConfig.find((item) => item.slug === "brainerp");
   if (!product) {
     notFound();
   }
 
-  // Inject structured JSON-LD schema
-  const schemaData = {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": product.name,
-    "description": product.description,
-    "brand": {
-      "@type": "Brand",
-      "name": "Brainzon"
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": siteConfig.url
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Products",
+          "item": siteConfig.url + "/products"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": product.name,
+          "item": pageUrl
+        }
+      ]
     },
-    "offers": {
-      "@type": "Offer",
-      "priceCurrency": "USD",
-      "availability": "https://schema.org/PreOrder"
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "@id": pageUrl + "/#software",
+      "name": product.name,
+      "headline": product.headline,
+      "description": product.description,
+      "applicationCategory": "BusinessApplication",
+      "applicationSubCategory": "ERPApplication",
+      "operatingSystem": "Web-based, Cloud, SaaS",
+      "url": pageUrl,
+      "publisher": {
+        "@type": "Organization",
+        "@id": siteConfig.url + "/#organization",
+        "name": "Brainzon",
+        "url": siteConfig.url
+      },
+      "featureList": product.features,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "description": "Custom enterprise deployment and consultation"
+      }
     }
-  };
+  ];
 
   return (
-    <div className="flex flex-col min-h-screen">
-      {/* Inject schema */}
+    <div className="flex flex-col min-h-screen bg-background text-foreground">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }}
       />
+      <section className="border-b border-border/40 bg-surface/30 py-3 text-xs text-muted-foreground">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 font-medium">
+            <Link href="/" className="hover:text-primary transition-colors">Home</Link>
+            <ChevronRight size={12} className="text-muted-foreground/50" />
+            <Link href="/products" className="hover:text-primary transition-colors">Products</Link>
+            <ChevronRight size={12} className="text-muted-foreground/50" />
+            <span className="text-foreground">{product.name}</span>
+          </nav>
+        </div>
+      </section>
 
       <ProductHero 
         name={product.name} 

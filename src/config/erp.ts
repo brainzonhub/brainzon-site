@@ -27,8 +27,8 @@ export const erpModules = [
 
 export const erpPlatforms = [
   { title: "BrainERP", description: "Brainzon's unified ERP platform for finance, operations, supply chain, sales, and workforce management.", icon: "BrainCircuit", bestFor: "Growing businesses requiring a customized ERP ecosystem.", capabilities: ["Unified operations", "Flexible modules", "Custom workflows"], href: "/products/brainerp", featured: true },
-  { title: "Microsoft Dynamics 365 Business Central", description: "A connected business management solution for organizations invested in Microsoft Cloud.", icon: "Microsoft", bestFor: "Enterprise organizations requiring Microsoft ecosystem integration.", capabilities: ["Microsoft 365 integration", "Finance", "Supply chain"], href: "/book-demo" },
-  { title: "Odoo ERP", description: "A modular suite for organizations that want flexible, extensible business applications.", icon: "Blocks", bestFor: "Flexible modular ERP implementation.", capabilities: ["Modular applications", "CRM", "Operations"], href: "/book-demo" },
+  { title: "Microsoft Dynamics 365 Business Central", description: "A connected business management solution for organizations invested in Microsoft Cloud.", icon: "Microsoft", bestFor: "Enterprise organizations requiring Microsoft ecosystem integration.", capabilities: ["Microsoft 365 integration", "Finance", "Supply chain"], href: "/solutions/microsoft-dynamics-365-business-central" },
+  { title: "Odoo ERP", description: "A modular suite for organizations that want flexible, extensible business applications.", icon: "Blocks", bestFor: "Flexible modular ERP implementation.", capabilities: ["Modular applications", "CRM", "Operations"], href: "/solutions/odoo" },
   { title: "ERPNext", description: "An open-source platform for organizations seeking transparent and adaptable ERP ownership.", icon: "CodeXml", bestFor: "Open-source ERP adoption.", capabilities: ["Open-source platform", "Accounting", "Manufacturing"], href: "/book-demo" },
 ] as const satisfies readonly ERPPlatform[];
 

@@ -126,7 +126,7 @@ export const caseStudies: CaseStudy[] = [
       "Quality checkpoints and batch traceability",
       "Cross-site operational dashboards",
     ],
-    architecture: ["Plant sensors & MES", "BrainConnect edge gateway", "BrainERP operations", "BrainAI prediction", "Cloud analytics"],
+    architecture: ["Plant sensors & MES", "Enterprise integration gateway", "BrainERP operations", "Industrial AI agent", "Cloud analytics"],
     implementationSteps: standardImplementation,
     resultsMetrics: [
       { value: "28%", label: "Faster cycle time", detail: "Measured across prioritized production lines after stabilization.", progress: 78 },
@@ -148,7 +148,7 @@ export const caseStudies: CaseStudy[] = [
     slug: "omnichannel-retail-inventory-sync",
     title: "Omnichannel Stock Accuracy & Checkout Overhaul",
     summary: "A real-time inventory and order platform synchronized stores, ecommerce, warehouses, and customer engagement across a growing retail network.",
-    description: "How Brainzon used BrainERP, BrainCRM, and BrainConnect to improve inventory accuracy and checkout throughput for Arabian Store BD.",
+    description: "How Brainzon used BrainERP, BrainCRM, and enterprise integration services to improve inventory accuracy and checkout throughput for Arabian Store BD.",
     clientName: "Arabian Store BD",
     clientSummary: "A multi-channel retailer serving customers through physical stores, ecommerce, warehouse fulfillment, and regional delivery partners.",
     industry: "Retail & E-commerce",
@@ -168,7 +168,7 @@ export const caseStudies: CaseStudy[] = [
       { label: "Manual reconciliation", value: "30 hrs/wk" },
       { label: "Peak checkout capacity", value: "1× baseline" },
     ],
-    solutionSummary: "Brainzon introduced a governed inventory service with atomic reservations, connected channels through BrainConnect events, synchronized operational and financial records in BrainERP, and used BrainCRM to provide consistent order status and service communication.",
+    solutionSummary: "Brainzon introduced a governed inventory service with atomic reservations, connected channels through resilient integration events, synchronized operational and financial records in BrainERP, and used BrainCRM to provide consistent order status and service communication.",
     products: ["BrainERP", "BrainCRM", "Integration Services", "Cloud Transformation"],
     deploymentModel: "Cloud-first regional deployment with resilient store integration and event-driven synchronization",
     features: [
@@ -179,7 +179,7 @@ export const caseStudies: CaseStudy[] = [
       "Customer 360 order and service context",
       "Operational monitoring and replayable integrations",
     ],
-    architecture: ["Stores & ecommerce", "BrainConnect event mesh", "Inventory & orders", "BrainERP finance", "BrainCRM service"],
+    architecture: ["Stores & ecommerce", "Enterprise event mesh", "Inventory & orders", "BrainERP finance", "BrainCRM service"],
     implementationSteps: standardImplementation,
     resultsMetrics: [
       { value: "99.9%", label: "Inventory accuracy", detail: "Reconciled accuracy across connected channels and locations.", progress: 99 },

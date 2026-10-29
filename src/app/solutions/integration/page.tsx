@@ -11,8 +11,8 @@ import { SecuritySection } from "@/components/solutions/integration/SecuritySect
 import { WhyBrainzonIntegration } from "@/components/solutions/integration/WhyBrainzonIntegration";
 import { IntegrationCTA } from "@/components/solutions/integration/IntegrationCTA";
 
-const title = "Integration Solutions | Brainzon Enterprise System Integration Platform";
-const description = "Brainzon delivers enterprise integration solutions connecting ERP, CRM, eCommerce, APIs, cloud applications, and legacy systems through automation and intelligent data synchronization.";
+const title = "Enterprise Software Integration Services | Brainzon";
+const description = "Connect ERP, CRM, APIs, legacy systems, and cloud software with governed interfaces, automated data synchronization, and dead-letter queue recovery.";
 const canonicalUrl = new URL("/solutions/integration", siteConfig.url).toString();
 
 export const metadata: Metadata = {

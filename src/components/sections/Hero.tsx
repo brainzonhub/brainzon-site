@@ -192,19 +192,18 @@ export function Hero() {
           {/* Left Column: Heading and copy */}
           <div className="lg:col-span-6 flex flex-col items-start text-left">
             <span className="badge-accent animate-blink-accent">
-              Enterprise Software, Reimagined
+              Connected Enterprise Platform
             </span>
 
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold tracking-tight text-foreground leading-[1.1]">
-              Architecting the <br className="hidden sm:inline" />
+              Connected Business Software and{" "}
               <span className="bg-gradient-to-r from-secondary via-accent to-primary bg-[size:200%_auto] bg-clip-text text-transparent animate-gradient-flow drop-shadow-[0_0_15px_rgba(6,182,212,0.12)] dark:drop-shadow-[0_0_20px_rgba(34,211,238,0.25)]">
-                Next Era
-              </span>{" "}
-              of Enterprise Innovation
+                Enterprise Solutions
+              </span>
             </h1>
 
             <p className="mt-6 text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl">
-              Connecting operations, customer relationships, marketing, and accounting through proprietary applications and dedicated AI agents, alongside enterprise platforms and legacy modernization.
+              Brainzon helps businesses connect marketing, customer relationships, enterprise operations, and accounting through business applications, product-specific AI assistance, enterprise platform solutions, and integration services.
             </p>
 
             {/* Action buttons */}

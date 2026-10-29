@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { Container } from "@/components/layout/Container";
+import { siteConfig } from "@/config/site";
 import { productsConfig } from "@/config/products";
+import { Container } from "@/components/layout/Container";
 import { ProductsHero } from "@/components/products/ProductsHero";
 import { ProductCard } from "@/components/products/ProductCard";
 import { ProductDetails } from "@/components/products/ProductDetails";
@@ -9,91 +10,97 @@ import { ProductComparison } from "@/components/products/ProductComparison";
 import { SuccessCarousel } from "@/components/products/SuccessCarousel";
 import { ProductCTA } from "@/components/products/ProductCTA";
 
-// Server-side SEO Metadata
+const pageUrl = new URL("/products", siteConfig.url).toString();
+const title = "Enterprise Business Software Suite | Brainzon";
+const description = "Discover Brainzon's business applications: BrainMKT (Marketing), BrainCRM (Sales & Pipeline), BrainERP (Operations & Inventory), and BrainBooks (Accounting & Ledgers)—each supported by dedicated AI assistance.";
+
 export const metadata: Metadata = {
-  title: "Products | Brainzon Connected Enterprise Suite",
-  description: "Discover Brainzon's proprietary business applications: BrainMKT, BrainCRM, BrainERP, and BrainBooks—each supported by a dedicated AI agent with enterprise-grade access and human approval controls.",
+  title: { absolute: title },
+  description,
+  alternates: { canonical: pageUrl },
   openGraph: {
-    title: "Brainzon Enterprise Software Ecosystem | Connected Applications & AI",
-    description: "One Connected Enterprise Foundation: BrainMKT + BrainCRM + BrainERP + BrainBooks with dedicated AI agents.",
-    url: "https://brainzon.com/products",
+    title,
+    description,
+    url: pageUrl,
     type: "website",
-    siteName: "Brainzon",
+    siteName: siteConfig.name,
+    locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Brainzon Enterprise Software Ecosystem",
-    description: "One Connected Enterprise Foundation: BrainMKT + BrainCRM + BrainERP + BrainBooks.",
+    title,
+    description,
   },
 };
 
 export default function ProductsPage() {
-  // Structured Breadcrumb Schema
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://brainzon.com"
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": siteConfig.url
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Products",
+          "item": pageUrl
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "@id": String(pageUrl) + "/#collection",
+      "name": "Brainzon Enterprise Business Applications Suite",
+      "url": pageUrl,
+      "description": description,
+      "publisher": {
+        "@type": "Organization",
+        "@id": String(siteConfig.url) + "/#organization",
+        "name": "Brainzon",
+        "url": siteConfig.url
       },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Products",
-        "item": "https://brainzon.com/products"
+      "mainEntity": {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "numberOfItems": productsConfig.length,
+        "itemListElement": productsConfig.map((p, idx) => ({
+          "@type": "SoftwareApplication",
+          "position": idx + 1,
+          "name": p.name,
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "Web-based, Cloud, SaaS",
+          "description": p.description,
+          "url": String(siteConfig.url) + p.href,
+          "featureList": p.features
+        }))
       }
-    ]
-  };
-
-  // Structured Product Schema
-  const productSuiteSchema = {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    "name": "Brainzon Connected Enterprise Software Suite",
-    "description": "One Connected Enterprise Foundation: BrainMKT, BrainCRM, BrainERP, and BrainBooks—each supported by a dedicated AI agent.",
-    "numberOfItems": 4,
-    "itemListElement": productsConfig.map((p, idx) => ({
-      "@type": "Product",
-      "position": idx + 1,
-      "name": p.name,
-      "description": p.description,
-      "url": `https://brainzon.com${p.href}`,
-      "offers": {
-        "@type": "Offer",
-        "priceCurrency": "USD",
-        "price": "0.00",
-        "description": "Contact Sales for custom enterprise volume pricing and licensing options."
-      }
-    }))
-  };
+    }
+  ];
 
   return (
     <>
-      {/* Inject Structured Data Schemas */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData).replace(/</g, "\u003c"),
+        }}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSuiteSchema) }}
-      />
-
-      <div className="relative">
-        {/* 1. Hero Section */}
+      <div className="flex flex-col min-h-screen bg-background">
         <ProductsHero />
-
-        {/* 2. Core Products Overview Grid */}
         <section className="py-24 bg-background relative z-10 border-t border-border/60">
           <Container className="space-y-16">
             <div className="text-center max-w-2xl mx-auto space-y-4">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 border border-primary/20">
                 Product Suite
               </span>
-              <h2 className="text-heading-2 font-bold tracking-tight">
+              <h2 className="text-3xl font-bold tracking-tight text-foreground">
                 Our Core Business Applications
               </h2>
               <p className="text-sm text-muted-foreground leading-relaxed">
@@ -108,20 +115,10 @@ export default function ProductsPage() {
             </div>
           </Container>
         </section>
-
-        {/* 3. Detailed Features Section */}
         <ProductDetails />
-
-        {/* 4. Ecosystem Connections Map */}
         <ProductEcosystem />
-
-        {/* 5. Product Comparison Side by Side */}
         <ProductComparison />
-
-        {/* 6. Success metrics & testimonials */}
         <SuccessCarousel />
-
-        {/* 7. Call-to-action Section */}
         <ProductCTA />
       </div>
     </>

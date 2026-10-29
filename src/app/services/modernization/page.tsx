@@ -1,4 +1,5 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
+import { siteConfig } from "@/config/site";
 import { CloudTransformation } from "@/components/modernization/CloudTransformation";
 import { DatabaseModernization } from "@/components/modernization/DatabaseModernization";
 import { LegacyChallenges } from "@/components/modernization/LegacyChallenges";
@@ -10,34 +11,78 @@ import { ModernizationServices } from "@/components/modernization/ModernizationS
 import { TechnologyTransformation } from "@/components/modernization/TechnologyTransformation";
 import { WhyBrainzonModernization } from "@/components/modernization/WhyBrainzonModernization";
 
+const pageUrl = new URL("/services/modernization", siteConfig.url).toString();
+const title = "Legacy System Modernization Services | Brainzon";
+const description = "Brainzon de-risks mission-critical software through 6 staged modernization pathways: API encapsulation, re-hosting, re-platforming, database refactoring, and zero-downtime cutover.";
+
 export const metadata: Metadata = {
-  title: "Legacy Application Modernization Services - Brainzon",
-  description: "Brainzon helps businesses modernize outdated applications, upgrade technology platforms, migrate databases, and build scalable cloud architectures without disrupting operations.",
+  title: { absolute: title },
+  description,
+  alternates: { canonical: pageUrl },
   openGraph: {
-    title: "Legacy Application Modernization Services - Brainzon",
-    description: "Brainzon helps businesses modernize outdated applications, upgrade technology platforms, migrate databases, and build scalable cloud architectures without disrupting operations.",
+    title,
+    description,
+    url: pageUrl,
     type: "website",
-  }
+    siteName: siteConfig.name,
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+  },
 };
 
 export default function ModernizationServicePage() {
-  const schemaData = {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "name": "Legacy Application Modernization Services",
-    "description": "Brainzon helps businesses modernize outdated applications, upgrade technology platforms, migrate databases, and build scalable cloud architectures without disrupting operations.",
-    "provider": {
-      "@type": "Organization",
-      "name": "Brainzon"
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": siteConfig.url
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Services",
+          "item": siteConfig.url + "/services"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Legacy System Modernization",
+          "item": pageUrl
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "@id": pageUrl + "/#service",
+      "name": "Legacy Application Modernization Services",
+      "serviceType": "Legacy System Modernization and Refactoring",
+      "provider": {
+        "@type": "Organization",
+        "@id": siteConfig.url + "/#organization",
+        "name": "Brainzon",
+        "url": siteConfig.url
+      },
+      "description": description,
+      "areaServed": "Worldwide"
     }
-  };
+  ];
 
   return (
     <>
       <script
         id="modernization-service-jsonld"
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }}
       />
       <ModernizationHero />
       <LegacyChallenges />

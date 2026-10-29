@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: CaseStudyPageProps): Promise<
   const study = getCaseStudy(slug);
   if (!study) return {};
 
-  const canonicalPath = `/case-studies/${study.slug}`;
+  const canonicalPath = new URL(`/case-studies/${study.slug}`, siteConfig.url).toString();
   return {
     title: { absolute: `${study.title} | Brainzon Case Study` },
     description: study.description,

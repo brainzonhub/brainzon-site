@@ -10,17 +10,23 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = siteConfig.url;
   const insights = await getInsights();
 
-  // Base paths
-  const baseRoutes = [
-    "",
-    "/resources",
-    "/insights",
-    "/resources/case-studies",
-  ].map((route) => ({
+  // Core navigation & hub paths
+  const coreHubRoutes = [
+    { route: "", changeFrequency: "daily" as const, priority: 1.0 },
+    { route: "/products", changeFrequency: "weekly" as const, priority: 0.9 },
+    { route: "/ai-agents", changeFrequency: "weekly" as const, priority: 0.9 },
+    { route: "/solutions", changeFrequency: "weekly" as const, priority: 0.9 },
+    { route: "/services", changeFrequency: "weekly" as const, priority: 0.9 },
+    { route: "/resources", changeFrequency: "daily" as const, priority: 0.8 },
+    { route: "/insights", changeFrequency: "daily" as const, priority: 0.8 },
+    { route: "/resources/case-studies", changeFrequency: "weekly" as const, priority: 0.8 },
+    { route: "/contact", changeFrequency: "monthly" as const, priority: 0.8 },
+    { route: "/book-demo", changeFrequency: "monthly" as const, priority: 0.8 },
+  ].map(({ route, changeFrequency, priority }) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
-    changeFrequency: "daily" as const,
-    priority: route === "" ? 1.0 : 0.8,
+    changeFrequency,
+    priority,
   }));
 
   // Product paths
@@ -28,11 +34,26 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     url: `${baseUrl}/products/${p.slug}`,
     lastModified: new Date(),
     changeFrequency: "weekly" as const,
-    priority: 0.8,
+    priority: 0.85,
   }));
 
-  // Solutions paths
-  const solutionRoutes = industriesConfig.map((i) => ({
+  // Specific solution architecture paths
+  const platformSolutionRoutes = [
+    "/solutions/odoo",
+    "/solutions/microsoft-dynamics-365-business-central",
+    "/solutions/erp",
+    "/solutions/crm",
+    "/solutions/ai",
+    "/solutions/integration",
+  ].map((route) => ({
+    url: `${baseUrl}${route}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly" as const,
+    priority: 0.85,
+  }));
+
+  // Industry solution paths
+  const industryRoutes = industriesConfig.map((i) => ({
     url: `${baseUrl}/solutions/${i.slug}`,
     lastModified: new Date(),
     changeFrequency: "weekly" as const,
@@ -53,9 +74,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     url: `${baseUrl}/company/${c}`,
     lastModified: new Date(),
     changeFrequency: "monthly" as const,
-    priority: 0.5,
+    priority: 0.6,
   }));
 
+  // Legal paths
   const legalRoutes = ["privacy-policy", "terms-of-service", "security-policy"].map((route) => ({
     url: `${baseUrl}/${route}`,
     lastModified: new Date(),
@@ -68,7 +90,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     url: `${baseUrl}/insights/${insight.slug}`,
     lastModified: new Date(),
     changeFrequency: "weekly" as const,
-    priority: 0.6,
+    priority: 0.7,
   }));
 
   // Case study detail paths
@@ -76,13 +98,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     url: `${baseUrl}/case-studies/${study.slug}`,
     lastModified: new Date(),
     changeFrequency: "weekly" as const,
-    priority: 0.6,
+    priority: 0.7,
   }));
 
   return [
-    ...baseRoutes,
+    ...coreHubRoutes,
     ...productRoutes,
-    ...solutionRoutes,
+    ...platformSolutionRoutes,
+    ...industryRoutes,
     ...serviceRoutes,
     ...companyRoutes,
     ...legalRoutes,

@@ -10,8 +10,8 @@ import { IndustrySolutions } from "@/components/solutions/erp/IndustrySolutions"
 import { WhyBrainzonERP } from "@/components/solutions/erp/WhyBrainzonERP";
 import { siteConfig } from "@/config/site";
 
-const title = "ERP Solutions | Brainzon Enterprise ERP Consulting & Implementation";
-const description = "Brainzon delivers intelligent ERP solutions including BrainERP, Microsoft Dynamics 365 Business Central, Odoo ERP, and ERPNext implementation services.";
+const title = "Enterprise ERP Solutions & Implementation Consulting | Brainzon";
+const description = "Select, implement, configure, and integrate fit-for-purpose ERP platforms: BrainERP, Microsoft Dynamics 365 Business Central, and Odoo ERP.";
 const canonicalUrl = new URL("/solutions/erp", siteConfig.url).toString();
 
 export const metadata: Metadata = {

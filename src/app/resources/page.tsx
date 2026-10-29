@@ -1,112 +1,118 @@
-import { Metadata } from "next";
-import { getCaseStudies } from "@/lib/cms";
-import { getInsights } from "@/lib/insights";
-import { Container } from "@/components/layout/Container";
-import { InsightCard, CaseStudyCard } from "@/components/ui";
-import { ArrowRight, BookOpen, Layers } from "lucide-react";
+import type { Metadata } from "next";
 import Link from "next/link";
+import { siteConfig } from "@/config/site";
+import { Container } from "@/components/layout/Container";
+import { ArrowRight, ChevronRight } from "lucide-react";
+import { getInsights } from "@/lib/insights";
+import { InsightCard, CaseStudyCard } from "@/components/ui";
+import { caseStudies } from "@/config/case-studies";
+
+const pageUrl = new URL("/resources", siteConfig.url).toString();
+const title = "Enterprise Architecture Resources & Blueprints | Brainzon";
+const description = "Technical insights, architectural blueprints, database migration strategies, and real client transformation case studies from Brainzon engineers.";
 
 export const metadata: Metadata = {
-  title: "Resources Hub - Technical Insights & Case Studies",
-  description: "Explore technical architectures, client case studies, and engineering guidelines from the Brainzon software teams.",
+  title: { absolute: title },
+  description,
+  alternates: { canonical: pageUrl },
   openGraph: {
-    title: "Resources Hub - Technical Insights & Case Studies",
-    description: "Explore technical architectures, client case studies, and engineering guidelines from the Brainzon software teams.",
-    type: "website"
-  }
+    title,
+    description,
+    url: pageUrl,
+    type: "website",
+    siteName: siteConfig.name,
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+  },
 };
 
 export default async function ResourcesPage() {
-  const posts = await getInsights();
-  const studies = await getCaseStudies();
+  const insights = await getInsights();
+  const recentStudies = caseStudies.slice(0, 2);
 
-  // Take recent items
-  const recentPosts = posts.slice(0, 3);
-  const recentStudies = studies.slice(0, 2);
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": siteConfig.url },
+        { "@type": "ListItem", "position": 2, "name": "Resources", "item": pageUrl }
+      ]
+    }
+  ];
 
   return (
-    <div className="flex flex-col min-h-screen bg-background">
-      {/* Hero */}
-      <section className="relative overflow-hidden pt-12 pb-16 md:pt-16 md:pb-24 border-b border-border/40 bg-background">
-        <div className="absolute top-[-10%] left-[-10%] -z-10 h-[60%] w-[60%] rounded-full bg-radial-gradient from-primary/10 via-transparent to-transparent opacity-60 blur-3xl pointer-events-none" />
-        <div className="absolute bottom-[-10%] right-[-10%] -z-10 h-[60%] w-[60%] rounded-full bg-radial-gradient from-secondary/5 via-transparent to-transparent opacity-40 blur-3xl pointer-events-none" />
-        <div 
-          className="absolute inset-0 -z-20 bg-[linear-gradient(to_right,rgba(30,51,77,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(30,51,77,0.04)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" 
-        />
+    <div className="flex flex-col min-h-screen bg-background text-foreground">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }}
+      />
+      <section className="border-b border-border/40 bg-surface/30 py-3 text-xs text-muted-foreground">
+        <Container>
+          <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 font-medium">
+            <Link href="/" className="hover:text-primary transition-colors">Home</Link>
+            <ChevronRight size={12} className="text-muted-foreground/50" />
+            <span className="text-foreground">Resources</span>
+          </nav>
+        </Container>
+      </section>
 
+      <section className="relative overflow-hidden pt-12 pb-16 md:pt-16 md:pb-24 border-b border-border/40 bg-background">
         <Container>
           <div className="max-w-4xl flex flex-col items-start text-left">
-            <span className="badge-accent">
-              Knowledge Base
-            </span>
+            <span className="badge-accent">Architecture Knowledge Base</span>
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold tracking-tight text-foreground leading-[1.1] mb-4">
-              Resources Hub
+              Engineering Insights & Transformation Resources
             </h1>
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight text-foreground mt-2 leading-[1.1]">
-              <span className="bg-gradient-to-r from-secondary via-accent to-primary bg-[size:200%_auto] bg-clip-text text-transparent animate-gradient-flow drop-shadow-[0_0_15px_rgba(6,182,212,0.12)] dark:drop-shadow-[0_0_20px_rgba(34,211,238,0.25)]">Insights, Case Studies, & Blueprints</span>
-            </h2>
-            <p className="mt-6 text-base md:text-lg text-muted-foreground leading-relaxed">
-              Explore custom-trained LLM models, ledger database optimizations, and client transformation blueprints compiled by our software architects.
+            <p className="mt-4 text-base md:text-lg text-muted-foreground leading-relaxed">
+              Explore in-depth architectural guides, real-world transformation benchmarks, and engineering documentation written by Brainzon practitioners.
             </p>
           </div>
         </Container>
       </section>
 
-      {/* Sections Wrapper */}
-      <section className="py-20 bg-surface/30">
+      <section className="py-20 bg-surface/20 border-b border-border/40">
         <Container>
-          {/* Recent Case Studies */}
-          <div className="mb-20">
-            <div className="flex items-center justify-between mb-8 pb-4 border-b border-border/40">
-              <div className="flex items-center gap-3">
-                <div className="flex size-10 items-center justify-center rounded-xl bg-secondary/10 text-secondary">
-                  <Layers size={18} />
-                </div>
-                <h2 className="text-xl sm:text-2xl font-bold text-foreground">
-                  Recent Case Studies
-                </h2>
-              </div>
-              <Link 
-                href="/resources/case-studies"
-                className="inline-flex items-center gap-1 text-xs font-semibold text-secondary hover:underline group"
-              >
-                <span>All Case Studies</span>
-                <ArrowRight size={12} className="transform group-hover:translate-x-0.5 transition-transform" />
-              </Link>
+          <div className="flex items-center justify-between gap-4 mb-10">
+            <div>
+              <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-primary">PUBLICATIONS</span>
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">Latest Engineering Insights</h2>
             </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {recentStudies.map((study) => (
-                <CaseStudyCard key={study.slug} study={study} />
-              ))}
-            </div>
+            <Link href="/insights" className="text-xs font-bold text-primary hover:underline flex items-center gap-1">
+              <span>View all insights</span>
+              <ArrowRight size={12} />
+            </Link>
           </div>
 
-          {/* Recent Insights */}
-          <div>
-            <div className="flex items-center justify-between mb-8 pb-4 border-b border-border/40">
-              <div className="flex items-center gap-3">
-                <div className="flex size-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                  <BookOpen size={18} />
-                </div>
-                <h2 className="text-xl sm:text-2xl font-bold text-foreground">
-                  Recent Insights
-                </h2>
-              </div>
-              <Link 
-                href="/insights"
-                className="inline-flex items-center gap-1 text-xs font-semibold text-primary hover:underline group"
-              >
-                <span>All Insights</span>
-                <ArrowRight size={12} className="transform group-hover:translate-x-0.5 transition-transform" />
-              </Link>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {insights.slice(0, 3).map((insight) => (
+              <InsightCard key={insight.slug} insight={insight} />
+            ))}
+          </div>
+        </Container>
+      </section>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {recentPosts.map((insight) => (
-                <InsightCard key={insight.slug} insight={insight} />
-              ))}
+      <section className="py-20 bg-background">
+        <Container>
+          <div className="flex items-center justify-between gap-4 mb-10">
+            <div>
+              <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-primary">REAL-WORLD IMPACT</span>
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">Transformation Case Studies</h2>
             </div>
+            <Link href="/resources/case-studies" className="text-xs font-bold text-primary hover:underline flex items-center gap-1">
+              <span>View all case studies</span>
+              <ArrowRight size={12} />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {recentStudies.map((study) => (
+              <CaseStudyCard key={study.slug} study={study} />
+            ))}
           </div>
         </Container>
       </section>

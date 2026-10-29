@@ -1,8 +1,9 @@
 import { Metadata } from "next";
 import { getCaseStudies } from "@/lib/cms";
+import { siteConfig } from "@/config/site";
 import { Container } from "@/components/layout/Container";
 import { CaseStudyCard } from "@/components/ui";
-import { ArrowLeft, Database, Users, Cpu, GitBranch, Grid, Building2, Layers } from "lucide-react";
+import { ArrowLeft, Database, Users, Cpu, Grid, Building2, Layers } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
@@ -16,13 +17,13 @@ interface PageProps {
 export const metadata: Metadata = {
   title: "Case Studies & Client Success Stories | Brainzon",
   description: "Browse real-world case studies showing how Brainzon deployed enterprise ERP, CRM, and AI solutions to optimize workflows and scale globally.",
-  alternates: { canonical: "/resources/case-studies" },
+  alternates: { canonical: new URL("/resources/case-studies", siteConfig.url).toString() },
   keywords: ["Brainzon Case Studies", "Client Success Stories", "ERP Implementation", "CRM Deployment", "Industrial AI Proof", "Enterprise Integrations"],
   openGraph: {
     title: "Case Studies & Client Success Stories | Brainzon",
     description: "Browse real-world case studies showing how Brainzon deployed enterprise ERP, CRM, and AI solutions to optimize workflows and scale globally.",
     type: "website",
-    url: "/resources/case-studies",
+    url: new URL("/resources/case-studies", siteConfig.url).toString(),
   }
 };
 
@@ -48,8 +49,9 @@ export default async function CaseStudiesListingPage({ searchParams }: PageProps
     { name: "All Products", value: "", icon: <Grid size={12} /> },
     { name: "BrainERP", value: "BrainERP", icon: <Database size={12} /> },
     { name: "BrainCRM", value: "BrainCRM", icon: <Users size={12} /> },
-    { name: "BrainAI", value: "BrainAI", icon: <Cpu size={12} /> },
-    { name: "BrainConnect", value: "BrainConnect", icon: <GitBranch size={12} /> },
+    { name: "BrainMKT", value: "BrainMKT", icon: <Layers size={12} /> },
+    { name: "BrainBooks", value: "BrainBooks", icon: <Building2 size={12} /> },
+    { name: "AI Agents", value: "Dedicated AI Agents", icon: <Cpu size={12} /> },
   ];
 
   const industries = [
@@ -58,8 +60,22 @@ export default async function CaseStudiesListingPage({ searchParams }: PageProps
     { name: "Retail & E-commerce", value: "Retail", icon: <Building2 size={12} /> },
   ];
 
+  const breadcrumbsSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.url },
+      { "@type": "ListItem", position: 2, name: "Resources", item: new URL("/resources", siteConfig.url).toString() },
+      { "@type": "ListItem", position: 3, name: "Case Studies", item: new URL("/resources/case-studies", siteConfig.url).toString() },
+    ],
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-background">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbsSchema).replace(/</g, "\\u003c") }}
+      />
       {/* Hero */}
       <section className="relative overflow-hidden pt-12 pb-16 md:pt-16 md:pb-24 border-b border-border/40 bg-background">
         <div className="absolute top-[-10%] left-[-10%] -z-10 h-[60%] w-[60%] rounded-full bg-radial-gradient from-primary/10 via-transparent to-transparent opacity-60 blur-3xl pointer-events-none" />

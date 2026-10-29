@@ -1,51 +1,64 @@
 import type { Metadata } from "next";
+import { siteConfig } from "@/config/site";
 import { DemoHero } from "@/components/demo/DemoHero";
 import { DemoForm } from "@/components/demo/DemoForm";
-import { DemoBenefits } from "@/components/demo/DemoBenefits";
 import { SolutionEcosystem } from "@/components/demo/SolutionEcosystem";
 import { TransformationTimeline } from "@/components/demo/TransformationTimeline";
+import { DemoBenefits } from "@/components/demo/DemoBenefits";
 import { TrustMetrics } from "@/components/demo/TrustMetrics";
 import { DemoFinalCTA } from "@/components/demo/DemoFinalCTA";
 
-export const metadata: Metadata = {
-  title: "Book a Demo | Brainzon Enterprise Software Solutions",
-  description:
-    "Schedule a personalized demo with Brainzon experts and discover ERP, CRM, AI, automation, and modernization solutions for your business.",
-  openGraph: {
-    title: "Book a Demo | Brainzon Enterprise Software Solutions",
-    description:
-      "Schedule a personalized demo with Brainzon experts and discover ERP, CRM, AI, automation, and modernization solutions for your business.",
-    type: "website",
-  },
-};
+const pageUrl = new URL("/book-demo", siteConfig.url).toString();
+const title = "Book an Enterprise Solution Demonstration | Brainzon";
+const description = "Schedule an interactive product and solution consultation with Brainzon architects. Review custom capabilities for BrainMKT, BrainCRM, BrainERP, BrainBooks, Odoo, or integration.";
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "Brainzon",
-  description: "Digital Transformation Partner for Modern Businesses",
-  url: "https://brainzon.com",
-  contactPoint: {
-    "@type": "ContactPoint",
-    contactType: "sales",
-    availableLanguage: "English",
+export const metadata: Metadata = {
+  title: { absolute: title },
+  description,
+  alternates: { canonical: pageUrl },
+  openGraph: {
+    title,
+    description,
+    url: pageUrl,
+    type: "website",
+    siteName: siteConfig.name,
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
   },
 };
 
 export default function BookDemoPage() {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Book a Solution Demonstration",
+    "url": pageUrl,
+    "description": description,
+    "provider": {
+      "@type": "Organization",
+      "@id": siteConfig.url + "/#organization",
+      "name": "Brainzon",
+      "url": siteConfig.url
+    }
+  };
+
   return (
-    <>
+    <div className="flex flex-col min-h-screen bg-background">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }}
       />
       <DemoHero />
       <DemoForm />
-      <DemoBenefits />
       <SolutionEcosystem />
       <TransformationTimeline />
+      <DemoBenefits />
       <TrustMetrics />
       <DemoFinalCTA />
-    </>
+    </div>
   );
 }

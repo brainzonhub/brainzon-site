@@ -142,7 +142,7 @@ export function AIAgentsShowcase() {
             </div>
 
             <Link
-              href="/products"
+              href="/ai-agents"
               className="mt-8 inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
             >
               <span>Explore All Product AI Agents</span>

@@ -1,16 +1,30 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
+import { siteConfig } from "@/config/site";
 import { industriesConfig } from "@/config/industries";
 import { IndustrySolutionTemplate } from "@/components/layout/IndustrySolutionTemplate";
 import { notFound } from "next/navigation";
 
+const pageUrl = new URL("/solutions/hospitality", siteConfig.url).toString();
+const title = "Hospitality & Multi-Site Operational Solutions | Brainzon";
+const description = "Centralized finance and procurement with location-level operational autonomy for multi-property hospitality groups.";
+
 export const metadata: Metadata = {
-  title: "Hospitality Solution - Guest Services & Booking Systems",
-  description: "Enterprise dashboards coordinating property management (PMS), reservation portals, and guest services workflows.",
+  title: { absolute: title },
+  description,
+  alternates: { canonical: pageUrl },
   openGraph: {
-    title: "Hospitality Solution - Guest Services & Booking Systems",
-    description: "Enterprise dashboards coordinating property management (PMS), reservation portals, and guest services workflows.",
+    title,
+    description,
+    url: pageUrl,
+    siteName: siteConfig.name,
     type: "website",
-  }
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+  },
 };
 
 export default function HospitalityPage() {
@@ -19,22 +33,52 @@ export default function HospitalityPage() {
     notFound();
   }
 
-  const schemaData = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": `${industry.name} Integration Solution`,
-    "description": industry.description,
-    "provider": {
-      "@type": "Organization",
-      "name": "Brainzon"
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": siteConfig.url
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Solutions",
+          "item": siteConfig.url + "/solutions"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": industry.name + " Solutions",
+          "item": pageUrl
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "@id": pageUrl + "/#service",
+      "name": industry.name + " Industry Architecture Solution",
+      "serviceType": "Industry Digital Transformation",
+      "description": industry.description,
+      "provider": {
+        "@type": "Organization",
+        "@id": siteConfig.url + "/#organization",
+        "name": "Brainzon",
+        "url": siteConfig.url
+      }
     }
-  };
+  ];
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }}
       />
       <IndustrySolutionTemplate industry={industry} />
     </>
