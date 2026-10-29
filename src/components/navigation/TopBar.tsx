@@ -204,40 +204,21 @@ export function TopBar() {
 
       <Container className="flex h-9 items-center justify-between gap-4">
 
-        {/* Left Side: Contact Information (WhatsApp Pill & Email) */}
+        {/* Left Side: Contact Information (WhatsApp & Email) */}
 
         <div className="flex items-center gap-3">
 
-          {/* WhatsApp Pill */}
+          {/* WhatsApp */}
 
           <a
-
             href="https://wa.me/8801343448074"
-
             target="_blank"
-
             rel="noopener noreferrer"
-
-            className={cn(
-
-              "inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full",
-
-              "bg-white dark:bg-card-opaque border border-border/80 text-foreground font-medium text-[11px] sm:text-xs",
-
-              "hover:border-emerald-500/50 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors shadow-2xs group cursor-pointer"
-
-            )}
-
+            className="inline-flex items-center gap-1.5 text-[11px] sm:text-xs hover:text-foreground transition-colors group"
             aria-label="Chat with Brainzon on WhatsApp"
-
           >
-
-            <span className="size-1.5 rounded-full bg-emerald-500 animate-pulse" />
-
-            <WhatsAppIcon className="size-3 text-emerald-500 transition-transform group-hover:scale-110" />
-
+            <WhatsAppIcon className="size-3 text-emerald-500 transition-colors" />
             <span>WhatsApp</span>
-
           </a>
 
 
