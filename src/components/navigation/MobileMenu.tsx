@@ -295,7 +295,7 @@ export function MobileMenu() {
                                     "transition-all duration-150 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                                   )}
                                 >
-                                  <div className="flex size-7 items-center justify-center rounded-lg bg-muted text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary transition-colors shrink-0">
+                                  <div className="flex size-7 items-center justify-center rounded-lg bg-muted/60 border border-border/40 shrink-0">
                                     {getMenuIcon(subItem.iconName, { size: 14 })}
                                   </div>
                                   <div className="flex-1 min-w-0">
@@ -325,7 +325,7 @@ export function MobileMenu() {
                                         "transition-all duration-150 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                                       )}
                                     >
-                                      <div className="flex size-7 items-center justify-center rounded-lg bg-muted/60 border border-border/40 text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary transition-colors shrink-0">
+                                      <div className="flex size-7 items-center justify-center rounded-lg bg-muted/60 border border-border/40 shrink-0">
                                         {getMenuIcon(subItem.iconName, { size: 14 })}
                                       </div>
                                       <div className="flex-1 min-w-0">

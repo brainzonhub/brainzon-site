@@ -17,6 +17,14 @@ const iconMap: Record<string, LucideIcon> = {
   Handshake,
 };
 
+
+const metricColors: Record<string, string> = {
+  Building2: "text-blue-500 dark:text-blue-400",
+  Globe: "text-cyan-500 dark:text-cyan-400",
+  ShieldCheck: "text-emerald-500 dark:text-emerald-400",
+  Handshake: "text-amber-500 dark:text-amber-400",
+};
+
 export function TrustMetrics() {
   return (
     <section className="relative py-20 border-b border-border/40 bg-surface/50 dark:bg-muted/20 transition-colors duration-300">
@@ -36,7 +44,7 @@ export function TrustMetrics() {
                 )}
               >
                 {Icon && (
-                  <Icon className="text-primary" size={32} strokeWidth={1.5} />
+                  <Icon className={metricColors[metric.icon] || "text-primary"} size={32} strokeWidth={1.5} />
                 )}
 
                 <span className="text-2xl md:text-3xl font-extrabold text-foreground">

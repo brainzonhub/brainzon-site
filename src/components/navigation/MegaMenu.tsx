@@ -599,7 +599,7 @@ export function MegaMenu() {
                               "transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                             )}
                           >
-                            <div className="flex size-9 items-center justify-center rounded-lg bg-muted text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary transition-colors shrink-0 border border-border/30 mt-0.5">
+                            <div className="flex size-9 items-center justify-center rounded-lg bg-muted/50 border border-border/40 group-hover:scale-105 transition-all shrink-0 mt-0.5">
                               {getMenuIcon(subItem.iconName, { size: 16 })}
                             </div>
                             <div className="flex-1 min-w-0">
@@ -698,7 +698,7 @@ export function MegaMenu() {
                               "transition-all duration-150 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                             )}
                           >
-                            <div className="flex size-8 items-center justify-center rounded-lg bg-muted text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary transition-colors shrink-0 border border-border/30">
+                            <div className="flex size-8 items-center justify-center rounded-lg bg-muted/50 border border-border/40 group-hover:scale-105 transition-all shrink-0">
                               {getMenuIcon(subItem.iconName, { size: 15 })}
                             </div>
                             <div className="flex-1 min-w-0">
@@ -791,7 +791,7 @@ export function MegaMenu() {
                               "transition-all duration-150 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                             )}
                           >
-                            <div className="flex size-8 items-center justify-center rounded-lg bg-muted text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary transition-colors shrink-0 border border-border/30">
+                            <div className="flex size-8 items-center justify-center rounded-lg bg-muted/50 border border-border/40 group-hover:scale-105 transition-all shrink-0">
                               {getMenuIcon(subItem.iconName, { size: 15 })}
                             </div>
                             <div className="flex-1 min-w-0">

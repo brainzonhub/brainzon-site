@@ -3,11 +3,9 @@ import { cn } from "@/lib/utils";
 import { demoHeroContent } from "@/config/demo";
 import {
   ArrowRight,
-  Database,
-  Users,
-  Cpu,
   MessageCircle,
 } from "lucide-react";
+import { ProductIcon } from "@/components/ui/ProductIcon";
 
 /* ------------------------------------------------------------------ */
 /*  Glassmorphic dashboard preview cards for the hero illustration     */
@@ -20,7 +18,7 @@ function MiniBarChart() {
       {bars.map((h, i) => (
         <div
           key={i}
-          className="w-[5px] rounded-sm bg-primary/60"
+          className="w-[5px] rounded-sm bg-violet-500/70"
           style={{ height: `${h}%` }}
         />
       ))}
@@ -30,11 +28,11 @@ function MiniBarChart() {
 
 function PipelineDots() {
   const stages = [
-    "bg-primary/80",
-    "bg-primary/60",
-    "bg-primary/40",
-    "bg-primary/25",
-    "bg-primary/15",
+    "bg-amber-500/90",
+    "bg-amber-500/70",
+    "bg-amber-500/50",
+    "bg-amber-500/30",
+    "bg-amber-500/15",
   ];
   return (
     <div className="flex items-center gap-1.5">
@@ -45,36 +43,35 @@ function PipelineDots() {
   );
 }
 
-function NeuralDots() {
+function CampaignWave() {
   return (
     <svg
-      width="72"
-      height="36"
-      viewBox="0 0 72 36"
+      width="64"
+      height="26"
+      viewBox="0 0 64 26"
       fill="none"
-      className="text-primary"
+      className="text-cyan-500"
       aria-hidden="true"
     >
-      {/* Layer 1 */}
-      <circle cx="8" cy="8" r="3" fill="currentColor" opacity="0.7" />
-      <circle cx="8" cy="28" r="3" fill="currentColor" opacity="0.5" />
-      {/* Layer 2 */}
-      <circle cx="36" cy="6" r="3" fill="currentColor" opacity="0.6" />
-      <circle cx="36" cy="18" r="3" fill="currentColor" opacity="0.8" />
-      <circle cx="36" cy="30" r="3" fill="currentColor" opacity="0.5" />
-      {/* Layer 3 */}
-      <circle cx="64" cy="12" r="3" fill="currentColor" opacity="0.7" />
-      <circle cx="64" cy="24" r="3" fill="currentColor" opacity="0.6" />
-      {/* Connections */}
-      <line x1="11" y1="8" x2="33" y2="6" stroke="currentColor" strokeWidth="0.8" opacity="0.3" />
-      <line x1="11" y1="8" x2="33" y2="18" stroke="currentColor" strokeWidth="0.8" opacity="0.25" />
-      <line x1="11" y1="28" x2="33" y2="18" stroke="currentColor" strokeWidth="0.8" opacity="0.3" />
-      <line x1="11" y1="28" x2="33" y2="30" stroke="currentColor" strokeWidth="0.8" opacity="0.25" />
-      <line x1="39" y1="6" x2="61" y2="12" stroke="currentColor" strokeWidth="0.8" opacity="0.3" />
-      <line x1="39" y1="18" x2="61" y2="12" stroke="currentColor" strokeWidth="0.8" opacity="0.25" />
-      <line x1="39" y1="18" x2="61" y2="24" stroke="currentColor" strokeWidth="0.8" opacity="0.3" />
-      <line x1="39" y1="30" x2="61" y2="24" stroke="currentColor" strokeWidth="0.8" opacity="0.25" />
+      <path
+        d="M2 20 L14 14 L26 17 L40 8 L50 11 L62 3"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        opacity="0.85"
+      />
+      <circle cx="62" cy="3" r="2.5" fill="currentColor" />
     </svg>
+  );
+}
+
+function LedgerStatus() {
+  return (
+    <div className="flex items-center gap-1.5 px-2 py-1 rounded-md bg-emerald-500/10 border border-emerald-500/20">
+      <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+      <span className="text-[10px] font-mono font-semibold text-emerald-600 dark:text-emerald-400">Balanced</span>
+    </div>
   );
 }
 
@@ -82,13 +79,14 @@ function NeuralDots() {
 
 interface DashCardProps {
   icon: React.ReactNode;
+  iconBg?: string;
   title: string;
   metric: string;
   children: React.ReactNode;
   className?: string;
 }
 
-function DashCard({ icon, title, metric, children, className }: DashCardProps) {
+function DashCard({ icon, iconBg = "bg-primary/10", title, metric, children, className }: DashCardProps) {
   return (
     <div
       className={cn(
@@ -103,7 +101,7 @@ function DashCard({ icon, title, metric, children, className }: DashCardProps) {
       <div className="flex items-start justify-between gap-3">
         <div className="space-y-1.5">
           <div className="flex items-center gap-2">
-            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-primary/10 text-primary">
+            <div className={cn("flex h-7 w-7 items-center justify-center rounded-lg", iconBg)}>
               {icon}
             </div>
             <span className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
@@ -222,13 +220,13 @@ export function DemoHero() {
             />
 
             {/* Stacked dashboard cards with connection lines */}
-            <div className="relative w-full max-w-md space-y-5">
+            <div className="relative w-full max-w-md space-y-3.5">
               {/* SVG connection lines */}
               <svg
                 aria-hidden="true"
                 className="pointer-events-none absolute inset-0 w-full h-full z-0"
                 preserveAspectRatio="none"
-                viewBox="0 0 400 300"
+                viewBox="0 0 400 380"
               >
                 <defs>
                   <linearGradient id="conn-grad" x1="0" y1="0" x2="0" y2="1">
@@ -240,9 +238,9 @@ export function DemoHero() {
                 {/* Card 1 → Card 2 */}
                 <line
                   x1="60"
-                  y1="70"
+                  y1="55"
                   x2="60"
-                  y2="128"
+                  y2="105"
                   stroke="url(#conn-grad)"
                   strokeWidth="1.5"
                   strokeDasharray="4 4"
@@ -250,9 +248,19 @@ export function DemoHero() {
                 {/* Card 2 → Card 3 */}
                 <line
                   x1="60"
-                  y1="185"
+                  y1="145"
                   x2="60"
-                  y2="240"
+                  y2="195"
+                  stroke="url(#conn-grad)"
+                  strokeWidth="1.5"
+                  strokeDasharray="4 4"
+                />
+                {/* Card 3 → Card 4 */}
+                <line
+                  x1="60"
+                  y1="235"
+                  x2="60"
+                  y2="285"
                   stroke="url(#conn-grad)"
                   strokeWidth="1.5"
                   strokeDasharray="4 4"
@@ -260,9 +268,9 @@ export function DemoHero() {
                 {/* Cross connection */}
                 <line
                   x1="340"
-                  y1="70"
+                  y1="55"
                   x2="340"
-                  y2="240"
+                  y2="310"
                   stroke="url(#conn-grad)"
                   strokeWidth="1"
                   strokeDasharray="3 6"
@@ -271,7 +279,8 @@ export function DemoHero() {
 
               {/* Card 1 — BrainERP */}
               <DashCard
-                icon={<Database className="h-4 w-4" />}
+                icon={<ProductIcon product="brainerp" size={18} />}
+                iconBg="bg-white/80 dark:bg-card border border-border/50 shadow-xs"
                 title="BrainERP"
                 metric="98.7% Efficiency"
                 className="relative z-10"
@@ -281,22 +290,35 @@ export function DemoHero() {
 
               {/* Card 2 — BrainCRM */}
               <DashCard
-                icon={<Users className="h-4 w-4" />}
+                icon={<ProductIcon product="braincrm" size={18} />}
+                iconBg="bg-white/80 dark:bg-card border border-border/50 shadow-xs"
                 title="BrainCRM"
                 metric="2.4k Active Leads"
-                className="relative z-10 ml-4 md:ml-8"
+                className="relative z-10 ml-3 md:ml-6"
               >
                 <PipelineDots />
               </DashCard>
 
-              {/* Card 3 — BrainAI */}
+              {/* Card 3 — BrainMKT */}
               <DashCard
-                icon={<Cpu className="h-4 w-4" />}
-                title="BrainAI"
-                metric="AI Predictions"
-                className="relative z-10 ml-1 md:ml-4"
+                icon={<ProductIcon product="brainmkt" size={18} />}
+                iconBg="bg-white/80 dark:bg-card border border-border/50 shadow-xs"
+                title="BrainMKT"
+                metric="+45% Campaign Velocity"
+                className="relative z-10 ml-1 md:ml-2"
               >
-                <NeuralDots />
+                <CampaignWave />
+              </DashCard>
+
+              {/* Card 4 — BrainBooks */}
+              <DashCard
+                icon={<ProductIcon product="brainbooks" size={18} />}
+                iconBg="bg-white/80 dark:bg-card border border-border/50 shadow-xs"
+                title="BrainBooks"
+                metric="100% Reconciled Ledgers"
+                className="relative z-10 ml-4 md:ml-8"
+              >
+                <LedgerStatus />
               </DashCard>
             </div>
           </div>

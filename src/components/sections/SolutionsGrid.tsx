@@ -31,7 +31,7 @@ export function SolutionsGrid() {
               )}
             >
               <div>
-                <div className="flex size-10 items-center justify-center rounded-lg bg-muted text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary transition-colors mb-6">
+                <div className="flex size-10 items-center justify-center rounded-lg bg-muted/60 border border-border/40 shrink-0 mb-6 group-hover:scale-105 transition-transform">
                   {getMenuIcon(solution.icon, { size: 20 })}
                 </div>
 

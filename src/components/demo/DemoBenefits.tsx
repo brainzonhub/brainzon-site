@@ -11,6 +11,14 @@ const iconMap: Record<string, LucideIcon> = {
   Map,
 };
 
+
+const benefitColors: Record<string, { icon: string; bg: string }> = {
+  Search: { icon: "text-cyan-500 dark:text-cyan-400", bg: "bg-cyan-500/10 border-cyan-500/25" },
+  Target: { icon: "text-amber-500 dark:text-amber-400", bg: "bg-amber-500/10 border-amber-500/25" },
+  Monitor: { icon: "text-violet-500 dark:text-violet-400", bg: "bg-violet-500/10 border-violet-500/25" },
+  Map: { icon: "text-emerald-500 dark:text-emerald-400", bg: "bg-emerald-500/10 border-emerald-500/25" },
+};
+
 export function DemoBenefits() {
   return (
     <section className="relative py-20 border-b border-border/40 bg-background transition-colors duration-300">
@@ -50,15 +58,20 @@ export function DemoBenefits() {
                 )}
               >
                 {/* Icon badge */}
-                <div
-                  className={cn(
-                    "flex items-center justify-center w-12 h-12 rounded-full",
-                    "bg-primary/10 border border-primary/20 text-primary",
-                    "transition-colors duration-300 group-hover:bg-primary/15"
-                  )}
-                >
-                  {Icon && <Icon size={22} strokeWidth={1.8} />}
-                </div>
+                {(() => {
+                  const colors = benefitColors[benefit.icon] || { icon: "text-primary", bg: "bg-primary/10 border-primary/20" };
+                  return (
+                    <div
+                      className={cn(
+                        "flex items-center justify-center w-12 h-12 rounded-full border",
+                        colors.bg,
+                        "transition-all duration-300 group-hover:scale-105"
+                      )}
+                    >
+                      {Icon && <Icon size={22} strokeWidth={1.8} className={colors.icon} />}
+                    </div>
+                  );
+                })()}
 
                 {/* Title */}
                 <h3 className="text-sm font-bold text-foreground mt-4">

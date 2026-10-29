@@ -1,10 +1,14 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import { ProductIcon, normalizeProductSlug } from "@/components/ui/ProductIcon";
 import { solutionOptions } from "@/config/demo";
 import {
   Database,
   Users,
+  Megaphone,
+  Receipt,
+  Layers,
   Cpu,
   Network,
   Package,
@@ -14,10 +18,36 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
+/* ── Distinct vivid color mapping for all 8 solution icons ── */
+const optionIconColors: Record<string, string> = {
+  // Core Products
+  brainmkt: "text-cyan-500 dark:text-cyan-400",
+  braincrm: "text-amber-500 dark:text-amber-400",
+  brainerp: "text-violet-500 dark:text-violet-400",
+  brainbooks: "text-emerald-500 dark:text-emerald-400",
+  // Services
+  "odoo-bc-implementation": "text-purple-500 dark:text-purple-400",
+  "enterprise-integration": "text-blue-500 dark:text-blue-400",
+  "legacy-modernization": "text-orange-500 dark:text-orange-400",
+  "custom-software": "text-teal-500 dark:text-teal-400",
+  // Fallbacks by icon name
+  Megaphone: "text-cyan-500 dark:text-cyan-400",
+  Users: "text-amber-500 dark:text-amber-400",
+  Database: "text-violet-500 dark:text-violet-400",
+  Receipt: "text-emerald-500 dark:text-emerald-400",
+  Layers: "text-purple-500 dark:text-purple-400",
+  Network: "text-blue-500 dark:text-blue-400",
+  RefreshCw: "text-orange-500 dark:text-orange-400",
+  Code2: "text-teal-500 dark:text-teal-400",
+};
+
 /* ── Icon map for dynamic rendering ── */
 const iconMap: Record<string, LucideIcon> = {
   Database,
   Users,
+  Megaphone,
+  Receipt,
+  Layers,
   Cpu,
   Network,
   Package,
@@ -55,6 +85,10 @@ export function SolutionSelector({
         {solutionOptions.map((option) => {
           const Icon = iconMap[option.icon];
           const selected = value.includes(option.id);
+          const iconColor =
+            optionIconColors[option.id] ||
+            optionIconColors[option.icon] ||
+            "text-primary";
 
           return (
             <button
@@ -68,19 +102,21 @@ export function SolutionSelector({
                 "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
                 selected
                   ? "border-primary bg-primary/10 text-primary shadow-glow-primary/20 ring-1 ring-primary/20"
-                  : "border-border bg-card/40 text-muted-foreground hover:border-primary/40 hover:-translate-y-0.5 hover:shadow-card"
+                  : "border-border bg-card/40 text-muted-foreground hover:border-primary/40 hover:-translate-y-0.5 hover:shadow-card hover:text-foreground"
               )}
             >
-              {Icon && (
+              {normalizeProductSlug(option.id) ? (
+                <div className="flex-shrink-0 transition-transform duration-200 group-hover:scale-110">
+                  <ProductIcon product={option.id} size={16} />
+                </div>
+              ) : Icon ? (
                 <Icon
                   className={cn(
-                    "h-4 w-4 flex-shrink-0 transition-colors duration-200",
-                    selected
-                      ? "text-primary"
-                      : "text-muted-foreground/60 group-hover:text-primary/60"
+                    "h-4 w-4 flex-shrink-0 transition-transform duration-200 group-hover:scale-110",
+                    iconColor
                   )}
                 />
-              )}
+              ) : null}
               <span className="truncate">{option.label}</span>
             </button>
           );

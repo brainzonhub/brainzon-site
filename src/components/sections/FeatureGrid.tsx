@@ -1,4 +1,4 @@
-import * as LucideIcons from "lucide-react";
+import { getMenuIcon } from "@/components/navigation/menu-icons";
 import { Container } from "@/components/layout/Container";
 import { cn } from "@/lib/utils";
 
@@ -33,7 +33,7 @@ export function FeatureGrid({ features, productName }: FeatureGridProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, idx) => {
             // Resolve icon dynamically
-            const IconComponent = (LucideIcons as unknown as Record<string, React.ComponentType<{ size?: number }>>)[feature.icon] || LucideIcons.HelpCircle;
+            
 
             return (
               <div
@@ -47,8 +47,8 @@ export function FeatureGrid({ features, productName }: FeatureGridProps) {
                 <div className="absolute top-0 left-0 right-0 h-1 rounded-t-2xl bg-gradient-to-r from-transparent via-primary/0 to-transparent group-hover:via-primary/50 transition-all duration-300" />
                 
                 {/* Icon box */}
-                <div className="flex size-10 items-center justify-center rounded-xl bg-muted text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary transition-colors shrink-0 mb-6">
-                  <IconComponent size={20} />
+                <div className="flex size-10 items-center justify-center rounded-xl bg-muted/60 border border-border/40 shrink-0 mb-6 group-hover:scale-105 transition-transform">
+                  {getMenuIcon(feature.icon, { size: 20 })}
                 </div>
 
                 <h3 className="text-base font-bold text-foreground group-hover:text-primary transition-colors duration-200 mb-2">

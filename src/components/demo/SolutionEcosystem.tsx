@@ -1,9 +1,10 @@
 "use client";
 
 import {
-  Cpu,
   Database,
   Users,
+  Megaphone,
+  Receipt,
   Network,
   Layers,
   Package,
@@ -13,31 +14,34 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { Container } from "@/components/layout/Container";
+import { ProductIcon } from "@/components/ui/ProductIcon";
 import { cn } from "@/lib/utils";
 
 /* ── Node data types ── */
 interface EcoNode {
   label: string;
-  icon: LucideIcon;
+  icon?: LucideIcon;
+  productSlug?: string;
+  color?: string;
 }
 
 /* ── Center hub ── */
-const centerNode: EcoNode = { label: "BrainAI", icon: Cpu };
+const centerNode: EcoNode = { label: "Brainzon Core", icon: Layers, color: "text-primary" };
 
 /* ── Inner ring — core products ── */
 const innerNodes: EcoNode[] = [
-  { label: "BrainERP", icon: Database },
-  { label: "BrainCRM", icon: Users },
-  { label: "BrainConnect", icon: Network },
-  { label: "Integration", icon: Layers },
+  { label: "BrainMKT", productSlug: "brainmkt", color: "text-cyan-500 dark:text-cyan-400" },
+  { label: "BrainCRM", productSlug: "braincrm", color: "text-amber-500 dark:text-amber-400" },
+  { label: "BrainERP", productSlug: "brainerp", color: "text-violet-500 dark:text-violet-400" },
+  { label: "BrainBooks", productSlug: "brainbooks", color: "text-emerald-500 dark:text-emerald-400" },
 ];
 
 /* ── Outer ring — connected systems ── */
 const outerNodes: EcoNode[] = [
-  { label: "ERP Systems", icon: Package },
-  { label: "eCommerce", icon: ShoppingCart },
-  { label: "External APIs", icon: Globe },
-  { label: "Legacy Apps", icon: RefreshCw },
+  { label: "ERP Systems", icon: Package, color: "text-purple-500 dark:text-purple-400" },
+  { label: "eCommerce", icon: ShoppingCart, color: "text-amber-500 dark:text-amber-400" },
+  { label: "External APIs", icon: Globe, color: "text-blue-500 dark:text-blue-400" },
+  { label: "Legacy Apps", icon: RefreshCw, color: "text-orange-500 dark:text-orange-400" },
 ];
 
 /* ── Geometry helpers ── */
@@ -74,7 +78,8 @@ function NodeCircle({
   className?: string;
   iconSize?: number;
 }) {
-  const Icon = node.icon;
+  const Icon = node.icon || Package;
+
   return (
     <div className={cn("flex flex-col items-center gap-1.5", className)}>
       <div
@@ -84,7 +89,11 @@ function NodeCircle({
         )}
         style={{ width: size, height: size }}
       >
-        <Icon size={iconSize} strokeWidth={1.6} />
+        {node.productSlug ? (
+          <ProductIcon product={node.productSlug} size={iconSize} />
+        ) : Icon ? (
+          <Icon size={iconSize} strokeWidth={1.8} className={node.color || "text-primary"} />
+        ) : null}
       </div>
       <span className="text-[10px] font-semibold tracking-wide text-foreground whitespace-nowrap">
         {node.label}
@@ -95,7 +104,7 @@ function NodeCircle({
 
 /* ── Main component ── */
 export function SolutionEcosystem() {
-  const CenterIcon = centerNode.icon;
+  const CenterIcon = centerNode.icon || Layers;
 
   return (
     <section className="relative py-20 border-b border-border/40 bg-background transition-colors duration-300">
@@ -140,59 +149,64 @@ export function SolutionEcosystem() {
               ))}
 
               {/* Inner ring → outer ring */}
-              {outerPositions.map((outerPos, oi) => {
-                // Connect each outer node to its two nearest inner nodes
-                const nearest1 = innerPositions[oi % innerPositions.length]!;
-                const nearest2 =
-                  innerPositions[(oi + 1) % innerPositions.length]!;
+              {innerPositions.map((inPos, i) => {
+                const outPos = outerPositions[i]!;
                 return (
-                  <g key={`io-${oi}`}>
-                    <line
-                      x1={nearest1.x}
-                      y1={nearest1.y}
-                      x2={outerPos.x}
-                      y2={outerPos.y}
-                      stroke="var(--color-primary)"
-                      strokeWidth="0.2"
-                      opacity="0.2"
-                      strokeDasharray="4 4"
-                    />
-                    <line
-                      x1={nearest2.x}
-                      y1={nearest2.y}
-                      x2={outerPos.x}
-                      y2={outerPos.y}
-                      stroke="var(--color-primary)"
-                      strokeWidth="0.2"
-                      opacity="0.2"
-                      strokeDasharray="4 4"
-                    />
-                  </g>
+                  <line
+                    key={`io-${i}`}
+                    x1={inPos.x}
+                    y1={inPos.y}
+                    x2={outPos.x}
+                    y2={outPos.y}
+                    stroke="var(--color-border)"
+                    strokeWidth="0.2"
+                    opacity="0.25"
+                    strokeDasharray="3 3"
+                  />
                 );
               })}
+
+              {/* Concentric guide circles (subtle) */}
+              <circle
+                cx="50"
+                cy="50"
+                r="22"
+                stroke="var(--color-primary)"
+                strokeWidth="0.15"
+                opacity="0.15"
+                fill="none"
+              />
+              <circle
+                cx="50"
+                cy="50"
+                r="40"
+                stroke="var(--color-border)"
+                strokeWidth="0.15"
+                opacity="0.12"
+                fill="none"
+              />
             </svg>
 
-            {/* Center hub */}
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center gap-2 z-10">
-              {/* Pulsing outer glow ring */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-24 h-24 rounded-full bg-primary/5 border border-primary/20 animate-pulse" />
+            {/* Center hub node */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
+              <div className="flex flex-col items-center gap-2">
+                <div
+                  className={cn(
+                    "relative flex items-center justify-center rounded-full",
+                    "bg-primary/10 border-2 border-primary text-primary",
+                    "shadow-glow-primary transition-all duration-300",
+                    "hover:scale-105 hover:shadow-elevated"
+                  )}
+                  style={{ width: 80, height: 80 }}
+                >
+                  {/* Subtle pulsing outer ring */}
+                  <div className="absolute inset-0 rounded-full border border-primary/40 animate-ping opacity-20 pointer-events-none" />
+                  <CenterIcon size={32} strokeWidth={1.5} />
+                </div>
+                <span className="text-xs font-bold tracking-wide text-primary">
+                  {centerNode.label}
+                </span>
               </div>
-
-              {/* Core circle */}
-              <div
-                className={cn(
-                  "relative flex items-center justify-center rounded-full",
-                  "bg-primary/10 border-2 border-primary text-primary",
-                  "shadow-glow-primary"
-                )}
-                style={{ width: 80, height: 80 }}
-              >
-                <CenterIcon size={32} strokeWidth={1.5} />
-              </div>
-              <span className="text-xs font-bold tracking-wide text-primary mt-1">
-                {centerNode.label}
-              </span>
             </div>
 
             {/* Inner ring nodes */}
@@ -208,7 +222,7 @@ export function SolutionEcosystem() {
                     node={node}
                     size={56}
                     iconSize={22}
-                    className="[&>div:first-child]:bg-card/60 [&>div:first-child]:border-border [&>div:first-child]:text-primary [&>div:first-child]:hover:border-primary/50 [&>div:first-child]:hover:shadow-glow-primary"
+                    className="[&>div:first-child]:bg-card/60 [&>div:first-child]:border-border [&>div:first-child]:hover:border-primary/50 [&>div:first-child]:hover:shadow-glow-primary"
                   />
                 </div>
               );
@@ -227,7 +241,7 @@ export function SolutionEcosystem() {
                     node={node}
                     size={44}
                     iconSize={18}
-                    className="[&>div:first-child]:bg-card/40 [&>div:first-child]:border-border/60 [&>div:first-child]:text-muted-foreground [&>div:first-child]:hover:border-primary/30 [&>div:first-child]:hover:text-primary"
+                    className="[&>div:first-child]:bg-card/40 [&>div:first-child]:border-border/60 [&>div:first-child]:hover:border-primary/30"
                   />
                 </div>
               );
@@ -252,7 +266,7 @@ export function SolutionEcosystem() {
             <span className="text-xs font-bold tracking-wide text-primary">
               {centerNode.label}
             </span>
-            <p className="text-[10px] text-muted-foreground">Central AI Hub</p>
+            <p className="text-[10px] text-muted-foreground">Central Core Hub</p>
           </div>
 
           {/* Core products 2×2 */}
@@ -262,15 +276,16 @@ export function SolutionEcosystem() {
               return (
                 <div
                   key={node.label}
-                  className={cn(
-                    "flex flex-col items-center gap-2 p-4 rounded-2xl",
-                    "border border-border/40 bg-card/40 backdrop-blur-sm"
-                  )}
+                  className="flex items-center gap-3 p-3 rounded-xl border border-border bg-card/60"
                 >
-                  <div className="flex items-center justify-center w-11 h-11 rounded-full bg-card/60 border border-border text-primary">
-                    <Icon size={20} strokeWidth={1.6} />
+                  <div className="flex items-center justify-center size-9 rounded-lg bg-primary/10">
+                    {node.productSlug ? (
+                      <ProductIcon product={node.productSlug} size={20} />
+                    ) : Icon ? (
+                      <Icon size={18} strokeWidth={1.6} className={node.color || "text-primary"} />
+                    ) : null}
                   </div>
-                  <span className="text-[11px] font-semibold text-foreground">
+                  <span className="text-xs font-semibold text-foreground">
                     {node.label}
                   </span>
                 </div>
@@ -279,21 +294,18 @@ export function SolutionEcosystem() {
           </div>
 
           {/* Connected systems 2×2 */}
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-3">
             {outerNodes.map((node) => {
-              const Icon = node.icon;
+              const Icon = node.icon || Package;
               return (
                 <div
                   key={node.label}
-                  className={cn(
-                    "flex flex-col items-center gap-2 p-3 rounded-xl",
-                    "border border-border/20 bg-card/20 backdrop-blur-sm"
-                  )}
+                  className="flex items-center gap-2.5 p-2.5 rounded-lg border border-border/60 bg-card/40"
                 >
-                  <div className="flex items-center justify-center w-9 h-9 rounded-full bg-card/40 border border-border/60 text-muted-foreground">
-                    <Icon size={16} strokeWidth={1.6} />
+                  <div className="flex items-center justify-center size-7 rounded-md bg-muted/60">
+                    <Icon size={14} strokeWidth={1.6} className={node.color || "text-muted-foreground"} />
                   </div>
-                  <span className="text-[10px] font-medium text-muted-foreground">
+                  <span className="text-[11px] font-medium text-muted-foreground">
                     {node.label}
                   </span>
                 </div>

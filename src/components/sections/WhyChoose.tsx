@@ -6,6 +6,7 @@ type Differentiator = {
   title: string;
   description: string;
   icon: LucideIcon;
+  iconColor: string;
 };
 
 const items: Differentiator[] = [
@@ -13,25 +14,29 @@ const items: Differentiator[] = [
     metric: "ISO 27001",
     title: "Security & Compliance",
     description: "End-to-end encryption for all API nodes, multi-factor authorization layers, and automated compliance ledgers.",
-    icon: ShieldCheck
+    icon: ShieldCheck,
+    iconColor: "text-emerald-500 dark:text-emerald-400"
   },
   {
     metric: "99.99% SLA",
     title: "Global Scale & Uptime",
     description: "Multi-cloud infrastructure configurations across AWS, GCP, and Azure with automated failovers and low latency replication.",
-    icon: Activity
+    icon: Activity,
+    iconColor: "text-rose-500 dark:text-rose-400"
   },
   {
     metric: "100% Wrapped",
     title: "Legacy Modernization",
     description: "Wrap old databases, COBOL files, and legacy core systems in modern, secure, and fast microservices API nodes.",
-    icon: RefreshCw
+    icon: RefreshCw,
+    iconColor: "text-amber-500 dark:text-amber-400"
   },
   {
     metric: "24/7/365",
     title: "Managed Cloud Support",
     description: "Continuous performance audits, DevOps automation triggers, and round-the-clock monitoring by certified architects.",
-    icon: Cloud
+    icon: Cloud,
+    iconColor: "text-sky-500 dark:text-sky-400"
   }
 ];
 
@@ -61,7 +66,7 @@ export function WhyChoose() {
                     <span className="text-xs font-mono font-bold tracking-widest text-primary uppercase bg-primary/10 border border-primary/20 px-2 py-0.5 rounded">
                       {item.metric}
                     </span>
-                    <Icon className="text-muted-foreground/60" size={18} />
+                    <Icon className={item.iconColor} size={18} />
                   </div>
                   <h3 className="text-sm font-bold text-foreground mt-4">
                     {item.title}
