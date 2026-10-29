@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils";
 
 type AIAgentUseCase = {
   id: string;
+  slug: string;
   name: string;
   agentName: string;
   product: string;
@@ -21,6 +22,7 @@ type AIAgentUseCase = {
 const aiAgentUseCases: AIAgentUseCase[] = [
   {
     id: "mkt",
+    slug: "brainmkt-ai-agent",
     name: "Marketing Planning",
     agentName: "BrainMKT AI Agent",
     product: "BrainMKT",
@@ -31,6 +33,7 @@ const aiAgentUseCases: AIAgentUseCase[] = [
   },
   {
     id: "crm",
+    slug: "braincrm-ai-agent",
     name: "Customer Relationships",
     agentName: "BrainCRM AI Agent",
     product: "BrainCRM",
@@ -41,6 +44,7 @@ const aiAgentUseCases: AIAgentUseCase[] = [
   },
   {
     id: "erp",
+    slug: "brainerp-ai-agent",
     name: "Operations & Supply Chain",
     agentName: "BrainERP AI Agent",
     product: "BrainERP",
@@ -51,6 +55,7 @@ const aiAgentUseCases: AIAgentUseCase[] = [
   },
   {
     id: "books",
+    slug: "brainbooks-ai-agent",
     name: "Accounting & Ledgers",
     agentName: "BrainBooks AI Agent",
     product: "BrainBooks",
@@ -192,9 +197,15 @@ export function AIAgentsShowcase() {
               </div>
 
               {/* Status footer */}
-              <div className="px-5 py-2.5 bg-muted/20 border-t border-border/60 text-[9px] font-mono text-muted-foreground flex justify-between">
+              <div className="px-5 py-2.5 bg-muted/20 border-t border-border/60 text-[9px] font-mono text-muted-foreground flex items-center justify-between">
                 <span>POLICY: {selectedCase.controls}</span>
-                <span>AUTHENTICATION: ROLE-GATED</span>
+                <Link
+                  href={`/ai-agents/${selectedCase.slug}`}
+                  className="font-bold text-primary hover:underline uppercase inline-flex items-center gap-1"
+                >
+                  <span>Explore {selectedCase.agentName}</span>
+                  <ArrowRight size={10} />
+                </Link>
               </div>
             </div>
           </div>

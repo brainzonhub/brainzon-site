@@ -4,6 +4,7 @@ import { productsConfig } from "@/config/products";
 import { industriesConfig } from "@/config/industries";
 import { servicesConfig } from "@/config/services";
 import { caseStudies } from "@/config/case-studies";
+import { aiAgentsConfig } from "@/config/ai-agents";
 import { getInsights } from "@/lib/insights";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -32,6 +33,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Product paths
   const productRoutes = productsConfig.map((p) => ({
     url: `${baseUrl}/products/${p.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly" as const,
+    priority: 0.85,
+  }));
+
+  // Dedicated product AI Agent paths
+  const aiAgentRoutes = aiAgentsConfig.map((agent) => ({
+    url: `${baseUrl}/ai-agents/${agent.slug}`,
     lastModified: new Date(),
     changeFrequency: "weekly" as const,
     priority: 0.85,
@@ -104,6 +113,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return [
     ...coreHubRoutes,
     ...productRoutes,
+    ...aiAgentRoutes,
     ...platformSolutionRoutes,
     ...industryRoutes,
     ...serviceRoutes,
