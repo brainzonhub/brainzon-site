@@ -110,15 +110,6 @@ export const navigationConfig: NavItem[] = [
         aiAgent: "BrainBooks AI Agent",
         color: "emerald",
       },
-      {
-        title: "Product AI Agents",
-        subtitle: "Enterprise Workflow Assistants",
-        description: "Supervised domain assistants for marketing, CRM, ERP, and accounting workflows.",
-        href: "/ai-agents",
-        iconName: "sparkles",
-        badge: "New",
-        color: "violet",
-      },
     ],
     aiAgents: [
       {
