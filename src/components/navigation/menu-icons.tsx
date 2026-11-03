@@ -1,3 +1,4 @@
+import { useId } from "react";
 import { cn } from "@/lib/utils";
 import {
   Database,
@@ -127,7 +128,89 @@ export const MENU_ICON_COLORS: Record<string, string> = {
   helpcircle: "text-sky-500 dark:text-sky-400",
   sliders: "text-violet-500 dark:text-violet-400",
   slidershorizontal: "text-violet-500 dark:text-violet-400",
+  odoo: "text-[#714B67] dark:text-[#c49bb9]",
+  dynamics365: "text-[#0078D4] dark:text-[#50e6ff]",
+  dynamics365bc: "text-[#0078D4] dark:text-[#50e6ff]",
+  dynamics: "text-[#0078D4] dark:text-[#50e6ff]",
+  businesscentral: "text-[#0078D4] dark:text-[#50e6ff]",
 };
+
+/**
+ * Official Odoo brand mark vector
+ */
+export function OdooIcon({ size = 20, className, ...props }: LucideProps) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className={cn("shrink-0 text-[#714B67] dark:text-[#c49bb9]", className)}
+      aria-label="Odoo"
+      role="img"
+      {...props}
+    >
+      <path d="M21.1002 15.7957c-1.6015 0-2.8997-1.2983-2.8997-2.8998s1.2983-2.8997 2.8997-2.8997c1.6015 0 2.8998 1.2982 2.8998 2.8997 0 1.5999-1.2979 2.8998-2.8998 2.8998zm0-1.2c.9388.0006 1.7003-.7601 1.7008-1.6989.0004-.9388-.7602-1.7003-1.699-1.7007h-.0018c-.9388.0004-1.6994.7619-1.699 1.7007.0005.9381.761 1.6985 1.699 1.699zm-6.0655 1.2c-1.6014 0-2.8997-1.2983-2.8997-2.8998s1.2983-2.8997 2.8997-2.8997c1.6015 0 2.8998 1.2982 2.8998 2.8997 0 1.5999-1.2999 2.8998-2.8998 2.8998zm0-1.2c.9389.0006 1.7003-.7601 1.7008-1.6989.0005-.9388-.7602-1.7003-1.699-1.7007h-.0018c-.9388.0004-1.6994.7619-1.699 1.7007.0005.9381.761 1.6985 1.699 1.699zM11.865 12.858c0 1.6199-1.2979 2.9378-2.8977 2.9378s-2.8998-1.314-2.8998-2.9358 1.1799-2.8597 2.8998-2.8597c.6359 0 1.2239.134 1.6998.484v-1.68a.6.6 0 0 1 1.2 0v4.0537h-.002zm-2.8977 1.7399c.9388.0005 1.7002-.7602 1.7007-1.699.0005-.9388-.7602-1.7003-1.699-1.7007h-.0017c-.9389.0004-1.6995.7619-1.699 1.7007.0004.9381.7608 1.6985 1.699 1.699zm-6.0675 1.1979C1.2983 15.7957 0 14.4974 0 12.8959s1.2983-2.8997 2.8998-2.8997 2.8997 1.2982 2.8997 2.8997c0 1.5999-1.2999 2.8998-2.8997 2.8998zm0-1.2c.9388.0006 1.7002-.7601 1.7007-1.699.0005-.9387-.7602-1.7002-1.699-1.7006h-.0017c-.9388.0004-1.6995.7619-1.699 1.7007.0004.9381.7608 1.6985 1.699 1.699z" />
+    </svg>
+  );
+}
+
+/**
+ * Official Microsoft Dynamics 365 Business Central Fluent vector
+ */
+export function Dynamics365BCIcon({ size = 20, className, ...props }: LucideProps) {
+  const reactId = useId();
+  const safeId = reactId.replace(/[^a-zA-Z0-9_-]/g, "");
+  const p0 = `d365bc-p0-${safeId}`;
+  const p1 = `d365bc-p1-${safeId}`;
+  const p2 = `d365bc-p2-${safeId}`;
+
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 -2 96 100"
+      fill="none"
+      className={cn("shrink-0", className)}
+      aria-label="Microsoft Dynamics 365 Business Central"
+      role="img"
+      {...props}
+    >
+      <defs>
+        <linearGradient id={p0} x1="82" y1="30.5" x2="12" y2="30.5" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#19398E" />
+          <stop offset="1" stopColor="#0F2042" />
+        </linearGradient>
+        <linearGradient id={p1} x1="30" y1="57" x2="82" y2="57" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#0078D4" />
+          <stop offset="1" stopColor="#143178" />
+        </linearGradient>
+        <linearGradient id={p2} x1="56" y1="31" x2="56" y2="97" gradientUnits="userSpaceOnUse">
+          <stop stopColor="white" />
+          <stop offset="1" stopColor="white" stopOpacity="0" />
+        </linearGradient>
+      </defs>
+      <path
+        d="M12 -1L82 24V58.3245C82 61.0905 79.2601 63.0217 76.6551 62.0917L62 56.8593V37.4241C62 33.258 59.4171 29.5283 55.5172 28.063L48.7034 25.5029C47.3957 25.0116 46 25.9782 46 27.3751V51.1428L12 39V-1Z"
+        fill={`url(#${p0})`}
+      />
+      <path
+        d="M82 31C82 35.2 79.4 39 75.4 40.4L30 57V97L82 78V31Z"
+        fill={`url(#${p1})`}
+      />
+      <path
+        opacity="0.35"
+        d="M82 31C82 35.2 79.4 39 75.4 40.4L30 57V97L82 78V31Z"
+        fill={`url(#${p2})`}
+      />
+      <path
+        opacity="0.75"
+        d="M62 45.3L46 51.2V74.6C46 76 47.4 77 48.7 76.5L55.5 73.9C59.4 72.5 62 68.7 62 64.6V45.3Z"
+        fill="#50E6FF"
+      />
+    </svg>
+  );
+}
 
 export function getMenuIcon(name: string, props: LucideProps = {}) {
   if (!name) return null;
@@ -259,6 +342,18 @@ export function getMenuIcon(name: string, props: LucideProps = {}) {
       return <Bot {...mergedProps} />;
     case "zap":
       return <Zap {...mergedProps} />;
+    case "odoo":
+    case "odoosolution":
+    case "odooerp":
+      return <OdooIcon {...mergedProps} />;
+    case "dynamics365":
+    case "dynamics365bc":
+    case "microsoftdynamics365":
+    case "microsoftdynamics365bc":
+    case "dynamics":
+    case "msdynamics":
+    case "businesscentral":
+      return <Dynamics365BCIcon {...mergedProps} />;
     default:
       return null;
   }

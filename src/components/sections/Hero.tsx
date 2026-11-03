@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { ProductIcon } from "@/components/ui/ProductIcon";
+import { OdooIcon, Dynamics365BCIcon } from "@/components/navigation/menu-icons";
 import { cn } from "@/lib/utils";
 
 const nodes = [
@@ -68,7 +69,7 @@ const nodes = [
   {
     id: "dynamics",
     title: "Dynamics 365 BC",
-    icon: Briefcase,
+    icon: Dynamics365BCIcon,
     type: "partner",
     pos: "top-[18%] left-[24%]",
     coords: { x: 120, y: 90 },
@@ -79,7 +80,7 @@ const nodes = [
   {
     id: "odoo",
     title: "Odoo",
-    icon: Package,
+    icon: OdooIcon,
     type: "partner",
     pos: "top-[32%] left-[12%]",
     coords: { x: 60, y: 160 },

@@ -14,6 +14,7 @@ import {
   Zap
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { OdooIcon, Dynamics365BCIcon } from "@/components/navigation/menu-icons";
 
 const erpProductsData = [
   {
@@ -22,7 +23,7 @@ const erpProductsData = [
     shortName: "Dynamics 365 BC",
     badge: "Microsoft Cloud ERP",
     badgeColor: "bg-blue-500/10 text-blue-500 border-blue-500/20",
-    icon: Building2,
+    icon: Dynamics365BCIcon,
     iconBg: "bg-blue-500/10 border-blue-500/20 text-blue-500",
     target: "Enterprise & Mid-Market Organizations",
     description: "Full-scale Microsoft cloud ERP implementation for organizations needing robust multi-entity financial accounting, global compliance, and native Azure & Power Platform integration.",
@@ -46,7 +47,7 @@ const erpProductsData = [
     shortName: "Odoo ERP",
     badge: "Modular & All-In-One",
     badgeColor: "bg-purple-500/10 text-purple-500 border-purple-500/20",
-    icon: Boxes,
+    icon: OdooIcon,
     iconBg: "bg-purple-500/10 border-purple-500/20 text-purple-500",
     target: "Scaling Mid-Market & Retail Operations",
     description: "Highly modular, all-in-one suite of business apps ideal for companies wanting to start small and expand seamlessly across CRM, Sales, POS, Inventory, and Manufacturing.",

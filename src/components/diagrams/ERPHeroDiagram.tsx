@@ -10,6 +10,7 @@ import {
   Boxes
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { OdooIcon, Dynamics365BCIcon } from "@/components/navigation/menu-icons";
 
 interface ERPHeroDiagramProps {
   className?: string;
@@ -20,7 +21,7 @@ const erpProducts = [
     id: "d365",
     title: "Dynamics 365 BC",
     badge: "Microsoft Cloud ERP",
-    icon: Building2,
+    icon: Dynamics365BCIcon,
     color: "primary",
     coords: { x: 75, y: 75 },
     desc: "Enterprise Financials, SCM & Power Platform Sync"
@@ -29,7 +30,7 @@ const erpProducts = [
     id: "odoo",
     title: "Odoo Enterprise",
     badge: "Modular ERP",
-    icon: Boxes,
+    icon: OdooIcon,
     color: "accent",
     coords: { x: 75, y: 225 },
     desc: "Modular All-in-One Sales, Inventory & POS"
@@ -155,7 +156,7 @@ export function ERPHeroDiagram({ className }: ERPHeroDiagramProps) {
         )}>
           <div className="flex items-center gap-1.5 mb-1 border-b border-border/20 pb-1">
             <div className="flex size-5 items-center justify-center rounded-md bg-primary/10 text-primary">
-              <Building2 className="size-3 group-hover:scale-110 transition-transform" />
+              <Dynamics365BCIcon className="size-3.5 group-hover:scale-110 transition-transform" />
             </div>
             <span className="text-[9px] font-bold text-foreground truncate">Dynamics 365 BC</span>
           </div>
@@ -186,7 +187,7 @@ export function ERPHeroDiagram({ className }: ERPHeroDiagramProps) {
         )}>
           <div className="flex items-center gap-1.5 mb-1 border-b border-border/20 pb-1">
             <div className="flex size-5 items-center justify-center rounded-md bg-accent/10 text-accent">
-              <Boxes className="size-3 group-hover:scale-110 transition-transform" />
+              <OdooIcon className="size-3.5 group-hover:scale-110 transition-transform" />
             </div>
             <span className="text-[9px] font-bold text-foreground truncate">Odoo ERP</span>
           </div>

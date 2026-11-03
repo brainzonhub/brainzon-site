@@ -268,14 +268,14 @@ export const navigationConfig: NavItem[] = [
             subtitle: "Full-Suite ERP & Modular Apps",
             description: "Discovery, fit-gap analysis, controlled customization, data migration, and enablement.",
             href: "/solutions/odoo",
-            iconName: "layers",
+            iconName: "odoo",
           },
           {
             title: "Microsoft Dynamics 365 BC",
             subtitle: "Finance & Operations",
             description: "Process assessment, AL extensions, validation, cutover rehearsals, and ecosystem integration.",
             href: "/solutions/microsoft-dynamics-365-business-central",
-            iconName: "building-2",
+            iconName: "dynamics365",
           },
           {
             title: "Custom Enterprise Applications",
