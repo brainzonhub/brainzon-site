@@ -7,10 +7,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import { 
   ChevronLeft, 
   ChevronRight, 
-  ArrowRight, 
+  ArrowUpRight, 
   ShieldCheck,
   Pause,
-  Play
+  Play,
+  TrendingUp,
+  Sparkles,
+  Zap
 } from "lucide-react";
 import { ProductIcon, type ProductSlug } from "@/components/ui/ProductIcon";
 import { cn } from "@/lib/utils";
@@ -18,73 +21,88 @@ import { cn } from "@/lib/utils";
 export interface ProjectSlide {
   id: ProductSlug;
   name: string;
+  shortTag: string;
   badge: string;
   headline: string;
   metric: string;
   metricLabel: string;
+  metricIcon: typeof TrendingUp;
   url: string;
   href: string;
   image: string;
   themeColor: string;
   glowColor: string;
+  borderHover: string;
 }
 
 const PROJECT_SLIDES: ProjectSlide[] = [
   {
     id: "brainerp",
     name: "BrainERP",
-    badge: "Operations & Supply Chain Core",
-    headline: "Unified Operational & Multi-Warehouse Supply Chain Visibility",
+    shortTag: "ERP Core",
+    badge: "Operations & Supply Chain",
+    headline: "Multi-Warehouse Logistics & Real-Time Ledgers",
     metric: "99.98%",
     metricLabel: "Inventory Accuracy",
+    metricIcon: TrendingUp,
     url: "app.brainzon.com/erp/dashboard",
     href: "/products/brainerp",
     image: "/images/dashboards/brainerp-dashboard.jpg",
     themeColor: "#009cb4",
-    glowColor: "rgba(0, 156, 180, 0.22)",
+    glowColor: "rgba(0, 156, 180, 0.28)",
+    borderHover: "hover:border-[#009cb4]/60",
   },
   {
     id: "braincrm",
     name: "BrainCRM",
-    badge: "Customer Growth & Pipeline Workspace",
-    headline: "Unified Customer 360 & Predictive Sales Forecasting",
+    shortTag: "CRM Growth",
+    badge: "Customer Growth & Pipeline",
+    headline: "Predictive Lead Scoring & Deal Velocity",
     metric: "3.4x",
     metricLabel: "Pipeline Velocity",
+    metricIcon: Zap,
     url: "app.brainzon.com/crm/workspace",
     href: "/products/braincrm",
     image: "/images/dashboards/braincrm-dashboard.jpg",
     themeColor: "#f1384a",
-    glowColor: "rgba(241, 56, 74, 0.22)",
+    glowColor: "rgba(241, 56, 74, 0.28)",
+    borderHover: "hover:border-[#f1384a]/60",
   },
   {
     id: "brainmkt",
     name: "BrainMKT",
-    badge: "Marketing Velocity Hub",
-    headline: "Collaborative Campaign Orchestration & Audience Growth",
+    shortTag: "Marketing Hub",
+    badge: "Campaign Telemetry & Velocity",
+    headline: "Omnichannel Publishing & Asset Studio",
     metric: "+45%",
-    metricLabel: "Campaign Velocity",
+    metricLabel: "Execution Speed",
+    metricIcon: Sparkles,
     url: "app.brainzon.com/mkt/workspace",
     href: "/products/brainmkt",
     image: "/images/dashboards/brainmkt-dashboard.jpg",
     themeColor: "#fac316",
-    glowColor: "rgba(250, 195, 22, 0.22)",
+    glowColor: "rgba(250, 195, 22, 0.28)",
+    borderHover: "hover:border-[#fac316]/60",
   },
   {
     id: "brainbooks",
     name: "BrainBooks",
-    badge: "Accounting & Tax Compliance Ledger",
-    headline: "Audit-Ready Double-Entry Ledgers & Bank Reconciliations",
+    shortTag: "Books & Tax",
+    badge: "Financial Ledger & Compliance",
+    headline: "Audit-Ready Double-Entry Ledgers & VAT",
     metric: "-18 Days",
-    metricLabel: "DSO Reduction",
+    metricLabel: "DSO Collection",
+    metricIcon: TrendingUp,
     url: "app.brainzon.com/books/dashboard",
     href: "/products/brainbooks",
     image: "/images/dashboards/brainbooks-dashboard.png",
     themeColor: "#0065bd",
-    glowColor: "rgba(0, 101, 189, 0.22)",
+    glowColor: "rgba(0, 101, 189, 0.28)",
+    borderHover: "hover:border-[#0065bd]/60",
   },
 ];
 
-const SLIDE_DURATION = 5500; // 5.5 seconds per slide
+const SLIDE_DURATION = 5500; // 5.5 seconds
 
 interface HeroProjectsSliderProps {
   className?: string;
@@ -97,6 +115,7 @@ export function HeroProjectsSlider({ className }: HeroProjectsSliderProps) {
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
   const activeProject = PROJECT_SLIDES[currentIndex] ?? PROJECT_SLIDES[0]!;
+  const MetricIcon = activeProject.metricIcon;
 
   const handleNext = useCallback(() => {
     setDirection(1);
@@ -129,20 +148,21 @@ export function HeroProjectsSlider({ className }: HeroProjectsSliderProps) {
 
   return (
     <div 
-      className={cn("relative w-full flex flex-col gap-3 group/slider", className)}
+      className={cn("relative w-full flex flex-col gap-3 group/slider select-none", className)}
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      {/* Ambient Radial Background Glow tied to active project color */}
+      {/* Ambient Dynamic Glow tied to active project color */}
       <div 
-        className="absolute -inset-4 sm:-inset-6 -z-10 rounded-3xl opacity-50 blur-3xl pointer-events-none transition-all duration-700"
+        className="absolute -inset-4 sm:-inset-6 -z-10 rounded-3xl opacity-40 blur-3xl pointer-events-none transition-all duration-700"
         style={{
           background: `radial-gradient(circle at 60% 40%, ${activeProject.glowColor}, transparent 70%)`
         }}
       />
 
-      {/* 4 Projects Interactive Navigation Tabs */}
-      <div className="flex items-center justify-between gap-1.5 p-1 rounded-2xl bg-card/80 backdrop-blur-md border border-border/60 shadow-xs">
+      {/* Top Interactive Tabs Bar */}
+      <div className="flex items-center justify-between gap-1 p-1.5 rounded-2xl bg-card/85 backdrop-blur-md border border-border/70 shadow-sm">
+        {/* 4 Segmented Interactive Tabs */}
         <div className="grid grid-cols-4 gap-1 w-full">
           {PROJECT_SLIDES.map((project, idx) => {
             const isActive = idx === currentIndex;
@@ -152,24 +172,35 @@ export function HeroProjectsSlider({ className }: HeroProjectsSliderProps) {
                 type="button"
                 onClick={() => handleSelect(idx)}
                 className={cn(
-                  "relative flex items-center justify-center gap-1.5 sm:gap-2 px-2 py-2 sm:py-2.5 rounded-xl text-left transition-all duration-300 overflow-hidden cursor-pointer",
-                  isActive
-                    ? "bg-card shadow-sm border border-border text-foreground font-semibold"
-                    : "text-muted-foreground hover:text-foreground hover:bg-muted/40"
+                  "relative flex items-center justify-center gap-1.5 sm:gap-2 px-2 py-2 rounded-xl text-left transition-colors duration-200 cursor-pointer overflow-hidden group/tab",
+                  isActive ? "text-foreground font-bold" : "text-muted-foreground hover:text-foreground"
                 )}
-                aria-label={`View ${project.name} dashboard`}
+                aria-label={`Switch to ${project.name} dashboard`}
               >
-                {/* Product Icon */}
-                <ProductIcon product={project.id} size={16} className="shrink-0" />
-                
-                {/* Product Name */}
-                <span className="text-[11px] sm:text-xs font-mono font-medium truncate hidden sm:inline">
-                  {project.name}
-                </span>
-
-                {/* Progress bar on active tab */}
+                {/* Active Sliding Pill Indicator */}
                 {isActive && (
-                  <div className="absolute bottom-0 left-0 right-0 h-[2.5px] bg-muted overflow-hidden">
+                  <motion.div
+                    layoutId="active-hero-tab"
+                    className="absolute inset-0 bg-background rounded-xl border border-border/80 shadow-xs"
+                    transition={{ type: "spring", stiffness: 450, damping: 35 }}
+                  />
+                )}
+
+                {/* Tab Content */}
+                <div className="relative z-10 flex items-center gap-1.5 sm:gap-2 truncate">
+                  <ProductIcon 
+                    product={project.id} 
+                    size={16} 
+                    className="shrink-0 transition-transform duration-200 group-hover/tab:scale-110" 
+                  />
+                  <span className="text-[11px] sm:text-xs font-mono tracking-tight truncate">
+                    {project.name}
+                  </span>
+                </div>
+
+                {/* Animated progress underline */}
+                {isActive && (
+                  <div className="absolute bottom-0 left-0 right-0 h-[2.5px] bg-muted/60 overflow-hidden z-10">
                     <motion.div
                       key={`progress-${idx}-${currentIndex}`}
                       initial={{ width: "0%" }}
@@ -188,8 +219,8 @@ export function HeroProjectsSlider({ className }: HeroProjectsSliderProps) {
           })}
         </div>
 
-        {/* Small Pause / Play and Arrows controls */}
-        <div className="hidden sm:flex items-center gap-1 pl-1 shrink-0">
+        {/* Action Controls: Pause & Arrow Navigation */}
+        <div className="hidden sm:flex items-center gap-1 pl-1.5 border-l border-border/50 shrink-0">
           <button
             type="button"
             onClick={() => setIsPaused((prev) => !prev)}
@@ -218,28 +249,28 @@ export function HeroProjectsSlider({ className }: HeroProjectsSliderProps) {
         </div>
       </div>
 
-      {/* Main Showcase Card: Browser Frame + Dashboard Preview */}
-      <div className="relative rounded-2xl border border-border/70 bg-card/90 backdrop-blur-md shadow-card overflow-hidden transition-all duration-300">
+      {/* Main Showcase Browser Frame Card */}
+      <div className="relative rounded-2xl border border-border/80 bg-card backdrop-blur-md shadow-card overflow-hidden transition-all duration-300">
         
-        {/* Browser Top Window Chrome */}
+        {/* Browser Window Header Chrome */}
         <div className="flex items-center justify-between px-3.5 py-2.5 border-b border-border/60 bg-muted/30">
-          {/* Window control dots */}
+          {/* macOS traffic light window dots */}
           <div className="flex items-center gap-1.5 shrink-0">
-            <span className="size-2.5 rounded-full bg-rose-500/80" />
-            <span className="size-2.5 rounded-full bg-amber-500/80" />
-            <span className="size-2.5 rounded-full bg-emerald-500/80" />
+            <span className="size-2.5 rounded-full bg-[#ff5f56] border border-[#e0443e]/40 shadow-xs" />
+            <span className="size-2.5 rounded-full bg-[#ffbd2e] border border-[#dea123]/40 shadow-xs" />
+            <span className="size-2.5 rounded-full bg-[#27c93f] border border-[#1aab29]/40 shadow-xs" />
           </div>
 
-          {/* Centered Mock URL Bar */}
-          <div className="flex items-center gap-1.5 px-3 py-1 rounded-md bg-background/80 border border-border/40 text-[10px] sm:text-[11px] font-mono text-muted-foreground max-w-[240px] sm:max-w-xs truncate mx-2">
+          {/* Centered Mock SSL URL Bar */}
+          <div className="flex items-center gap-1.5 px-3 py-1 rounded-md bg-background border border-border/50 text-[10px] sm:text-[11px] font-mono text-muted-foreground max-w-[220px] sm:max-w-xs truncate mx-2 shadow-xs">
             <ShieldCheck size={11} className="text-emerald-500 shrink-0" />
-            <span className="text-foreground/80 truncate">{activeProject.url}</span>
+            <span className="text-foreground/90 truncate">{activeProject.url}</span>
           </div>
 
-          {/* Live Platform Badge + Link */}
+          {/* Live Indicator & Quick Explore Link */}
           <Link
             href={activeProject.href}
-            className="flex items-center gap-1.5 shrink-0 hover:text-primary transition-colors group/link"
+            className="flex items-center gap-1.5 shrink-0 text-muted-foreground hover:text-primary transition-colors group/explore"
             title={`Explore ${activeProject.name}`}
           >
             <span className="relative flex size-2">
@@ -252,42 +283,55 @@ export function HeroProjectsSlider({ className }: HeroProjectsSliderProps) {
                 style={{ backgroundColor: activeProject.themeColor }}
               />
             </span>
-            <span className="text-[10px] font-mono font-bold tracking-wider uppercase text-muted-foreground group-hover/link:text-primary">
-              Live
+            <span className="text-[10px] font-mono font-bold tracking-wider uppercase hidden sm:inline">
+              LIVE
             </span>
-            <ArrowRight size={11} className="text-muted-foreground group-hover/link:text-primary group-hover/link:translate-x-0.5 transition-transform" />
+            <ArrowUpRight size={12} className="group-hover/explore:translate-x-0.5 group-hover/explore:-translate-y-0.5 transition-transform" />
           </Link>
         </div>
 
-        {/* Dashboard Screenshot Preview Area with Click-Through */}
-        <Link
-          href={activeProject.href}
-          className="relative aspect-[16/9.5] sm:aspect-[16/9] w-full bg-slate-950/40 overflow-hidden group block cursor-pointer"
-          title={`Click to explore ${activeProject.name}`}
-        >
+        {/* Dashboard Screenshot Preview Area */}
+        <div className="relative aspect-[16/9] w-full bg-slate-100 dark:bg-slate-900 overflow-hidden group/canvas">
           <AnimatePresence mode="wait" initial={false}>
             <motion.div
               key={activeProject.id}
-              initial={{ opacity: 0, x: direction * 40 }}
+              initial={{ opacity: 0, x: direction * 30 }}
               animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: direction * -40 }}
-              transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] }}
-              className="relative w-full h-full"
+              exit={{ opacity: 0, x: direction * -30 }}
+              transition={{ duration: 0.32, ease: "easeInOut" }}
+              className="absolute inset-0 w-full h-full"
             >
-              <Image
-                src={activeProject.image}
-                alt={`${activeProject.name} Dashboard Interface`}
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                priority
-                className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
-              />
+              {/* Clickable Image that navigates to the project */}
+              <Link
+                href={activeProject.href}
+                className="block relative w-full h-full cursor-pointer"
+                title={`Click to explore ${activeProject.name}`}
+              >
+                <Image
+                  src={activeProject.image}
+                  alt={`${activeProject.name} Dashboard Interface`}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  priority
+                  unoptimized
+                  className="object-cover object-top w-full h-full transition-transform duration-500 group-hover/canvas:scale-[1.015]"
+                />
 
-              {/* Bottom Subtle Gradient for contrast */}
-              <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent pointer-events-none" />
+                {/* Subtle Vignette Overlay for border definition */}
+                <div className="absolute inset-0 ring-1 ring-inset ring-black/5 dark:ring-white/5 pointer-events-none" />
 
-              {/* Floating Quick Metric Pill on top right of the dashboard */}
-              <div className="absolute top-3 right-3 z-10 hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-background/90 backdrop-blur-md border border-border/80 shadow-md">
+                {/* Bottom Gentle Contrast Gradient for floating badge */}
+                <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/50 via-black/15 to-transparent pointer-events-none" />
+              </Link>
+
+              {/* Floating Live Telemetry Metric Badge (Top-Right) */}
+              <motion.div
+                initial={{ opacity: 0, y: -8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.25, delay: 0.1 }}
+                className="absolute top-3 right-3 z-10 hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-background/95 backdrop-blur-md border border-border shadow-md"
+              >
+                <MetricIcon size={11} style={{ color: activeProject.themeColor }} />
                 <span className="text-[10px] font-mono text-muted-foreground">
                   {activeProject.metricLabel}:
                 </span>
@@ -297,40 +341,74 @@ export function HeroProjectsSlider({ className }: HeroProjectsSliderProps) {
                 >
                   {activeProject.metric}
                 </span>
-              </div>
+              </motion.div>
 
-              {/* Sleek Animated Floating Tagline on bottom left */}
-              <div className="absolute bottom-3 left-3 right-3 z-10 flex items-center justify-between gap-2 pointer-events-none">
-                <motion.div
-                  key={`tagline-${activeProject.id}`}
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: 0.1 }}
-                  className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-background/90 backdrop-blur-md border border-border/80 shadow-md text-[11px] max-w-[85%] truncate"
-                >
+              {/* Floating Animated Headline Pill (Bottom-Left) */}
+              <motion.div
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.25, delay: 0.15 }}
+                className="absolute bottom-3 left-3 right-3 z-10 flex items-center justify-between gap-2 pointer-events-none"
+              >
+                <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-background/95 backdrop-blur-md border border-border/80 shadow-md text-[11px] max-w-[85%] truncate pointer-events-auto">
                   <span 
                     className="size-2 rounded-full shrink-0 animate-pulse"
                     style={{ backgroundColor: activeProject.themeColor }}
                   />
-                  <span className="font-bold text-foreground shrink-0">
+                  <span className="font-bold text-foreground shrink-0 font-mono">
                     {activeProject.name}
                   </span>
-                  <span className="text-muted-foreground truncate">
+                  <span className="text-muted-foreground truncate hidden sm:inline">
                     — {activeProject.headline}
                   </span>
-                </motion.div>
-
-                <div className="hidden sm:flex items-center gap-1 px-2.5 py-1.5 rounded-xl bg-background/90 backdrop-blur-md border border-border/80 text-[10px] font-mono text-muted-foreground shrink-0 shadow-md group-hover:text-primary transition-colors">
-                  <span>Explore</span>
-                  <ArrowRight size={10} className="group-hover:translate-x-0.5 transition-transform" />
                 </div>
+
+                {/* Interactive Click-through pill */}
+                <Link
+                  href={activeProject.href}
+                  className="hidden sm:inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl bg-background/95 backdrop-blur-md border border-border/80 text-[10px] font-mono font-semibold text-foreground hover:text-primary transition-colors shadow-md pointer-events-auto"
+                >
+                  <span>Explore</span>
+                  <ArrowUpRight size={11} />
+                </Link>
+              </motion.div>
+
+              {/* In-Image Hover Navigation Chevrons */}
+              <div className="absolute inset-y-0 left-2 z-10 flex items-center opacity-0 group-hover/canvas:opacity-100 transition-opacity duration-200">
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    handlePrev();
+                  }}
+                  className="flex size-8 items-center justify-center rounded-full bg-background/90 backdrop-blur-md border border-border/80 shadow-md text-foreground hover:bg-background hover:scale-110 transition-all cursor-pointer"
+                  aria-label="Previous slide"
+                >
+                  <ChevronLeft size={16} />
+                </button>
+              </div>
+
+              <div className="absolute inset-y-0 right-2 z-10 flex items-center opacity-0 group-hover/canvas:opacity-100 transition-opacity duration-200">
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    handleNext();
+                  }}
+                  className="flex size-8 items-center justify-center rounded-full bg-background/90 backdrop-blur-md border border-border/80 shadow-md text-foreground hover:bg-background hover:scale-110 transition-all cursor-pointer"
+                  aria-label="Next slide"
+                >
+                  <ChevronRight size={16} />
+                </button>
               </div>
             </motion.div>
           </AnimatePresence>
-        </Link>
+        </div>
       </div>
 
-      {/* Bottom Mobile Controls */}
+      {/* Mobile Slide Dots & Arrows */}
       <div className="flex sm:hidden items-center justify-between px-1">
         <div className="flex items-center gap-1.5">
           {PROJECT_SLIDES.map((_, idx) => (
@@ -339,7 +417,7 @@ export function HeroProjectsSlider({ className }: HeroProjectsSliderProps) {
               type="button"
               onClick={() => handleSelect(idx)}
               className={cn(
-                "h-1.5 rounded-full transition-all duration-300",
+                "h-1.5 rounded-full transition-all duration-300 cursor-pointer",
                 idx === currentIndex ? "w-6 bg-primary" : "w-1.5 bg-border hover:bg-muted-foreground/60"
               )}
               aria-label={`Go to slide ${idx + 1}`}
