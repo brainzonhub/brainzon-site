@@ -217,7 +217,7 @@ export function MegaMenu() {
                           onMouseEnter={() => setProductCategoryTab("applications")}
                           onClick={() => setProductCategoryTab("applications")}
                           className={cn(
-                            "w-full flex items-start gap-3 p-3 rounded-xl border text-left transition-all duration-150 cursor-pointer",
+                            "w-full flex items-center gap-3 p-3 rounded-xl border text-left transition-all duration-150 cursor-pointer",
                             productCategoryTab === "applications"
                               ? "bg-white dark:bg-card-opaque border-primary/40 shadow-xs ring-1 ring-primary/20"
                               : "border-transparent hover:bg-white/60 dark:hover:bg-card-opaque hover:border-border/60"
@@ -242,9 +242,6 @@ export function MegaMenu() {
                                 <ArrowRight size={13} className="text-primary shrink-0" />
                               )}
                             </div>
-                            <p className="text-[11px] text-muted-foreground mt-0.5 leading-snug">
-                              BrainMKT, BrainCRM, BrainERP, BrainBooks
-                            </p>
                           </div>
                         </button>
 
@@ -254,7 +251,7 @@ export function MegaMenu() {
                           onMouseEnter={() => setProductCategoryTab("ai")}
                           onClick={() => setProductCategoryTab("ai")}
                           className={cn(
-                            "w-full flex items-start gap-3 p-3 rounded-xl border text-left transition-all duration-150 cursor-pointer",
+                            "w-full flex items-center gap-3 p-3 rounded-xl border text-left transition-all duration-150 cursor-pointer",
                             productCategoryTab === "ai"
                               ? "bg-white dark:bg-card-opaque border-primary/40 shadow-xs ring-1 ring-primary/20"
                               : "border-transparent hover:bg-white/60 dark:hover:bg-card-opaque hover:border-border/60"
@@ -284,9 +281,6 @@ export function MegaMenu() {
                                 <ArrowRight size={13} className="text-primary shrink-0" />
                               )}
                             </div>
-                            <p className="text-[11px] text-muted-foreground mt-0.5 leading-snug">
-                              Product-specific AI agents with human review controls
-                            </p>
                           </div>
                         </button>
                       </div>
@@ -339,13 +333,13 @@ export function MegaMenu() {
                                 href={product.href}
                                 onClick={() => setActiveCategory(null)}
                                 className={cn(
-                                  "group relative flex items-start gap-3.5 p-3 rounded-xl border border-border/50 hover:border-border hover:bg-slate-50 dark:hover:bg-muted shadow-xs hover:shadow-sm",
+                                  "group relative flex items-center gap-3.5 p-3 rounded-xl border border-border/50 hover:border-border hover:bg-slate-50 dark:hover:bg-muted shadow-xs hover:shadow-sm",
                                   "transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                                 )}
                               >
                                 <div
                                   className={cn(
-                                    "flex size-10 items-center justify-center rounded-xl border transition-all shrink-0 mt-0.5",
+                                    "flex size-10 items-center justify-center rounded-xl border transition-all shrink-0",
                                     colorStyles.iconBox
                                   )}
                                 >
@@ -375,9 +369,6 @@ export function MegaMenu() {
                                   </div>
                                   <p className="text-[11px] font-medium text-foreground/85 line-clamp-1">
                                     {product.subtitle}
-                                  </p>
-                                  <p className="text-[11px] text-muted-foreground line-clamp-2 mt-1 leading-relaxed">
-                                    {product.description}
                                   </p>
                                 </div>
                               </Link>
@@ -415,13 +406,13 @@ export function MegaMenu() {
                                 href={agent.href}
                                 onClick={() => setActiveCategory(null)}
                                 className={cn(
-                                  "group relative flex items-start gap-3.5 p-3 rounded-xl border border-border/50 hover:border-border hover:bg-slate-50 dark:hover:bg-muted shadow-xs hover:shadow-sm",
+                                  "group relative flex items-center gap-3.5 p-3 rounded-xl border border-border/50 hover:border-border hover:bg-slate-50 dark:hover:bg-muted shadow-xs hover:shadow-sm",
                                   "transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                                 )}
                               >
                                 <div
                                   className={cn(
-                                    "flex size-10 items-center justify-center rounded-xl border transition-all shrink-0 mt-0.5",
+                                    "flex size-10 items-center justify-center rounded-xl border transition-all shrink-0",
                                     colorStyles.iconBox
                                   )}
                                 >
@@ -450,13 +441,6 @@ export function MegaMenu() {
                                   <p className="text-[11px] font-medium text-foreground/85 line-clamp-1">
                                     {agent.subtitle}
                                   </p>
-                                  <p className="text-[11px] text-muted-foreground line-clamp-2 mt-1 leading-relaxed">
-                                    {agent.description}
-                                  </p>
-                                  <div className="mt-2 inline-flex items-center gap-1 text-[10px] text-emerald-600 dark:text-emerald-400 font-medium">
-                                    <ShieldCheck size={11} />
-                                    <span className="line-clamp-1">{agent.controls}</span>
-                                  </div>
                                 </div>
                               </Link>
                             );
@@ -513,7 +497,7 @@ export function MegaMenu() {
                               onMouseEnter={() => setSolutionCategoryTab(section.title)}
                               onClick={() => setSolutionCategoryTab(section.title)}
                               className={cn(
-                                "w-full flex items-start gap-3 p-3 rounded-xl border text-left transition-all duration-150 cursor-pointer",
+                                "w-full flex items-center gap-3 p-3 rounded-xl border text-left transition-all duration-150 cursor-pointer",
                                 isSelected
                                   ? "bg-white dark:bg-card-opaque border-primary/40 shadow-xs ring-1 ring-primary/20"
                                   : "border-transparent hover:bg-white/60 dark:hover:bg-card-opaque hover:border-border/60"
@@ -538,9 +522,6 @@ export function MegaMenu() {
                                     <ArrowRight size={13} className="text-primary shrink-0" />
                                   )}
                                 </div>
-                                <p className="text-[11px] text-muted-foreground mt-0.5 leading-snug line-clamp-1">
-                                  {section.description}
-                                </p>
                               </div>
                             </button>
                           );
@@ -595,11 +576,11 @@ export function MegaMenu() {
                             href={subItem.href}
                             onClick={() => setActiveCategory(null)}
                             className={cn(
-                              "group relative flex items-start gap-3 p-3 rounded-xl border border-border/50 hover:border-border hover:bg-slate-50 dark:hover:bg-muted shadow-xs hover:shadow-sm",
+                              "group relative flex items-center gap-3 p-3 rounded-xl border border-border/50 hover:border-border hover:bg-slate-50 dark:hover:bg-muted shadow-xs hover:shadow-sm",
                               "transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                             )}
                           >
-                            <div className="flex size-9 items-center justify-center rounded-lg bg-muted/50 border border-border/40 group-hover:scale-105 transition-all shrink-0 mt-0.5">
+                            <div className="flex size-9 items-center justify-center rounded-lg bg-muted/50 border border-border/40 group-hover:scale-105 transition-all shrink-0">
                               {getMenuIcon(subItem.iconName, { size: 16 })}
                             </div>
                             <div className="flex-1 min-w-0">
@@ -617,9 +598,6 @@ export function MegaMenu() {
                                   {subItem.subtitle}
                                 </p>
                               )}
-                              <p className="text-[11px] text-muted-foreground line-clamp-2 mt-1 leading-relaxed">
-                                {subItem.description}
-                              </p>
                             </div>
                           </Link>
                         ))}
@@ -694,7 +672,7 @@ export function MegaMenu() {
                             href={subItem.href}
                             onClick={() => setActiveCategory(null)}
                             className={cn(
-                              "group flex items-start gap-3 p-2.5 rounded-xl border border-transparent hover:border-border/60 hover:bg-slate-50 dark:hover:bg-muted",
+                              "group flex items-center gap-3 p-2.5 rounded-xl border border-transparent hover:border-border/60 hover:bg-slate-50 dark:hover:bg-muted",
                               "transition-all duration-150 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                             )}
                           >
@@ -710,9 +688,6 @@ export function MegaMenu() {
                                   {subItem.subtitle}
                                 </p>
                               )}
-                              <p className="text-[11px] text-muted-foreground mt-0.5 line-clamp-1">
-                                {subItem.description}
-                              </p>
                             </div>
                           </Link>
                         ))}
@@ -787,7 +762,7 @@ export function MegaMenu() {
                             href={subItem.href}
                             onClick={() => setActiveCategory(null)}
                             className={cn(
-                              "group flex items-start gap-3 p-2.5 rounded-xl border border-transparent hover:border-border/60 hover:bg-slate-50 dark:hover:bg-muted",
+                              "group flex items-center gap-3 p-2.5 rounded-xl border border-transparent hover:border-border/60 hover:bg-slate-50 dark:hover:bg-muted",
                               "transition-all duration-150 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                             )}
                           >
@@ -803,9 +778,6 @@ export function MegaMenu() {
                                   {subItem.subtitle}
                                 </p>
                               )}
-                              <p className="text-[11px] text-muted-foreground mt-0.5 line-clamp-1">
-                                {subItem.description}
-                              </p>
                             </div>
                           </Link>
                         ))}

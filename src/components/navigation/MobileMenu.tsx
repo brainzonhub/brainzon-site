@@ -238,13 +238,13 @@ export function MobileMenu() {
                                     href={subItem.href}
                                     onClick={handleLinkClick}
                                     className={cn(
-                                      "flex items-start gap-3 p-2.5 rounded-xl hover:bg-muted/50 border border-transparent hover:border-border/60 group",
+                                      "flex items-center gap-3 p-2.5 rounded-xl hover:bg-muted/50 border border-transparent hover:border-border/60 group",
                                       "transition-all duration-150 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                                     )}
                                   >
                                     <div
                                       className={cn(
-                                        "flex size-10 items-center justify-center rounded-xl border transition-all shrink-0 mt-0.5",
+                                        "flex size-10 items-center justify-center rounded-xl border transition-all shrink-0",
                                         colorStyles.iconBox
                                       )}
                                     >
@@ -277,9 +277,6 @@ export function MobileMenu() {
                                           {subItem.subtitle}
                                         </p>
                                       )}
-                                      <p className="text-[10px] text-muted-foreground line-clamp-2 mt-0.5 leading-relaxed">
-                                        {subItem.description}
-                                      </p>
                                     </div>
                                   </Link>
                                 );
@@ -293,7 +290,7 @@ export function MobileMenu() {
                                   href={subItem.href}
                                   onClick={handleLinkClick}
                                   className={cn(
-                                    "flex items-start gap-3 p-2.5 rounded-lg hover:bg-muted/40 group",
+                                    "flex items-center gap-3 p-2.5 rounded-lg hover:bg-muted/40 group",
                                     "transition-all duration-150 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                                   )}
                                 >
@@ -304,9 +301,6 @@ export function MobileMenu() {
                                     <h5 className="text-xs font-semibold text-foreground group-hover:text-primary transition-colors">
                                       {subItem.title}
                                     </h5>
-                                    <p className="text-[11px] text-muted-foreground mt-0.5 line-clamp-1">
-                                      {subItem.description}
-                                    </p>
                                   </div>
                                 </Link>
                               ))}
@@ -323,7 +317,7 @@ export function MobileMenu() {
                                       href={subItem.href}
                                       onClick={handleLinkClick}
                                       className={cn(
-                                        "flex items-start gap-3 p-2 rounded-lg hover:bg-muted/40 group",
+                                        "flex items-center gap-3 p-2 rounded-lg hover:bg-muted/40 group",
                                         "transition-all duration-150 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                                       )}
                                     >
@@ -334,9 +328,6 @@ export function MobileMenu() {
                                         <h6 className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
                                           {subItem.title}
                                         </h6>
-                                        <p className="text-[10px] text-muted-foreground line-clamp-1">
-                                          {subItem.description}
-                                        </p>
                                       </div>
                                     </Link>
                                   ))}

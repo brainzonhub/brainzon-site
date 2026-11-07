@@ -1,0 +1,32 @@
+# Brainzon
+
+> Connected Enterprise Business Software & Governed AI Agents
+
+Brainzon is a digital transformation and enterprise software ecosystem that connects core business operations through unified applications, product-specific AI assistance with mandatory human-in-the-loop review, platform integration services, and legacy system modernization.
+
+## Core Business Applications
+
+- [BrainMKT](/products/brainmkt): Marketing management platform for campaign planning, audience segmentation, content workflows, and automated CRM lead handoff.
+- [BrainCRM](/products/braincrm): Customer relationship management suite providing unified customer timelines, deal intelligence, pipeline management, and multi-channel touchpoints.
+- [BrainERP](/products/brainerp): Enterprise resource planning software for operations, multi-warehouse inventory management, procurement, and bill of materials (BOM).
+- [BrainBooks](/products/brainbooks): Double-entry accounting software featuring automated bank reconciliation, accounts payable/receivable, compliance audit trails, and financial reporting.
+
+## Product-Specific AI Agents
+
+Brainzon AI agents operate directly within each application under strict governance:
+- [BrainMKT AI Agent](/ai-agents/brainmkt-ai-agent): Campaign copy drafting, audience segment recommendations, and CRM lead routing. Requires marketing manager approval before publishing.
+- [BrainCRM AI Agent](/ai-agents/braincrm-ai-agent): Multi-touchpoint interaction summaries, pipeline risk flags, and proposal follow-up staging. Human review required before customer delivery.
+- [BrainERP AI Agent](/ai-agents/brainerp-ai-agent): Inventory anomaly detection, lead-time variance tracking, and draft purchase orders. Manager sign-off required for PO execution.
+- [BrainBooks AI Agent](/ai-agents/brainbooks-ai-agent): Bank feed reconciliation suggestions, invoice matching, and ledger anomaly alerts. Controller sign-off required for journal posting.
+
+## Enterprise Services & Solutions
+
+- [Enterprise Platform Integration](/solutions/integration): API orchestration, data pipeline synchronization, and secure cross-platform connectivity.
+- [Legacy System Modernization](/services/modernization): 6 staged modernization pathways with zero-downtime cutovers and automated fallbacks.
+- [Trust & Governance](/company/trust): Enterprise data sovereignty, zero vendor lock-in, client IP ownership, and full decision audit trails.
+
+## Contact & Links
+
+- Website: https://brainzon.com
+- Book a Demo: https://brainzon.com/book-demo
+- Contact: sales@brainzon.com | support@brainzon.com
