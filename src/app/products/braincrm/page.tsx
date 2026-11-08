@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { siteConfig } from "@/config/site";
 import { productsConfig } from "@/config/products";
 import { ProductHero } from "@/components/sections/ProductHero";
+import { BrainCRMTourShowcase } from "@/components/sections/BrainCRMTourShowcase";
+import { BrainCRMBento } from "@/components/sections/BrainCRMBento";
+import { BrainCRMLifecycleExplorer } from "@/components/sections/BrainCRMLifecycleExplorer";
 import { FeatureGrid } from "@/components/sections/FeatureGrid";
 import { ArchitectureDiagram } from "@/components/sections/ArchitectureDiagram";
 import { IntegrationSection } from "@/components/sections/IntegrationSection";
@@ -110,6 +113,15 @@ export default function BrainCRMPage() {
         showBadge={false}
         rightElement={<BrainCRMSlider />}
       />
+
+      {/* Interactive Product Tour, Marquee & Metric Counters */}
+      <BrainCRMTourShowcase />
+
+      {/* "Why BrainCRM" - Built around how deals actually move (6-Card Bento Grid) */}
+      <BrainCRMBento />
+
+      {/* "How it works" - Follow one deal through the whole product (9-Step Lifecycle Explorer) */}
+      <BrainCRMLifecycleExplorer />
 
       <FeatureGrid 
         features={product.detailedFeatures} 

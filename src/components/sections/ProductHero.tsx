@@ -18,6 +18,7 @@ interface ProductHeroProps {
   showBackLink?: boolean;
   showBadge?: boolean;
   badgeText?: string;
+  headlineAsH1?: boolean;
 }
 
 export function ProductHero({ 
@@ -33,7 +34,11 @@ export function ProductHero({
   showBackLink = true,
   showBadge = true,
   badgeText = "Core Ecosystem Product",
+  headlineAsH1 = true,
 }: ProductHeroProps) {
+  const HeadlineTag = headlineAsH1 ? "h1" : "h2";
+  const LogoTag = headlineAsH1 ? "div" : "h1";
+
   return (
     <section className="relative overflow-hidden pt-12 pb-16 md:pt-16 md:pb-24 border-b border-border/40 bg-background transition-colors duration-300">
       {/* Dynamic background glows */}
@@ -70,7 +75,7 @@ export function ProductHero({
             )}
 
             {isProductSlug(name) ? (
-              <h1 className={cn("mb-4", showBadge ? "mt-2" : "mt-0")}>
+              <LogoTag className={cn("mb-4", showBadge ? "mt-2" : "mt-0")}>
                 <ProductLogo
                   product={name}
                   height={56}
@@ -78,19 +83,19 @@ export function ProductHero({
                   priority
                 />
                 <span className="sr-only">{name}</span>
-              </h1>
+              </LogoTag>
             ) : (
-              <div className={cn("flex items-center gap-4 mb-4", !showBadge && "mt-0")}>
+              <LogoTag className={cn("flex items-center gap-4 mb-4", !showBadge && "mt-0")}>
                 <div className="flex size-12 items-center justify-center rounded-2xl border border-primary/20 bg-primary/10 text-primary">
                   {getMenuIcon(icon, { size: 28 })}
                 </div>
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold tracking-tight text-foreground leading-[1.1]">
+                <div className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold tracking-tight text-foreground leading-[1.1]">
                   {name}
-                </h1>
-              </div>
+                </div>
+              </LogoTag>
             )}
 
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight text-foreground mt-2 leading-[1.1]">
+            <HeadlineTag className="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight text-foreground mt-2 leading-[1.1]">
               {highlight && headline.includes(highlight) ? (
                 <>
                   <span>{headline.split(highlight)[0]}</span>
@@ -100,7 +105,7 @@ export function ProductHero({
               ) : (
                 <span className="bg-[linear-gradient(to_right,#f1384a,#fac316,#009cb4,#fac316,#f1384a)] bg-[size:200%_auto] bg-clip-text text-transparent animate-gradient-flow drop-shadow-[0_0_15px_rgba(0,156,180,0.18)] dark:drop-shadow-[0_0_20px_rgba(0,156,180,0.3)]">{headline}</span>
               )}
-            </h2>
+            </HeadlineTag>
 
             <p className="mt-6 text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl">
               {description}

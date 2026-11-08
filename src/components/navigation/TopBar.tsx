@@ -131,75 +131,50 @@ function GitHubIcon({ className }: { className?: string }) {
 
 
 export function TopBar() {
-
   const [isVisible, setIsVisible] = useState(true);
-
   const lastScrollY = useRef(0);
-
-
+  const isTicking = useRef(false);
 
   useEffect(() => {
+    lastScrollY.current = window.scrollY;
 
     const handleScroll = () => {
+      if (isTicking.current) return;
 
-      const currentScrollY = window.scrollY;
+      isTicking.current = true;
+      requestAnimationFrame(() => {
+        const currentScrollY = window.scrollY;
+        const delta = currentScrollY - lastScrollY.current;
 
+        // When near the top, always keep TopBar visible (well above 36px height)
+        if (currentScrollY <= 50) {
+          setIsVisible(true);
+        } else if (delta > 8 && currentScrollY > 70) {
+          // Scrolling down with clear momentum past 70px -> hide TopBar
+          setIsVisible(false);
+        } else if (delta < -12) {
+          // Scrolling up with clear momentum -> show TopBar
+          setIsVisible(true);
+        }
 
-
-      // Always show at top of page
-
-      if (currentScrollY <= 15) {
-
-        setIsVisible(true);
-
-      } else if (currentScrollY > lastScrollY.current + 5) {
-
-        // Scrolling down -> hide TopBar
-
-        setIsVisible(false);
-
-      } else if (currentScrollY < lastScrollY.current - 10) {
-
-        // Scrolling up -> show TopBar
-
-        setIsVisible(true);
-
-      }
-
-
-
-      lastScrollY.current = currentScrollY;
-
+        lastScrollY.current = currentScrollY;
+        isTicking.current = false;
+      });
     };
 
-
-
     window.addEventListener("scroll", handleScroll, { passive: true });
-
     return () => window.removeEventListener("scroll", handleScroll);
-
   }, []);
 
-
-
   return (
-
     <div
-
       className={cn(
-
-        "w-full overflow-hidden transition-all duration-300 ease-in-out",
-
+        "w-full overflow-hidden transition-[max-height,opacity] duration-300 ease-in-out",
         isVisible
-
-          ? "max-h-12 opacity-100 translate-y-0"
-
-          : "max-h-0 opacity-0 -translate-y-full pointer-events-none"
-
+          ? "max-h-9 opacity-100"
+          : "max-h-0 opacity-0 pointer-events-none"
       )}
-
     >
-
       <div className="w-full border-b border-purple-200/60 dark:border-purple-900/40 bg-purple-50 dark:bg-purple-950/40 text-muted-foreground text-xs transition-colors">
 
       <Container className="flex h-9 items-center justify-between gap-4">
