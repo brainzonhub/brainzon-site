@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { siteConfig } from "@/config/site";
 import { productsConfig } from "@/config/products";
 import { ProductHero } from "@/components/sections/ProductHero";
@@ -7,9 +6,8 @@ import { FeatureGrid } from "@/components/sections/FeatureGrid";
 import { ArchitectureDiagram } from "@/components/sections/ArchitectureDiagram";
 import { IntegrationSection } from "@/components/sections/IntegrationSection";
 import { DemoCTA } from "@/components/sections/DemoCTA";
-import { CRMHeroDiagram } from "@/components/diagrams/CRMHeroDiagram";
+import { BrainCRMSlider } from "@/components/products/BrainCRMSlider";
 import { notFound } from "next/navigation";
-import { ChevronRight } from "lucide-react";
 
 const pageUrl = new URL("/products/braincrm", siteConfig.url).toString();
 const title = "BrainCRM | Customer Relationship Management Software";
@@ -98,17 +96,6 @@ export default function BrainCRMPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }}
       />
-      <section className="border-b border-border/40 bg-surface/30 py-3 text-xs text-muted-foreground">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 font-medium">
-            <Link href="/" className="hover:text-primary transition-colors">Home</Link>
-            <ChevronRight size={12} className="text-muted-foreground/50" />
-            <Link href="/products" className="hover:text-primary transition-colors">Products</Link>
-            <ChevronRight size={12} className="text-muted-foreground/50" />
-            <span className="text-foreground">{product.name}</span>
-          </nav>
-        </div>
-      </section>
 
       <ProductHero 
         name={product.name} 
@@ -116,7 +103,12 @@ export default function BrainCRMPage() {
         highlight={product.highlight}
         description={product.description} 
         icon={product.icon} 
-        rightElement={<CRMHeroDiagram />}
+        leftColSpan="lg:col-span-6"
+        rightColSpan="lg:col-span-6"
+        showRightOnMobile={true}
+        showBackLink={false}
+        showBadge={false}
+        rightElement={<BrainCRMSlider />}
       />
 
       <FeatureGrid 

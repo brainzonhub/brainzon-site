@@ -12,9 +12,28 @@ interface ProductHeroProps {
   description: string;
   icon: string;
   rightElement?: React.ReactNode;
+  leftColSpan?: string;
+  rightColSpan?: string;
+  showRightOnMobile?: boolean;
+  showBackLink?: boolean;
+  showBadge?: boolean;
+  badgeText?: string;
 }
 
-export function ProductHero({ name, headline, highlight, description, icon, rightElement }: ProductHeroProps) {
+export function ProductHero({ 
+  name, 
+  headline, 
+  highlight, 
+  description, 
+  icon, 
+  rightElement,
+  leftColSpan = "lg:col-span-7",
+  rightColSpan = "lg:col-span-5",
+  showRightOnMobile = false,
+  showBackLink = true,
+  showBadge = true,
+  badgeText = "Core Ecosystem Product",
+}: ProductHeroProps) {
   return (
     <section className="relative overflow-hidden pt-12 pb-16 md:pt-16 md:pb-24 border-b border-border/40 bg-background transition-colors duration-300">
       {/* Dynamic background glows */}
@@ -29,25 +48,29 @@ export function ProductHero({ name, headline, highlight, description, icon, righ
 
       <Container>
         {/* Back Link */}
-        <div className="mb-8">
-          <Link 
-            href="/"
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-muted-foreground hover:text-foreground transition-colors group"
-          >
-            <ArrowLeft size={12} className="transform group-hover:-translate-x-0.5 transition-transform" />
-            <span>Back to Ecosystem</span>
-          </Link>
-        </div>
+        {showBackLink && (
+          <div className="mb-8">
+            <Link 
+              href="/"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold text-muted-foreground hover:text-foreground transition-colors group"
+            >
+              <ArrowLeft size={12} className="transform group-hover:-translate-x-0.5 transition-transform" />
+              <span>Back to Ecosystem</span>
+            </Link>
+          </div>
+        )}
 
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-center">
           {/* Left copy */}
-          <div className="lg:col-span-7 flex flex-col items-start text-left">
-            <span className="badge-accent">
-              Core Ecosystem Product
-            </span>
+          <div className={cn("flex flex-col items-start text-left", leftColSpan)}>
+            {showBadge && (
+              <span className="badge-accent">
+                {badgeText}
+              </span>
+            )}
 
             {isProductSlug(name) ? (
-              <h1 className="mb-4 mt-2">
+              <h1 className={cn("mb-4", showBadge ? "mt-2" : "mt-0")}>
                 <ProductLogo
                   product={name}
                   height={56}
@@ -57,7 +80,7 @@ export function ProductHero({ name, headline, highlight, description, icon, righ
                 <span className="sr-only">{name}</span>
               </h1>
             ) : (
-              <div className="flex items-center gap-4 mb-4">
+              <div className={cn("flex items-center gap-4 mb-4", !showBadge && "mt-0")}>
                 <div className="flex size-12 items-center justify-center rounded-2xl border border-primary/20 bg-primary/10 text-primary">
                   {getMenuIcon(icon, { size: 28 })}
                 </div>
@@ -109,7 +132,7 @@ export function ProductHero({ name, headline, highlight, description, icon, righ
           </div>
 
           {/* Right illustration or custom diagram */}
-          <div className="lg:col-span-5 hidden lg:flex items-center justify-center w-full">
+          <div className={cn("items-center justify-center w-full", showRightOnMobile ? "flex mt-10 lg:mt-0" : "hidden lg:flex", rightColSpan)}>
             {rightElement ? (
               rightElement
             ) : (
