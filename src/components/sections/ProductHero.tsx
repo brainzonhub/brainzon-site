@@ -19,6 +19,7 @@ interface ProductHeroProps {
   showBadge?: boolean;
   badgeText?: string;
   headlineAsH1?: boolean;
+  headlineClassName?: string;
 }
 
 export function ProductHero({ 
@@ -35,6 +36,7 @@ export function ProductHero({
   showBadge = true,
   badgeText = "Core Ecosystem Product",
   headlineAsH1 = true,
+  headlineClassName,
 }: ProductHeroProps) {
   const HeadlineTag = headlineAsH1 ? "h1" : "h2";
   const LogoTag = headlineAsH1 ? "div" : "h1";
@@ -95,7 +97,7 @@ export function ProductHero({
               </LogoTag>
             )}
 
-            <HeadlineTag className="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight text-foreground mt-2 leading-[1.1]">
+            <HeadlineTag className={cn("text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold tracking-tight text-foreground mt-2 leading-[1.1]", headlineClassName)}>
               {highlight && headline.includes(highlight) ? (
                 <>
                   <span>{headline.split(highlight)[0]}</span>

@@ -5,9 +5,11 @@ import { ProductHero } from "@/components/sections/ProductHero";
 import { BrainCRMTourShowcase } from "@/components/sections/BrainCRMTourShowcase";
 import { BrainCRMBento } from "@/components/sections/BrainCRMBento";
 import { BrainCRMLifecycleExplorer } from "@/components/sections/BrainCRMLifecycleExplorer";
-import { FeatureGrid } from "@/components/sections/FeatureGrid";
-import { ArchitectureDiagram } from "@/components/sections/ArchitectureDiagram";
-import { IntegrationSection } from "@/components/sections/IntegrationSection";
+import { BrainCRMModules } from "@/components/sections/BrainCRMModules";
+import { BrainCRMPipelineBoard } from "@/components/sections/BrainCRMPipelineBoard";
+import { BrainCRMPlatform } from "@/components/sections/BrainCRMPlatform";
+import { BrainCRMROI } from "@/components/sections/BrainCRMROI";
+import { BrainCRMFAQ } from "@/components/sections/BrainCRMFAQ";
 import { DemoCTA } from "@/components/sections/DemoCTA";
 import { BrainCRMSlider } from "@/components/products/BrainCRMSlider";
 import { notFound } from "next/navigation";
@@ -123,19 +125,20 @@ export default function BrainCRMPage() {
       {/* "How it works" - Follow one deal through the whole product (9-Step Lifecycle Explorer) */}
       <BrainCRMLifecycleExplorer />
 
-      <FeatureGrid 
-        features={product.detailedFeatures} 
-        productName={product.name} 
-      />
+      {/* "Modules" - Everything a sales team touches in a day (19-Module Filterable Grid) */}
+      <BrainCRMModules />
 
-      <ArchitectureDiagram 
-        architecture={product.architecture} 
-      />
+      {/* "Try the pipeline" - Move a deal. Watch the forecast change. (5-Stage Interactive Kanban Board) */}
+      <BrainCRMPipelineBoard />
 
-      <IntegrationSection 
-        integrations={product.integrations} 
-        productName={product.name} 
-      />
+      {/* "Platform" - Rules enforced on the server, not in the browser (Trust Grid & Clean Architecture) */}
+      <BrainCRMPlatform />
+
+      {/* "ROI estimate" - Put your own numbers in (Interactive Multi-Currency ROI Calculator) */}
+      <BrainCRMROI />
+
+      {/* "FAQ" - Common questions (Interactive Accordion) */}
+      <BrainCRMFAQ />
 
       <DemoCTA />
     </div>
